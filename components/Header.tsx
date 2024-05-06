@@ -146,7 +146,7 @@ export const Header = () => {
         </ul>
       </div>
       <div className="flex text-center pr-5">
-        <a href="/documents/CV.pdf" className="bg-primary hover:bg-info text-white px-4 py-2 rounded-lg transition duration-300" download>Download Resume</a>
+        <a href="assets/documents/CV.pdf" className="bg-primary hover:bg-info text-white px-4 py-2 rounded-lg transition duration-300" download>Download Resume</a>
       </div>
     </div>
   );
