@@ -1,0 +1,20 @@
+[
+  {
+    "logo": "icone.png",
+    "title": "Stage en entreprise - Nom_Entreprise",
+    "description": "Je suis actuellement à la recherche d'un stage de 5 mois dans le domaine de la Data.",
+    "period": "Sep 2024 - Fev 2025"
+  },
+  {
+    "logo": "WellnessWave.jpg",
+    "title": "Création simulée d'une start-up - Projet à l'ISEP",
+    "description": "Exploration des divers rôles au sein d'une start-up. Collaboration au sein d'une équipe pour répondre au cahier des charges d'un client.",
+    "period": "2023 - 2024"
+  },
+  {
+    "logo": "MS.png",
+    "title": "Stage d'immersion chez Microsoft",
+    "description": "J'ai eu la chance d'effectuer un stage chez Microsoft, ce qui m'a permis de découvrir les métiers d'ingénieur et de confirmer mon choix d'orientation dans le domaine du numérique.",
+    "period": "2017"
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Montage Vidéo",
+    "logos": [
+      {
+        "src": "/assets/images/portfolio/logos/premiere.png",
+        "alt": "Adobe Premiere Pro logo"
+      },
+      {
+        "src": "/assets/images/portfolio/logos/finalcut.png",
+        "alt": "Final Cut Pro logo"
+      }
+    ],
+    "description": "Je maîtrise les logiciels de montage vidéo tels que Adobe Premiere Pro et Final Cut Pro. J'ai réalisé plusieurs vidéos pour des projets personnels et professionnels.",
+    "image": {
+      "src": "/assets/images/portfolio/premierpro.png",
+      "alt": "Timeline de mon projet documentaire"
+    },
+    "imageDescription": "Timeline de mon projet documentaire"
+  },
+  {
+    "title": "Design Graphique",
+    "logos": [
+      {
+        "src": "/assets/images/portfolio/logos/illustrator.png",
+        "alt": "Adobe Illustrator logo"
+      },
+      { "src": "/assets/images/portfolio/logos/Canva.png", "alt": "Canva logo" }
+    ],
+    "description": "Je suis à l'aise avec les logiciels de design graphique tels que Illustrator et Canva. J'ai eu l'occasion de créer des logos, des affiches et des illustrations pour des projets variés.",
+    "image": {
+      "src": "/assets/images/portfolio/illustrator.png",
+      "alt": "Moodboard pour mon club de drone"
+    },
+    "imageDescription": "Moodboard pour mon club de drone"
+  },
+  {
+    "title": "Retouches photo",
+    "logos": [
+      {
+        "src": "/assets/images/portfolio/logos/lightroom.png",
+        "alt": "Adobe Lightroom logo"
+      },
+      { "src": "/assets/images/portfolio/logos/ps.png", "alt": "Adobe Photoshop logo" }
+    ],
+    "description": "J'utilise des logiciels tels que Adobe Lightroom et Photoshop pour sublimer mes clichés. J'ai créé des presets et des actions pour accélérer mon workflow.",
+    "image": {
+      "src": "/assets/images/portfolio/lightroom.png",
+      "alt": "Retouche photo pour mon album Japon 2024"
+    },
+    "imageDescription": "Retouche photo pour mon album Japon 2024"
+  }
+]

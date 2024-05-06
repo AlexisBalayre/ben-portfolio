@@ -1,0 +1,20 @@
+[
+  {
+    "logo": "isep.png",
+    "title": "ISEP - <a class=\" font-bold text-primary hover:text-primary-content\" href=\"https://en.isep.fr/studying-at-isep/isep-engineering-master-degree/\" target=\"_blank\">Engineering Master Degree</a>",
+    "description": "Engineering cycle at ISEP in Paris. Specialisation in Data Intelligence. <br/><br/> ISEP is a French digital engineering school located in Paris. It trains general engineers in the key fields of digital technology: IT & Cybersecurity - Electronics & Robotics - Telecommunications & Internet of Things - Imaging - Artificial Intelligence.",
+    "period": "2021 - 2024"
+  },
+  {
+    "logo": "inha.png",
+    "title": "<a class=\" font-bold text-primary hover:text-primary-content\" href=\"https://eng.inha.ac.kr/eng/index.do\" target=\"_blank\">Inha University (South Korea)</a> - Academic Semester Abroad",
+    "description": "For my academic semester abroad, I chose to go to South Korea.  During this period, I took a wide range of courses, including System Programming, Leadership, Signal and System, Sensor Engineering, Engineering Circuits Analysis, and I also acquired a basic knowledge of Korean.  This experience enabled me to immerse myself in a new culture, improve my level of English and become more open to the international scene.",
+    "period": "Feb. 2023 - Jul. 2023"
+  },
+  {
+    "logo": "isep.png",
+    "title": "ISEP - <a class=\" font-bold text-primary hover:text-primary-content\" href=\"https://en.isep.fr/cii/\" target=\"_blank\">International Integrated Cycle (CII)</a>",
+    "description": "Preparatory years at the ISEP engineering school in Paris. <br/><br/> The CII follows a programme specific to ISEP, balanced across three teaching areas: Fundamental Digital Sciences | Techniques & Technologies | Languages, Cultures, Humanities and Sustainable Development. It includes an international semester from the second year.",
+    "period": "2021 - 2023"
+  }
+]
