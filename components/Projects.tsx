@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 
+declare global {
+    interface Window {
+        instgrm: any;
+    }
+}
+
 const addInstagramEmbedScript = () => {
     if (!document.querySelector('script[src="https://www.instagram.com/embed.js"]')) {
         const script = document.createElement('script');
@@ -32,6 +38,8 @@ const categories = [
 ];
 
 const Projects = () => {
+
+
     useEffect(() => {
         addInstagramEmbedScript();
         const checkInstgrm = () => {

@@ -35,7 +35,7 @@ const Portfolio: NextPage = () => {
             <div className="w-full text-center bg-base-content pt-10 pb-10 min-h-fit p-10">
                 <h2 className="text-3xl font-bold text-base-100">Mon dernier projet</h2>
                 <hr className="trait" />
-                <p className="mt-4 mb-6 px-4 md:px-20 text-base-100">En juillet 2023, j'ai eu l'opportunité de voyager au Japon. Pendant ce séjour, j'ai réalisé un aftermovie qui retrace mon voyage, capturant ainsi chaque moment de cette expérience mémorable.</p>
+                <p className="mt-4 mb-6 px-4 md:px-20 text-base-100">En juillet 2023, j&apos;ai eu l&apos;opportunité de voyager au Japon. Pendant ce séjour, j&apos;ai réalisé un aftermovie qui retrace mon voyage, capturant ainsi chaque moment de cette expérience mémorable.</p>
                 <div className="relative pt-[56.25%] rounded-xl"> {/* Maintain a 16:9 aspect ratio */}
                     <iframe
                         className="absolute top-0 left-0 w-full h-full rounded-xl"
