@@ -1,20 +1,16 @@
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback, memo } from 'react';
 
-declare global {
-    interface Window {
-        instgrm: any;
-    }
-}
+declare global { interface Window { instgrm: any; } }
 
-const addInstagramEmbedScript = () => {
-    if (!document.querySelector('script[src="https://www.instagram.com/embed.js"]')) {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = "https://www.instagram.com/embed.js";
-        document.body.appendChild(script);
-    }
-}
+const addInstagramScript = () => {
+    if (document.querySelector('script[src="https://www.instagram.com/embed.js"]')) return;
+
+    const script = document.createElement('script');
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+};
 
 const categories = [
     {
@@ -31,60 +27,59 @@ const categories = [
         title: 'Collaborations',
         links: [
             { url: 'https://www.youtube.com/embed/c-GvjKw0eQ4', title: 'Kawasaki' },
-            { url: 'https://www.instagram.com/p/C3GEH7XrNI2/', title: 'Clip Videos pour ISEP Record' }, // Note the change in URL for the Instagram embed
+            { url: 'https://www.instagram.com/p/C3GEH7XrNI2/', title: 'Clip Videos pour ISEP Record' },
             { url: 'https://www.youtube.com/embed/a5DTt68PKdw', title: 'Clip Videos pour Cheerlisep' }
         ]
     }
 ];
 
-const Projects = () => {
+const isInstagramUrl = (url: string | string[]): boolean => url.includes('instagram.com');
 
+const Iframe = memo(({ url }: { url: string }) => (
+    <iframe src={url} title="Video player" allowFullScreen className="w-full aspect-video" />
+));
+
+const Project = memo(({ link }: { link: { url: string; title: string } }) => (
+    <div className="relative card-video mb-4 rounded-lg shadow-md flex flex-col">
+        {!isInstagramUrl(link.url) ? (
+            <Iframe url={link.url} />
+        ) : (
+            <blockquote className="instagram-media" data-instgrm-permalink={link.url} style={{ minWidth: '100%', minHeight: '100%' }} />
+        )}
+    </div>
+));
+
+const Category = memo(({ category }: { category: { icon: string; title: string; links: { url: string; title: string }[] } }) => (
+    <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col rounded-xl">
+        <div className="card-body">
+            <div className="flex items-center space-x-3 mb-4">
+                <Image src={category.icon} alt={`${category.title} icon`} width={40} height={40} />
+                <h2 className="card-title">{category.title}</h2>
+            </div>
+            {category.links.map((link, index) => (
+                <Project key={index} link={link} />
+            ))}
+        </div>
+    </div>
+));
+
+const Projects = () => {
+    const processInstgrams = useCallback((): void => window.instgrm ? window.instgrm.Embeds.process() : setTimeout(processInstgrams, 300), []);
 
     useEffect(() => {
-        addInstagramEmbedScript();
-        const checkInstgrm = () => {
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
-            } else {
-                setTimeout(checkInstgrm, 300); // Check again after a delay
-            }
-        };
-        checkInstgrm();
-    }, []);
+        addInstagramScript();
+        window.instgrm ? window.instgrm.Embeds.process() : processInstgrams();
+    }, [processInstgrams]);
 
     return (
         <div className="px-4 md:px-0 py-6 bg-base-200 h-full w-full flex justify-center">
             <div className="grid md:grid-cols-2 gap-20 container w-full">
                 {categories.map((category, index) => (
-                    <div key={index} className="card bg-base-100 shadow-lg hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col rounded-xl">
-                        <div className="card-body">
-                            <div className="flex items-center space-x-3 mb-4">
-                                <Image src={category.icon} alt={`${category.title} icon`} width={40} height={40} />
-                                <h2 className="card-title">{category.title}</h2>
-                            </div>
-                            {category.links.map((link, linkIndex) => {
-                                const isInstagram = link.url.includes('instagram.com');
-                                return (
-                                    <div key={linkIndex} className="relative card-video mb-4 rounded-lg shadow-md flex flex-col">
-                                        {!isInstagram ? (
-                                            <iframe
-                                                src={link.url}
-                                                title="Video player"
-                                                allowFullScreen
-                                                className="w-full aspect-video"
-                                            />
-                                        ) : (
-                                            <blockquote className="instagram-media" data-instgrm-permalink={link.url} style={{ minWidth: '100%', minHeight: '100%' }} />
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
+                    <Category key={index} category={category} />
                 ))}
             </div>
         </div>
     );
-};
+}
 
 export default Projects;

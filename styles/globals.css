@@ -2,17 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-:root,
-[data-theme] {
-  background: hsl(var(--b2));
-}
-
 body {
   min-height: 100vh;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 .timeline-block {
@@ -31,11 +22,6 @@ html {
   position: relative;
   overflow: hidden;
   padding-top: 56.25%; 
-}
-
-.hero {
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 .card-video iframe {
