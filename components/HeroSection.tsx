@@ -37,7 +37,7 @@ const HeroSection = () => {
           quality={80}
         />
       </div>
-      <div className="hero-overlay bg-opacity-60"></div>
+      <div className="hero-overlay bg-opacity-20 z-100 absolute w-full h-full"></div>
       <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col z-10">
         <div className="animate-fade-in-down max-w-lg">
           <h1 className="text-6xl font-bold mb-4">Portfolio</h1>

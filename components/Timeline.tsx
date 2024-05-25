@@ -10,7 +10,7 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
   return (
     <div className="container mx-auto">
       <div className="flex justify-center">
-        <div className="timeline md:block hidden">
+        <div className="timelineBis md:block hidden">
           <ul className="list-none m-0 p-0">
             {items.map((item, index) => (
               <li key={index} className="mb-12">
