@@ -50,7 +50,7 @@ const AssociativeCareer: NextPage = () => {
                     <div className="md:pr-10 sm:mb-8">
                         <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">Présentation</h3>
                         <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-                            Le drone FPV ("First Person View"), intègre une caméra qui offre au pilote une vision en temps réel à travers des lunettes FPV
+                            Le drone FPV (&quot;First Person View&quot;), intègre une caméra qui offre au pilote une vision en temps réel à travers des lunettes FPV
                             permettant une expérience de vol immersive. <br /><br />
                             ISEP Drone est un club de drone FPV créé en 2021 par un groupe de
                             passionnés. <br />
@@ -109,20 +109,20 @@ const AssociativeCareer: NextPage = () => {
                         <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">Présentation</h3>
 
                         <p className="text-base-100 leading-relaxed lg:text-lg text-justify">
-                            Depuis que j'ai rejoint le club associatif ISEP Drone en 2021, j'ai
-                            eu l'opportunité de contribuer à son développement. J'ai participé à
-                            la création de l'identité visuelle du club, à l'organisation des
+                            Depuis que j&apos;ai rejoint le club associatif ISEP Drone en 2021, j&apos;ai
+                            eu l&apos;opportunité de contribuer à son développement. J&apos;ai participé à
+                            la création de l&apos;identité visuelle du club, à l&apos;organisation des
                             premiers événements, à la communication de lancement et au
-                            recrutement des nouveaux membres. Ces expériences m'ont permis de
+                            recrutement des nouveaux membres. Ces expériences m&apos;ont permis de
                             développer mes compétences en graphisme, en gestion de projet, en
                             communication digitale et en recrutement. <br /><br />
-                            En 2023, j'ai pris la tête du club en tant que président. Cette
-                            expérience m'a permis de développer mes compétences en leadership et
-                            en gestion d'équipe, en veillant à la bonne marche du club et en
+                            En 2023, j&apos;ai pris la tête du club en tant que président. Cette
+                            expérience m&apos;a permis de développer mes compétences en leadership et
+                            en gestion d&apos;équipe, en veillant à la bonne marche du club et en
                             motivant les membres à atteindre nos objectifs communs. <br /><br />
-                            En bref, mon parcours au sein de ISEP Drone m'a permis de développer
-                            de nombreuses compétences transversales. C'est une expérience que je
-                            suis fier d'avoir vécue et qui, je suis sûr, sera un atout pour mon
+                            En bref, mon parcours au sein de ISEP Drone m&apos;a permis de développer
+                            de nombreuses compétences transversales. C&apos;est une expérience que je
+                            suis fier d&apos;avoir vécue et qui, je suis sûr, sera un atout pour mon
                             avenir professionnel.
                         </p>
                     </div>
@@ -163,9 +163,9 @@ const AssociativeCareer: NextPage = () => {
                     <div className="md:pr-10">
                         <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">Présentation</h3>
                         <p className="leading-relaxed lg:text-lg text-justify">
-                            ISEP Live est l'association média officielle de l'ISEP, couvrant la
+                            ISEP Live est l&apos;association média officielle de l&apos;ISEP, couvrant la
                             majorité des événements organisés par les associations, notamment le
-                            Weekend d'Intégration, la Semaine de Ski et la Semaine Voile. Nous
+                            Weekend d&apos;Intégration, la Semaine de Ski et la Semaine Voile. Nous
                             proposons des formations en photographie, vidéo et illustration à
                             nos membres. Composée de 25 membres, cette association est au cœur
                             de la vie étudiante. <br /><br />
@@ -226,16 +226,16 @@ const AssociativeCareer: NextPage = () => {
                         <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">Mon Parcours</h3>
                         <p className="leading-relaxed lg:text-lg text-justify">
                             Passionné par la photographie, la réalisation et la production de
-                            projets vidéographiques, mon parcours au sein d'ISEP Live a été une
-                            source d'épanouissement personnel. Mon engagement a débuté en 2021,
+                            projets vidéographiques, mon parcours au sein d&apos;ISEP Live a été une
+                            source d&apos;épanouissement personnel. Mon engagement a débuté en 2021,
                             alors que je venais tout juste de me lancer dans la photographie,
-                            dans le but d'échanger avec des personnes compétentes. <br /><br />
-                            En 2022, j'ai été promu Vice-président. Cette expérience m'a permis
+                            dans le but d&apos;échanger avec des personnes compétentes. <br /><br />
+                            En 2022, j&apos;ai été promu Vice-président. Cette expérience m&apos;a permis
                             de participer et de diriger des projets collaboratifs qui ont du
-                            sens pour moi. Mon poste de vice-président m'a appris à mener à bien
-                            les projets que j'entreprends avec mon équipe, renforçant ainsi mes
+                            sens pour moi. Mon poste de vice-président m&apos;a appris à mener à bien
+                            les projets que j&apos;entreprends avec mon équipe, renforçant ainsi mes
                             compétences en gestion de projet, en leadership et en travail
-                            d'équipe.
+                            d&apos;équipe.
                         </p>
                     </div>
                     <div className="gap-4 flex flex-col basis-1/4">
@@ -286,13 +286,13 @@ const AssociativeCareer: NextPage = () => {
                         <p className="leading-relaxed lg:text-lg text-justify text-base-100">
                             Le Bureau des Élèves (BDE) Vizion est une organisation dynamique et
                             engagée qui a pour mission de dynamiser la vie étudiante au sein de
-                            l'école. Composé de 40 membres actifs, le BDE Vizion travaille toute
-                            l'année pour proposer une expérience étudiante inoubliable.
+                            l&apos;école. Composé de 40 membres actifs, le BDE Vizion travaille toute
+                            l&apos;année pour proposer une expérience étudiante inoubliable.
                             <br /><br />
                             Au cœur de cette mission se trouve le pôle Création, chargé de
-                            définir l'identité visuelle du BDE, de la communication aux couleurs
+                            définir l&apos;identité visuelle du BDE, de la communication aux couleurs
                             de nos pulls, en passant par notre logo, et bien plus encore. Chaque
-                            membre du BDE Vizion s'investit pleinement pour offrir des
+                            membre du BDE Vizion s&apos;investit pleinement pour offrir des
                             événements et des activités variés qui répondent aux besoins et aux
                             attentes de la communauté étudiante.
                         </p>
@@ -316,13 +316,20 @@ const AssociativeCareer: NextPage = () => {
 
                 <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
                     <div className="md:pr-10 sm:mb-8">
-                        <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">Présentation</h3>
+                        <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">Mon Parcours</h3>
                         <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-                            Le drone FPV ("First Person View"), intègre une caméra qui offre au pilote une vision en temps réel à travers des lunettes FPV
-                            permettant une expérience de vol immersive. <br /><br />
-                            ISEP Drone est un club de drone FPV créé en 2021 par un groupe de
-                            passionnés. <br />
-                            Notre objectif, faire découvrir notre dicipline au plus grand nombre à travers des formations, sessions sur simulateur et sessions de vol.
+                            Cette expérience au sein du pôle Création du BDE Vizion m'a offert
+                            une opportunité unique de développer mes compétences en matière de
+                            création visuelle. En travaillant sur des projets concrets, j'ai pu
+                            affiner mes compétences en photographie et en réalisation vidéo,
+                            tout en collaborant avec une équipe dynamique et passionnée.
+                            <br /><br />
+                            En plus d'acquérir une expertise pratique, cette expérience m'a
+                            également permis de renforcer mes compétences en communication, en
+                            gestion de projet et en travail d'équipe. Je suis fier de faire
+                            partie d'une équipe aussi créative et engagée, et je suis
+                            reconnaissant des compétences et des opportunités que cette
+                            expérience m'a apportées.
                         </p>
                     </div>
                     <Image
