@@ -318,18 +318,18 @@ const AssociativeCareer: NextPage = () => {
                     <div className="md:pr-10 sm:mb-8">
                         <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">Mon Parcours</h3>
                         <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-                            Cette expérience au sein du pôle Création du BDE Vizion m'a offert
+                            Cette expérience au sein du pôle Création du BDE Vizion m&apos;a offert
                             une opportunité unique de développer mes compétences en matière de
-                            création visuelle. En travaillant sur des projets concrets, j'ai pu
+                            création visuelle. En travaillant sur des projets concrets, j&apos;ai pu
                             affiner mes compétences en photographie et en réalisation vidéo,
                             tout en collaborant avec une équipe dynamique et passionnée.
                             <br /><br />
-                            En plus d'acquérir une expertise pratique, cette expérience m'a
+                            En plus d&apos;acquérir une expertise pratique, cette expérience m&apos;a
                             également permis de renforcer mes compétences en communication, en
-                            gestion de projet et en travail d'équipe. Je suis fier de faire
-                            partie d'une équipe aussi créative et engagée, et je suis
+                            gestion de projet et en travail d&apos;équipe. Je suis fier de faire
+                            partie d&apos;une équipe aussi créative et engagée, et je suis
                             reconnaissant des compétences et des opportunités que cette
-                            expérience m'a apportées.
+                            expérience m&apos;a apportées.
                         </p>
                     </div>
                     <Image
