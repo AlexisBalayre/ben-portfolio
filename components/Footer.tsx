@@ -12,17 +12,17 @@ const socials = [
     icon: LinkedinLogo,
   },
   {
-    href: 'https://github.com/BenjaminBalayre',
+    href: 'https://github.com/benbalayre',
     label: 'Github of Benjamin Balayre',
     icon: GithubLogo,
   },
   {
-    href: 'https://www.instagram.com/benjaminbalayre/',
+    href: 'https://www.instagram.com/ben_balayre/',
     label: 'Instagram of Benjamin Balayre',
     icon: InstagramLogo,
   },
   {
-    href: 'https://www.youtube.com/channel/UC9J9Z9Z9J9Z9J9Z9J9Z9',
+    href: 'https://www.youtube.com/@ben_balayre',
     label: 'Youtube of Benjamin Balayre',
     icon: YouTubeLogo,
   },
