@@ -8,7 +8,7 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import { useOutsideClick } from "~~/hooks";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 interface HeaderMenuLink {
   label: string;
@@ -65,7 +65,7 @@ export const HeaderMenuLinks = () => {
     } else {
       router.push(`/${section}`);
     }
-  }
+  };
 
   useEffect(() => {
     const currentSection = router.pathname.split("/")[1];
@@ -85,8 +85,11 @@ export const HeaderMenuLinks = () => {
           <li key={section}>
             <span
               onClick={() => handleActive(section)}
-              className={`${isActive[section as keyof typeof isActive] ? "bg-primary shadow-md text-base-100" : ""
-                }
+              className={`${
+                isActive[section as keyof typeof isActive]
+                  ? "bg-primary shadow-md text-base-100"
+                  : ""
+              }
                 hover:bg-info hover:shadow-md cursor-pointer focus:!bg-accent py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
             >
               {icon}
@@ -104,10 +107,10 @@ export const HeaderMenuLinks = () => {
  */
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const burgerMenuRef = useRef<HTMLDivElement>(null);
+  const burgerMenuRef = useRef<HTMLDivElement>(null!);
   useOutsideClick(
     burgerMenuRef,
-    useCallback(() => setIsDrawerOpen(false), []),
+    useCallback(() => setIsDrawerOpen(false), [])
   );
 
   return (
@@ -116,9 +119,11 @@ export const Header = () => {
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
             tabIndex={0}
-            className={`ml-1 btn btn-ghost ${isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"}`}
+            className={`ml-1 btn btn-ghost ${
+              isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"
+            }`}
             onClick={() => {
-              setIsDrawerOpen(prevIsOpenState => !prevIsOpenState);
+              setIsDrawerOpen((prevIsOpenState) => !prevIsOpenState);
             }}
           >
             <Bars3Icon className="h-1/2" />
@@ -135,7 +140,11 @@ export const Header = () => {
             </ul>
           )}
         </div>
-        <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
+        <Link
+          href="/"
+          passHref
+          className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0"
+        >
           <div className="flex flex-col">
             <span className="font-bold leading-tight">Benjamin Balayre</span>
             <span className="text-xs">ISEP Student</span>
@@ -146,7 +155,13 @@ export const Header = () => {
         </ul>
       </div>
       <div className="flex text-center pr-5">
-        <a href="assets/documents/CV.pdf" className="bg-primary hover:bg-info text-white px-4 py-2 rounded-lg transition duration-300" download>Download Resume</a>
+        <a
+          href="assets/documents/CV.pdf"
+          className="bg-primary hover:bg-info text-white px-4 py-2 rounded-lg transition duration-300"
+          download
+        >
+          Download Resume
+        </a>
       </div>
     </div>
   );
