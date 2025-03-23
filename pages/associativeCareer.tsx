@@ -31,170 +31,6 @@ const AssociativeCareer: NextPage = () => {
         </div>
       </div>
 
-      {/* ISEP Drone */}
-      <div className="bg-base-content w-full p-10 md:px-40 grid">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-base-100 text-center">
-            ISEP Drone
-          </h2>
-          <hr className="trait" />
-        </div>
-
-        <Image
-          src="/assets/images/isepdrone.png"
-          alt="ISEP Drone Logo"
-          width={150} // set the image width
-          height={150} // set the image height
-          className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
-        />
-
-        <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
-          <div className="md:pr-10 sm:mb-8">
-            <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              Présentation
-            </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-              Le drone FPV (&quot;First Person View&quot;), intègre une caméra
-              qui offre au pilote une vision en temps réel à travers des
-              lunettes FPV permettant une expérience de vol immersive. <br />
-              <br />
-              ISEP Drone est un club de drone FPV créé en 2021 par un groupe de
-              passionnés. <br />
-              Notre objectif, faire découvrir notre dicipline au plus grand
-              nombre à travers des formations, sessions sur simulateur et
-              sessions de vol.
-            </p>
-          </div>
-          <Image
-            src="/assets/images/isepdrone.png"
-            alt="ISEP Drone Logo"
-            width={300} // set the image width
-            height={300} // set the image height
-            className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
-          />
-        </div>
-
-        <div className="mt-20 w-full grid">
-          <h3 className="font-bold text-base-100 text-2xl mb-10">
-            Mon Parcours
-          </h3>
-          <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical text-base-100">
-            <li>
-              <div className="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="timeline-start md:text-end mb-10">
-                <time className="font-mono italic">2023</time>
-                <div className="text-lg font-black">Président du Club</div>
-              </div>
-              <hr className="bg-primary" />
-            </li>
-            <li>
-              <hr className="bg-primary" />
-              <div className="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="timeline-end mb-10">
-                <time className="font-mono italic">2022</time>
-                <div className="text-lg font-black">
-                  Responsable Communication
-                </div>
-              </div>
-              <hr className="bg-primary" />
-            </li>
-            <li>
-              <hr className="bg-primary" />
-              <div className="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="timeline-start md:text-end mb-10">
-                <time className="font-mono italic">2021</time>
-                <div className="text-lg font-black">Membre Fondateur</div>
-              </div>
-              <hr className="bg-primary" />
-            </li>
-          </ul>
-        </div>
-
-        <div className="mt-10 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
-          <div className="md:pr-10 sm:mb-8">
-            <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              Présentation
-            </h3>
-
-            <p className="text-base-100 leading-relaxed lg:text-lg text-justify">
-              Depuis que j&apos;ai rejoint le club associatif ISEP Drone en
-              2021, j&apos;ai eu l&apos;opportunité de contribuer à son
-              développement. J&apos;ai participé à la création de
-              l&apos;identité visuelle du club, à l&apos;organisation des
-              premiers événements, à la communication de lancement et au
-              recrutement des nouveaux membres. Ces expériences m&apos;ont
-              permis de développer mes compétences en graphisme, en gestion de
-              projet, en communication digitale et en recrutement. <br />
-              <br />
-              En 2023, j&apos;ai pris la tête du club en tant que président.
-              Cette expérience m&apos;a permis de développer mes compétences en
-              leadership et en gestion d&apos;équipe, en veillant à la bonne
-              marche du club et en motivant les membres à atteindre nos
-              objectifs communs. <br />
-              <br />
-              En bref, mon parcours au sein de ISEP Drone m&apos;a permis de
-              développer de nombreuses compétences transversales. C&apos;est une
-              expérience que je suis fier d&apos;avoir vécue et qui, je suis
-              sûr, sera un atout pour mon avenir professionnel.
-            </p>
-          </div>
-          <Image
-            src="/assets/images/drone_illustration.JPG"
-            alt="ISEP Drone Logo"
-            width={300} // set the image width
-            height={300} // set the image height
-            className="rounded-xl flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
-          />
-        </div>
-
-        <a
-          href="https://www.instagram.com/isep_drone?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-          target="_blank"
-          className="place-self-center md:mt-10"
-        >
-          <InstagramLogo className="w-20 h-20 transition hover:text-primary text-base-100" />
-        </a>
-      </div>
-
       {/* ISEP Live */}
       <div className="w-full p-10 md:px-40 grid">
         <div className="text-center">
@@ -315,13 +151,24 @@ const AssociativeCareer: NextPage = () => {
           </div>
         </div>
 
-        <a
-          href="https://www.instagram.com/iseplive?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-          target="_blank"
-          className="place-self-center md:mt-10"
-        >
-          <InstagramLogo className="w-20 h-20 transition hover:text-primary" />
-        </a>
+        <div className="flex justify-center gap-4 md:mt-10">
+          <a
+            href="https://www.instagram.com/iseplive?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
+          >
+            <InstagramLogo className="w-20 h-20 transition hover:text-primary" />
+          </a>
+          <a href="https://www.youtube.com/@iseplive" target="_blank">
+            <svg
+              className="w-20 h-20 transition hover:text-primary text-black"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M23.498 6.186a2.986 2.986 0 00-2.101-2.11C19.513 3.5 12 3.5 12 3.5s-7.513 0-9.397.576a2.986 2.986 0 00-2.101 2.11C0 8.069 0 12 0 12s0 3.931.502 5.814a2.986 2.986 0 002.101 2.11C4.487 20.5 12 20.5 12 20.5s7.513 0 9.397-.576a2.986 2.986 0 002.101-2.11C24 15.931 24 12 24 12s0-3.931-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z" />
+            </svg>
+          </a>
+        </div>
       </div>
 
       {/* VIZION BDE */}
@@ -416,6 +263,168 @@ const AssociativeCareer: NextPage = () => {
           className="place-self-center md:mt-10"
         >
           <InstagramLogo className="w-20 h-20 transition hover:text-primary text-base-100" />
+        </a>
+      </div>
+
+      {/* ISEP Drone */}
+      <div className="bg-white w-full p-10 md:px-40 grid">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-black text-center">
+            ISEP Drone
+          </h2>
+          <hr className="trait" />
+        </div>
+
+        <Image
+          src="/assets/images/isepdrone.png"
+          alt="ISEP Drone Logo"
+          width={150} // set the image width
+          height={150} // set the image height
+          className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
+        />
+
+        <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+          <div className="md:pr-10 sm:mb-8">
+            <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
+              Présentation
+            </h3>
+            <p className="leading-relaxed lg:text-lg text-justify text-black">
+              Le drone FPV (&quot;First Person View&quot;), intègre une caméra
+              qui offre au pilote une vision en temps réel à travers des
+              lunettes FPV permettant une expérience de vol immersive. <br />
+              <br />
+              ISEP Drone est un club de drone FPV créé en 2021 par un groupe de
+              passionnés. <br />
+              Notre objectif, faire découvrir notre dicipline au plus grand
+              nombre à travers des formations, sessions sur simulateur et
+              sessions de vol.
+            </p>
+          </div>
+          <Image
+            src="/assets/images/isepdrone.png"
+            alt="ISEP Drone Logo"
+            width={300} // set the image width
+            height={300} // set the image height
+            className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
+          />
+        </div>
+
+        <div className="mt-20 w-full grid">
+          <h3 className="font-bold text-black text-2xl mb-10">Mon Parcours</h3>
+          <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical text-black">
+            <li>
+              <div className="timeline-middle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="timeline-start md:text-end mb-10">
+                <time className="font-mono italic">2023</time>
+                <div className="text-lg font-black">Président du Club</div>
+              </div>
+              <hr className="bg-primary" />
+            </li>
+            <li>
+              <hr className="bg-primary" />
+              <div className="timeline-middle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="timeline-end mb-10">
+                <time className="font-mono italic">2022</time>
+                <div className="text-lg font-black">
+                  Responsable Communication
+                </div>
+              </div>
+              <hr className="bg-primary" />
+            </li>
+            <li>
+              <hr className="bg-primary" />
+              <div className="timeline-middle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="timeline-start md:text-end mb-10">
+                <time className="font-mono italic">2021</time>
+                <div className="text-lg font-black">Membre Fondateur</div>
+              </div>
+              <hr className="bg-primary" />
+            </li>
+          </ul>
+        </div>
+
+        <div className="mt-10 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+          <div className="md:pr-10 sm:mb-8">
+            <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
+              Présentation
+            </h3>
+
+            <p className="text-black leading-relaxed lg:text-lg text-justify">
+              Depuis que j&apos;ai rejoint le club associatif ISEP Drone en
+              2021, j&apos;ai eu l&apos;opportunité de contribuer à son
+              développement. J&apos;ai participé à la création de
+              l&apos;identité visuelle du club, à l&apos;organisation des
+              premiers événements, à la communication de lancement et au
+              recrutement des nouveaux membres. Ces expériences m&apos;ont
+              permis de développer mes compétences en graphisme, en gestion de
+              projet, en communication digitale et en recrutement. <br />
+              <br />
+              En 2023, j&apos;ai pris la tête du club en tant que président.
+              Cette expérience m&apos;a permis de développer mes compétences en
+              leadership et en gestion d&apos;équipe, en veillant à la bonne
+              marche du club et en motivant les membres à atteindre nos
+              objectifs communs. <br />
+              <br />
+              En bref, mon parcours au sein de ISEP Drone m&apos;a permis de
+              développer de nombreuses compétences transversales. C&apos;est une
+              expérience que je suis fier d&apos;avoir vécue et qui, je suis
+              sûr, sera un atout pour mon avenir professionnel.
+            </p>
+          </div>
+          <Image
+            src="/assets/images/drone_illustration.JPG"
+            alt="ISEP Drone Logo"
+            width={300} // set the image width
+            height={300} // set the image height
+            className="rounded-xl flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
+          />
+        </div>
+
+        <a
+          href="https://www.instagram.com/isep_drone?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank"
+          className="place-self-center md:mt-10"
+        >
+          <InstagramLogo className="w-20 h-20 transition hover:text-primary text-black" />
         </a>
       </div>
     </div>
