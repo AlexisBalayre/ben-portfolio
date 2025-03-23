@@ -21,7 +21,7 @@ const AssociativeCareer: NextPage = () => {
         <div className="hero-overlay bg-opacity-20 z-100 absolute w-full h-full"></div>
         <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col">
           <div className="animate-fade-in-down max-w-lg">
-            <h1 className="text-6xl font-bold mb-4">Associations</h1>
+            <h1 className="text-6xl font-bold mb-4">Associative Career</h1>
             <p className="mb-6">
               Welcome to my dedicated space for my volunteer journey. You will
               find information about my commitments and the projects I have
