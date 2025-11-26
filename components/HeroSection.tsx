@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 
 const HeroSection = () => {
+  const { t } = useTranslation('common');
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -56,9 +58,9 @@ const HeroSection = () => {
 
       <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col z-20 relative">
         <div className="animate-fade-in-down max-w-lg px-4">
-          <h1 className="text-6xl font-bold mb-4">Portfolio</h1>
+          <h1 className="text-6xl font-bold mb-4">{t('hero.title')}</h1>
           <p className="mb-6">
-            Welcome to my portfolio, a space dedicated to presenting my projects and galleries.
+            {t('hero.subtitle')}
           </p>
         </div>
       </div>

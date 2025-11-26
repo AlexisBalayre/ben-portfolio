@@ -1,12 +1,15 @@
 // components/TimelineDark.js
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 interface TimelineDarkProps {
   items: any[];
 }
 
 const TimelineDark: React.FC<TimelineDarkProps> = ({ items }) => {
+  const { t } = useTranslation("common");
+
   return (
     <div className="container mx-auto">
       <div className="flex justify-center">
@@ -27,14 +30,14 @@ const TimelineDark: React.FC<TimelineDarkProps> = ({ items }) => {
                       <div>
                         <h4
                           className="text-lg md:text-xl font-semibold text-base-100"
-                          dangerouslySetInnerHTML={{ __html: item.title }}
+                          dangerouslySetInnerHTML={{ __html: t(`experiences.${item.id}.title`) }}
                         ></h4>
                         <span className="text-sm font-semibold">{item.period}</span>
                       </div>
                     </div>
                     <p
                       className="mt-2 text-lg text-left md:text-justify text-base-100"
-                      dangerouslySetInnerHTML={{ __html: item.description }}
+                      dangerouslySetInnerHTML={{ __html: t(`experiences.${item.id}.description`) }}
                     ></p>
                   </div>
                 </div>
@@ -59,14 +62,14 @@ const TimelineDark: React.FC<TimelineDarkProps> = ({ items }) => {
                       <div>
                         <h4
                           className="text-lg md:text-xl font-semibold"
-                          dangerouslySetInnerHTML={{ __html: item.title }}
+                          dangerouslySetInnerHTML={{ __html: t(`experiences.${item.id}.title`) }}
                         ></h4>
                         <span className="text-sm font-semibold">{item.period}</span>
                       </div>
                     </div>
                     <p
                       className="mt-2 text-lg text-left md:text-justify"
-                      dangerouslySetInnerHTML={{ __html: item.description }}
+                      dangerouslySetInnerHTML={{ __html: t(`experiences.${item.id}.description`) }}
                     ></p>
                   </div>
                 </div>

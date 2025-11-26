@@ -1,0 +1,139 @@
+{
+  "hero": {
+    "title": "Portfolio",
+    "subtitle": "Welcome to my portfolio, a space dedicated to presenting my projects and galleries."
+  },
+  "header": {
+    "about_me": "About Me",
+    "portfolio": "Portfolio",
+    "associative_career": "Associative Experience",
+    "contact_details": "Contact Details",
+    "student_role": "ISEP Student",
+    "download_resume": "Download Resume"
+  },
+  "home": {
+    "name": "Benjamin Balayre",
+    "role": "Engineering Student",
+    "welcome": "Welcome to my website, a space dedicated to discovering my background and passions. You will find information about my professional, personal and associative projects.",
+    "download_resume": "Download Resume",
+    "education_title": "Education",
+    "education_desc": "Since my childhood, I have been driven by a curiosity for new technologies, which pushed me to pursue my studies in digital engineering at ISEP.",
+    "experience_title": "Experiences",
+    "experience_desc": "My goal is to develop my skills in the digital field, while exploring its challenges and contributing to its development.",
+    "skills_title": "Skills",
+    "skills_desc": "Here is an overview of the tools and fields I work with daily, between data, visual creation, and digital products.",
+    "rights_reserved": "All Rights Reserved.",
+    "carousel_title": "Some shots from my travels",
+    "latest_project_title": "My latest project",
+    "latest_project_desc": "Last August, I had the chance to travel to Iceland. From this adventure was born <1>Element of Iceland</1>, a montage that captures the intensity and raw beauty of this trip to the heart of Icelandic landscapes.",
+    "countries": {
+      "egypt": "Egypt",
+      "indonesia": "Indonesia",
+      "japan": "Japan",
+      "brazil": "Brazil"
+    }
+  },
+  "skills": {
+    "video_editing": {
+      "title": "Video Editing",
+      "description": "I master video editing software such as Adobe Premiere Pro and Final Cut Pro. I have produced several videos for personal and professional projects.",
+      "imageDescription": "Timeline of my documentary project"
+    },
+    "graphic_design": {
+      "title": "Graphic Design",
+      "description": "I am comfortable with graphic design software such as Illustrator and Canva. I have had the opportunity to create logos, posters, and illustrations for various projects.",
+      "imageDescription": "Moodboard for my drone club"
+    },
+    "photo_editing": {
+      "title": "Photo Editing",
+      "description": "I use software such as Adobe Lightroom and Photoshop to enhance my shots. I have created presets and actions to speed up my workflow.",
+      "imageDescription": "Photo editing for my Japan 2024 album"
+    }
+  },
+  "associative": {
+    "title": "Associative Experience",
+    "hero_desc": "Welcome to my dedicated space for my volunteer journey. You will find information about my commitments and the projects I have completed within the associations here.",
+    "iseplive": {
+      "title": "ISEP Live",
+      "presentation_title": "Presentation",
+      "presentation_desc": "ISEP Live is the official media association of ISEP, covering the majority of events organized by associations, including the Integration Weekend, Ski Week, and Sailing Week. We offer training in photography, video, and illustration to our members. Composed of 25 members, this association is at the heart of student life.",
+      "iseplife_title": "ISEP Life",
+      "iseplife_desc": "ISEP Life is our mobile application that gathers upcoming events, information related to ISEP students and their association membership, as well as photo and video galleries of past events.",
+      "path_title": "My Path",
+      "path_desc": "Passionate about photography, directing, and producing video projects, my journey within ISEP Live has been a source of personal fulfillment. My commitment began in 2021, when I had just started photography, with the aim of exchanging with competent people. <br /><br /> In 2022, I was promoted to Vice-President. This experience allowed me to participate in and lead collaborative projects that make sense to me. My position as Vice-President taught me to successfully carry out the projects I undertake with my team, thus strengthening my skills in project management, leadership, and teamwork."
+    },
+    "vizion": {
+      "title": "Vizion",
+      "presentation_title": "Presentation",
+      "presentation_desc": "The Student Office (BDE) Vizion is a dynamic and committed organization whose mission is to energize student life within the school. Composed of 40 active members, the BDE Vizion works all year round to offer an unforgettable student experience. <br /><br /> At the heart of this mission is the Creation pole, in charge of defining the visual identity of the BDE, from communication to the colors of our sweaters, including our logo, and much more. Each member of the BDE Vizion is fully invested in offering varied events and activities that meet the needs and expectations of the student community.",
+      "path_title": "My Path",
+      "path_desc": "This experience within the Creation pole of the BDE Vizion offered me a unique opportunity to develop my skills in visual creation. By working on concrete projects, I was able to refine my skills in photography and video production, while collaborating with a dynamic and passionate team. <br /><br /> In addition to acquiring practical expertise, this experience also allowed me to strengthen my skills in communication, project management, and teamwork. I am proud to be part of such a creative and committed team, and I am grateful for the skills and opportunities this experience has brought me."
+    },
+    "isepdrone": {
+      "title": "ISEP Drone",
+      "presentation_title": "Presentation",
+      "presentation_desc": "The FPV drone (\"First Person View\") integrates a camera that offers the pilot a real-time view through FPV goggles allowing an immersive flight experience. <br /><br /> ISEP Drone is an FPV drone club created in 2021 by a group of enthusiasts. <br /> Our goal is to introduce our discipline to as many people as possible through training, simulator sessions, and flight sessions.",
+      "path_title": "My Path",
+      "path_desc": "Since I joined the ISEP Drone association club in 2021, I have had the opportunity to contribute to its development. I participated in the creation of the club's visual identity, the organization of the first events, the launch communication, and the recruitment of new members. These experiences allowed me to develop my skills in graphic design, project management, digital communication, and recruitment. <br /><br /> In 2023, I took the lead of the club as president. This experience allowed me to develop my skills in leadership and team management, ensuring the smooth running of the club and motivating members to achieve our common goals. <br /><br /> In short, my journey within ISEP Drone allowed me to develop many transversal skills. It is an experience that I am proud to have lived and which, I am sure, will be an asset for my professional future.",
+      "timeline": {
+        "president": "Club President",
+        "comm_manager": "Communication Manager",
+        "founder": "Founding Member"
+      }
+    }
+  },
+  "projects": {
+    "aftermovies": {
+      "title": "Aftermovies",
+      "links": {
+        "tgs2025": "Aftermovie TGS 2025",
+        "wei2024": "Aftermovie WEI 2024",
+        "wei2023": "Aftermovie WEI 2023"
+      }
+    },
+    "collaborations": {
+      "title": "Collaborations",
+      "links": {
+        "kawasaki": "Kawasaki",
+        "alki": "Commercial video for Alki",
+        "dance": "Dance Music Videos"
+      }
+    }
+  },
+  "experiences": {
+    "capgemini": {
+      "title": "Intern Consultant – Capgemini Invent (frog)",
+      "description": "Internship within the Frog Customer Data & Tech service. Design of innovative strategies and support for large-scale digital transformations. Consulting missions for general management on strategy, organization, and operational efficiency."
+    },
+    "sidetrade": {
+      "title": "Intern Data Analyst – Sidetrade",
+      "description": "Internship in the Datalake Ingest team. Analysis of datalake data, creation of strategic dashboards (Power BI), and collaboration with R&D and Product teams in an English-speaking environment."
+    },
+    "freelance": {
+      "title": "Freelancer – Photographer & Videographer",
+      "description": "Production of photo and video content for events and professional projects. Complete management of customer relations, shooting, editing, and artistic direction."
+    },
+    "microsoft": {
+      "title": "Immersion Internship – Microsoft",
+      "description": "Observation internship within Microsoft, allowing discovery of software engineering professions, exploration of the digital world, and confirmation of orientation towards technologies and innovation."
+    }
+  },
+  "formation": {
+    "oslomet": {
+      "title": "OsloMet (Norway) – International Academic Semester",
+      "description": "Academic semester at OsloMet - Oslo Metropolitan University, scheduled from August to December 2025. This program is part of my Business Intelligence path and will allow me to deepen my skills in data science, artificial intelligence, and innovation, while discovering a new cultural and university environment."
+    },
+    "isep_ing": {
+      "title": "ISEP – Engineering Cycle",
+      "description": "Engineering cycle at ISEP in Paris, with a specialization in Business Intelligence (BI). <br/><br/> ISEP is a digital engineering school located in Paris. It trains generalist engineers in major digital fields: computer science & cybersecurity – electronics & robotics – telecommunications & Internet of Things – imaging – artificial intelligence."
+    },
+    "inha": {
+      "title": "Inha University (South Korea) – International Academic Semester",
+      "description": "For my academic semester abroad, I chose to go to South Korea. During this period, I took a wide range of courses: system programming, leadership, signals and systems, sensor engineering, electronic circuit analysis, and I also acquired basic notions of Korean. This experience allowed me to immerse myself in a new culture, improve my English level, and open up internationally."
+    },
+    "isep_cii": {
+      "title": "ISEP – Integrated International Cycle (CII)",
+      "description": "Preparatory years at the ISEP engineering school in Paris. <br/><br/> The integrated international cycle (CII) follows a specific program at ISEP, balanced between three teaching areas: fundamental digital sciences | techniques & technologies | languages, cultures, humanities, and sustainable development. It includes an international semester from the second year."
+    }
+  }
+}

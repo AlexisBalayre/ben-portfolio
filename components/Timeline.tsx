@@ -1,12 +1,15 @@
 // components/Timeline.js
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 interface TimelineProps {
   items: any[];
 }
 
 const Timeline: React.FC<TimelineProps> = ({ items }) => {
+  const { t } = useTranslation("common");
+
   return (
     <div className="container mx-auto">
       <div className="flex justify-center">
@@ -27,14 +30,14 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
                       <div>
                         <h4
                           className="text-lg md:text-xl font-semibold"
-                          dangerouslySetInnerHTML={{ __html: item.title }}
+                          dangerouslySetInnerHTML={{ __html: t(`formation.${item.id}.title`) }}
                         ></h4>
                         <span className="text-sm font-semibold">{item.period}</span>
                       </div>
                     </div>
                     <p
                       className="mt-2 text-lg text-left md:text-justify"
-                      dangerouslySetInnerHTML={{ __html: item.description }}
+                      dangerouslySetInnerHTML={{ __html: t(`formation.${item.id}.description`) }}
                     ></p>
                   </div>
                 </div>
@@ -59,14 +62,14 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
                       <div>
                         <h4
                           className="text-lg md:text-xl font-semibold"
-                          dangerouslySetInnerHTML={{ __html: item.title }}
+                          dangerouslySetInnerHTML={{ __html: t(`formation.${item.id}.title`) }}
                         ></h4>
                         <span className="text-sm font-semibold">{item.period}</span>
                       </div>
                     </div>
                     <p
                       className="mt-2 text-lg text-left md:text-justify"
-                      dangerouslySetInnerHTML={{ __html: item.description }}
+                      dangerouslySetInnerHTML={{ __html: t(`formation.${item.id}.description`) }}
                     ></p>
                   </div>
                 </div>

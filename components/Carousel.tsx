@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-
-const slides = [
-  {
-    src: '/assets/images/portfolio/Egypte/image2.jpg',
-    label: 'Égypte',
-  },
-  {
-    src: '/assets/images/portfolio/Indonesie/image1.jpg',
-    label: 'Indonésie',
-  },
-  {
-    src: '/assets/images/portfolio/Japon/image1.jpg',
-    label: 'Japon',
-  },
-  {
-    src: '/assets/images/portfolio/Bresil/image1.jpg',
-    label: 'Brésil',
-  },
-];
+import { useTranslation } from 'next-i18next';
 
 const Carousel = () => {
+  const { t } = useTranslation('common');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+
+  const slides = [
+    {
+      src: '/assets/images/portfolio/Egypte/image2.jpg',
+      label: t('home.countries.egypt'),
+    },
+    {
+      src: '/assets/images/portfolio/Indonesie/image1.jpg',
+      label: t('home.countries.indonesia'),
+    },
+    {
+      src: '/assets/images/portfolio/Japon/image1.jpg',
+      label: t('home.countries.japan'),
+    },
+    {
+      src: '/assets/images/portfolio/Bresil/image1.jpg',
+      label: t('home.countries.brazil'),
+    },
+  ];
 
   // Auto-play avec pause au survol
   useEffect(() => {
@@ -33,7 +35,7 @@ const Carousel = () => {
     }, 5000);
 
     return () => clearInterval(intervalId);
-  }, [isHovered]);
+  }, [isHovered, slides.length]);
 
   const handlePrevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -59,7 +61,7 @@ const Carousel = () => {
               text-base-content
             "
           >
-            Quelques clichés de mes voyages
+            {t('home.carousel_title')}
           </h2>
           <hr className="trait mx-auto" />
         </div>

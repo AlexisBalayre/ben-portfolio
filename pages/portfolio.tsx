@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const HeroSection = dynamic(() => import('~~/components/HeroSection'));
 const LatestProject = dynamic(() => import('~~/components/LatestProject'));
@@ -22,4 +23,12 @@ const Portfolio: NextPage = () => {
     );
   };
   
-  export default Portfolio;
+  export const getStaticProps = async ({ locale }: { locale: string }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+};
+
+export default Portfolio;

@@ -1,10 +1,14 @@
 // pages/asso.tsx
 import type { NextPage } from "next";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { InstagramLogo } from "~~/public/assets/svg/InstagramLogo";
 
 const AssociativeCareer: NextPage = () => {
+  const { t } = useTranslation("common");
+
   return (
     <div className="w-full overflow-hidden">
       {/* Hero Section */}
@@ -21,11 +25,9 @@ const AssociativeCareer: NextPage = () => {
         <div className="hero-overlay bg-opacity-20 z-100 absolute w-full h-full"></div>
         <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col">
           <div className="animate-fade-in-down max-w-lg">
-            <h1 className="text-6xl font-bold mb-4">Associative Career</h1>
+            <h1 className="text-6xl font-bold mb-4">{t("associative.title")}</h1>
             <p className="mb-6">
-              Welcome to my dedicated space for my volunteer journey. You will
-              find information about my commitments and the projects I have
-              completed within the associations here.
+              {t("associative.hero_desc")}
             </p>
           </div>
         </div>
@@ -34,7 +36,7 @@ const AssociativeCareer: NextPage = () => {
       {/* ISEP Live */}
       <div className="w-full p-10 md:px-40 grid">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-center">ISEP Live</h2>
+          <h2 className="text-3xl font-bold text-center">{t("associative.iseplive.title")}</h2>
           <hr className="trait" />
         </div>
 
@@ -48,17 +50,9 @@ const AssociativeCareer: NextPage = () => {
         <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
           <div className="md:pr-10">
             <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
-              Présentation
+              {t("associative.iseplive.presentation_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify">
-              ISEP Live est l&apos;association média officielle de l&apos;ISEP,
-              couvrant la majorité des événements organisés par les
-              associations, notamment le Weekend d&apos;Intégration, la Semaine
-              de Ski et la Semaine Voile. Nous proposons des formations en
-              photographie, vidéo et illustration à nos membres. Composée de 25
-              membres, cette association est au cœur de la vie étudiante. <br />
-              <br />
-            </p>
+            <p className="leading-relaxed lg:text-lg text-justify" dangerouslySetInnerHTML={{ __html: t("associative.iseplive.presentation_desc") }} />
           </div>
           <Image
             src="/assets/images/iseplive.png"
@@ -86,13 +80,10 @@ const AssociativeCareer: NextPage = () => {
           />
           <div className="md:pl-10 sm:mb-8">
             <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
-              ISEP Life
+              {t("associative.iseplive.iseplife_title")}
             </h3>
             <p className="leading-relaxed lg:text-lg text-justify">
-              ISEP Life est notre application mobile qui regroupe les différents
-              événements à venir, les informations relatives aux étudiants
-              isépiens et à leur appartenance à une association, ainsi que les
-              galeries photo et vidéo des événements passés.
+              {t("associative.iseplive.iseplife_desc")}
             </p>
           </div>
         </div>
@@ -114,24 +105,9 @@ const AssociativeCareer: NextPage = () => {
         <div className="mt-4 flex flex-row justify-between items-center h-full w-full">
           <div className="md:pr-10 sm:mb-8 md:basis-3/4">
             <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
-              Mon Parcours
+              {t("associative.iseplive.path_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify">
-              Passionné par la photographie, la réalisation et la production de
-              projets vidéographiques, mon parcours au sein d&apos;ISEP Live a
-              été une source d&apos;épanouissement personnel. Mon engagement a
-              débuté en 2021, alors que je venais tout juste de me lancer dans
-              la photographie, dans le but d&apos;échanger avec des personnes
-              compétentes. <br />
-              <br />
-              En 2022, j&apos;ai été promu Vice-président. Cette expérience
-              m&apos;a permis de participer et de diriger des projets
-              collaboratifs qui ont du sens pour moi. Mon poste de
-              vice-président m&apos;a appris à mener à bien les projets que
-              j&apos;entreprends avec mon équipe, renforçant ainsi mes
-              compétences en gestion de projet, en leadership et en travail
-              d&apos;équipe.
-            </p>
+            <p className="leading-relaxed lg:text-lg text-justify" dangerouslySetInnerHTML={{ __html: t("associative.iseplive.path_desc") }} />
           </div>
           <div className="gap-4 flex flex-col basis-1/4">
             <Image
@@ -175,7 +151,7 @@ const AssociativeCareer: NextPage = () => {
       <div className="bg-base-content w-full p-10 md:px-40 grid">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-base-100 text-center">
-            Vizion
+            {t("associative.vizion.title")}
           </h2>
           <hr className="trait" />
         </div>
@@ -191,23 +167,9 @@ const AssociativeCareer: NextPage = () => {
         <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              Présentation
+              {t("associative.vizion.presentation_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-              Le Bureau des Élèves (BDE) Vizion est une organisation dynamique
-              et engagée qui a pour mission de dynamiser la vie étudiante au
-              sein de l&apos;école. Composé de 40 membres actifs, le BDE Vizion
-              travaille toute l&apos;année pour proposer une expérience
-              étudiante inoubliable.
-              <br />
-              <br />
-              Au cœur de cette mission se trouve le pôle Création, chargé de
-              définir l&apos;identité visuelle du BDE, de la communication aux
-              couleurs de nos pulls, en passant par notre logo, et bien plus
-              encore. Chaque membre du BDE Vizion s&apos;investit pleinement
-              pour offrir des événements et des activités variés qui répondent
-              aux besoins et aux attentes de la communauté étudiante.
-            </p>
+            <p className="leading-relaxed lg:text-lg text-justify text-base-100" dangerouslySetInnerHTML={{ __html: t("associative.vizion.presentation_desc") }} />
           </div>
           <Image
             src="/assets/images/Vizion.png"
@@ -229,24 +191,9 @@ const AssociativeCareer: NextPage = () => {
         <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              Mon Parcours
+              {t("associative.vizion.path_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-              Cette expérience au sein du pôle Création du BDE Vizion m&apos;a
-              offert une opportunité unique de développer mes compétences en
-              matière de création visuelle. En travaillant sur des projets
-              concrets, j&apos;ai pu affiner mes compétences en photographie et
-              en réalisation vidéo, tout en collaborant avec une équipe
-              dynamique et passionnée.
-              <br />
-              <br />
-              En plus d&apos;acquérir une expertise pratique, cette expérience
-              m&apos;a également permis de renforcer mes compétences en
-              communication, en gestion de projet et en travail d&apos;équipe.
-              Je suis fier de faire partie d&apos;une équipe aussi créative et
-              engagée, et je suis reconnaissant des compétences et des
-              opportunités que cette expérience m&apos;a apportées.
-            </p>
+            <p className="leading-relaxed lg:text-lg text-justify text-base-100" dangerouslySetInnerHTML={{ __html: t("associative.vizion.path_desc") }} />
           </div>
           <Image
             src="/assets/images/Vizion_illustration.jpg"
@@ -270,7 +217,7 @@ const AssociativeCareer: NextPage = () => {
       <div className="bg-white w-full p-10 md:px-40 grid">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-black text-center">
-            ISEP Drone
+            {t("associative.isepdrone.title")}
           </h2>
           <hr className="trait" />
         </div>
@@ -286,19 +233,9 @@ const AssociativeCareer: NextPage = () => {
         <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              Présentation
+              {t("associative.isepdrone.presentation_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-black">
-              Le drone FPV (&quot;First Person View&quot;), intègre une caméra
-              qui offre au pilote une vision en temps réel à travers des
-              lunettes FPV permettant une expérience de vol immersive. <br />
-              <br />
-              ISEP Drone est un club de drone FPV créé en 2021 par un groupe de
-              passionnés. <br />
-              Notre objectif, faire découvrir notre dicipline au plus grand
-              nombre à travers des formations, sessions sur simulateur et
-              sessions de vol.
-            </p>
+            <p className="leading-relaxed lg:text-lg text-justify text-black" dangerouslySetInnerHTML={{ __html: t("associative.isepdrone.presentation_desc") }} />
           </div>
           <Image
             src="/assets/images/isepdrone.png"
@@ -310,7 +247,7 @@ const AssociativeCareer: NextPage = () => {
         </div>
 
         <div className="mt-20 w-full grid">
-          <h3 className="font-bold text-black text-2xl mb-10">Mon Parcours</h3>
+          <h3 className="font-bold text-black text-2xl mb-10">{t("associative.isepdrone.path_title")}</h3>
           <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical text-black">
             <li>
               <div className="timeline-middle">
@@ -329,7 +266,7 @@ const AssociativeCareer: NextPage = () => {
               </div>
               <div className="timeline-start md:text-end mb-10">
                 <time className="font-mono italic">2023</time>
-                <div className="text-lg font-black">Président du Club</div>
+                <div className="text-lg font-black">{t("associative.isepdrone.timeline.president")}</div>
               </div>
               <hr className="bg-primary" />
             </li>
@@ -352,7 +289,7 @@ const AssociativeCareer: NextPage = () => {
               <div className="timeline-end mb-10">
                 <time className="font-mono italic">2022</time>
                 <div className="text-lg font-black">
-                  Responsable Communication
+                  {t("associative.isepdrone.timeline.comm_manager")}
                 </div>
               </div>
               <hr className="bg-primary" />
@@ -375,7 +312,7 @@ const AssociativeCareer: NextPage = () => {
               </div>
               <div className="timeline-start md:text-end mb-10">
                 <time className="font-mono italic">2021</time>
-                <div className="text-lg font-black">Membre Fondateur</div>
+                <div className="text-lg font-black">{t("associative.isepdrone.timeline.founder")}</div>
               </div>
               <hr className="bg-primary" />
             </li>
@@ -385,30 +322,10 @@ const AssociativeCareer: NextPage = () => {
         <div className="mt-10 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              Présentation
+              {t("associative.isepdrone.presentation_title")}
             </h3>
 
-            <p className="text-black leading-relaxed lg:text-lg text-justify">
-              Depuis que j&apos;ai rejoint le club associatif ISEP Drone en
-              2021, j&apos;ai eu l&apos;opportunité de contribuer à son
-              développement. J&apos;ai participé à la création de
-              l&apos;identité visuelle du club, à l&apos;organisation des
-              premiers événements, à la communication de lancement et au
-              recrutement des nouveaux membres. Ces expériences m&apos;ont
-              permis de développer mes compétences en graphisme, en gestion de
-              projet, en communication digitale et en recrutement. <br />
-              <br />
-              En 2023, j&apos;ai pris la tête du club en tant que président.
-              Cette expérience m&apos;a permis de développer mes compétences en
-              leadership et en gestion d&apos;équipe, en veillant à la bonne
-              marche du club et en motivant les membres à atteindre nos
-              objectifs communs. <br />
-              <br />
-              En bref, mon parcours au sein de ISEP Drone m&apos;a permis de
-              développer de nombreuses compétences transversales. C&apos;est une
-              expérience que je suis fier d&apos;avoir vécue et qui, je suis
-              sûr, sera un atout pour mon avenir professionnel.
-            </p>
+            <p className="text-black leading-relaxed lg:text-lg text-justify" dangerouslySetInnerHTML={{ __html: t("associative.isepdrone.path_desc") }} />
           </div>
           <Image
             src="/assets/images/drone_illustration.JPG"
@@ -429,6 +346,14 @@ const AssociativeCareer: NextPage = () => {
       </div>
     </div>
   );
+};
+
+export const getStaticProps = async ({ locale }: { locale: string }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 };
 
 export default AssociativeCareer;

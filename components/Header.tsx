@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import LanguageSwitcher from './LanguageSwitcher';
 import {
   AcademicCapIcon,
   Bars3Icon,
@@ -9,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useOutsideClick } from "~~/hooks";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 interface HeaderMenuLink {
   label: string;
@@ -18,28 +20,29 @@ interface HeaderMenuLink {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "About Me",
+    label: "header.about_me",
     section: "",
     icon: <UserIcon className="h-4 w-4" />,
   },
   {
-    label: "Portfolio",
+    label: "header.portfolio",
     section: "portfolio",
     icon: <CameraIcon className="h-4 w-4" />,
   },
   {
-    label: "Associative Career",
+    label: "header.associative_career",
     section: "associativeCareer",
     icon: <AcademicCapIcon className="h-4 w-4" />,
   },
   {
-    label: "Contact Details",
+    label: "header.contact_details",
     section: "contact",
     icon: <EnvelopeIcon className="h-4 w-4" />,
   },
 ];
 
 export const HeaderMenuLinks = () => {
+  const { t } = useTranslation('common');
   const [isActive, setIsActive] = useState({
     aboutMe: true,
     portfolio: false,
@@ -93,7 +96,7 @@ export const HeaderMenuLinks = () => {
                 hover:bg-info hover:shadow-md cursor-pointer focus:!bg-accent py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
             >
               {icon}
-              <span>{label}</span>
+              <span>{t(label)}</span>
             </span>
           </li>
         );
@@ -106,6 +109,7 @@ export const HeaderMenuLinks = () => {
  * Site header
  */
 export const Header = () => {
+  const { t } = useTranslation('common');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null!);
   useOutsideClick(
@@ -147,7 +151,7 @@ export const Header = () => {
         >
           <div className="flex flex-col">
             <span className="font-bold leading-tight">Benjamin Balayre</span>
-            <span className="text-xs">ISEP Student</span>
+            <span className="text-xs">{t('header.student_role')}</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
@@ -155,14 +159,11 @@ export const Header = () => {
         </ul>
       </div>
       <div className="flex text-center pr-5">
-        <a
-          href="assets/documents/Benjamin_Balayre_CV.pdf"
-          className="bg-primary hover:bg-info text-white px-4 py-2 rounded-lg transition duration-300"
-          download
-        >
-          Download Resume
-        </a>
-      </div>
-    </div>
-  );
+                <LanguageSwitcher />
+                <a href="/assets/documents/Benjamin_Balayre_CV.pdf" className="btn btn-primary rounded-xl text-base-100 ml-2" download>
+                    {t('header.download_resume')}
+                </a>
+            </div>
+        </div>
+    );
 };

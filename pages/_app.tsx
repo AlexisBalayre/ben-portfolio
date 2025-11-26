@@ -6,6 +6,8 @@ import { MetaHeader } from "~~/components/MetaHeader";
 import { Footer } from "~~/components/Footer";
 import ErrorBoundary from "~~/components/ErrorBoundary"; // Import ErrorBoundary
 
+import { appWithTranslation } from 'next-i18next';
+
 const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   return (
     <div className="flex flex-col min-h-screen">
@@ -23,4 +25,4 @@ const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default PortfolioWebApp;
+export default appWithTranslation(PortfolioWebApp);

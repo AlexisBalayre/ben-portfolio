@@ -28,7 +28,11 @@ const socials = [
   },
 ];
 
+import { useTranslation } from 'next-i18next';
+
 export const Footer = () => {
+  const { t } = useTranslation('common');
+
   return (
     <footer className="bg-base-100 shadow-xl shadow-primary text-center md:py-8 py-4">
       <address className="flex justify-center mb-4 flex-col md:flex-row text-center items-center">
@@ -70,7 +74,7 @@ export const Footer = () => {
         </ul>
       </nav>
       <p className="text-xs md:text-sm">
-        Copyright © {new Date().getFullYear()} Benjamin Balayre. All Rights Reserved.
+        Copyright © {new Date().getFullYear()} Benjamin Balayre. {t('home.rights_reserved')}
       </p>
     </footer>
   );

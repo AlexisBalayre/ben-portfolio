@@ -44,8 +44,8 @@ const nextConfig = {
         ],
     },
     i18n: {
-        locales: ["en"],
-        defaultLocale: "en",
+        locales: ["en", "fr"],
+        defaultLocale: "fr",
     },
 };
 
