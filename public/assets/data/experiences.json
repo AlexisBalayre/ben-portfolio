@@ -1,20 +1,26 @@
 [
   {
-    "logo": "sidetrade.jpg",
-    "title": "Stage en entreprise - Sidetrade",
-    "description": "J’ai eu l’opportunité de réaliser un stage en tant qu’analyste de données chez Sidetrade, où j’ai utilisé SQL, Power BI et DBeaver pour explorer et visualiser les données, concevoir des tableaux de bord et fournir des analyses utiles à la prise de décision.",
-    "period": "Sep 2024 - Jan 2025"
+    "logo": "capgemini-invent.jpg",
+    "title": "Consultant Stagiaire – Capgemini Invent (frog)",
+    "description": "Stage au sein du service Frog Customer Data & Tech. Conception de stratégies innovantes et accompagnement des transformations digitales à grande échelle. Missions de conseil auprès de directions générales sur la stratégie, l'organisation et l'efficacité opérationnelle.",
+    "period": "Janvier 2026 – Juin 2026"
   },
   {
-    "logo": "WellnessWave.jpg",
-    "title": "Création simulée d'une start-up - Projet à l'ISEP",
-    "description": "Dans le cadre de ma formation à l’ISEP, j’ai participé à un projet de création simulée de start-up, au cours duquel j’ai exploré différents rôles clés en start-up et collaboré en équipe pour répondre au cahier des charges d’un client.",
-    "period": "2023 - 2024"
+    "logo": "sidetrade.jpg",
+    "title": "Data Analyst Stagiaire – Sidetrade",
+    "description": "Stage dans l’équipe Datalake Ingest. Analyse des données du datalake, création de tableaux de bord stratégiques (Power BI) et collaboration avec les équipes R&D et Produit dans un environnement anglophone.",
+    "period": "Septembre 2024 – Janvier 2025"
+  },
+  {
+    "logo": "benevolence.jpg",
+    "title": "Auto-entrepreneur – Photographe & Vidéaste",
+    "description": "Réalisation de contenus photo et vidéo pour événements et projets professionnels. Gestion complète de la relation client, captation, montage et direction artistique.",
+    "period": "Depuis 2024"
   },
   {
     "logo": "MS.png",
-    "title": "Stage d'immersion chez Microsoft",
-    "description": "J'ai eu la chance d'effectuer un stage chez Microsoft, ce qui m'a permis de découvrir les métiers d'ingénieur et de confirmer mon choix d'orientation dans le domaine du numérique.",
+    "title": "Stage d’immersion – Microsoft",
+    "description": "Stage d’observation au sein de , permettant de découvrir les métiers de l’ingénierie logicielle, d’explorer l’univers du numérique et de confirmer mon orientation vers les technologies et l’innovation.",
     "period": "2017"
   }
 ]

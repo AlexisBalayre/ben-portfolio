@@ -156,7 +156,7 @@ export const Header = () => {
       </div>
       <div className="flex text-center pr-5">
         <a
-          href="assets/documents/CV.pdf"
+          href="assets/documents/Benjamin_Balayre_CV.pdf"
           className="bg-primary hover:bg-info text-white px-4 py-2 rounded-lg transition duration-300"
           download
         >

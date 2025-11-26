@@ -19,7 +19,7 @@ const Home: NextPage = () => {
                         <p className="py-6">
                             Bienvenue sur mon site web, un espace dédié à la découverte de mon parcours et de mes passions. Vous y trouverez des informations sur mes projets professionnels, personnels et associatifs.
                         </p>
-                        <a href="/assets/documents/cv-fr.pdf" className="btn btn-primary rounded-xl text-base-100" download>
+                        <a href="/assets/documents/Benjamin_Balayre_CV.pdf" className="btn btn-primary rounded-xl text-base-100" download>
                             Download Resume
                         </a>
                     </div>
