@@ -114,14 +114,14 @@
       "description": "Réalisation de contenus photo et vidéo pour événements et projets professionnels. Gestion complète de la relation client, captation, montage et direction artistique."
     },
     "microsoft": {
-      "title": "Stage d’immersion – Microsoft",
+      "title": "Stage d’observation – Microsoft",
       "description": "Stage d’observation au sein de Microsoft, permettant de découvrir les métiers de l’ingénierie logicielle, d’explorer l’univers du numérique et de confirmer mon orientation vers les technologies et l’innovation."
     }
   },
   "formation": {
     "oslomet": {
       "title": "OsloMet (Norvège) – Semestre académique à l’international",
-      "description": "Semestre académique à OsloMet - Oslo Metropolitan University, prévu d’août à décembre 2025. Ce programme s’inscrit dans mon parcours en Business Intelligence et me permettra d’approfondir mes compétences en science des données, en intelligence artificielle et en innovation, tout en découvrant un nouvel environnement culturel et universitaire."
+      "description": "Ce programme s’est inscrit dans mon parcours en Business Intelligence et m’a permis d’approfondir mes compétences en science des données, en intelligence artificielle et en innovation, tout en découvrant un nouvel environnement culturel et universitaire."
     },
     "isep_ing": {
       "title": "ISEP – Cycle ingénieur",
@@ -135,5 +135,9 @@
       "title": "ISEP – Cycle international intégré (CII)",
       "description": "Années préparatoires à l’école d’ingénieurs ISEP à Paris. <br/><br/> Le cycle international intégré (CII) suit un programme spécifique à l’ISEP, équilibré entre trois domaines d’enseignement : sciences numériques fondamentales | techniques & technologies | langues, cultures, humanités et développement durable. Il comprend un semestre international dès la deuxième année."
     }
+  },
+  "timeline": {
+    "read_more": "En savoir plus",
+    "show_less": "Réduire"
   }
 }

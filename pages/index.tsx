@@ -31,22 +31,26 @@ const Home: NextPage = () => {
 
             {/* Education Timeline */}
             <div className="md:py-12 mt-10 md:mt-0 bg-primary-content w-full px-10 md:px-20" id="education">
-                <span className="flex flex-row items-center justify-center md:justify-start">
-                    <AcademicCapIcon className="h-8 w-8 mr-2 flex place-self-center text-base-100" />
-                    <h2 className="text-4xl font-bold text-center md:text-left text-base-100">{t('home.education_title')}</h2>
-                </span>
-                <p className="text-base-100">{t('home.education_desc')}</p>
-                <Timeline items={education} />
+                <div className="max-w-4xl mx-auto">
+                    <span className="flex flex-row items-center justify-center md:justify-start">
+                        <AcademicCapIcon className="h-8 w-8 mr-2 flex place-self-center text-base-100" />
+                        <h2 className="text-4xl font-bold text-center md:text-left text-base-100">{t('home.education_title')}</h2>
+                    </span>
+                    <p className="text-base-100">{t('home.education_desc')}</p>
+                    <Timeline items={education} />
+                </div>
             </div>
 
             {/* Experience Timeline */}
             <div className="md:py-12 mt-10 md:mt-0 w-full px-10 md:px-20" id="education">
-                <span className="flex flex-row items-center justify-center md:justify-start">
-                    <BriefcaseIcon className="h-8 w-8 mr-2 flex place-self-center" />
-                    <h2 className="text-4xl font-bold text-center md:text-left">{t('home.experience_title')}</h2>
-                </span>
-                <p className="t">{t('home.experience_desc')}</p>
-                <TimelineDark items={experiences} />
+                <div className="max-w-4xl mx-auto">
+                    <span className="flex flex-row items-center justify-center md:justify-start">
+                        <BriefcaseIcon className="h-8 w-8 mr-2 flex place-self-center" />
+                        <h2 className="text-4xl font-bold text-center md:text-left">{t('home.experience_title')}</h2>
+                    </span>
+                    <p className="t">{t('home.experience_desc')}</p>
+                    <TimelineDark items={experiences} />
+                </div>
             </div>
         </div>
     );
