@@ -1,26 +1,22 @@
 [
   {
+    "id": "capgemini",
     "logo": "capgemini-invent.jpg",
-    "title": "Consultant Stagiaire – Capgemini Invent (frog)",
-    "description": "Stage au sein du service Frog Customer Data & Tech. Conception de stratégies innovantes et accompagnement des transformations digitales à grande échelle. Missions de conseil auprès de directions générales sur la stratégie, l'organisation et l'efficacité opérationnelle.",
     "period": "Janvier 2026 – Juin 2026"
   },
   {
+    "id": "sidetrade",
     "logo": "sidetrade.jpg",
-    "title": "Data Analyst Stagiaire – Sidetrade",
-    "description": "Stage dans l’équipe Datalake Ingest. Analyse des données du datalake, création de tableaux de bord stratégiques (Power BI) et collaboration avec les équipes R&D et Produit dans un environnement anglophone.",
     "period": "Septembre 2024 – Janvier 2025"
   },
   {
+    "id": "freelance",
     "logo": "benevolence.jpg",
-    "title": "Auto-entrepreneur – Photographe & Vidéaste",
-    "description": "Réalisation de contenus photo et vidéo pour événements et projets professionnels. Gestion complète de la relation client, captation, montage et direction artistique.",
     "period": "Depuis 2024"
   },
   {
+    "id": "microsoft",
     "logo": "MS.png",
-    "title": "Stage d’immersion – Microsoft",
-    "description": "Stage d’observation au sein de , permettant de découvrir les métiers de l’ingénierie logicielle, d’explorer l’univers du numérique et de confirmer mon orientation vers les technologies et l’innovation.",
     "period": "2017"
   }
 ]

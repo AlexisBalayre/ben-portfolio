@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useEffect } from 'react';
+import { useTranslation } from 'next-i18next';
 
 import projects from "~~/public/assets/data/projects.json";
 
@@ -26,7 +27,7 @@ const Iframe = ({ url }: { url: string }) => (
     />
 );
 
-const Project = ({ link }: { link: { url: string; title: string } }) => (
+const Project = ({ link, categoryId }: { link: { id: string; url: string }; categoryId: string }) => (
     <div className="relative card-video mb-4 rounded-lg shadow-md flex flex-col">
         {isInstagramUrl(link.url) ? (
             <blockquote
@@ -43,20 +44,26 @@ const Project = ({ link }: { link: { url: string; title: string } }) => (
 const Category = ({
     category,
 }: {
-    category: { icon: string; title: string; links: { url: string; title: string }[] };
-}) => (
-    <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col rounded-xl">
-        <div className="card-body">
-            <div className="flex items-center space-x-3 mb-4">
-                <Image src={category.icon} alt={`${category.title} icon`} width={40} height={40} />
-                <h2 className="card-title">{category.title}</h2>
+    category: { id: string; icon: string; links: { id: string; url: string }[] };
+}) => {
+    const { t } = useTranslation('common');
+    return (
+        <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1 flex flex-col rounded-xl">
+            <div className="card-body">
+                <div className="flex items-center space-x-3 mb-4">
+                    <Image src={category.icon} alt={`${t(`projects.${category.id}.title`)} icon`} width={40} height={40} />
+                    <h2 className="card-title">{t(`projects.${category.id}.title`)}</h2>
+                </div>
+                {category.links.map((link, index) => (
+                    <div key={index}>
+                        <h3 className="font-semibold mb-2">{t(`projects.${category.id}.links.${link.id}`)}</h3>
+                        <Project link={link} categoryId={category.id} />
+                    </div>
+                ))}
             </div>
-            {category.links.map((link, index) => (
-                <Project key={index} link={link} />
-            ))}
         </div>
-    </div>
-);
+    );
+};
 
 const Projects = () => {
     useEffect(() => {

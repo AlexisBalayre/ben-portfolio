@@ -6,6 +6,7 @@ interface Logo {
 }
 
 interface Skill {
+  id?: string;
   title: string;
   logos: Logo[];
   description: string;

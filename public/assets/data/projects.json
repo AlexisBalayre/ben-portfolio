@@ -1,20 +1,20 @@
 [
     {
+        "id": "aftermovies",
         "icon": "/assets/images/icons/popcorn.png",
-        "title": "Aftermovies",
         "links": [
-            { "url": "https://www.youtube.com/embed/xNAKr0AUxsM?si=h87obqfw0eBITjM1", "title": "Aftermovie TGS 2025" },
-            { "url": "https://www.youtube.com/embed/VT6skdLPFDM?si=nisMzG7_aki8Wk7b", "title": "Aftermovie WEI 2024" },
-            { "url": "https://www.youtube.com/embed/6RUYPsd1AYE", "title": "Aftermovie WEI 2023" }
+            { "id": "tgs2025", "url": "https://www.youtube.com/embed/xNAKr0AUxsM?si=h87obqfw0eBITjM1" },
+            { "id": "wei2024", "url": "https://www.youtube.com/embed/VT6skdLPFDM?si=nisMzG7_aki8Wk7b" },
+            { "id": "wei2023", "url": "https://www.youtube.com/embed/6RUYPsd1AYE" }
         ]
     },
     {
+        "id": "collaborations",
         "icon": "/assets/images/icons/collab.png",
-        "title": "Collaborations",
         "links": [
-            { "url": "https://www.youtube.com/embed/c-GvjKw0eQ4", "title": "Kawasaki" },
-            { "url": "https://www.youtube.com/embed/a4Di-QmC208?si=hfEbIlX_vq3EWkfi", "title": "Vidéo commerciale pour Alki" },
-            { "url": "https://www.youtube.com/embed/fMa_CUAhjjo?si=kl9izgHRSpmnqEOA", "title": "Clip Videos de danse" }
+            { "id": "kawasaki", "url": "https://www.youtube.com/embed/c-GvjKw0eQ4" },
+            { "id": "alki", "url": "https://www.youtube.com/embed/a4Di-QmC208?si=hfEbIlX_vq3EWkfi" },
+            { "id": "dance", "url": "https://www.youtube.com/embed/fMa_CUAhjjo?si=kl9izgHRSpmnqEOA" }
         ]
     }
 ]

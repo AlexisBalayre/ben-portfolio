@@ -1,5 +1,6 @@
 [
   {
+    "id": "video_editing",
     "title": "Montage Vidéo",
     "logos": [
       {
@@ -19,6 +20,7 @@
     "imageDescription": "Timeline de mon projet documentaire"
   },
   {
+    "id": "graphic_design",
     "title": "Design Graphique",
     "logos": [
       {
@@ -35,6 +37,7 @@
     "imageDescription": "Moodboard pour mon club de drone"
   },
   {
+    "id": "photo_editing",
     "title": "Retouches photo",
     "logos": [
       {
