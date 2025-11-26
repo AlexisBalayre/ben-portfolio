@@ -114,14 +114,14 @@
       "description": "Production of photo and video content for events and professional projects. Complete management of customer relations, shooting, editing, and artistic direction."
     },
     "microsoft": {
-      "title": "Immersion Internship – Microsoft",
+      "title": "Observation Internship – Microsoft",
       "description": "Observation internship within Microsoft, allowing discovery of software engineering professions, exploration of the digital world, and confirmation of orientation towards technologies and innovation."
     }
   },
   "formation": {
     "oslomet": {
       "title": "OsloMet (Norway) – International Academic Semester",
-      "description": "Academic semester at OsloMet - Oslo Metropolitan University, scheduled from August to December 2025. This program is part of my Business Intelligence path and will allow me to deepen my skills in data science, artificial intelligence, and innovation, while discovering a new cultural and university environment."
+      "description": "This programme was part of my Business Intelligence track and allowed me to deepen my skills in data science, artificial intelligence, and innovation, while experiencing a new cultural and academic environment."
     },
     "isep_ing": {
       "title": "ISEP – Engineering Cycle",
@@ -135,5 +135,9 @@
       "title": "ISEP – Integrated International Cycle (CII)",
       "description": "Preparatory years at the ISEP engineering school in Paris. <br/><br/> The integrated international cycle (CII) follows a specific program at ISEP, balanced between three teaching areas: fundamental digital sciences | techniques & technologies | languages, cultures, humanities, and sustainable development. It includes an international semester from the second year."
     }
+  },
+  "timeline": {
+    "read_more": "Read more",
+    "show_less": "Show less"
   }
 }
