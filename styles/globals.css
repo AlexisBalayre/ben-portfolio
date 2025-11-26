@@ -77,16 +77,24 @@ p {
   box-sizing: border-box;
 }
 
-.trait {
+
+.section-avec-trait .trait {
   width: 100px;
   height: 4px;
-  border: 0;
-  background-color: #0080ff;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  padding-bottom: 0;
-  transition: width 0.5s ease;
+  background: #0080ff;
+  border: none;
+  margin: 0 auto 20px;
+  border-radius: 9999px;
+  transition: width 0.45s cubic-bezier(.25,.46,.45,1.4), 
+              box-shadow 0.3s ease;
 }
+
+.section-avec-trait:hover .trait {
+  width: 200px;
+  box-shadow: 0 0 12px rgba(74, 165, 255, 0.7);
+}
+
+
 
 .timelineBis {
   position: relative;

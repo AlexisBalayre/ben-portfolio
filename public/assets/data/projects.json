@@ -3,9 +3,9 @@
         "icon": "/assets/images/icons/popcorn.png",
         "title": "Aftermovies",
         "links": [
-            { "url": "https://www.youtube.com/embed/Sb7A0weDnp0", "title": "Aftermovie WEI 2022" },
-            { "url": "https://www.youtube.com/embed/6RUYPsd1AYE", "title": "Aftermovie WEI 2023" },
-            { "url": "https://www.youtube.com/embed/vpLy7HO1pT0", "title": "Aftermovie TGS" }
+            { "url": "https://www.youtube.com/embed/xNAKr0AUxsM?si=h87obqfw0eBITjM1", "title": "Aftermovie TGS 2025" },
+            { "url": "https://www.youtube.com/embed/VT6skdLPFDM?si=nisMzG7_aki8Wk7b", "title": "Aftermovie WEI 2024" },
+            { "url": "https://www.youtube.com/embed/6RUYPsd1AYE", "title": "Aftermovie WEI 2023" }
         ]
     },
     {
@@ -13,8 +13,8 @@
         "title": "Collaborations",
         "links": [
             { "url": "https://www.youtube.com/embed/c-GvjKw0eQ4", "title": "Kawasaki" },
-            { "url": "https://www.instagram.com/p/C3GEH7XrNI2/", "title": "Clip Videos pour ISEP Record" },
-            { "url": "https://www.youtube.com/embed/a5DTt68PKdw", "title": "Clip Videos pour Cheerlisep" }
+            { "url": "https://www.youtube.com/embed/a4Di-QmC208?si=hfEbIlX_vq3EWkfi", "title": "Vidéo commerciale pour Alki" },
+            { "url": "https://www.youtube.com/embed/fMa_CUAhjjo?si=kl9izgHRSpmnqEOA", "title": "Clip Videos de danse" }
         ]
     }
 ]
