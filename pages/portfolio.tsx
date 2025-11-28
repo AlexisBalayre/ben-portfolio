@@ -16,9 +16,9 @@ const Portfolio: NextPage = () => {
       <div className="w-full overflow-hidden">
         <HeroSection />
         <LatestProject />
-        <Projects />
         <Carousel />
         <SkillsSection skills={skills} />
+        <Projects />
       </div>
     );
   };

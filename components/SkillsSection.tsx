@@ -22,7 +22,7 @@ const SkillsSection: React.FC<{ skills: Skill[] }> = ({ skills }) => {
   const { t } = useTranslation('common');
 
   return (
-    <section className="py-16 bg-neutral-content text-base-content px-4 group section-avec-trait">
+    <section className="py-16 bg-gray-100 text-base-content px-4 group section-avec-trait">
       <div className="max-w-5xl mx-auto text-center mb-10">
         <h2
           className="

@@ -20,10 +20,10 @@ interface Skill {
 const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => (
   <div className="card bg-base-100 shadow-lg transition-shadow duration-300 hover:shadow-xl h-full rounded-xl">
     <div className="card-body">
-      <h3 className="card-title text-3xl">{skill.title}</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-6">
+      <h3 className="card-title text-3xl justify-center">{skill.title}</h3>
+      <div className="flex flex-wrap justify-center gap-4 my-6">
         {skill.logos.map((logo, logoIndex) => (
-          <div key={logoIndex} className="animate-pulse">
+          <div key={logoIndex} className="w-1/3 sm:w-1/4">
             <Image
               className="rounded-xl"
               src={logo.src}
@@ -35,7 +35,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => (
           </div>
         ))}
       </div>
-      <p className="text-lg">{skill.description}</p>
+      <p className="text-lg text-center">{skill.description}</p>
       <div className="my-6">
         <div className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
           <Image
