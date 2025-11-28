@@ -24,7 +24,7 @@ const TimelineItem = ({ item, index }: TimelineItemProps) => {
             viewport={{ once: true }}
             className="mb-10 ml-6 relative"
         >
-            <span className="absolute flex items-center justify-center w-12 h-12 bg-base-100 rounded-full -left-6 ring-8 ring-primary-content z-10">
+            <span className="absolute flex items-center justify-center w-12 h-12 rounded-full -left-12 z-10">
                 <Image 
                     className="rounded-full shadow-lg object-cover" 
                     src={`/assets/images/${item.logo}`} 

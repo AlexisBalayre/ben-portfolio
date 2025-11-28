@@ -25,8 +25,8 @@ const AssociativeCareer: NextPage = () => {
         <div className="hero-overlay bg-opacity-20 z-100 absolute w-full h-full"></div>
         <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col">
           <div className="animate-fade-in-down max-w-lg">
-            <h1 className="text-6xl font-bold mb-4">{t("associative.title")}</h1>
-            <p className="mb-6">
+            <h1 className="text-6xl font-bold mb-4 text-white">{t("associative.title")}</h1>
+            <p className="mb-6 text-white">
               {t("associative.hero_desc")}
             </p>
           </div>

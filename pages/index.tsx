@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next';
 const Home: NextPage = () => {
     const { t } = useTranslation('common');
     return (
-        <div className="pt-10 w-full overflow-y-auto overflow-x-hidden 	bg-neutral-content">
+        <div className="pt-10 w-full overflow-y-auto overflow-x-hidden bg-white ">
             <div className="hero md:mt-20 md:mb-20 mt-10">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <Image src="/assets/images/pp.jpg" alt="Photo de Benjamin Balayre" width={300} height={300} className="max-w-sm rounded-full shadow-2xl" />
@@ -29,14 +29,15 @@ const Home: NextPage = () => {
                 </div>
             </div>
 
+
             {/* Education Timeline */}
-            <div className="md:py-12 mt-10 md:mt-0 bg-primary-content w-full px-10 md:px-20" id="education">
+            <div className="md:py-12 mt-10 md:mt-0 bg-gray-100 w-full px-10 md:px-20" id="education">
                 <div className="max-w-4xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
-                        <AcademicCapIcon className="h-8 w-8 mr-2 flex place-self-center text-base-100" />
-                        <h2 className="text-4xl font-bold text-center md:text-left text-base-100">{t('home.education_title')}</h2>
+                        <AcademicCapIcon className="h-8 w-8 mr-2 flex place-self-center" />
+                        <h2 className="text-4xl font-bold text-center md:text-left">{t('home.education_title')}</h2>
                     </span>
-                    <p className="text-base-100">{t('home.education_desc')}</p>
+                    <p className="py-6 ">{t('home.education_desc')}</p>
                     <Timeline items={education} />
                 </div>
             </div>
@@ -50,6 +51,48 @@ const Home: NextPage = () => {
                     </span>
                     <p className="t">{t('home.experience_desc')}</p>
                     <TimelineDark items={experiences} />
+                </div>
+            </div>
+
+            {/* Portfolio Preview Section */}
+            <div className="w-full bg-base-200">
+                <div className="flex flex-col md:flex-row items-stretch">
+                    <div className="flex-1 flex flex-col justify-center p-10 md:p-20">
+                        <h2 className="text-4xl font-bold mb-6">{t('home.portfolio_preview_title')}</h2>
+                        <p className="mb-6 text-lg">{t('home.portfolio_preview_desc')}</p>
+                        <div>
+                            <a href="/portfolio" className="btn btn-primary rounded-xl text-base-100">
+                                {t('home.portfolio_preview_button')}
+                            </a>
+                        </div>
+                    </div>
+                    <div className="flex-1 relative min-h-[400px] md:min-h-[600px]">
+                        <Image 
+                            src="/assets/images/portfolio/Japon/image1.jpg" 
+                            alt="Portfolio Preview" 
+                            fill
+                            style={{ objectFit: "cover" }}
+                            className="hover:opacity-90 transition-opacity duration-300"
+                        />
+                    </div>
+                </div>
+            </div>
+            {/* Associative Career Preview Section */}
+            <div className="w-full relative h-[600px]">
+                <Image 
+                    src="/assets/images/portfolio/asso2.jpg" 
+                    alt="Associative Career Preview" 
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="z-0"
+                />
+                <div className="absolute inset-0 bg-black/60 z-10"></div>
+                <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 md:px-20">
+                    <h2 className="text-4xl font-bold mb-6 text-white">{t('home.associative_preview_title')}</h2>
+                    <p className="mb-8 text-lg text-white max-w-2xl">{t('home.associative_preview_desc')}</p>
+                    <a href="/associativeCareer" className="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-xl hover:scale-105 transition-transform">
+                        {t('home.associative_preview_button')}
+                    </a>
                 </div>
             </div>
         </div>

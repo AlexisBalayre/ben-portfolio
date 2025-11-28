@@ -58,8 +58,8 @@ const HeroSection = () => {
 
       <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col z-20 relative">
         <div className="animate-fade-in-down max-w-lg px-4">
-          <h1 className="text-6xl font-bold mb-4">{t('hero.title')}</h1>
-          <p className="mb-6">
+          <h1 className="text-6xl font-bold mb-4 text-white">{t('hero.title')}</h1>
+          <p className="mb-6 text-white">
             {t('hero.subtitle')}
           </p>
         </div>
