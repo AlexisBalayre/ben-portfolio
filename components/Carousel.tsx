@@ -24,6 +24,14 @@ const Carousel = () => {
       src: '/assets/images/portfolio/Bresil/image1.jpg',
       label: t('home.countries.brazil'),
     },
+    {
+      src: '/assets/images/portfolio/Iceland/image1.jpg',
+      label: t('home.countries.iceland'),
+    },
+    {
+      src: '/assets/images/portfolio/Norway/image1.jpg',
+      label: t('home.countries.norway'),
+    },
   ];
 
   // Auto-play avec pause au survol
@@ -58,7 +66,10 @@ const Carousel = () => {
           <h2
             className="
               text-3xl font-bold tracking-wide 
-              text-base-content
+              text-base-content/80 
+              transition-all duration-500 
+              group-hover:text-base-content group-hover:opacity-100 
+              group-hover:-translate-y-1
             "
           >
             {t('home.carousel_title')}

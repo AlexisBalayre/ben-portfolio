@@ -5,9 +5,9 @@ const LatestProject = () => {
   const { t } = useTranslation('common');
 
   return (
-    <div className="latest-project w-full text-center bg-base-content pt-10 pb-10 min-h-fit p-10 relative z-10">
+    <div className="latest-project w-full text-center bg-base-content pt-10 pb-10 min-h-fit p-10 relative z-10 group">
       <div className="relative z-10 section-avec-trait">
-        <h2 className="text-3xl font-bold text-base-100">{t('home.latest_project_title')}</h2>
+        <h2 className="text-3xl font-bold text-base-100/80 transition-all duration-500 group-hover:text-base-100 group-hover:opacity-100 group-hover:-translate-y-1">{t('home.latest_project_title')}</h2>
         <hr className="trait mx-auto" />
 
         <p className="mt-4 mb-6 px-4 md:px-20 text-base-100">

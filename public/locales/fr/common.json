@@ -30,13 +30,15 @@
       "egypt": "Égypte",
       "indonesia": "Indonésie",
       "japan": "Japon",
-      "brazil": "Brésil"
+      "brazil": "Brésil",
+      "iceland": "Islande",
+      "norway": "Norvège"
     },
-    "portfolio_preview_title": "Exploration Visuelle",
+    "portfolio_preview_title": "Portfolio",
     "portfolio_preview_desc": "Mon appareil photo est mon passeport. De l'effervescence de Tokyo aux paysages lunaires de l'Islande, je capture l'essence de chaque lieu. Découvrez ma galerie et voyagez avec moi.",
     "portfolio_preview_button": "Découvrir le portfolio",
     "associative_preview_title": "Engagement Associatif",
-    "associative_preview_desc": "Mon parcours étudiant est marqué par un fort engagement associatif. De la présidence d'un club de drone à la vice-présidence d'une association média, découvrez mes responsabilités et réalisations.",
+    "associative_preview_desc": "Mon parcours étudiant est marqué par un fort engagement associatif. De la présidence d'un club de drone à la présidence d'une association média, découvrez mes responsabilités et réalisations.",
     "associative_preview_button": "Découvrir mon parcours"
   },
   "skills": {
@@ -64,9 +66,9 @@
       "presentation_title": "Présentation",
       "presentation_desc": "ISEP Live est l'association média officielle de l'ISEP, couvrant la majorité des événements organisés par les associations, notamment le Weekend d'Intégration, la Semaine de Ski et la Semaine Voile. Nous proposons des formations en photographie, vidéo et illustration à nos membres. Composée de 25 membres, cette association est au cœur de la vie étudiante.",
       "iseplife_title": "ISEP Life",
-      "iseplife_desc": "ISEP Life est notre application mobile qui regroupe les différents événements à venir, les informations relatives aux étudiants isépiens et à leur appartenance à une association, ainsi que les galeries photo et vidéo des événements passés.",
+      "iseplife_desc": "ISEP Life est l'application mobile développée par l'association, qui regroupe les différents événements à venir, les informations relatives aux étudiants isépiens et à leur appartenance à une association, ainsi que les galeries photo et vidéo des événements passés.",
       "path_title": "Mon Parcours",
-      "path_desc": "Passionné par la photographie, la réalisation et la production de projets vidéographiques, mon parcours au sein d'ISEP Live a été une source d'épanouissement personnel. Mon engagement a débuté en 2021, alors que je venais tout juste de me lancer dans la photographie, dans le but d'échanger avec des personnes compétentes. <br /><br /> En 2022, j'ai été promu Vice-président. Cette expérience m'a permis de participer et de diriger des projets collaboratifs qui ont du sens pour moi. Mon poste de vice-président m'a appris à mener à bien les projets que j'entreprends avec mon équipe, renforçant ainsi mes compétences en gestion de projet, en leadership et en travail d'équipe."
+      "path_desc": "Passionné par la photographie, la réalisation et la production de projets vidéographiques, mon parcours au sein d’ISEP Live a été un véritable moteur d’épanouissement personnel et créatif. J’ai rejoint l’association en 2021, alors que je débutais en photographie, avec l’envie d’apprendre et d’échanger avec des membres expérimentés. <br /><br />  En 2022, j’ai été nommé Vice-président. Cette étape m’a permis de participer à des projets collaboratifs d’envergure et d’en diriger plusieurs, développant ainsi mes compétences en gestion de projet, en leadership et en coordination d’équipe. <br /><br />  En 2023, j’ai pris la présidence de l’association, une expérience riche qui m’a appris à manager une équipe, à structurer les activités de l’association et à mener à bien des projets majeurs, autant artistiques qu’organisationnels."
     },
     "vizion": {
       "title": "Vizion",
@@ -88,23 +90,10 @@
       }
     }
   },
-  "projects": {
-    "aftermovies": {
-      "title": "Aftermovies",
-      "links": {
-        "tgs2025": "Aftermovie TGS 2025",
-        "wei2024": "Aftermovie WEI 2024",
-        "wei2023": "Aftermovie WEI 2023"
-      }
-    },
-    "collaborations": {
-      "title": "Collaborations",
-      "links": {
-        "kawasaki": "Kawasaki",
-        "alki": "Vidéo commerciale pour Alki",
-        "dance": "Clip Videos de danse"
-      }
-    }
+  "external_portfolio": {
+    "title": "Portfolio Photo & Vidéo",
+    "description": "Découvrez l'ensemble de mes projets photo et vidéo sur mon site portfolio dédié.",
+    "button": "Accéder au portfolio"
   },
   "experiences": {
     "capgemini": {

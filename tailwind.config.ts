@@ -32,6 +32,15 @@ const config: Config = {
                 'gradient-conic':
                     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
+            keyframes: {
+                'scroll-left-to-right': {
+                    '0%': { transform: 'translateX(-50%)' },
+                    '100%': { transform: 'translateX(0)' },
+                },
+            },
+            animation: {
+                'scroll-infinite': 'scroll-left-to-right 60s linear infinite',
+            },
         },
     },
     plugins: [daisyui],

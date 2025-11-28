@@ -1,5 +1,6 @@
 // pages/asso.tsx
 import type { NextPage } from "next";
+import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -8,22 +9,58 @@ import { InstagramLogo } from "~~/public/assets/svg/InstagramLogo";
 
 const AssociativeCareer: NextPage = () => {
   const { t } = useTranslation("common");
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    let animationFrameId: number | null = null;
+
+    const handleScroll = () => {
+      const currentScroll = window.pageYOffset || window.scrollY;
+
+      if (animationFrameId === null) {
+        animationFrameId = window.requestAnimationFrame(() => {
+          setScrollPosition(currentScroll);
+          animationFrameId = null;
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const parallaxOffset = scrollPosition * 0.5;
 
   return (
     <div className="w-full overflow-hidden">
       {/* Hero Section */}
-      <div className="hero min-h-screen bg-fixed relative">
-        <div>
+      <div className="hero min-h-screen relative overflow-hidden">
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            overflow: 'hidden',
+            transform: `translate3d(0, ${parallaxOffset}px, 0)`,
+            willChange: 'transform',
+          }}
+        >
           <Image
             src="/assets/images/portfolio/asso2.jpg"
             alt="Hero background"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
             quality={80}
+            priority
           />
         </div>
-        <div className="hero-overlay bg-opacity-20 z-100 absolute w-full h-full"></div>
-        <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col">
+        <div className="hero-overlay bg-opacity-20 z-10 absolute inset-0" />
+        <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col z-20 relative">
           <div className="animate-fade-in-down max-w-lg">
             <h1 className="text-6xl font-bold mb-4 text-white">{t("associative.title")}</h1>
             <p className="mb-6 text-white">
