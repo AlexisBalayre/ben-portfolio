@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { AcademicCapIcon, BriefcaseIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import Timeline from '~~/components/Timeline';
@@ -64,9 +65,9 @@ const Home: NextPage = () => {
                         </div>
                         <p className="mb-6 text-lg">{t('home.portfolio_preview_desc')}</p>
                         <div>
-                            <a href="/portfolio" className="btn btn-primary rounded-xl text-base-100">
+                            <Link href="/portfolio" className="btn btn-primary rounded-xl text-base-100">
                                 {t('home.portfolio_preview_button')}
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="flex-1 relative min-h-[400px] md:min-h-[600px]">
@@ -96,9 +97,9 @@ const Home: NextPage = () => {
                         <h2 className="text-4xl font-bold text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1">{t('home.associative_preview_title')}</h2>
                     </div>
                     <p className="mb-8 text-lg text-white max-w-2xl">{t('home.associative_preview_desc')}</p>
-                    <a href="/associativeCareer" className="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-xl hover:scale-105 transition-transform">
+                    <Link href="/associativeCareer" className="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-xl hover:scale-105 transition-transform">
                         {t('home.associative_preview_button')}
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
