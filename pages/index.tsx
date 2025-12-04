@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { AcademicCapIcon, BriefcaseIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import Timeline from '~~/components/Timeline';
@@ -12,6 +13,10 @@ import { useTranslation } from 'next-i18next';
 
 const Home: NextPage = () => {
     const { t } = useTranslation('common');
+    const { locale } = useRouter();
+    
+    const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
+
     return (
         <div className="pt-10 w-full overflow-y-auto overflow-x-hidden bg-white ">
             <div className="hero md:mt-20 md:mb-20 mt-10">
@@ -23,7 +28,7 @@ const Home: NextPage = () => {
                         <p className="py-6">
                             {t('home.welcome')}
                         </p>
-                        <a href="/assets/documents/Benjamin_Balayre_CV.pdf" className="btn btn-primary rounded-xl text-base-100" download>
+                        <a href={`/assets/documents/${cvFile}`} className="btn btn-primary rounded-xl text-base-100" download>
                             {t('home.download_resume')}
                         </a>
                     </div>

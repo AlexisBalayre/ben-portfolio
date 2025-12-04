@@ -110,7 +110,10 @@ export const HeaderMenuLinks = () => {
  */
 export const Header = () => {
   const { t } = useTranslation('common');
+  const { locale } = useRouter();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  
+  const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
   const burgerMenuRef = useRef<HTMLDivElement>(null!);
   useOutsideClick(
     burgerMenuRef,
@@ -160,7 +163,7 @@ export const Header = () => {
       </div>
       <div className="flex text-center pr-5">
                 <LanguageSwitcher />
-                <a href="/assets/documents/Benjamin_Balayre_CV.pdf" className="btn btn-primary rounded-xl text-base-100 ml-2" download>
+                <a href={`/assets/documents/${cvFile}`} className="btn btn-primary rounded-xl text-base-100 ml-2" download>
                     {t('header.download_resume')}
                 </a>
             </div>
