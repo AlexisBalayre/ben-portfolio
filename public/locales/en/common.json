@@ -31,7 +31,13 @@
       "indonesia": "Indonesia",
       "japan": "Japan",
       "brazil": "Brazil"
-    }
+    },
+    "portfolio_preview_title": "Portfolio",
+    "portfolio_preview_desc": "Passionate about photography and video, I share in this section my portfolio and my cinematic travel films. Find here my work, my creations and my latest achievements.",
+    "portfolio_preview_button": "Discover the portfolio",
+    "associative_preview_title": "Associative Engagement",
+    "associative_preview_desc": "My student career is marked by a strong commitment to associations. From the presidency of a drone club to the presidency of a media association, discover my experiences and achievements.",
+    "associative_preview_button": "Discover my path"
   },
   "skills": {
     "video_editing": {
