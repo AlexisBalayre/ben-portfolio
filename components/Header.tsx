@@ -66,7 +66,7 @@ export const HeaderMenuLinks = () => {
     if (section === "contact") {
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     } else {
-      router.push(`/${section}`);
+      router.push(`/${section}`, undefined, { scroll: false });
     }
   };
 
@@ -150,6 +150,7 @@ export const Header = () => {
         <Link
           href="/"
           passHref
+          scroll={false}
           className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0"
         >
           <div className="flex flex-col">

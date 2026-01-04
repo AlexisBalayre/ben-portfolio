@@ -42,7 +42,7 @@ const TimelineItem = ({ item, index }: TimelineItemProps) => {
                         {t(`experiences.${item.id}.title`)}
                     </h3>
                     <span className="px-3 py-1 text-xs font-semibold text-primary bg-primary/10 rounded-full mt-2 sm:mt-0">
-                        {item.period}
+                        {t(`experiences.${item.id}.period`)}
                     </span>
                 </div>
                 

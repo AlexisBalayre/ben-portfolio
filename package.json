@@ -17,8 +17,6 @@
     "daisyui": "^4.10.5",
     "framer-motion": "^11.1.8",
     "i18next": "^25.6.3",
-    "mathjs": "^15.1.0",
-    "natural": "^7.0.5",
     "next": "^15.0.3",
     "next-i18next": "^15.4.2",
     "react": "^19.0.0",

@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 
 const Carousel = () => {
   const { t } = useTranslation('common');
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
 
   const slides = [
     {
@@ -32,44 +30,36 @@ const Carousel = () => {
       src: '/assets/images/portfolio/Norway/image1.jpg',
       label: t('home.countries.norway'),
     },
+    // Adding more images from the assets if available or reusing for variety
+    {
+        src: '/assets/images/portfolio/Egypte/image1.jpeg',
+        label: t('home.countries.egypt'),
+    },
+    {
+        src: '/assets/images/portfolio/Egypte/image4.JPG',
+        label: t('home.countries.egypt'),
+    },
+    {
+       src: '/assets/images/portfolio/Indonesie/image5.JPG',
+       label: t('home.countries.indonesia'),
+    },
   ];
 
-  // Auto-play avec pause au survol
-  useEffect(() => {
-    if (isHovered) return;
-
-    const intervalId = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [isHovered, slides.length]);
-
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  // We duplicate the slides to create the infinite seamless effect
+  // Tripling it ensures there's always enough content even on wide screens
+  const marqueeSlides = [...slides, ...slides, ...slides];
 
   return (
-    <section className="w-full py-16 section-avec-trait">
-      {/* 🔥 Conteneur commun comme dans LatestProject */}
-      <div
-        className="group max-w-5xl mx-auto text-center"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+    <section className="w-full py-16 section-avec-trait overflow-hidden bg-base-100">
+      <div className="group max-w-full mx-auto text-center">
         {/* Titre + trait */}
-        <div className="mb-10">
+        <div className="mb-10 px-4">
           <h2
             className="
               text-3xl font-bold tracking-wide 
               text-base-content/80 
               transition-all duration-500 
-              group-hover:text-base-content group-hover:opacity-100 
-              group-hover:-translate-y-1
+              hover:text-base-content
             "
           >
             {t('home.carousel_title')}
@@ -77,58 +67,35 @@ const Carousel = () => {
           <hr className="trait mx-auto" />
         </div>
 
-        {/* Carrousel */}
-        <div className="relative w-full overflow-hidden rounded-2xl shadow-[0_25px_70px_rgba(0,255,255,0.25),0_20px_60px_rgba(128,0,255,0.20)] transition-transform duration-500 group-hover:scale-[1.01]">
-          <div className="relative aspect-[16/9]">
-            <Image
-              key={slides[currentSlide].src}
-              src={slides[currentSlide].src}
-              alt={slides[currentSlide].label}
-              fill
-              className="object-cover transition-opacity duration-700 ease-out"
-              priority
-            />
+        {/* Marquee Container */}
+        <div className="relative w-full overflow-hidden">
+          {/* Fading Edges for better assimilation */}
+          <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-base-100 to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-base-100 to-transparent z-20 pointer-events-none" />
 
-            {/* Dégradé + label du pays */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-6 py-4 flex items-end justify-between text-white">
-              <span className="text-lg font-semibold tracking-wide">
-                {slides[currentSlide].label}
-              </span>
-            </div>
-
-            {/* Boutons de navigation */}
-            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4">
-              <button
-                onClick={handlePrevSlide}
-                className="btn btn-circle bg-black/50 border-none text-white hover:bg-black/80"
-                aria-label="Previous slide"
+          {/* Scrolling Track */}
+          <div className="flex w-max animate-scroll hover:pause">
+            {marqueeSlides.map((slide, index) => (
+              <div 
+                key={`${slide.src}-${index}`} 
+                className="relative flex-shrink-0 w-[300px] h-[200px] md:w-[400px] md:h-[260px] mx-2 md:mx-4 rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300"
               >
-                ❮
-              </button>
-              <button
-                onClick={handleNextSlide}
-                className="btn btn-circle bg-black/50 border-none text-white hover:bg-black/80"
-                aria-label="Next slide"
-              >
-                ❯
-              </button>
-            </div>
-
-            {/* Indicateurs (petits points) */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`h-2 w-2 rounded-full transition-all ${
-                    index === currentSlide
-                      ? 'w-4 bg-white'
-                      : 'bg-white/40 hover:bg-white/70'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
+                <Image
+                  src={slide.src}
+                  alt={slide.label}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-110"
+                  sizes="(max-width: 768px) 300px, 400px"
                 />
-              ))}
-            </div>
+                
+                {/* Overlay with subtle label */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 flex items-end justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-white font-medium tracking-wide">
+                    {slide.label}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
