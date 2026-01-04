@@ -258,3 +258,26 @@ p {
     left: 0%;
   }
 }
+
+/* Marquee Animation */
+@keyframes scroll-infinite {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-infinite-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll {
+  animation: scroll-infinite 80s linear infinite;
+}
+
+.animate-scroll-reverse {
+  animation: scroll-infinite-reverse 90s linear infinite;
+}
+
+.animate-scroll:hover, .animate-scroll-reverse:hover {
+  animation-play-state: paused;
+}

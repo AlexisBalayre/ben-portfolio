@@ -25,7 +25,7 @@
     "rights_reserved": "All Rights Reserved.",
     "carousel_title": "Some shots from my travels",
     "latest_project_title": "My latest project",
-    "latest_project_desc": "Last August, I had the chance to travel to Iceland. From this adventure was born <1>Element of Iceland</1>, a montage that captures the intensity and raw beauty of this trip to the heart of Icelandic landscapes.",
+    "latest_project_desc": "During my academic exchange in Oslo, I spent <1>4 months in Norway</1>. This video captures the highlights and breathtaking landscapes of this experience.",
     "countries": {
       "egypt": "Egypt",
       "indonesia": "Indonesia",
@@ -109,37 +109,45 @@
   "experiences": {
     "capgemini": {
       "title": "Intern Consultant – Capgemini Invent (frog)",
-      "description": "Internship within the Frog Customer Data & Tech service. Design of innovative strategies and support for large-scale digital transformations. Consulting missions for general management on strategy, organization, and operational efficiency."
+      "description": "Internship within the Frog Customer Data & Tech service. Design of innovative strategies and support for large-scale digital transformations. Consulting missions for general management on strategy, organization, and operational efficiency.",
+      "period": "January 2026 – June 2026"
     },
     "sidetrade": {
       "title": "Intern Data Analyst – Sidetrade",
-      "description": "Internship in the Datalake Ingest team. Analysis of datalake data, creation of strategic dashboards (Power BI), and collaboration with R&D and Product teams in an English-speaking environment."
+      "description": "Internship in the Datalake Ingest team. Analysis of datalake data, creation of strategic dashboards (Power BI), and collaboration with R&D and Product teams in an English-speaking environment.",
+      "period": "September 2024 – January 2025"
     },
     "freelance": {
       "title": "Freelancer – Photographer & Videographer",
-      "description": "Production of photo and video content for events and professional projects. Complete management of customer relations, shooting, editing, and artistic direction."
+      "description": "Production of photo and video content for events and professional projects. Complete management of customer relations, shooting, editing, and artistic direction.",
+      "period": "Since 2024"
     },
     "microsoft": {
       "title": "Observation Internship – Microsoft",
-      "description": "Observation internship within Microsoft, allowing discovery of software engineering professions, exploration of the digital world, and confirmation of orientation towards technologies and innovation."
+      "description": "Observation internship within Microsoft, allowing discovery of software engineering professions, exploration of the digital world, and confirmation of orientation towards technologies and innovation.",
+      "period": "2017"
     }
   },
   "formation": {
     "oslomet": {
       "title": "OsloMet (Norway) – International Academic Semester",
-      "description": "This programme was part of my Business Intelligence track and allowed me to deepen my skills in data science, artificial intelligence, and innovation, while experiencing a new cultural and academic environment."
+      "description": "This programme was part of my Business Intelligence track and allowed me to deepen my skills in data science, artificial intelligence, and innovation, while experiencing a new cultural and academic environment.",
+      "period": "August 2025 - December 2025"
     },
     "isep_ing": {
       "title": "ISEP – Engineering Cycle",
-      "description": "Engineering cycle at ISEP in Paris, with a specialization in Business Intelligence (BI). <br/><br/> ISEP is a digital engineering school located in Paris. It trains generalist engineers in major digital fields: computer science & cybersecurity – electronics & robotics – telecommunications & Internet of Things – imaging – artificial intelligence."
+      "description": "Engineering cycle at ISEP in Paris, with a specialization in Business Intelligence (BI). <br/><br/> ISEP is a digital engineering school located in Paris. It trains generalist engineers in major digital fields: computer science & cybersecurity – electronics & robotics – telecommunications & Internet of Things – imaging – artificial intelligence.",
+      "period": "September 2023 - July 2026"
     },
     "inha": {
       "title": "Inha University (South Korea) – International Academic Semester",
-      "description": "For my academic semester abroad, I chose to go to South Korea. During this period, I took a wide range of courses: system programming, leadership, signals and systems, sensor engineering, electronic circuit analysis, and I also acquired basic notions of Korean. This experience allowed me to immerse myself in a new culture, improve my English level, and open up internationally."
+      "description": "For my academic semester abroad, I chose to go to South Korea. During this period, I took a wide range of courses: system programming, leadership, signals and systems, sensor engineering, electronic circuit analysis, and I also acquired basic notions of Korean. This experience allowed me to immerse myself in a new culture, improve my English level, and open up internationally.",
+      "period": "February 2023 - June 2023"
     },
     "isep_cii": {
       "title": "ISEP – Integrated International Cycle (CII)",
-      "description": "Preparatory years at the ISEP engineering school in Paris. <br/><br/> The integrated international cycle (CII) follows a specific program at ISEP, balanced between three teaching areas: fundamental digital sciences | techniques & technologies | languages, cultures, humanities, and sustainable development. It includes an international semester from the second year."
+      "description": "Preparatory years at the ISEP engineering school in Paris. <br/><br/> The integrated international cycle (CII) follows a specific program at ISEP, balanced between three teaching areas: fundamental digital sciences | techniques & technologies | languages, cultures, humanities, and sustainable development. It includes an international semester from the second year.",
+      "period": "2021 - 2023"
     }
   },
   "timeline": {
