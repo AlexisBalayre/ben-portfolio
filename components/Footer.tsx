@@ -28,7 +28,7 @@ export const Footer = () => {
             href="tel:+33782347644"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-white transition-colors duration-200"
-            aria-label="Téléphone de Benjamin Balayre"
+            aria-label={t('footer.phone_aria')}
           >
             <PhoneIcon className="w-4 h-4 flex-shrink-0" />
             07 82 34 76 44
@@ -37,7 +37,7 @@ export const Footer = () => {
             href="mailto:benjamin@balayre.com"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-white transition-colors duration-200"
-            aria-label="Email de Benjamin Balayre"
+            aria-label={t('footer.email_aria')}
           >
             <EnvelopeIcon className="w-4 h-4 flex-shrink-0" />
             benjamin@balayre.com
@@ -45,7 +45,7 @@ export const Footer = () => {
         </address>
 
         {/* Socials */}
-        <nav aria-label="Réseaux sociaux">
+        <nav aria-label={t('footer.social_aria')}>
           <ul className="flex items-center gap-6">
             {socials.map(({ href, label, icon: Icon }) => (
               <li key={href}>

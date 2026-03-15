@@ -23,10 +23,10 @@ const Home: NextPage = () => {
     const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
 
     return (
-        <div className="pt-10 w-full overflow-y-auto overflow-x-hidden bg-white ">
+        <div className="pt-14 w-full overflow-y-auto overflow-x-hidden bg-white">
             <div className="hero md:mt-20 md:mb-20 mt-10">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <Image src="/assets/images/pp.jpg" alt="Photo de Benjamin Balayre" width={300} height={300} className="max-w-sm rounded-full shadow-2xl" />
+                    <Image src="/assets/images/pp.jpg" alt="Photo de Benjamin Balayre" width={300} height={300} className="max-w-sm rounded-full shadow-2xl" priority />
                     <div>
                         <h1 className="text-5xl font-bold">{t('home.name')}</h1>
                         <h2 className="text-3xl">{t('home.role')}</h2>
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
                 <div className="max-w-4xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
                         <AcademicCapIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
-                        <h2 className="text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.education_title')}</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.education_title')}</h2>
                     </span>
                     <p className="py-6">{t('home.education_desc')}</p>
                     <div className="relative">
@@ -90,7 +90,7 @@ const Home: NextPage = () => {
                 <div className="max-w-4xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
                         <BriefcaseIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
-                        <h2 className="text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.experience_title')}</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.experience_title')}</h2>
                     </span>
                     <p className="py-2">{t('home.experience_desc')}</p>
                     <div className="relative">
@@ -127,7 +127,7 @@ const Home: NextPage = () => {
                     <div className="flex-1 flex flex-col justify-center p-10 md:p-20 group">
                         <div className="flex items-center mb-6">
                             <CameraIcon className="h-8 w-8 mr-2 -mt-1.5 text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1" />
-                            <h2 className="text-4xl font-bold text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.portfolio_preview_title')}</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.portfolio_preview_title')}</h2>
                         </div>
                         <p className="mb-6 text-lg">{t('home.portfolio_preview_desc')}</p>
                         <div>
@@ -139,10 +139,10 @@ const Home: NextPage = () => {
                     <div className="flex-1 relative min-h-[400px] md:min-h-[600px]">
                         <Image
                             src="/assets/images/portfolio/Japon/image1.jpg"
-                            alt="Portfolio Preview"
+                            alt="Photographie de voyage au Japon"
                             fill
                             style={{ objectFit: "cover" }}
-                            className=""
+                            quality={80}
                         />
                     </div>
                 </div>
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
                 <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 md:px-20 group">
                     <div className="flex items-center justify-center mb-6">
                         <UserGroupIcon className="h-8 w-8 mr-2 -mt-1.5 text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1" />
-                        <h2 className="text-4xl font-bold text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1">{t('home.associative_preview_title')}</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1">{t('home.associative_preview_title')}</h2>
                     </div>
                     <p className="mb-8 text-lg text-white max-w-2xl">{t('home.associative_preview_desc')}</p>
                     <Link href="/associativeCareer" scroll={false} className="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-xl hover:scale-105 transition-transform">

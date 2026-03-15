@@ -28,8 +28,9 @@ const LatestProject = () => {
             <iframe
               className="absolute top-0 left-0 w-full h-full rounded-xl"
               src="https://www.youtube.com/embed/srY_viZ0XCA?si=nQ15o5oqppPmgq9H"
-              title="YouTube video player"
+              title="Norway — 4 months in Norway (Benjamin Balayre)"
               style={{ border: 0 }}
+              loading="lazy"
               allowFullScreen
             />
           </div>

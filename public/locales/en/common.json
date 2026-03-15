@@ -9,7 +9,15 @@
     "associative_career": "Associative Experience",
     "contact_details": "Contact Details",
     "student_role": "ISEP Student",
-    "download_resume": "Download Resume"
+    "download_resume": "Download Resume",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "switch_language": "Switch to French"
+  },
+  "footer": {
+    "phone_aria": "Benjamin Balayre's phone number",
+    "email_aria": "Benjamin Balayre's email address",
+    "social_aria": "Social media links"
   },
   "home": {
     "name": "Benjamin Balayre",

@@ -34,10 +34,10 @@ const Projects = () => {
 
             {/* Content */}
             <div className="relative z-10 text-center px-6 md:px-20 py-20 max-w-2xl mx-auto">
-                <span className="text-white/40 text-xs tracking-[0.25em] uppercase mb-6 block">
+                <span className="text-white/60 text-xs tracking-[0.25em] uppercase mb-6 block">
                     {t('external_portfolio.title')}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                     {t('external_portfolio.description')}
                 </h2>
                 <a
