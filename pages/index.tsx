@@ -33,9 +33,17 @@ const Home: NextPage = () => {
                         <p className="py-6">
                             {t('home.welcome')}
                         </p>
-                        <a href={`/assets/documents/${cvFile}`} className="btn btn-primary rounded-xl text-base-100" download>
-                            {t('home.download_resume')}
-                        </a>
+                        <div className="flex flex-wrap gap-4 mt-2">
+                            <a href={`/assets/documents/${cvFile}`} className="btn btn-primary rounded-xl text-base-100" download>
+                                {t('home.download_resume')}
+                            </a>
+                            <a href="https://benjaminbalayre.myportfolio.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary rounded-xl text-base-100">
+                                {t('home.quick_portfolio')}
+                            </a>
+                            <a href="https://benevolence.fr" target="_blank" rel="noopener noreferrer" className="btn btn-primary rounded-xl text-base-100">
+                                {t('home.quick_benevolence')}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
