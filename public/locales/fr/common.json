@@ -16,6 +16,8 @@
     "role": "Étudiant en école d'ingénieurs | Photographe & Vidéaste freelance",
     "welcome": "Bienvenue sur mon portfolio ! Découvrez-y mon parcours, mes passions, ainsi que mes projets professionnels, personnels et associatifs.",
     "download_resume": "Télécharger mon CV",
+    "quick_portfolio": "Voir mon portfolio photo et vidéo",
+    "quick_benevolence": "Voir ma boutique de tirage",
     "education_title": "Formation",
     "education_desc": "Passionné d'innovation et de nouvelles technologies depuis toujours, j'ai choisi de poursuivre un cursus en ingénierie du numérique à l'ISEP.",
     "experience_title": "Expériences",
@@ -34,7 +36,7 @@
       "iceland": "Islande",
       "norway": "Norvège"
     },
-    "portfolio_preview_title": "Portfolio Créatif",
+    "portfolio_preview_title": "Portfolio",
     "portfolio_preview_desc": "Passionné par l'image, je vous partage ici mon portfolio photographique et mes films cinématiques de voyage. Découvrez mes dernières réalisations et mon univers visuel.",
     "portfolio_preview_button": "Découvrir le portfolio",
     "associative_preview_title": "Engagement Associatif",

@@ -16,6 +16,8 @@
     "role": "Engineering Student | Freelance Photographer & Videographer",
     "welcome": "Welcome to my website, a space dedicated to discovering my background and passions. You will find information about my professional, personal and associative projects.",
     "download_resume": "Download Resume",
+    "quick_portfolio": "View my photo & video portfolio",
+    "quick_benevolence": "View my print shop",
     "education_title": "Education",
     "education_desc": "Always passionate about innovation and new technologies, I chose to pursue a degree in digital engineering at ISEP.",
     "experience_title": "Experiences",
@@ -34,7 +36,7 @@
       "iceland": "Iceland",
       "norway": "Norway"
     },
-    "portfolio_preview_title": "Creative Portfolio",
+    "portfolio_preview_title": "Portfolio",
     "portfolio_preview_desc": "Passionate about visuals, I share my photography portfolio and cinematic travel films here. Discover my latest projects and visual universe.",
     "portfolio_preview_button": "Discover the portfolio",
     "associative_preview_title": "Associative Engagement",
