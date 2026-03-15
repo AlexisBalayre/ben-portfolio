@@ -1,81 +1,76 @@
-import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/solid';
-
+import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline';
 import { LinkedinLogo } from '~~/public/assets/svg/LinkedinLogo';
 import { GithubLogo } from '~~/public/assets/svg/GithubLogo';
 import { InstagramLogo } from '~~/public/assets/svg/InstagramLogo';
 import { YouTubeLogo } from '~~/public/assets/svg/YouTubeLogo';
+import { useTranslation } from 'next-i18next';
 
 const socials = [
-  {
-    href: 'https://www.linkedin.com/in/Benjamin-balayre',
-    label: 'Linkedin of Benjamin Balayre',
-    icon: LinkedinLogo,
-  },
-  {
-    href: 'https://github.com/benbalayre',
-    label: 'Github of Benjamin Balayre',
-    icon: GithubLogo,
-  },
-  {
-    href: 'https://www.instagram.com/ben_balayre/',
-    label: 'Instagram of Benjamin Balayre',
-    icon: InstagramLogo,
-  },
-  {
-    href: 'https://www.youtube.com/@ben_balayre',
-    label: 'Youtube of Benjamin Balayre',
-    icon: YouTubeLogo,
-  },
+  { href: 'https://www.linkedin.com/in/Benjamin-balayre', label: 'LinkedIn', icon: LinkedinLogo },
+  { href: 'https://github.com/benbalayre',               label: 'GitHub',   icon: GithubLogo },
+  { href: 'https://www.instagram.com/ben_balayre/',      label: 'Instagram', icon: InstagramLogo },
+  { href: 'https://www.youtube.com/@ben_balayre',        label: 'YouTube',  icon: YouTubeLogo },
 ];
-
-import { useTranslation } from 'next-i18next';
 
 export const Footer = () => {
   const { t } = useTranslation('common');
 
   return (
-    <footer className="bg-base-100 shadow-xl shadow-primary text-center md:py-8 py-4">
-      <address className="flex justify-center mb-4 flex-col md:flex-row text-center items-center">
-        <a
-          href="tel:+33782347644"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition flex text-accent-content hover:text-primary md:mr-5"
-          aria-label="Phone number of Benjamin Balayre"
-        >
-          <PhoneIcon className="w-6 h-6 mr-2 hidden md:block" />
-          07 82 34 76 44
-        </a>
-        <a
-          href="mailto:benjamin@balayre.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition flex text-accent-content hover:text-primary md:ml-5"
-          aria-label="Email of Benjamin Balayre"
-        >
-          <EnvelopeIcon className="w-6 h-6 mr-2 hidden md:block" />
-          benjamin@balayre.com
-        </a>
-      </address>
-      <nav>
-        <ul className="flex justify-center mb-8 space-x-4">
-          {socials.map(({ href, label, icon: Icon }) => (
-            <li key={href}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-              >
-                <Icon className="w-6 h-6 transition text-accent-content hover:text-primary" />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <p className="text-xs md:text-sm">
-        Copyright © {new Date().getFullYear()} Benjamin Balayre. {t('home.rights_reserved')}
-      </p>
+    <footer className="bg-[#0c0c0c] text-white/60 py-12 px-6" id="contact">
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-8">
+
+        {/* Name */}
+        <p className="text-white font-semibold tracking-wide text-lg">Benjamin Balayre</p>
+
+        {/* Contact */}
+        <address className="not-italic flex flex-col sm:flex-row gap-4 sm:gap-8 items-center text-sm">
+          <a
+            href="tel:+33782347644"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+            aria-label="Téléphone de Benjamin Balayre"
+          >
+            <PhoneIcon className="w-4 h-4 flex-shrink-0" />
+            07 82 34 76 44
+          </a>
+          <a
+            href="mailto:benjamin@balayre.com"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+            aria-label="Email de Benjamin Balayre"
+          >
+            <EnvelopeIcon className="w-4 h-4 flex-shrink-0" />
+            benjamin@balayre.com
+          </a>
+        </address>
+
+        {/* Socials */}
+        <nav aria-label="Réseaux sociaux">
+          <ul className="flex items-center gap-6">
+            {socials.map(({ href, label, icon: Icon }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="group block"
+                >
+                  <Icon className="w-5 h-5 text-white/40 group-hover:text-white transition-colors duration-200" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-white/10" />
+
+        {/* Copyright */}
+        <p className="text-xs text-white/30 tracking-wide">
+          © {new Date().getFullYear()} Benjamin Balayre — {t('home.rights_reserved')}
+        </p>
+      </div>
     </footer>
   );
 };

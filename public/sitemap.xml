@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://benjamin.balayre.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benjamin.balayre.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://benjamin.balayre.com/en/" />
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://benjamin.balayre.com/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benjamin.balayre.com/portfolio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://benjamin.balayre.com/en/portfolio" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://benjamin.balayre.com/associativeCareer</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://benjamin.balayre.com/associativeCareer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://benjamin.balayre.com/en/associativeCareer" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -30,7 +30,6 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => (
               alt={logo.alt}
               width={64}
               height={64}
-              layout="responsive"
             />
           </div>
         ))}
@@ -44,7 +43,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => (
             alt={skill.image.alt}
             width={640}
             height={360}
-            layout="responsive"
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
       </div>

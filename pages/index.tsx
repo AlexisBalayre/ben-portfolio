@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { AcademicCapIcon, BriefcaseIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+
+
 import Timeline from '~~/components/Timeline';
 import TimelineDark from '~~/components/TimelineDark';
 import experiences from "~~/public/assets/data/experiences.json";
@@ -14,6 +17,8 @@ import { useTranslation } from 'next-i18next';
 const Home: NextPage = () => {
     const { t } = useTranslation('common');
     const { locale } = useRouter();
+    const [educationExpanded, setEducationExpanded] = useState(false);
+    const [experienceExpanded, setExperienceExpanded] = useState(false);
     
     const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
 
@@ -43,20 +48,68 @@ const Home: NextPage = () => {
                         <AcademicCapIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
                         <h2 className="text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.education_title')}</h2>
                     </span>
-                    <p className="py-6 ">{t('home.education_desc')}</p>
-                    <Timeline items={education} />
+                    <p className="py-6">{t('home.education_desc')}</p>
+                    <div className="relative">
+                        <div
+                            className="overflow-hidden transition-all duration-500"
+                            style={{ maxHeight: educationExpanded ? '2000px' : '420px' }}
+                        >
+                            <Timeline items={education} />
+                        </div>
+                        {!educationExpanded && (
+                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-100 to-transparent pointer-events-none" />
+                        )}
+                    </div>
+                    <div className="flex justify-center mt-4 pb-8">
+                        <button
+                            onClick={() => setEducationExpanded(!educationExpanded)}
+                            className="flex items-center gap-2 text-sm font-medium text-primary border border-primary/30 px-6 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
+                        >
+                            {educationExpanded ? t('timeline.collapse') : t('timeline.show_all')}
+                            <svg
+                                className={`w-4 h-4 transition-transform duration-300 ${educationExpanded ? 'rotate-180' : ''}`}
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
             {/* Experience Timeline */}
-            <div className="md:py-12 mt-10 md:mt-0 w-full px-10 md:px-20 group" id="education">
+            <div className="md:py-12 mt-10 md:mt-0 w-full px-10 md:px-20 group" id="experience">
                 <div className="max-w-4xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
                         <BriefcaseIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
                         <h2 className="text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.experience_title')}</h2>
                     </span>
-                    <p className="t">{t('home.experience_desc')}</p>
-                    <TimelineDark items={experiences} />
+                    <p className="py-2">{t('home.experience_desc')}</p>
+                    <div className="relative">
+                        <div
+                            className="overflow-hidden transition-all duration-500"
+                            style={{ maxHeight: experienceExpanded ? '2000px' : '420px' }}
+                        >
+                            <TimelineDark items={experiences} />
+                        </div>
+                        {!experienceExpanded && (
+                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                        )}
+                    </div>
+                    <div className="flex justify-center mt-4 pb-8">
+                        <button
+                            onClick={() => setExperienceExpanded(!experienceExpanded)}
+                            className="flex items-center gap-2 text-sm font-medium text-primary border border-primary/30 px-6 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
+                        >
+                            {experienceExpanded ? t('timeline.collapse') : t('timeline.show_all')}
+                            <svg
+                                className={`w-4 h-4 transition-transform duration-300 ${experienceExpanded ? 'rotate-180' : ''}`}
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -76,9 +129,9 @@ const Home: NextPage = () => {
                         </div>
                     </div>
                     <div className="flex-1 relative min-h-[400px] md:min-h-[600px]">
-                        <Image 
-                            src="/assets/images/portfolio/Japon/image1.jpg" 
-                            alt="Portfolio Preview" 
+                        <Image
+                            src="/assets/images/portfolio/Japon/image1.jpg"
+                            alt="Portfolio Preview"
                             fill
                             style={{ objectFit: "cover" }}
                             className=""
@@ -86,6 +139,8 @@ const Home: NextPage = () => {
                     </div>
                 </div>
             </div>
+
+
             {/* Associative Career Preview Section */}
             <div className="w-full relative h-[600px]">
                 <Image 
