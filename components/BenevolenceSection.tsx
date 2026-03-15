@@ -27,15 +27,15 @@ const BenevolenceSection = () => {
             className="mb-8 rounded-xl"
           />
 
-          <span className="text-black/40 text-xs tracking-[0.25em] uppercase mb-4">
+          <span className="text-neutral-500 text-xs tracking-[0.25em] uppercase mb-4">
             {t('benevolence.tagline')}
           </span>
 
-          <h2 className="text-5xl md:text-6xl font-bold text-black mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             {t('benevolence.title')}
           </h2>
 
-          <p className="text-black/50 text-lg leading-relaxed mb-10 max-w-sm">
+          <p className="text-neutral-600 text-lg leading-relaxed mb-10 max-w-sm">
             {t('benevolence.desc')}
           </p>
 
@@ -67,7 +67,7 @@ const BenevolenceSection = () => {
               sizes="33vw"
             />
             <div className="absolute inset-0 ring-[1.5px] ring-black/5" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
             <span className="absolute bottom-3 left-4 text-white/90 font-medium text-xs tracking-widest uppercase shadow-sm">
               {prints[0].label}
             </span>
@@ -87,7 +87,7 @@ const BenevolenceSection = () => {
               sizes="33vw"
             />
             <div className="absolute inset-0 ring-[1.5px] ring-black/5" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
             <span className="absolute bottom-3 left-4 text-white/90 font-medium text-xs tracking-widest uppercase shadow-sm">
               {prints[1].label}
             </span>
@@ -107,7 +107,7 @@ const BenevolenceSection = () => {
               sizes="33vw"
             />
             <div className="absolute inset-0 ring-[1.5px] ring-black/5" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
             <span className="absolute bottom-3 left-4 text-white/90 font-medium text-xs tracking-widest uppercase shadow-sm">
               {prints[2].label}
             </span>
@@ -122,7 +122,7 @@ const BenevolenceSection = () => {
               className="relative flex-shrink-0 w-[240px] aspect-[4/3] rounded-sm overflow-hidden shadow-xl"
             >
               <Image src={p.src} alt={p.label} fill className="object-cover" sizes="240px" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               <span className="absolute bottom-3 left-3 text-white/90 font-medium text-xs tracking-widest uppercase shadow-sm">
                 {p.label}
               </span>

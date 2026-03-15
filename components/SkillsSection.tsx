@@ -26,7 +26,7 @@ const SkillsSection: React.FC<{ skills: Skill[] }> = ({ skills }) => {
       <div className="max-w-5xl mx-auto text-center mb-10">
         <h2
           className="
-            text-4xl font-bold tracking-wide 
+            text-3xl md:text-4xl font-bold tracking-wide
             text-base-content/80 
             transition-all duration-500 
             group-hover:text-base-content group-hover:opacity-100 

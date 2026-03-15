@@ -9,7 +9,15 @@
     "associative_career": "Parcours Associatif",
     "contact_details": "Contact",
     "student_role": "Étudiant à l'ISEP",
-    "download_resume": "Télécharger mon CV"
+    "download_resume": "Télécharger mon CV",
+    "open_menu": "Ouvrir le menu",
+    "close_menu": "Fermer le menu",
+    "switch_language": "Passer en anglais"
+  },
+  "footer": {
+    "phone_aria": "Téléphone de Benjamin Balayre",
+    "email_aria": "Email de Benjamin Balayre",
+    "social_aria": "Réseaux sociaux"
   },
   "home": {
     "name": "Benjamin Balayre",

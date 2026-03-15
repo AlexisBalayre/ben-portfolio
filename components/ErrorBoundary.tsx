@@ -23,7 +23,17 @@ class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return <h1>Une erreur s&apos;est produite. Veuillez réessayer plus tard.</h1>;
+      return (
+        <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 p-10 text-center">
+          <h1 className="text-2xl font-semibold text-base-content">Something went wrong / Une erreur s&apos;est produite.</h1>
+          <button
+            onClick={() => this.setState({ hasError: false })}
+            className="btn btn-primary rounded-xl text-base-100"
+          >
+            Retry / Réessayer
+          </button>
+        </div>
+      );
     }
 
     return this.props.children;

@@ -89,7 +89,7 @@ export const Header = () => {
           {/* Mobile burger */}
           <div className="lg:hidden relative" ref={burgerMenuRef}>
             <button
-              aria-label={isDrawerOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-label={isDrawerOpen ? t('header.close_menu') : t('header.open_menu')}
               aria-expanded={isDrawerOpen}
               onClick={() => setIsDrawerOpen(v => !v)}
               className="p-2 rounded-lg text-base-content/70 hover:text-base-content hover:bg-base-200 transition-colors"

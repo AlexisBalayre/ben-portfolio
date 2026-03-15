@@ -69,7 +69,7 @@ const AssociativeCareer: NextPage = () => {
           height={150}
           className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
         />
-        <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
           <div className="md:pr-10">
             <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.iseplive.presentation_title")}
@@ -94,7 +94,7 @@ const AssociativeCareer: NextPage = () => {
           height={150}
           className="rounded-full flex-shrink-0 md:hidden place-self-center"
         />
-        <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
           <Image
             src="/assets/images/portfolio/logos/Iseplife.png"
             alt="ISEP Life Logo"
@@ -198,7 +198,7 @@ const AssociativeCareer: NextPage = () => {
           className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
         />
 
-        <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.vizion.presentation_title")}
@@ -224,7 +224,7 @@ const AssociativeCareer: NextPage = () => {
           className="rounded flex-shrink-0 md:hidden place-self-center mt-3"
         />
 
-        <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.vizion.path_title")}
@@ -270,7 +270,7 @@ const AssociativeCareer: NextPage = () => {
           className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
         />
 
-        <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.isepdrone.presentation_title")}
@@ -364,7 +364,7 @@ const AssociativeCareer: NextPage = () => {
           </ul>
         </div>
 
-        <div className="mt-10 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
+        <div className="mt-10 flex flex-col md:flex-row justify-between items-center h-full">
           <div className="md:pr-10 sm:mb-8">
             <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.isepdrone.presentation_title")}
