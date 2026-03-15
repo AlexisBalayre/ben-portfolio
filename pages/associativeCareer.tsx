@@ -1,41 +1,26 @@
 // pages/asso.tsx
 import type { NextPage } from "next";
-import React, { useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import useParallax from '~~/hooks/useParallax';
 
 import { InstagramLogo } from "~~/public/assets/svg/InstagramLogo";
 
+const renderHtmlText = (text: string) => {
+  const parts = text.split(/<br\s*\/?>/gi);
+  return parts.map((part, i) => (
+    <Fragment key={i}>
+      {part}
+      {i < parts.length - 1 && <br />}
+    </Fragment>
+  ));
+};
+
 const AssociativeCareer: NextPage = () => {
   const { t } = useTranslation("common");
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    let animationFrameId: number | null = null;
-
-    const handleScroll = () => {
-      const currentScroll = window.pageYOffset || window.scrollY;
-
-      if (animationFrameId === null) {
-        animationFrameId = window.requestAnimationFrame(() => {
-          setScrollPosition(currentScroll);
-          animationFrameId = null;
-        });
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      if (animationFrameId !== null) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const parallaxOffset = scrollPosition * 0.5;
+  const parallaxOffset = useParallax();
 
   return (
     <div className="w-full overflow-hidden">
@@ -79,9 +64,9 @@ const AssociativeCareer: NextPage = () => {
 
         <Image
           src="/assets/images/iseplive.png"
-          alt="ISEP Drone Logo"
-          width={150} // set the image width
-          height={150} // set the image height
+          alt="ISEP Live Logo"
+          width={150}
+          height={150}
           className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
         />
         <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
@@ -89,30 +74,32 @@ const AssociativeCareer: NextPage = () => {
             <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.iseplive.presentation_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify" dangerouslySetInnerHTML={{ __html: t("associative.iseplive.presentation_desc") }} />
+            <p className="leading-relaxed lg:text-lg text-justify">
+              {renderHtmlText(t("associative.iseplive.presentation_desc"))}
+            </p>
           </div>
           <Image
             src="/assets/images/iseplive.png"
-            alt="ISEP Drone Logo"
-            width={300} // set the image width
-            height={300} // set the image height
+            alt="ISEP Live Logo"
+            width={300}
+            height={300}
             className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
           />
         </div>
 
         <Image
           src="/assets/images/portfolio/logos/Iseplife.png"
-          alt="ISEP Drone Logo"
-          width={150} // set the image width
-          height={150} // set the image height
+          alt="ISEP Life Logo"
+          width={150}
+          height={150}
           className="rounded-full flex-shrink-0 md:hidden place-self-center"
         />
         <div className="mt-4 flex flex-row justify-between items-center h-full sm:grid-cols-1 md:grid-cols-2">
           <Image
             src="/assets/images/portfolio/logos/Iseplife.png"
-            alt="ISEP Drone Logo"
-            width={300} // set the image width
-            height={300} // set the image height
+            alt="ISEP Life Logo"
+            width={300}
+            height={300}
             className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
           />
           <div className="md:pl-10 sm:mb-8">
@@ -127,16 +114,16 @@ const AssociativeCareer: NextPage = () => {
 
         <Image
           src="/assets/images/portfolio/IL.jpg"
-          alt="iseplive-illustration"
-          width={150} // set the image width
-          height={150} // set the image height
+          alt="ISEP Live illustration"
+          width={150}
+          height={150}
           className="rounded flex-shrink-0 md:hidden place-self-center mt-3"
         />
         <Image
           src="/assets/images/portfolio/IL2.jpg"
-          alt="iseplive-illustration"
-          width={150} // set the image width
-          height={150} // set the image height
+          alt="ISEP Live illustration"
+          width={150}
+          height={150}
           className="rounded flex-shrink-0 md:hidden place-self-center mt-3"
         />
         <div className="mt-4 flex flex-row justify-between items-center h-full w-full">
@@ -144,21 +131,23 @@ const AssociativeCareer: NextPage = () => {
             <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.iseplive.path_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify" dangerouslySetInnerHTML={{ __html: t("associative.iseplive.path_desc") }} />
+            <p className="leading-relaxed lg:text-lg text-justify">
+              {renderHtmlText(t("associative.iseplive.path_desc"))}
+            </p>
           </div>
           <div className="gap-4 flex flex-col basis-1/4">
             <Image
               src="/assets/images/portfolio/IL.jpg"
-              alt="iseplive-illustration"
-              width={300} // set the image width
-              height={300} // set the image height
+              alt="ISEP Live illustration"
+              width={300}
+              height={300}
               className="rounded hidden md:block"
             />
             <Image
               src="/assets/images/portfolio/IL2.jpg"
-              alt="iseplive-illustration"
-              width={300} // set the image width
-              height={300} // set the image height
+              alt="ISEP Live illustration"
+              width={300}
+              height={300}
               className="rounded hidden md:block"
             />
           </div>
@@ -168,15 +157,23 @@ const AssociativeCareer: NextPage = () => {
           <a
             href="https://www.instagram.com/iseplive?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="ISEP Live on Instagram"
           >
             <InstagramLogo className="w-20 h-20 transition hover:text-primary" />
           </a>
-          <a href="https://www.youtube.com/@iseplive" target="_blank">
+          <a
+            href="https://www.youtube.com/@iseplive"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="ISEP Live on YouTube"
+          >
             <svg
               className="w-20 h-20 transition hover:text-primary text-black"
               fill="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path d="M23.498 6.186a2.986 2.986 0 00-2.101-2.11C19.513 3.5 12 3.5 12 3.5s-7.513 0-9.397.576a2.986 2.986 0 00-2.101 2.11C0 8.069 0 12 0 12s0 3.931.502 5.814a2.986 2.986 0 002.101 2.11C4.487 20.5 12 20.5 12 20.5s7.513 0 9.397-.576a2.986 2.986 0 002.101-2.11C24 15.931 24 12 24 12s0-3.931-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z" />
             </svg>
@@ -196,8 +193,8 @@ const AssociativeCareer: NextPage = () => {
         <Image
           src="/assets/images/Vizion.png"
           alt="Vizion BDE Logo"
-          width={150} // set the image width
-          height={150} // set the image height
+          width={150}
+          height={150}
           className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
         />
 
@@ -206,22 +203,24 @@ const AssociativeCareer: NextPage = () => {
             <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.vizion.presentation_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-base-100" dangerouslySetInnerHTML={{ __html: t("associative.vizion.presentation_desc") }} />
+            <p className="leading-relaxed lg:text-lg text-justify text-base-100">
+              {renderHtmlText(t("associative.vizion.presentation_desc"))}
+            </p>
           </div>
           <Image
             src="/assets/images/Vizion.png"
             alt="Vizion BDE Logo"
-            width={300} // set the image width
-            height={300} // set the image height
+            width={300}
+            height={300}
             className="rounded-full hidden md:block"
           />
         </div>
 
         <Image
           src="/assets/images/Vizion_illustration.jpg"
-          alt="drone-illustration"
-          width={150} // set the image width
-          height={150} // set the image height
+          alt="Vizion BDE illustration"
+          width={150}
+          height={150}
           className="rounded flex-shrink-0 md:hidden place-self-center mt-3"
         />
 
@@ -230,13 +229,15 @@ const AssociativeCareer: NextPage = () => {
             <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.vizion.path_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-base-100" dangerouslySetInnerHTML={{ __html: t("associative.vizion.path_desc") }} />
+            <p className="leading-relaxed lg:text-lg text-justify text-base-100">
+              {renderHtmlText(t("associative.vizion.path_desc"))}
+            </p>
           </div>
           <Image
             src="/assets/images/Vizion_illustration.jpg"
-            alt="drone-illustration"
-            width={300} // set the image width
-            height={300} // set the image height
+            alt="Vizion BDE illustration"
+            width={300}
+            height={300}
             className="rounded-xl hidden md:block"
           />
         </div>
@@ -244,6 +245,8 @@ const AssociativeCareer: NextPage = () => {
         <a
           href="https://www.instagram.com/vizion_bdeisep?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
           target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Vizion BDE on Instagram"
           className="place-self-center md:mt-10"
         >
           <InstagramLogo className="w-20 h-20 transition hover:text-primary text-base-100" />
@@ -262,8 +265,8 @@ const AssociativeCareer: NextPage = () => {
         <Image
           src="/assets/images/isepdrone.png"
           alt="ISEP Drone Logo"
-          width={150} // set the image width
-          height={150} // set the image height
+          width={150}
+          height={150}
           className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
         />
 
@@ -272,13 +275,15 @@ const AssociativeCareer: NextPage = () => {
             <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.isepdrone.presentation_title")}
             </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-black" dangerouslySetInnerHTML={{ __html: t("associative.isepdrone.presentation_desc") }} />
+            <p className="leading-relaxed lg:text-lg text-justify text-black">
+              {renderHtmlText(t("associative.isepdrone.presentation_desc"))}
+            </p>
           </div>
           <Image
             src="/assets/images/isepdrone.png"
             alt="ISEP Drone Logo"
-            width={300} // set the image width
-            height={300} // set the image height
+            width={300}
+            height={300}
             className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
           />
         </div>
@@ -293,6 +298,7 @@ const AssociativeCareer: NextPage = () => {
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   className="h-5 w-5"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -315,6 +321,7 @@ const AssociativeCareer: NextPage = () => {
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   className="h-5 w-5"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -339,6 +346,7 @@ const AssociativeCareer: NextPage = () => {
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   className="h-5 w-5"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -361,14 +369,15 @@ const AssociativeCareer: NextPage = () => {
             <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
               {t("associative.isepdrone.presentation_title")}
             </h3>
-
-            <p className="text-black leading-relaxed lg:text-lg text-justify" dangerouslySetInnerHTML={{ __html: t("associative.isepdrone.path_desc") }} />
+            <p className="text-black leading-relaxed lg:text-lg text-justify">
+              {renderHtmlText(t("associative.isepdrone.path_desc"))}
+            </p>
           </div>
           <Image
             src="/assets/images/drone_illustration.JPG"
-            alt="ISEP Drone Logo"
-            width={300} // set the image width
-            height={300} // set the image height
+            alt="ISEP Drone illustration"
+            width={300}
+            height={300}
             className="rounded-xl flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
           />
         </div>
@@ -376,6 +385,8 @@ const AssociativeCareer: NextPage = () => {
         <a
           href="https://www.instagram.com/isep_drone?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
           target="_blank"
+          rel="noopener noreferrer"
+          aria-label="ISEP Drone on Instagram"
           className="place-self-center md:mt-10"
         >
           <InstagramLogo className="w-20 h-20 transition hover:text-primary text-black" />

@@ -1,6 +1,4 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
 
 const LanguageSwitcher = () => {
   const router = useRouter();
@@ -12,8 +10,9 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div
+    <button
       onClick={changeLanguage}
+      aria-label={isEnglish ? 'Switch to French' : 'Switch to English'}
       className={`
         relative w-16 h-8 rounded-full p-1 cursor-pointer transition-colors duration-300
         ${isEnglish ? 'bg-primary' : 'bg-neutral'}
@@ -25,10 +24,11 @@ const LanguageSwitcher = () => {
           transform transition-transform duration-300
           ${isEnglish ? 'translate-x-8' : 'translate-x-0'}
         `}
+        aria-hidden="true"
       >
         {isEnglish ? '🇬🇧' : '🇫🇷'}
       </div>
-    </div>
+    </button>
   );
 };
 

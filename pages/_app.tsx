@@ -4,19 +4,23 @@ import { Header } from "~~/components/Header";
 import { MetaHeader } from "~~/components/MetaHeader";
 import { Footer } from "~~/components/Footer";
 import ErrorBoundary from "~~/components/ErrorBoundary";
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import { appWithTranslation } from 'next-i18next';
 
-const inter = Inter({ subsets: ['latin'] });
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-jakarta',
+});
 
 const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   return (
-    <div className={`flex flex-col min-h-screen ${inter.className}`}>
+    <div className={`flex flex-col min-h-screen ${jakarta.variable} font-sans`}>
       <MetaHeader />
       <Header />
       <ErrorBoundary>

@@ -1,37 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
+import useParallax from '~~/hooks/useParallax';
 
 const HeroSection = () => {
   const { t } = useTranslation('common');
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    let animationFrameId: number | null = null;
-
-    const handleScroll = () => {
-      const currentScroll = window.pageYOffset || window.scrollY;
-
-      // On utilise requestAnimationFrame pour limiter les mises à jour
-      if (animationFrameId === null) {
-        animationFrameId = window.requestAnimationFrame(() => {
-          setScrollPosition(currentScroll);
-          animationFrameId = null;
-        });
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      if (animationFrameId !== null) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const parallaxOffset = scrollPosition * 0.5; // Ajuste le facteur (0.2–0.5) selon l’effet désiré
+  const parallaxOffset = useParallax();
 
   return (
     <div className="hero min-h-screen relative overflow-hidden">
