@@ -61,7 +61,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
       />
 
       <div className="card-body relative z-20" style={{ transform: 'translateZ(20px)' }}>
-        <h3 className="card-title text-3xl justify-center">{skill.title}</h3>
+        <h3 className="card-title text-xl sm:text-2xl md:text-3xl justify-center">{skill.title}</h3>
         <div className="flex flex-wrap justify-center gap-4 my-6">
           {skill.logos.map((logo, logoIndex) => (
             <div key={logoIndex} className="w-1/3 sm:w-1/4">
@@ -75,7 +75,7 @@ const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
             </div>
           ))}
         </div>
-        <p className="text-lg text-center">{skill.description}</p>
+        <p className="text-base sm:text-lg text-center">{skill.description}</p>
         <div className="my-6">
           <Image
             className="rounded-xl"

@@ -17,9 +17,9 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const pageVariants = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] } },
-  exit:    { opacity: 0, y: -12, transition: { duration: 0.25, ease: [0.55, 0, 1, 0.45] } },
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] } },
+  exit:    { opacity: 0, transition: { duration: 0.2, ease: [0.55, 0, 1, 0.45] } },
 };
 
 const curtainVariants = {
@@ -31,21 +31,12 @@ const curtainVariants = {
 const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   return (
-    <div className={`flex flex-col min-h-screen ${jakarta.variable} font-sans`}>
+    <div className={`flex flex-col min-h-screen overflow-x-hidden ${jakarta.variable} font-sans`}>
       <MetaHeader page={(router.pathname.split("/")[1] || "home") as "home" | "portfolio" | "associativeCareer"} />
       <Header />
       <ErrorBoundary>
-        <main className="relative flex flex-col flex-1">
+        <main className="relative flex flex-col flex-1 overflow-x-hidden">
           <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
-            {/* Rideau de transition */}
-            <motion.div
-              key={`curtain-${router.route}`}
-              className="fixed inset-0 z-[100] bg-primary pointer-events-none"
-              variants={curtainVariants}
-              initial="initial"
-              animate="exit"
-            />
-
             <motion.div
               key={router.route}
               variants={pageVariants}
@@ -54,6 +45,13 @@ const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
               exit="exit"
               className="flex-1 flex flex-col"
             >
+              {/* Rideau de transition */}
+              <motion.div
+                className="fixed inset-0 z-[100] bg-primary pointer-events-none"
+                variants={curtainVariants}
+                initial="initial"
+                animate="exit"
+              />
               <Component {...pageProps} />
             </motion.div>
           </AnimatePresence>

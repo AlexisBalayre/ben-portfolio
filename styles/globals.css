@@ -109,7 +109,19 @@ p {
 }
 
 .animate-scroll {
-  animation: scroll-infinite 80s linear infinite;
+  animation: scroll-infinite 60s linear infinite;
+}
+
+@media (min-width: 640px) {
+  .animate-scroll {
+    animation-duration: 80s;
+  }
+}
+
+@media (min-width: 1024px) {
+  .animate-scroll {
+    animation-duration: 100s;
+  }
 }
 
 .animate-scroll:hover {

@@ -48,11 +48,11 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="mb-10 ml-6 relative"
+            className="mb-10 ml-4 sm:ml-6 relative"
         >
             {/* Dot on the line */}
             <motion.span
-                className="absolute flex items-center justify-center w-12 h-12 rounded-full -left-12 z-10"
+                className="absolute flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full -left-10 sm:-left-12 z-10"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 + 0.15, ease: [0.34, 1.56, 0.64, 1] }}
@@ -70,10 +70,10 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
             <motion.div
                 whileHover={{ scale: 1.015, x: 4 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="ml-8 p-6 bg-base-100 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-base-200 max-w-3xl"
+                className="ml-6 sm:ml-8 p-4 sm:p-6 bg-base-100 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-base-200 max-w-3xl"
             >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-base-content">
+                    <h3 className="text-base sm:text-xl font-bold text-base-content">
                         {t(`${translationPrefix}.${item.id}.title`)}
                     </h3>
                     <span className="px-3 py-1 text-xs font-semibold text-primary bg-primary/10 rounded-full mt-2 sm:mt-0">
@@ -126,7 +126,7 @@ interface TimelineProps {
 
 const Timeline = ({ items, translationPrefix = 'formation' }: TimelineProps) => {
     return (
-        <ol className="relative mt-10 ml-6 space-y-10">
+        <ol className="relative mt-10 ml-4 sm:ml-6 space-y-10">
             {/* Animated vertical line */}
             <motion.div
                 className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary/20 origin-top"

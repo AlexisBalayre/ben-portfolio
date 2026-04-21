@@ -24,7 +24,7 @@ const SkillsSection: React.FC<{ skills: Skill[] }> = ({ skills }) => {
   const { t } = useTranslation('common');
 
   return (
-    <section className="py-16 bg-gray-100 text-base-content px-4 group section-avec-trait">
+    <section className="py-12 sm:py-16 bg-gray-100 text-base-content px-4 sm:px-6 md:px-8 group section-avec-trait">
       <motion.div
         className="max-w-5xl mx-auto text-center mb-10"
         initial={{ opacity: 0, y: 30 }}
@@ -32,7 +32,7 @@ const SkillsSection: React.FC<{ skills: Skill[] }> = ({ skills }) => {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-wide text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">
           {t('home.skills_title')}
         </h2>
         <hr className="trait mx-auto" aria-hidden="true" />
@@ -41,7 +41,7 @@ const SkillsSection: React.FC<{ skills: Skill[] }> = ({ skills }) => {
         </p>
       </motion.div>
 
-      <div className="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+      <div className="container mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
         {skills.map((skill, index) => (
           <motion.div
             key={index}

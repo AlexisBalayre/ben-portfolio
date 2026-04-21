@@ -34,9 +34,9 @@ const AssociativeCareer: NextPage = () => {
         </div>
         <div className="hero-overlay bg-opacity-20 z-10 absolute inset-0" />
         <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col z-20 relative">
-          <div className="animate-fade-in-down max-w-lg">
-            <h1 className="text-6xl font-bold mb-4 text-white">{t("associative.title")}</h1>
-            <p className="mb-6 text-white">
+          <div className="animate-fade-in-down max-w-lg px-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white">{t("associative.title")}</h1>
+            <p className="mb-6 text-base sm:text-lg text-white">
               {t("associative.hero_desc")}
             </p>
           </div>
@@ -44,9 +44,9 @@ const AssociativeCareer: NextPage = () => {
       </div>
 
       {/* ISEP Live */}
-      <div className="w-full p-10 md:px-40 grid">
+      <div className="w-full p-6 sm:p-10 md:px-24 lg:px-40 grid">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-center">{t("associative.iseplive.title")}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center">{t("associative.iseplive.title")}</h2>
           <hr className="trait" aria-hidden="true" />
         </div>
 
@@ -71,7 +71,7 @@ const AssociativeCareer: NextPage = () => {
             alt="ISEP Live Logo"
             width={300}
             height={300}
-            className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
+            className="rounded-full flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
           />
         </div>
 
@@ -88,7 +88,7 @@ const AssociativeCareer: NextPage = () => {
             alt="ISEP Life Logo"
             width={300}
             height={300}
-            className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
+            className="rounded-full flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
           />
           <div className="md:pl-10 sm:mb-8">
             <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
@@ -170,9 +170,9 @@ const AssociativeCareer: NextPage = () => {
       </div>
 
       {/* VIZION BDE */}
-      <div className="bg-base-content w-full p-10 md:px-40 grid">
+      <div className="bg-base-content w-full p-6 sm:p-10 md:px-24 lg:px-40 grid">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-base-100 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-base-100 text-center">
             {t("associative.vizion.title")}
           </h2>
           <hr className="trait" aria-hidden="true" />
@@ -242,9 +242,9 @@ const AssociativeCareer: NextPage = () => {
       </div>
 
       {/* ISEP Drone */}
-      <div className="bg-white w-full p-10 md:px-40 grid">
+      <div className="bg-white w-full p-6 sm:p-10 md:px-24 lg:px-40 grid">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-black text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-black text-center">
             {t("associative.isepdrone.title")}
           </h2>
           <hr className="trait" aria-hidden="true" />
@@ -272,7 +272,7 @@ const AssociativeCareer: NextPage = () => {
             alt="ISEP Drone Logo"
             width={300}
             height={300}
-            className="rounded-full flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
+            className="rounded-full flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
           />
         </div>
 
@@ -366,7 +366,7 @@ const AssociativeCareer: NextPage = () => {
             alt="ISEP Drone illustration"
             width={300}
             height={300}
-            className="rounded-xl flex-shrink-0 sm:w-56 md:w-96 lg:w-72 xl:w-56 hidden md:block"
+            className="rounded-xl flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
           />
         </div>
 

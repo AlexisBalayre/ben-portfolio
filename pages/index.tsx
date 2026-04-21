@@ -37,7 +37,7 @@ const Home: NextPage = () => {
 
             {/* ── Hero ─────────────────────────────────────────────────── */}
             <motion.div
-                className="hero md:mt-20 md:mb-20 mt-10"
+                className="hero mt-8 sm:mt-12 md:mt-20 md:mb-20"
                 variants={stagger}
                 initial="hidden"
                 animate="visible"
@@ -49,13 +49,13 @@ const Home: NextPage = () => {
                             alt="Photo de Benjamin Balayre"
                             width={300}
                             height={300}
-                            className="max-w-sm rounded-full shadow-2xl"
+                            className="w-48 sm:w-64 md:w-72 lg:max-w-sm rounded-full shadow-2xl"
                             priority
                         />
                     </motion.div>
                     <motion.div variants={stagger}>
-                        <motion.h1 variants={fadeUp} className="text-5xl font-bold">{t('home.name')}</motion.h1>
-                        <motion.h2 variants={fadeUp} className="text-3xl">{t('home.role')}</motion.h2>
+                        <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl font-bold">{t('home.name')}</motion.h1>
+                        <motion.h2 variants={fadeUp} className="text-xl sm:text-2xl md:text-3xl">{t('home.role')}</motion.h2>
                         <motion.p variants={fadeUp} className="py-6">{t('home.welcome')}</motion.p>
                         <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mt-2">
                             <a href={`/assets/documents/${cvFile}`} className="btn btn-primary rounded-xl text-base-100" download>
@@ -74,7 +74,7 @@ const Home: NextPage = () => {
 
             {/* ── Education Timeline ───────────────────────────────────── */}
             <motion.div
-                className="md:py-12 mt-10 md:mt-0 bg-gray-100 w-full px-10 md:px-20 group"
+                className="py-8 md:py-12 mt-8 md:mt-0 bg-gray-100 w-full px-4 sm:px-8 md:px-20 group"
                 id="education"
                 variants={fadeUp}
                 initial="hidden"
@@ -117,7 +117,7 @@ const Home: NextPage = () => {
 
             {/* ── Experience Timeline ──────────────────────────────────── */}
             <motion.div
-                className="md:py-12 mt-10 md:mt-0 w-full px-10 md:px-20 group"
+                className="py-8 md:py-12 mt-8 md:mt-0 w-full px-4 sm:px-8 md:px-20 group"
                 id="experience"
                 variants={fadeUp}
                 initial="hidden"
@@ -170,19 +170,19 @@ const Home: NextPage = () => {
                 viewport={{ once: true, margin: '-80px' }}
             >
                 <div className="flex flex-col md:flex-row items-stretch">
-                    <div className="flex-1 flex flex-col justify-center p-10 md:p-20 group">
+                    <div className="flex-1 flex flex-col justify-center p-6 sm:p-10 md:p-20 group">
                         <div className="flex items-center mb-6">
                             <CameraIcon className="h-8 w-8 mr-2 -mt-1.5 text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1" />
                             <h2 className="text-3xl md:text-4xl font-bold text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.portfolio_preview_title')}</h2>
                         </div>
-                        <p className="mb-6 text-lg">{t('home.portfolio_preview_desc')}</p>
+                        <p className="mb-6 text-base sm:text-lg">{t('home.portfolio_preview_desc')}</p>
                         <div>
                             <Link href="/portfolio" scroll={false} className="btn btn-primary rounded-xl text-base-100">
                                 {t('home.portfolio_preview_button')}
                             </Link>
                         </div>
                     </div>
-                    <div className="flex-1 relative min-h-[400px] md:min-h-[600px] overflow-hidden" data-cursor="view">
+                    <div className="flex-1 relative min-h-[280px] sm:min-h-[400px] md:min-h-[600px] overflow-hidden" data-cursor="view">
                         <motion.div
                             className="absolute inset-0"
                             whileHover={{ scale: 1.04 }}
@@ -202,7 +202,7 @@ const Home: NextPage = () => {
 
             {/* ── Associative Career Preview ───────────────────────────── */}
             <motion.div
-                className="w-full relative h-[600px] overflow-hidden"
+                className="w-full relative min-h-[400px] sm:min-h-[500px] md:h-[600px] overflow-hidden"
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -225,12 +225,12 @@ const Home: NextPage = () => {
                     />
                 </motion.div>
                 <div className="absolute inset-0 bg-black/60 z-10" />
-                <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 md:px-20 group">
+                <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 sm:px-8 md:px-20 group">
                     <div className="flex items-center justify-center mb-6">
                         <UserGroupIcon className="h-8 w-8 mr-2 -mt-1.5 text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1" />
                         <h2 className="text-3xl md:text-4xl font-bold text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1">{t('home.associative_preview_title')}</h2>
                     </div>
-                    <p className="mb-8 text-lg text-white max-w-2xl">{t('home.associative_preview_desc')}</p>
+                    <p className="mb-8 text-base sm:text-lg text-white max-w-2xl">{t('home.associative_preview_desc')}</p>
                     <Link href="/associativeCareer" scroll={false} className="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-xl hover:scale-105 transition-transform">
                         {t('home.associative_preview_button')}
                     </Link>
