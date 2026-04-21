@@ -20,14 +20,14 @@ const Portfolio: NextPage = () => {
       {/* 2. Dernier projet vidéo */}
       <LatestProject />
 
-      {/* 3. Boutique Benevolence — tirages fine art */}
-      <BenevolenceSection />
+      {/* 3. Compétences créatives */}
+      <SkillsSection skills={skills} />
 
       {/* 4. Portfolio complet externe */}
       <Projects />
 
-      {/* 5. Compétences créatives */}
-      <SkillsSection skills={skills} />
+      {/* 5. Boutique Benevolence — appel à l'action en fin de page */}
+      <BenevolenceSection />
     </div>
   );
 };

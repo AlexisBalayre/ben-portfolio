@@ -2,38 +2,62 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { AcademicCapIcon, BriefcaseIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
-
+import { motion } from 'framer-motion';
 
 import Timeline from '~~/components/Timeline';
 import TimelineDark from '~~/components/TimelineDark';
+import Carousel from '~~/components/Carousel';
 import experiences from "~~/public/assets/data/experiences.json";
 import education from "~~/public/assets/data/formation.json";
 import { NextPage } from 'next/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 
+const fadeUp = {
+  hidden:  { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const stagger = {
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
 const Home: NextPage = () => {
     const { t } = useTranslation('common');
     const { locale } = useRouter();
     const [educationExpanded, setEducationExpanded] = useState(false);
     const [experienceExpanded, setExperienceExpanded] = useState(false);
-    
+
     const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
 
     return (
-        <div className="pt-14 w-full overflow-y-auto overflow-x-hidden bg-white">
-            <div className="hero md:mt-20 md:mb-20 mt-10">
+        <div className="pt-14 w-full overflow-x-hidden bg-white">
+
+            {/* ── Hero ─────────────────────────────────────────────────── */}
+            <motion.div
+                className="hero md:mt-20 md:mb-20 mt-10"
+                variants={stagger}
+                initial="hidden"
+                animate="visible"
+            >
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <Image src="/assets/images/pp.jpg" alt="Photo de Benjamin Balayre" width={300} height={300} className="max-w-sm rounded-full shadow-2xl" priority />
-                    <div>
-                        <h1 className="text-5xl font-bold">{t('home.name')}</h1>
-                        <h2 className="text-3xl">{t('home.role')}</h2>
-                        <p className="py-6">
-                            {t('home.welcome')}
-                        </p>
-                        <div className="flex flex-wrap gap-4 mt-2">
+                    <motion.div variants={fadeUp}>
+                        <Image
+                            src="/assets/images/pp.jpg"
+                            alt="Photo de Benjamin Balayre"
+                            width={300}
+                            height={300}
+                            className="max-w-sm rounded-full shadow-2xl"
+                            priority
+                        />
+                    </motion.div>
+                    <motion.div variants={stagger}>
+                        <motion.h1 variants={fadeUp} className="text-5xl font-bold">{t('home.name')}</motion.h1>
+                        <motion.h2 variants={fadeUp} className="text-3xl">{t('home.role')}</motion.h2>
+                        <motion.p variants={fadeUp} className="py-6">{t('home.welcome')}</motion.p>
+                        <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mt-2">
                             <a href={`/assets/documents/${cvFile}`} className="btn btn-primary rounded-xl text-base-100" download>
                                 {t('home.download_resume')}
                             </a>
@@ -43,14 +67,20 @@ const Home: NextPage = () => {
                             <a href="https://benevolence.fr" target="_blank" rel="noopener noreferrer" className="btn btn-primary rounded-xl text-base-100">
                                 {t('home.quick_benevolence')}
                             </a>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
 
-
-            {/* Education Timeline */}
-            <div className="md:py-12 mt-10 md:mt-0 bg-gray-100 w-full px-10 md:px-20 group" id="education">
+            {/* ── Education Timeline ───────────────────────────────────── */}
+            <motion.div
+                className="md:py-12 mt-10 md:mt-0 bg-gray-100 w-full px-10 md:px-20 group"
+                id="education"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+            >
                 <div className="max-w-4xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
                         <AcademicCapIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
@@ -83,10 +113,17 @@ const Home: NextPage = () => {
                         </button>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-            {/* Experience Timeline */}
-            <div className="md:py-12 mt-10 md:mt-0 w-full px-10 md:px-20 group" id="experience">
+            {/* ── Experience Timeline ──────────────────────────────────── */}
+            <motion.div
+                className="md:py-12 mt-10 md:mt-0 w-full px-10 md:px-20 group"
+                id="experience"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+            >
                 <div className="max-w-4xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
                         <BriefcaseIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
@@ -119,10 +156,19 @@ const Home: NextPage = () => {
                         </button>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-            {/* Portfolio Preview Section */}
-            <div className="w-full bg-base-200">
+            {/* ── Carousel voyages ─────────────────────────────────────── */}
+            <Carousel />
+
+            {/* ── Portfolio Preview ────────────────────────────────────── */}
+            <motion.div
+                className="w-full bg-base-200"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+            >
                 <div className="flex flex-col md:flex-row items-stretch">
                     <div className="flex-1 flex flex-col justify-center p-10 md:p-20 group">
                         <div className="flex items-center mb-6">
@@ -136,29 +182,49 @@ const Home: NextPage = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="flex-1 relative min-h-[400px] md:min-h-[600px]">
-                        <Image
-                            src="/assets/images/portfolio/Japon/image1.jpg"
-                            alt="Photographie de voyage au Japon"
-                            fill
-                            style={{ objectFit: "cover" }}
-                            quality={80}
-                        />
+                    <div className="flex-1 relative min-h-[400px] md:min-h-[600px] overflow-hidden" data-cursor="view">
+                        <motion.div
+                            className="absolute inset-0"
+                            whileHover={{ scale: 1.04 }}
+                            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        >
+                            <Image
+                                src="/assets/images/portfolio/Japon/image1.jpg"
+                                alt="Photographie de voyage au Japon"
+                                fill
+                                style={{ objectFit: "cover" }}
+                                quality={80}
+                            />
+                        </motion.div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-
-            {/* Associative Career Preview Section */}
-            <div className="w-full relative h-[600px]">
-                <Image 
-                    src="/assets/images/portfolio/asso2.jpg" 
-                    alt="Associative Career Preview" 
-                    fill
-                    style={{ objectFit: "cover" }}
-                    className="z-0"
-                />
-                <div className="absolute inset-0 bg-black/60 z-10"></div>
+            {/* ── Associative Career Preview ───────────────────────────── */}
+            <motion.div
+                className="w-full relative h-[600px] overflow-hidden"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+            >
+                <motion.div
+                    className="absolute inset-0"
+                    initial={{ scale: 1.08 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    viewport={{ once: true }}
+                >
+                    <Image
+                        src="/assets/images/portfolio/asso2.jpg"
+                        alt="Associative Career Preview"
+                        fill
+                        style={{ objectFit: "cover" }}
+                        className="z-0"
+                        data-cursor="view"
+                    />
+                </motion.div>
+                <div className="absolute inset-0 bg-black/60 z-10" />
                 <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 md:px-20 group">
                     <div className="flex items-center justify-center mb-6">
                         <UserGroupIcon className="h-8 w-8 mr-2 -mt-1.5 text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1" />
@@ -169,7 +235,7 @@ const Home: NextPage = () => {
                         {t('home.associative_preview_button')}
                     </Link>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 }
