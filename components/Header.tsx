@@ -12,6 +12,7 @@ import {
 import { useOutsideClick } from "~~/hooks";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface HeaderMenuLink {
   label: string;
@@ -29,44 +30,58 @@ export const menuLinks: HeaderMenuLink[] = [
 export const HeaderMenuLinks = ({ onSelect }: { onSelect?: () => void }) => {
   const { t } = useTranslation('common');
   const router = useRouter();
-  const [isActive, setIsActive] = useState({
-    aboutMe: true, portfolio: false, associativeCareer: false, contact: false,
-  });
+  const [activeSection, setActiveSection] = useState('aboutMe');
 
   const handleActive = (section: string) => {
-    if (section !== "contact") {
-      setIsActive({ aboutMe: false, portfolio: false, associativeCareer: false, contact: false, [section]: true });
-    }
     if (section === "contact") {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    } else {
-      router.push(`/${section}`, undefined, { scroll: false });
+      const footer = document.getElementById('contact');
+      if (footer) {
+        footer.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        router.push('/#contact', undefined, { scroll: false });
+      }
+      onSelect?.();
+      return;
     }
+    setActiveSection(section || 'aboutMe');
+    router.push(`/${section}`, undefined, { scroll: false });
     onSelect?.();
   };
 
   useEffect(() => {
     const currentSection = router.pathname.split("/")[1];
-    setIsActive({ aboutMe: false, portfolio: false, associativeCareer: false, contact: false, [currentSection]: true });
+    setActiveSection(currentSection || 'aboutMe');
   }, [router.pathname]);
 
   return (
     <>
-      {menuLinks.map(({ label, section, icon }) => (
-        <li key={section}>
-          <button
-            onClick={() => handleActive(section)}
-            className={`flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full transition-all duration-200 ${
-              isActive[section as keyof typeof isActive]
-                ? "bg-primary text-white shadow-sm"
-                : "text-base-content/70 hover:text-base-content hover:bg-base-200"
-            }`}
-          >
-            <span className="hidden sm:block" aria-hidden="true">{icon}</span>
-            {t(label)}
-          </button>
-        </li>
-      ))}
+      {menuLinks.map(({ label, section, icon }) => {
+        const key = section || 'aboutMe';
+        const isActive = activeSection === key;
+        return (
+          <li key={section} className="relative">
+            <button
+              onClick={() => handleActive(section)}
+              className={`relative flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full transition-colors duration-200 z-10 ${
+                isActive
+                  ? "text-white"
+                  : "text-base-content/70 hover:text-base-content"
+              }`}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 bg-primary rounded-full shadow-sm"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  style={{ zIndex: -1 }}
+                />
+              )}
+              <span className="hidden sm:block relative z-10" aria-hidden="true">{icon}</span>
+              <span className="relative z-10">{t(label)}</span>
+            </button>
+          </li>
+        );
+      })}
     </>
   );
 };
@@ -100,11 +115,19 @@ export const Header = () => {
               }
             </button>
 
-            {isDrawerOpen && (
-              <ul className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-base-200 p-2 flex flex-col gap-1">
-                <HeaderMenuLinks onSelect={() => setIsDrawerOpen(false)} />
-              </ul>
-            )}
+            <AnimatePresence>
+              {isDrawerOpen && (
+                <motion.ul
+                  initial={{ opacity: 0, scale: 0.95, y: -8 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -8 }}
+                  transition={{ duration: 0.18, ease: 'easeOut' }}
+                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-base-200 p-2 flex flex-col gap-1"
+                >
+                  <HeaderMenuLinks onSelect={() => setIsDrawerOpen(false)} />
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Logo */}

@@ -64,7 +64,7 @@ const Carousel = () => {
           >
             {t('home.carousel_title')}
           </h2>
-          <hr className="trait mx-auto" />
+          <hr className="trait mx-auto" aria-hidden="true" />
         </div>
 
         {/* Marquee Container */}

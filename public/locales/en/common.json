@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Portfolio",
-    "subtitle": "Welcome to my portfolio, a space dedicated to presenting my projects and galleries."
+    "subtitle": "Welcome to my portfolio, a space dedicated to presenting my projects and galleries.",
+    "showreel_button": "Watch the showreel"
   },
   "header": {
     "about_me": "About Me",
@@ -178,5 +179,20 @@
     "show_less": "Show less",
     "show_all": "Show all",
     "collapse": "Show less"
+  },
+  "meta": {
+    "home": {
+      "title": "Benjamin Balayre — ISEP Engineer & Photographer",
+      "description": "Discover Benjamin Balayre's background: ISEP engineering student, freelance photographer and videographer. Education, experiences, and student projects."
+    },
+    "portfolio": {
+      "title": "Portfolio — Benjamin Balayre",
+      "description": "Photo and video portfolio by Benjamin Balayre. Travel cinematics and fine art prints available on Benevolence."
+    },
+    "associativeCareer": {
+      "title": "Associative Experience — Benjamin Balayre",
+      "description": "ISEP Live, Vizion BDE, ISEP Drone: discover Benjamin Balayre's student associative involvement at ISEP."
+    },
+    "keywords": "Benjamin Balayre, ISEP engineer, photographer, videographer, Paris, Capgemini, portfolio, FPV drone, ISEP Live"
   }
 }

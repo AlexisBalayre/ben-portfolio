@@ -4,8 +4,6 @@ import React, { Fragment } from 'react';
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import useParallax from '~~/hooks/useParallax';
-
 import { InstagramLogo } from "~~/public/assets/svg/InstagramLogo";
 
 const renderHtmlText = (text: string) => {
@@ -20,21 +18,11 @@ const renderHtmlText = (text: string) => {
 
 const AssociativeCareer: NextPage = () => {
   const { t } = useTranslation("common");
-  const parallaxOffset = useParallax();
-
   return (
     <div className="w-full overflow-hidden">
       {/* Hero Section */}
       <div className="hero min-h-screen relative overflow-hidden">
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            overflow: 'hidden',
-            transform: `translate3d(0, ${parallaxOffset}px, 0)`,
-            willChange: 'transform',
-          }}
-        >
+        <div className="absolute inset-0">
           <Image
             src="/assets/images/portfolio/asso2.jpg"
             alt="Hero background"
@@ -59,7 +47,7 @@ const AssociativeCareer: NextPage = () => {
       <div className="w-full p-10 md:px-40 grid">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-center">{t("associative.iseplive.title")}</h2>
-          <hr className="trait" />
+          <hr className="trait" aria-hidden="true" />
         </div>
 
         <Image
@@ -187,7 +175,7 @@ const AssociativeCareer: NextPage = () => {
           <h2 className="text-3xl font-bold text-base-100 text-center">
             {t("associative.vizion.title")}
           </h2>
-          <hr className="trait" />
+          <hr className="trait" aria-hidden="true" />
         </div>
 
         <Image
@@ -259,7 +247,7 @@ const AssociativeCareer: NextPage = () => {
           <h2 className="text-3xl font-bold text-black text-center">
             {t("associative.isepdrone.title")}
           </h2>
-          <hr className="trait" />
+          <hr className="trait" aria-hidden="true" />
         </div>
 
         <Image
