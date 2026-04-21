@@ -3,11 +3,11 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const HeroSection    = dynamic(() => import('~~/components/HeroSection'),         { loading: () => <div className="min-h-screen bg-base-200 animate-pulse" /> });
-const BenevolenceSection = dynamic(() => import('~~/components/BenevolenceSection'), { loading: () => <div className="h-96 bg-[#0c0c0c] animate-pulse" /> });
-const Projects       = dynamic(() => import('~~/components/Projects'),             { loading: () => <div className="h-96 bg-base-200 animate-pulse" /> });
-const LatestProject  = dynamic(() => import('~~/components/LatestProject'),        { loading: () => <div className="h-96 bg-base-content animate-pulse" /> });
-const SkillsSection  = dynamic(() => import('~~/components/SkillsSection'),        { loading: () => <div className="h-96 bg-base-100 animate-pulse" /> });
+const HeroSection    = dynamic(() => import('~~/src/components/HeroSection'),         { loading: () => <div className="min-h-screen bg-base-200 animate-pulse" /> });
+const BenevolenceSection = dynamic(() => import('~~/src/components/BenevolenceSection'), { loading: () => <div className="h-96 bg-[#0c0c0c] animate-pulse" /> });
+const Projects       = dynamic(() => import('~~/src/components/Projects'),             { loading: () => <div className="h-96 bg-base-200 animate-pulse" /> });
+const LatestProject  = dynamic(() => import('~~/src/components/LatestProject'),        { loading: () => <div className="h-96 bg-base-content animate-pulse" /> });
+const SkillsSection  = dynamic(() => import('~~/src/components/SkillsSection'),        { loading: () => <div className="h-96 bg-base-100 animate-pulse" /> });
 
 import skills from "~~/public/assets/data/skills.json";
 

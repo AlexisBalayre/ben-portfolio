@@ -1,9 +1,9 @@
-import "~~/styles/globals.css";
+import "~~/src/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Header } from "~~/components/Header";
-import { MetaHeader } from "~~/components/MetaHeader";
-import { Footer } from "~~/components/Footer";
-import ErrorBoundary from "~~/components/ErrorBoundary";
+import { Header } from "~~/src/components/Header";
+import { MetaHeader } from "~~/src/components/MetaHeader";
+import { Footer } from "~~/src/components/Footer";
+import ErrorBoundary from "~~/src/components/ErrorBoundary";
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';

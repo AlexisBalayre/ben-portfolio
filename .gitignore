@@ -35,6 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Claude Code
+.claude/
+
 # Yarn Berry (v3+)
 .yarn/*
 !.yarn/patches

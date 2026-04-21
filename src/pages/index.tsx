@@ -5,9 +5,9 @@ import Image from 'next/image';
 import { AcademicCapIcon, BriefcaseIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 
-import Timeline from '~~/components/Timeline';
-import TimelineDark from '~~/components/TimelineDark';
-import Carousel from '~~/components/Carousel';
+import Timeline from '~~/src/components/Timeline';
+import TimelineDark from '~~/src/components/TimelineDark';
+import Carousel from '~~/src/components/Carousel';
 import experiences from "~~/public/assets/data/experiences.json";
 import education from "~~/public/assets/data/formation.json";
 import { NextPage } from 'next/types';
