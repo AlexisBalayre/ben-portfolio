@@ -36,8 +36,8 @@ const BenevolenceSection = () => {
   ];
 
   return (
-    <section className="w-full bg-white py-20 md:py-28 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col md:flex-row items-center gap-16 md:gap-20">
+    <section className="w-full bg-white py-14 sm:py-20 md:py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 flex flex-col md:flex-row items-center gap-10 sm:gap-16 md:gap-20">
 
         {/* Left — Content */}
         <motion.div
@@ -61,11 +61,11 @@ const BenevolenceSection = () => {
             {t('benevolence.tagline')}
           </motion.span>
 
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
+          <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             {t('benevolence.title')}
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="text-neutral-600 text-lg leading-relaxed mb-10 max-w-sm">
+          <motion.p variants={fadeUp} className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-10 max-w-sm">
             {t('benevolence.desc')}
           </motion.p>
 
@@ -111,13 +111,13 @@ const BenevolenceSection = () => {
         </div>
 
         {/* Mobile — simple photo strip */}
-        <div className="flex md:hidden gap-3 w-full overflow-x-auto pb-2">
+        <div className="flex md:hidden gap-3 w-full overflow-x-auto pb-2 -mx-4 px-4">
           {prints.map((p) => (
             <div
               key={p.src}
-              className="relative flex-shrink-0 w-[240px] aspect-[4/3] rounded-sm overflow-hidden shadow-xl"
+              className="relative flex-shrink-0 w-[calc(80vw-1rem)] max-w-[300px] sm:w-64 aspect-[4/3] rounded-sm overflow-hidden shadow-xl"
             >
-              <Image src={p.src} alt={p.label} fill className="object-cover" sizes="240px" />
+              <Image src={p.src} alt={p.label} fill className="object-cover" sizes="(max-width: 640px) 80vw, 256px" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               <span className="absolute bottom-3 left-3 text-white/90 font-medium text-xs tracking-widest uppercase shadow-sm">
                 {p.label}

@@ -48,11 +48,11 @@ const HeroSection = () => {
       {/* Content */}
       <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col z-20 relative px-4">
         <div className="max-w-2xl">
-          <h1 className="text-6xl md:text-7xl font-bold mb-4 text-white leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white leading-tight">
             <SplitText text={t('hero.title')} />
           </h1>
           <motion.p
-            className="mb-8 text-white/80 text-lg"
+            className="mb-8 text-white/80 text-base sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55 }}

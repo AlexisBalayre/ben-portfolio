@@ -16,15 +16,15 @@ const LanguageSwitcher = () => {
       onClick={changeLanguage}
       aria-label={t('header.switch_language')}
       className={`
-        relative w-16 h-8 rounded-full p-1 cursor-pointer transition-colors duration-300
+        relative w-16 h-9 rounded-full p-1 cursor-pointer transition-colors duration-300 min-h-[36px]
         ${isEnglish ? 'bg-primary' : 'bg-neutral'}
       `}
     >
       <div
         className={`
-          w-6 h-6 bg-base-100 rounded-full shadow-md flex items-center justify-center text-sm
+          w-7 h-7 bg-base-100 rounded-full shadow-md flex items-center justify-center text-sm
           transform transition-transform duration-300
-          ${isEnglish ? 'translate-x-8' : 'translate-x-0'}
+          ${isEnglish ? 'translate-x-[30px]' : 'translate-x-0'}
         `}
         aria-hidden="true"
       >

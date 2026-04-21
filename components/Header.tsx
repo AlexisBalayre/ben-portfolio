@@ -122,7 +122,7 @@ export const Header = () => {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: -8 }}
                   transition={{ duration: 0.18, ease: 'easeOut' }}
-                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-base-200 p-2 flex flex-col gap-1"
+                  className="absolute top-full left-0 mt-2 w-56 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-xl border border-base-200 p-2 flex flex-col gap-1"
                 >
                   <HeaderMenuLinks onSelect={() => setIsDrawerOpen(false)} />
                 </motion.ul>
@@ -136,8 +136,8 @@ export const Header = () => {
             scroll={false}
             className="flex flex-col leading-none hover:opacity-80 transition-opacity"
           >
-            <span className="font-bold text-sm tracking-tight">Benjamin Balayre</span>
-            <span className="text-[11px] text-base-content/50 font-normal">{t('header.student_role')}</span>
+            <span className="font-bold text-xs sm:text-sm tracking-tight">Benjamin Balayre</span>
+            <span className="text-[10px] sm:text-[11px] text-base-content/50 font-normal">{t('header.student_role')}</span>
           </Link>
 
           {/* Desktop nav */}
@@ -154,7 +154,7 @@ export const Header = () => {
           <a
             href={`/assets/documents/${cvFile}`}
             download
-            className="btn btn-primary text-sm px-4 py-2 rounded-lg"
+            className="btn btn-primary text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-lg min-h-[40px]"
           >
             {t('header.download_resume')}
           </a>

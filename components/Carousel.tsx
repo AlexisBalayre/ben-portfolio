@@ -56,9 +56,9 @@ const Carousel = () => {
         <div className="mb-10 px-4">
           <h2
             className="
-              text-3xl font-bold tracking-wide 
-              text-base-content/80 
-              transition-all duration-500 
+              text-2xl sm:text-3xl font-bold tracking-wide
+              text-base-content/80
+              transition-all duration-500
               hover:text-base-content
             "
           >
@@ -70,22 +70,22 @@ const Carousel = () => {
         {/* Marquee Container */}
         <div className="relative w-full overflow-hidden">
           {/* Fading Edges for better assimilation */}
-          <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-base-100 to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-base-100 to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-6 sm:w-16 md:w-32 bg-gradient-to-r from-base-100 to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-6 sm:w-16 md:w-32 bg-gradient-to-l from-base-100 to-transparent z-20 pointer-events-none" />
 
           {/* Scrolling Track */}
           <div className="flex w-max animate-scroll hover:pause">
             {marqueeSlides.map((slide, index) => (
               <div 
                 key={`${slide.src}-${index}`} 
-                className="relative flex-shrink-0 w-[300px] h-[200px] md:w-[400px] md:h-[260px] mx-2 md:mx-4 rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300"
+                className="relative flex-shrink-0 w-[260px] h-[175px] sm:w-[320px] sm:h-[215px] md:w-[400px] md:h-[260px] mx-2 md:mx-4 rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300"
               >
                 <Image
                   src={slide.src}
                   alt={slide.label}
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-110"
-                  sizes="(max-width: 768px) 300px, 400px"
+                  sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, 400px"
                 />
                 
                 {/* Overlay with subtle label */}
