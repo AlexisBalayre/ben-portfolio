@@ -4,15 +4,19 @@ import { Header } from "~~/src/components/Header";
 import { MetaHeader } from "~~/src/components/MetaHeader";
 import { Footer } from "~~/src/components/Footer";
 import ErrorBoundary from "~~/src/components/ErrorBoundary";
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import { appWithTranslation } from 'next-i18next';
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+// Police auto-hébergée : fichier variable (wght 200-800), sous-ensemble latin.
+// Évite tout appel à Google Fonts, au build comme chez le visiteur.
+const jakarta = localFont({
+  src: '../fonts/PlusJakartaSans-latin-variable.woff2',
+  weight: '200 800',
+  style: 'normal',
+  display: 'swap',
   variable: '--font-jakarta',
 });
 
