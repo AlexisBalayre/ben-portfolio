@@ -1,22 +1,40 @@
 [
   {
-    "id": "oslomet",
-    "logo": "oslomet2.png",
-    "period": "Août 2025 - Décembre 2025"
-  },
-  {
     "id": "isep_ing",
     "logo": "isep.png",
-    "period": "Septembre 2023 - Juillet 2026"
-  },
-  {
-    "id": "inha",
-    "logo": "inha.png",
-    "period": "Fevrier 2023 - Juin 2023"
+    "period": "Septembre 2023 - Juillet 2026",
+    "nature": "cursus",
+    "start": "2023-09",
+    "end": "2026-08",
+    "exchanges": [
+      {
+        "id": "oslomet",
+        "logo": "oslomet2.png",
+        "period": "Août 2025 - Décembre 2025",
+        "nature": "exchange",
+        "start": "2025-08",
+        "end": "2026-01",
+        "flag": "🇳🇴"
+      }
+    ]
   },
   {
     "id": "isep_cii",
     "logo": "isep.png",
-    "period": "2021 - 2023"
+    "period": "2021 - 2023",
+    "nature": "cursus",
+    "start": "2021-09",
+    "end": "2023-09",
+    "exchanges": [
+      {
+        "id": "inha",
+        "logo": "inha.png",
+        "period": "Février 2023 - Juin 2023",
+        "nature": "exchange",
+        "start": "2023-02",
+        "end": "2023-07",
+        "flag": "🇰🇷"
+      }
+    ]
   }
 ]

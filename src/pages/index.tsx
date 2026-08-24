@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { AcademicCapIcon, BriefcaseIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, BriefcaseIcon, CalendarDaysIcon, CameraIcon, Squares2X2Icon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 
 import Timeline from '~~/src/components/Timeline';
 import TimelineDark from '~~/src/components/TimelineDark';
 import Carousel from '~~/src/components/Carousel';
+import SkillTree from '~~/src/components/SkillTree';
+import ParallelTimeline from '~~/src/components/ParallelTimeline';
 import experiences from "~~/public/assets/data/experiences.json";
 import education from "~~/public/assets/data/formation.json";
+import skillTree from "~~/public/assets/data/skillTree.json";
 import { NextPage } from 'next/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
@@ -27,7 +30,6 @@ const stagger = {
 const Home: NextPage = () => {
     const { t } = useTranslation('common');
     const { locale } = useRouter();
-    const [educationExpanded, setEducationExpanded] = useState(false);
     const [experienceExpanded, setExperienceExpanded] = useState(false);
 
     const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
@@ -72,6 +74,25 @@ const Home: NextPage = () => {
                 </div>
             </motion.div>
 
+            {/* ── Frise parcours (formation / expérience en parallèle) ──── */}
+            <motion.section
+                className="w-full px-4 sm:px-8 md:px-20 py-8 md:py-12 group"
+                id="parcours"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+            >
+                <div className="max-w-5xl mx-auto">
+                    <span className="flex flex-row items-center justify-center md:justify-start">
+                        <CalendarDaysIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:-translate-y-1">{t('journey.title')}</h2>
+                    </span>
+                    <p className="max-w-3xl py-6">{t('journey.subtitle')}</p>
+                    <ParallelTimeline education={education} experiences={experiences} />
+                </div>
+            </motion.section>
+
             {/* ── Education Timeline ───────────────────────────────────── */}
             <motion.div
                 className="py-8 md:py-12 mt-8 md:mt-0 bg-gray-100 w-full px-4 sm:px-8 md:px-20 group"
@@ -87,30 +108,8 @@ const Home: NextPage = () => {
                         <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.education_title')}</h2>
                     </span>
                     <p className="py-6">{t('home.education_desc')}</p>
-                    <div className="relative">
-                        <div
-                            className="overflow-hidden transition-all duration-500"
-                            style={{ maxHeight: educationExpanded ? '2000px' : '420px' }}
-                        >
-                            <Timeline items={education} />
-                        </div>
-                        {!educationExpanded && (
-                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-100 to-transparent pointer-events-none" />
-                        )}
-                    </div>
-                    <div className="flex justify-center mt-4 pb-8">
-                        <button
-                            onClick={() => setEducationExpanded(!educationExpanded)}
-                            className="flex items-center gap-2 text-sm font-medium text-primary border border-primary/30 px-6 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
-                        >
-                            {educationExpanded ? t('timeline.collapse') : t('timeline.show_all')}
-                            <svg
-                                className={`w-4 h-4 transition-transform duration-300 ${educationExpanded ? 'rotate-180' : ''}`}
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
+                    <div className="pb-8">
+                        <Timeline items={education} />
                     </div>
                 </div>
             </motion.div>
@@ -157,6 +156,34 @@ const Home: NextPage = () => {
                     </div>
                 </div>
             </motion.div>
+
+            {/* ── Skill Tree ───────────────────────────────────────────── */}
+            <motion.section
+                className="relative w-full overflow-hidden bg-secondary py-10 md:py-16 px-4 sm:px-8 md:px-20 group"
+                id="competences"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+            >
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 opacity-[0.05]"
+                    style={{
+                        backgroundImage:
+                            'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+                        backgroundSize: '28px 28px',
+                    }}
+                />
+                <div className="relative max-w-4xl mx-auto">
+                    <span className="flex flex-row items-center justify-center md:justify-start">
+                        <Squares2X2Icon className="h-8 w-8 mr-2 -mt-1.5 text-white/80 transition-all duration-500 group-hover:text-white group-hover:-translate-y-1" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-white/80 transition-all duration-500 group-hover:text-white group-hover:-translate-y-1">{t('skill_tree.title')}</h2>
+                    </span>
+                    <p className="max-w-2xl py-6 text-sm sm:text-base text-white/60">{t('skill_tree.subtitle')}</p>
+                    <SkillTree branches={skillTree} />
+                </div>
+            </motion.section>
 
             {/* ── Carousel voyages ─────────────────────────────────────── */}
             <Carousel />
