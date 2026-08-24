@@ -2,31 +2,52 @@
   {
     "id": "capgemini_cdi",
     "logo": "capgemini-invent.jpg",
-    "period": "À partir de septembre 2026"
+    "period": "À partir de septembre 2026",
+    "nature": "permanent",
+    "start": "2026-09",
+    "end": "2027-07",
+    "ongoing": true
   },
   {
     "id": "capgemini",
     "logo": "capgemini-invent.jpg",
-    "period": "Janvier 2026 – Juin 2026"
+    "period": "Janvier 2026 – Juin 2026",
+    "nature": "internship",
+    "start": "2026-01",
+    "end": "2026-07",
+    "integratedIn": "isep_ing"
   },
   {
     "id": "sidetrade",
     "logo": "sidetrade.jpg",
-    "period": "Septembre 2024 – Janvier 2025"
+    "period": "Septembre 2024 – Janvier 2025",
+    "nature": "internship",
+    "start": "2024-09",
+    "end": "2025-02",
+    "integratedIn": "isep_ing"
   },
   {
     "id": "freelance_dev",
     "logo": "freelance-dev.png",
-    "period": "Depuis 2024"
+    "period": "Depuis janvier 2026",
+    "nature": "freelance",
+    "start": "2026-01",
+    "end": "2027-07",
+    "ongoing": true
   },
   {
     "id": "freelance",
     "logo": "benevolence.png",
-    "period": "Depuis 2024"
+    "period": "Depuis 2024",
+    "nature": "freelance",
+    "start": "2024-01",
+    "end": "2027-07",
+    "ongoing": true
   },
   {
     "id": "microsoft",
     "logo": "MS.png",
-    "period": "2017"
+    "period": "2017",
+    "nature": "internship"
   }
 ]

@@ -2,13 +2,25 @@ import React, { Fragment, useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import { GlobeAltIcon } from '@heroicons/react/24/outline';
+
+interface ExchangeEntry {
+    id: string;
+    logo: string;
+    period: string;
+    flag?: string;
+}
+
+export interface TimelineEntry {
+    id: string;
+    logo: string;
+    period: string;
+    /** Semestres d'échange effectués *pendant* ce cursus — affichés en sous-branche. */
+    exchanges?: ExchangeEntry[];
+}
 
 interface TimelineItemProps {
-    item: {
-        id: string;
-        logo: string;
-        period: string;
-    };
+    item: TimelineEntry;
     index: number;
     translationPrefix: string;
 }
@@ -40,6 +52,7 @@ const itemVariants = {
 const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => {
     const { t } = useTranslation('common');
     const [expanded, setExpanded] = useState(false);
+    const exchanges = item.exchanges ?? [];
 
     return (
         <motion.li
@@ -81,6 +94,53 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                     </span>
                 </div>
 
+                {/* Sous-branche : échanges effectués pendant ce cursus */}
+                {exchanges.length > 0 && (
+                    <div className="mb-4">
+                        <div className="flex items-center gap-1.5 mb-2">
+                            <GlobeAltIcon className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
+                            <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                                {t('timeline.exchange_label')}
+                            </span>
+                        </div>
+                        <ul className="space-y-3 pl-5 border-l-2 border-dashed border-primary/30">
+                            {exchanges.map((exchange) => (
+                                <li key={exchange.id} className="relative">
+                                    <span
+                                        aria-hidden="true"
+                                        className="absolute -left-[1.55rem] top-5 h-2.5 w-2.5 rounded-full bg-primary/50 ring-4 ring-base-100"
+                                    />
+                                    <div className="flex items-start gap-3 rounded-lg border border-primary/15 bg-primary/5 p-3">
+                                        <Image
+                                            className="rounded-full object-cover shrink-0"
+                                            src={`/assets/images/${exchange.logo}`}
+                                            alt={t(`${translationPrefix}.${exchange.id}.title`)}
+                                            width={36}
+                                            height={36}
+                                        />
+                                        <div className="min-w-0 flex-1">
+                                            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                                                <p className="text-sm font-semibold text-base-content">
+                                                    {exchange.flag && (
+                                                        <span className="mr-1.5" aria-hidden="true">{exchange.flag}</span>
+                                                    )}
+                                                    {t(`${translationPrefix}.${exchange.id}.title`)}
+                                                </p>
+                                                <span className="text-[11px] font-semibold text-primary whitespace-nowrap">
+                                                    {t(`${translationPrefix}.${exchange.id}.period`)}
+                                                </span>
+                                            </div>
+                                            <p className="mt-1 text-xs leading-relaxed text-base-content/70">
+                                                {t(`${translationPrefix}.${exchange.id}.summary`)}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
                 <AnimatePresence>
                     {expanded && (
                         <motion.div
@@ -93,6 +153,17 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                             <div className="p-4 mb-4 text-sm text-base-content/70 bg-base-200/50 rounded-lg border-l-4 border-primary">
                                 {renderHtmlText(t(`${translationPrefix}.${item.id}.description`))}
                             </div>
+                            {exchanges.map((exchange) => (
+                                <div
+                                    key={exchange.id}
+                                    className="p-4 mb-4 text-sm text-base-content/70 bg-base-200/50 rounded-lg border-l-4 border-primary/40"
+                                >
+                                    <p className="mb-1 font-semibold text-base-content">
+                                        {t(`${translationPrefix}.${exchange.id}.title`)}
+                                    </p>
+                                    {renderHtmlText(t(`${translationPrefix}.${exchange.id}.description`))}
+                                </div>
+                            ))}
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -120,7 +191,7 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
 };
 
 interface TimelineProps {
-    items: { id: string; logo: string; period: string }[];
+    items: TimelineEntry[];
     translationPrefix?: string;
 }
 
@@ -145,7 +216,7 @@ const Timeline = ({ items, translationPrefix = 'formation' }: TimelineProps) => 
                 style={{ transformOrigin: 'top', height: '100%' }}
             />
             {items.map((item, index) => (
-                <TimelineItem key={index} item={item} index={index} translationPrefix={translationPrefix} />
+                <TimelineItem key={item.id} item={item} index={index} translationPrefix={translationPrefix} />
             ))}
         </ol>
     );

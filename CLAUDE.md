@@ -38,8 +38,10 @@ ben-portfolio/
 │   │   ├── LatestProject.tsx     # Dernier projet vidéo (Norvège)
 │   │   ├── SkillsSection.tsx     # Compétences créatives avec SkillCard
 │   │   ├── SkillCard.tsx         # Carte skill individuelle
-│   │   ├── Timeline.tsx          # Timeline formations (fond gris)
+│   │   ├── Timeline.tsx          # Timeline formations (fond gris) — imbrique les échanges
 │   │   ├── TimelineDark.tsx      # Timeline expériences (fond blanc)
+│   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
+│   │   ├── SkillTree.tsx         # Arbre de compétences façon succès Minecraft
 │   │   ├── Carousel.tsx          # Carousel images de voyage
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
 │   │   ├── MetaHeader.tsx        # Meta tags SEO par page
@@ -113,10 +115,25 @@ Tous les contenus dynamiques sont dans `public/assets/data/` :
 | `projects.json` | Projets vidéo/photo (YouTube embeds) |
 | `skills.json` | Compétences créatives (SkillsSection) |
 | `tech.json` | Compétences tech (carousel dans Header ou autre) |
+| `skillTree.json` | Arbre de compétences (`SkillTree`) — branches + cases |
 
 Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de toucher aux composants.
 
-**Attention** : pour `experiences.json` et `formation.json`, seuls `id` et `logo` sont réellement lus par `Timeline`. Le titre, la description **et la période affichée** viennent des locales (`experiences.<id>.title` / `.description` / `.period`). Ajouter une entrée = 1 ligne dans le JSON + les 3 clés dans `fr/common.json` **et** `en/common.json`.
+**Attention** : pour `experiences.json` et `formation.json`, le texte affiché vient **toujours** des locales (`experiences.<id>.title` / `.description` / `.period` / `.short`). Le JSON ne porte que la structure :
+
+| Champ | Utilisé par | Rôle |
+|---|---|---|
+| `id`, `logo` | `Timeline`, `TimelineDark` | clé de traduction + logo rond |
+| `period` | — | mémo lisible ; l'affichage passe par la locale |
+| `nature` | `ParallelTimeline` | surtitre en petites majuscules sur la barre — clé de `journey.nature.*` (`cursus`, `exchange`, `internship`, `freelance`, `permanent`) |
+| `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans ces champs, l'entrée n'apparaît pas dans la frise |
+| `ongoing` | `ParallelTimeline` | flèche « → » + dégradé de fuite : l'activité se poursuit au-delà de la frise |
+| `integratedIn` | `ParallelTimeline` | *(experiences.json)* id du cursus : le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus », au lieu de la voie Expérience |
+| `exchanges[]` | `Timeline` + `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la timeline, segment ambre à l'intérieur de la barre dans la frise |
+
+Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `period`, `short` dans `fr/common.json` **et** `en/common.json`.
+
+Pour `skillTree.json` : chaque branche a un `id`, un `icon` (emoji) et des `nodes` ; chaque node a `id`, `name` (nom propre, non traduit), `icon` et `status` (`unlocked` | `progress` | `locked`). Le contexte de chaque compétence est traduit dans `skill_tree.nodes.<id>`.
 
 `projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`).
 
@@ -177,7 +194,7 @@ Node.js requis : **>=24.0.0**. Package manager : **yarn** (v3.6.4).
 
 | Route | Page | Description |
 |---|---|---|
-| `/` | `src/pages/index.tsx` | CV : formation, expériences, aperçu portfolio & asso |
+| `/` | `src/pages/index.tsx` | CV : frise parcours (`#parcours`), formation (`#education`), expériences (`#experience`), arbre de compétences (`#competences`), aperçu portfolio & asso |
 | `/portfolio` | `src/pages/portfolio.tsx` | Portfolio photo/vidéo + boutique Benevolence |
 | `/associativeCareer` | `src/pages/associativeCareer.tsx` | ISEP Live, Vizion BDE, ISEP Drone |
 

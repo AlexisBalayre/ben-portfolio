@@ -116,61 +116,74 @@
     "capgemini_cdi": {
       "title": "Consultant en transformation Data & IA – Capgemini Invent (frog)",
       "description": "Poste en CDI au sein de frog, l'entité design et innovation de Capgemini Invent, dans la continuité de mon stage. Accompagnement des transformations data et IA des grands comptes : cadrage des besoins, conception de cas d'usage et déploiement de solutions à l'échelle.",
-      "period": "À partir de septembre 2026"
+      "period": "À partir de septembre 2026",
+      "short": "Capgemini Invent"
     },
     "capgemini": {
       "title": "Consultant Stagiaire – Capgemini Invent (frog)",
       "description": "Stage au sein du service Frog Customer Data & Tech. Conception de stratégies innovantes et accompagnement des transformations digitales à grande échelle. Missions de conseil auprès de directions générales sur la stratégie, l'organisation et l'efficacité opérationnelle.",
-      "period": "Janvier 2026 – Juin 2026"
+      "period": "Janvier 2026 – Juin 2026",
+      "short": "Capgemini"
     },
     "sidetrade": {
       "title": "Data Analyst Stagiaire – Sidetrade",
       "description": "Stage dans l’équipe Datalake Ingest. Analyse des données du datalake, création de tableaux de bord stratégiques (Power BI) et collaboration avec les équipes R&D et Produit dans un environnement anglophone.",
-      "period": "Septembre 2024 – Janvier 2025"
+      "period": "Septembre 2024 – Janvier 2025",
+      "short": "Sidetrade"
     },
     "freelance_dev": {
       "title": "Auto-entrepreneur – Développeur web & applications",
       "description": "Conception et développement de sites web et d'applications en ligne pour des indépendants et des petites structures. Prise en charge complète du projet : cadrage du besoin, maquettes, développement, mise en production et maintenance.",
-      "period": "Depuis 2024"
+      "period": "Depuis janvier 2026",
+      "short": "Dev web & apps"
     },
     "freelance": {
       "title": "Auto-entrepreneur – Photographe & Vidéaste",
       "description": "Réalisation de contenus photo et vidéo pour événements et projets professionnels. Gestion complète de la relation client, captation, montage et direction artistique.",
-      "period": "Depuis 2024"
+      "period": "Depuis 2024",
+      "short": "Photo & vidéo"
     },
     "microsoft": {
       "title": "Stage d’observation – Microsoft",
       "description": "Stage d’observation au sein de Microsoft, permettant de découvrir les métiers de l’ingénierie logicielle, d’explorer l’univers du numérique et de confirmer mon orientation vers les technologies et l’innovation.",
-      "period": "2017"
+      "period": "2017",
+      "short": "Microsoft"
     }
   },
   "formation": {
     "oslomet": {
-      "title": "OsloMet (Norvège) – Échange académique",
-      "description": "Semestre à l'étranger orienté sur la Data Science et l'Intelligence Artificielle. Une immersion académique m'ayant permis d'étudier les systèmes d'information décisionnels avec une approche internationale.",
-      "period": "Août 2025 - Décembre 2025"
+      "title": "OsloMet – Oslo, Norvège",
+      "summary": "3ᵉ année du cycle ingénieur ISEP · Data Science & Intelligence Artificielle",
+      "description": "Semestre d'échange effectué dans le cadre de mon cycle ingénieur à l'ISEP, orienté Data Science et Intelligence Artificielle. Une immersion académique qui m'a permis d'étudier les systèmes d'information décisionnels avec une approche internationale, en anglais et au sein d'équipes multiculturelles.",
+      "period": "Août 2025 - Décembre 2025",
+      "short": "OsloMet"
     },
     "isep_ing": {
       "title": "ISEP – Cycle ingénieur (Paris)",
-      "description": "Cursus d'ingénieur du numérique avec une spécialisation en Business Intelligence (BI) et architecture des données. Formation globale aux métiers de l'informatique : de la conception logicielle au management des SI.",
-      "period": "Septembre 2023 - Juillet 2026"
+      "description": "Cursus d'ingénieur du numérique avec une spécialisation en Business Intelligence (BI) et architecture des données. Formation globale aux métiers de l'informatique : de la conception logicielle au management des SI, incluant un semestre d'échange à OsloMet (Norvège).",
+      "period": "Septembre 2023 - Juillet 2026",
+      "short": "ISEP · Cycle ingénieur"
     },
     "inha": {
-      "title": "Inha University (Corée du Sud) – Échange académique",
-      "description": "Un premier semestre d'expatriation riche d'enseignements, avec des cours de programmation système, leadership, électronique et de langue coréenne. Une de mes expériences les plus marquantes culturellement.",
-      "period": "Février 2023 - Juin 2023"
+      "title": "Inha University – Incheon, Corée du Sud",
+      "summary": "2ᵉ année du cycle international intégré ISEP · Programmation système & leadership",
+      "description": "Semestre d'échange effectué dans le cadre de mon cycle international intégré à l'ISEP, avec des cours de programmation système, leadership, électronique et de langue coréenne. Une première expatriation, culturellement l'une de mes expériences les plus marquantes.",
+      "period": "Février 2023 - Juin 2023",
+      "short": "Inha"
     },
     "isep_cii": {
-      "title": "ISEP – Cycle International Intégré",
-      "description": "Classes préparatoires intégrées. Formation accélérée en mathématiques, sciences du numérique, électronique et environnement international.",
-      "period": "2021 - 2023"
+      "title": "ISEP – Classe préparatoire intégrée internationale",
+      "description": "Classe préparatoire intégrée du cycle international de l'ISEP, enchaînée directement sur le cycle ingénieur. Formation accélérée en mathématiques, sciences du numérique et électronique, dans un environnement international incluant un semestre d'échange à Inha University (Corée du Sud).",
+      "period": "2021 - 2023",
+      "short": "ISEP · Prépa intégrée internationale"
     }
   },
   "timeline": {
     "read_more": "En savoir plus",
     "show_less": "Réduire",
     "show_all": "Voir tout",
-    "collapse": "Voir moins"
+    "collapse": "Voir moins",
+    "exchange_label": "Semestre d'échange intégré à ce cursus"
   },
   "meta": {
     "home": {
@@ -186,5 +199,119 @@
       "description": "ISEP Live, Vizion BDE, ISEP Drone : découvrez l'engagement associatif de Benjamin Balayre durant ses études à l'ISEP."
     },
     "keywords": "Benjamin Balayre, consultant Data & IA, Capgemini Invent, développeur web freelance, création de site web, application web, ingénieur ISEP, photographe, vidéaste, Paris, portfolio, drone FPV, ISEP Live"
+  },
+  "skill_tree": {
+    "title": "Arbre de compétences",
+    "subtitle": "Chaque case pleine est une compétence déjà mise en pratique sur le terrain. Les cases en transparence sont mes prochains objectifs.",
+    "hint": "Sélectionne une case pour afficher le détail.",
+    "progress": "{{unlocked}} compétences débloquées sur {{total}}",
+    "branch_progress": "{{unlocked}}/{{total}}",
+    "status": {
+      "unlocked": "Débloqué",
+      "progress": "En cours",
+      "locked": "À débloquer"
+    },
+    "node_aria": "{{name}} — {{status}}",
+    "branches": {
+      "data_ai": {
+        "title": "Data & Intelligence Artificielle",
+        "desc": "Analyser, modéliser et faire parler la donnée."
+      },
+      "data_eng": {
+        "title": "Data Engineering",
+        "desc": "Construire les pipelines et les socles qui alimentent la donnée."
+      },
+      "software": {
+        "title": "Développement & Web",
+        "desc": "Concevoir des produits web du front au back."
+      },
+      "web3": {
+        "title": "Blockchain & Web3",
+        "desc": "Smart contracts, oracles et données on-chain."
+      },
+      "cloud": {
+        "title": "Cloud & DevOps",
+        "desc": "Déployer, sécuriser et opérer en production."
+      },
+      "consulting": {
+        "title": "Conseil & Leadership",
+        "desc": "Cadrer, piloter et embarquer les équipes."
+      },
+      "creative": {
+        "title": "Création visuelle",
+        "desc": "Raconter des histoires en image et en mouvement."
+      }
+    },
+    "nodes": {
+      "python": "Mon langage principal depuis 2021 : data, scripting, IA.",
+      "pandas": "Nettoyage et manipulation de jeux de données volumineux.",
+      "sklearn": "Modèles de machine learning supervisés et non supervisés.",
+      "pytorch": "Deep learning appliqué et entraînement de modèles.",
+      "powerbi": "Tableaux de bord stratégiques construits chez Sidetrade.",
+      "genai": "LLM, RAG et agents : au cœur de mes missions chez Capgemini Invent.",
+      "mlops": "Industrialiser, monitorer et versionner les modèles en production.",
+      "sql": "Modélisation relationnelle, requêtes analytiques et optimisation.",
+      "nosql": "MongoDB, Cassandra ou InfluxDB selon les cas d'usage.",
+      "airflow": "Orchestration de pipelines de données planifiés.",
+      "spark": "Traitement distribué de gros volumes de données.",
+      "elastic": "Indexation et exploration de données avec Kibana.",
+      "kafka": "Streaming d'événements en temps réel.",
+      "dbt": "Transformations analytiques versionnées et testées.",
+      "javascript": "La base de tous mes projets web depuis mes débuts.",
+      "typescript": "Typage strict sur l'ensemble de mes projets récents.",
+      "react": "Interfaces composables et gestion d'état applicatif.",
+      "nextjs": "Ce site, ainsi que les projets livrés en freelance.",
+      "nestjs": "APIs Node structurées, typées et testées.",
+      "reactnative": "Portage mobile de mes applications web.",
+      "rust": "Performance et sûreté mémoire côté back-end.",
+      "solidity": "Smart contracts conçus et déployés sur EVM.",
+      "hardhat": "Tests, déploiement et scripts d'automatisation.",
+      "foundry": "Tests écrits en Solidity et fuzzing de contrats.",
+      "chainlink": "Oracles et connexion aux données off-chain.",
+      "thegraph": "Indexation de données on-chain via des subgraphs.",
+      "cosmos": "Chaînes applicatives construites avec le Cosmos SDK.",
+      "zk": "Preuves à divulgation nulle de connaissance.",
+      "git": "Workflow Git, revues de code et intégration continue.",
+      "docker": "Conteneurisation de mes services et environnements.",
+      "hosting": "Mise en ligne sur Vercel, Netlify et Digital Ocean.",
+      "cloudflare": "DNS, CDN et protection des sites que je livre.",
+      "aws": "Services managés : S3, Timestream et compagnie.",
+      "cicd": "Pipelines GitHub Actions de bout en bout.",
+      "kubernetes": "Orchestration de conteneurs à l'échelle.",
+      "aws_cert": "Objectif : certification AWS Solutions Architect.",
+      "project": "Cadrage, planning et pilotage de projets de bout en bout.",
+      "assoc": "ISEP Live, BDE Vizion et ISEP Drone : équipes et budgets.",
+      "english": "Quotidien en anglais chez Sidetrade et à OsloMet.",
+      "advisory": "Conseil en transformation data & IA chez Capgemini Invent.",
+      "speaking": "Animer des ateliers clients et prendre la parole en public.",
+      "korean": "Reprendre le coréen découvert à Inha University.",
+      "photo": "Reportage et photo de voyage, retouche sous Lightroom.",
+      "video": "Montage Premiere Pro et Final Cut, du rush au master.",
+      "design": "Identités visuelles, affiches et illustrations.",
+      "drone": "Prises de vue aériennes avec le club ISEP Drone.",
+      "fineart": "Benevolence : tirages fine art et direction artistique.",
+      "grading": "Étalonnage avancé sous DaVinci Resolve."
+    }
+  },
+  "journey": {
+    "title": "Parcours en un coup d’œil",
+    "subtitle": "Formation et expérience professionnelle sur la même échelle de temps. Mes semestres d’échange et mes stages se lisent à l’intérieur de mon cursus ISEP, et non à sa suite.",
+    "track_formation": "Formation",
+    "track_experience": "Expérience pro",
+    "legend_formation": "Cursus ISEP",
+    "legend_exchange": "Échange international",
+    "legend_experience": "Expérience professionnelle",
+    "hint": "Sélectionnez une étape pour afficher le détail.",
+    "scroll_hint": "Faites défiler la frise horizontalement →",
+    "ongoing": "en cours",
+    "track_internship": "Stages intégrés au cursus",
+    "today": "Aujourd’hui",
+    "nature": {
+      "cursus": "Cursus",
+      "exchange": "Échange",
+      "internship": "Stage",
+      "freelance": "Freelance",
+      "permanent": "CDI"
+    }
   }
 }
