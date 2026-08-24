@@ -13,6 +13,7 @@ Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en p
 - **i18n** : next-i18next + react-i18next (FR par défaut, EN secondaire)
 - **Animations** : Framer Motion
 - **Icons** : Heroicons + FontAwesome
+- **Police** : Plus Jakarta Sans **auto-hébergée** via `next/font/local` (fichier variable latin dans `src/fonts/`) — ne pas repasser sur `next/font/google` : le build redeviendrait dépendant du réseau
 - **Deploy** : Vercel (production), branche `main`
 
 ---
@@ -20,48 +21,54 @@ Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en p
 ## Structure du projet
 
 ```
-ben-portfolio-1/
-├── pages/                    # Routes Next.js (Pages Router)
-│   ├── index.tsx             # Page CV — formations, expériences, aperçu portfolio/asso
-│   ├── portfolio.tsx         # Page Portfolio créatif (photo/vidéo)
-│   ├── associativeCareer.tsx # Parcours associatif (ISEP Live, Vizion BDE, ISEP Drone)
-│   ├── _app.tsx              # Wrapper global (ErrorBoundary, Header, Footer, fonts)
-│   └── _document.tsx         # Document HTML custom (meta, lang)
-├── components/               # Composants React
-│   ├── Header.tsx            # Header fixe avec nav pills + burger mobile
-│   ├── Footer.tsx            # Footer avec coordonnées + réseaux sociaux
-│   ├── HeroSection.tsx       # Hero parallax pour la page Portfolio
-│   ├── BenevolenceSection.tsx# Section boutique fine art (Framer Motion)
-│   ├── Projects.tsx          # Grille de projets vidéo (YouTube embeds)
-│   ├── LatestProject.tsx     # Dernier projet vidéo (Norvège)
-│   ├── SkillsSection.tsx     # Compétences créatives avec SkillCard
-│   ├── SkillCard.tsx         # Carte skill individuelle
-│   ├── Timeline.tsx          # Timeline formations (fond gris)
-│   ├── TimelineDark.tsx      # Timeline expériences (fond blanc)
-│   ├── Carousel.tsx          # Carousel images de voyage
-│   ├── LanguageSwitcher.tsx  # Switcher FR/EN
-│   ├── MetaHeader.tsx        # Meta tags SEO par page
-│   └── ErrorBoundary.tsx     # Error boundary global
-├── hooks/
-│   ├── index.ts              # Re-exports des hooks
-│   ├── useOutsideClick.ts    # Fermeture dropdown au clic extérieur
-│   └── useParallax.ts        # Offset parallax au scroll
+ben-portfolio/
+├── src/
+│   ├── pages/                    # Routes Next.js (Pages Router)
+│   │   ├── index.tsx             # Page CV — formations, expériences, aperçu portfolio/asso
+│   │   ├── portfolio.tsx         # Page Portfolio créatif (photo/vidéo)
+│   │   ├── associativeCareer.tsx # Parcours associatif (ISEP Live, Vizion BDE, ISEP Drone)
+│   │   ├── _app.tsx              # Wrapper global (ErrorBoundary, Header, Footer, fonts)
+│   │   └── _document.tsx         # Document HTML custom (meta, lang)
+│   ├── components/               # Composants React
+│   │   ├── Header.tsx            # Header fixe avec nav pills + burger mobile
+│   │   ├── Footer.tsx            # Footer avec coordonnées + réseaux sociaux
+│   │   ├── HeroSection.tsx       # Hero parallax pour la page Portfolio
+│   │   ├── BenevolenceSection.tsx# Section boutique fine art (Framer Motion)
+│   │   ├── Projects.tsx          # Grille de projets vidéo (YouTube embeds)
+│   │   ├── LatestProject.tsx     # Dernier projet vidéo (Norvège)
+│   │   ├── SkillsSection.tsx     # Compétences créatives avec SkillCard
+│   │   ├── SkillCard.tsx         # Carte skill individuelle
+│   │   ├── Timeline.tsx          # Timeline formations (fond gris)
+│   │   ├── TimelineDark.tsx      # Timeline expériences (fond blanc)
+│   │   ├── Carousel.tsx          # Carousel images de voyage
+│   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
+│   │   ├── MetaHeader.tsx        # Meta tags SEO par page
+│   │   ├── ErrorBoundary.tsx     # Error boundary global
+│   │   └── CustomCursor.tsx      # Curseur custom — actuellement importé nulle part
+│   ├── hooks/
+│   │   ├── index.ts              # Re-exports des hooks
+│   │   ├── useOutsideClick.ts    # Fermeture dropdown au clic extérieur
+│   │   └── useParallax.ts        # Offset parallax au scroll
+│   ├── styles/
+│   │   └── globals.css           # CSS global (importé dans _app.tsx)
+│   └── fonts/
+│       └── PlusJakartaSans-latin-variable.woff2  # Police auto-hébergée (next/font/local)
 ├── public/
 │   ├── assets/
-│   │   ├── data/             # JSON de contenu (experiences, formation, projects, skills, tech)
-│   │   ├── documents/        # CVs PDF (FR + EN)
-│   │   ├── images/           # Images optimisées AVIF/WebP (~45 Mo)
-│   │   └── svg/              # Logos SVG (GitHub, LinkedIn, Instagram, Discord, YouTube)
+│   │   ├── data/                 # JSON de contenu (experiences, formation, projects, skills, tech)
+│   │   ├── documents/            # CVs PDF (FR + EN)
+│   │   ├── images/               # Images optimisées AVIF/WebP (~45 Mo)
+│   │   └── svg/                  # Composants React de logos SVG (GitHub, LinkedIn, Instagram, Discord, YouTube)
 │   ├── locales/
-│   │   ├── fr/common.json    # Toutes les traductions françaises
-│   │   └── en/common.json    # Toutes les traductions anglaises
+│   │   ├── fr/common.json        # Toutes les traductions françaises
+│   │   └── en/common.json        # Toutes les traductions anglaises
+│   ├── favicon.ico
 │   ├── robots.txt
 │   └── sitemap.xml
-├── styles/                   # CSS global
-├── next.config.mjs           # Config Next.js (i18n, images remote patterns, webpack)
-├── next-i18next.config.js    # Config i18n (fr par défaut)
-├── tailwind.config.ts        # Tailwind + DaisyUI config
-└── tsconfig.json             # Path alias ~~ → racine du projet
+├── next.config.mjs               # Config Next.js (i18n, images remote patterns, webpack)
+├── next-i18next.config.js        # Config i18n (fr par défaut)
+├── tailwind.config.ts            # Tailwind + DaisyUI config
+└── tsconfig.json                 # Path alias ~~ → racine, @ → src/
 ```
 
 ---
@@ -69,11 +76,14 @@ ben-portfolio-1/
 ## Alias de chemin
 
 ```ts
-import Component from '~~/components/Component';
+import Component from '~~/src/components/Component';
 import data from '~~/public/assets/data/data.json';
 ```
 
-Le `~~` est mappé vers la racine du projet (`"~~/*": ["./*"]` dans tsconfig.json).
+Deux alias sont définis dans `tsconfig.json` :
+
+- `~~/*` → racine du projet (`["./*"]`) — utilisé partout dans le code actuel, y compris pour les composants (`~~/src/components/...`)
+- `@/*` → dossier `src` (`["./src/*"]`) — déclaré mais pas encore utilisé
 
 ---
 
@@ -106,12 +116,16 @@ Tous les contenus dynamiques sont dans `public/assets/data/` :
 
 Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de toucher aux composants.
 
+**Attention** : pour `experiences.json` et `formation.json`, seuls `id` et `logo` sont réellement lus par `Timeline`. Le titre, la description **et la période affichée** viennent des locales (`experiences.<id>.title` / `.description` / `.period`). Ajouter une entrée = 1 ligne dans le JSON + les 3 clés dans `fr/common.json` **et** `en/common.json`.
+
+`projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`).
+
 ---
 
 ## Composants — conventions
 
-- Tous les composants sont en `.tsx` dans `components/`
-- Chargement dynamique (`next/dynamic`) utilisé dans `portfolio.tsx` pour les composants lourds
+- Tous les composants sont en `.tsx` dans `src/components/`
+- Chargement dynamique (`next/dynamic`) utilisé dans `src/pages/portfolio.tsx` pour les composants lourds
 - Les images utilisent toujours `next/image` avec `fill`, `width/height`, `quality`, et `alt` renseignés
 - Les liens externes ont systématiquement `target="_blank" rel="noopener noreferrer"`
 - Les icônes SVG inline ont `aria-hidden="true"` ; les liens icône-only ont un `aria-label`
@@ -163,17 +177,17 @@ Node.js requis : **>=24.0.0**. Package manager : **yarn** (v3.6.4).
 
 | Route | Page | Description |
 |---|---|---|
-| `/` | `index.tsx` | CV : formation, expériences, aperçu portfolio & asso |
-| `/portfolio` | `portfolio.tsx` | Portfolio photo/vidéo + boutique Benevolence |
-| `/associativeCareer` | `associativeCareer.tsx` | ISEP Live, Vizion BDE, ISEP Drone |
+| `/` | `src/pages/index.tsx` | CV : formation, expériences, aperçu portfolio & asso |
+| `/portfolio` | `src/pages/portfolio.tsx` | Portfolio photo/vidéo + boutique Benevolence |
+| `/associativeCareer` | `src/pages/associativeCareer.tsx` | ISEP Live, Vizion BDE, ISEP Drone |
 
-La nav est gérée dans `Header.tsx` via `menuLinks` (tableau exporté). "Contact" scrolle vers le footer.
+La nav est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exporté). "Contact" scrolle vers le footer.
 
 ---
 
 ## SEO
 
-- `MetaHeader.tsx` : meta title, description, og:image par page
+- `src/components/MetaHeader.tsx` : meta title, description, og:image par page
 - `public/sitemap.xml` : sitemap statique (à mettre à jour manuellement si nouvelle page)
 - `public/robots.txt` : autorisation crawl complet
 

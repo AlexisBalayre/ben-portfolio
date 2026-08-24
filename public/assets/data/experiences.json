@@ -1,5 +1,10 @@
 [
   {
+    "id": "capgemini_cdi",
+    "logo": "capgemini-invent.jpg",
+    "period": "À partir de septembre 2026"
+  },
+  {
     "id": "capgemini",
     "logo": "capgemini-invent.jpg",
     "period": "Janvier 2026 – Juin 2026"
@@ -8,6 +13,11 @@
     "id": "sidetrade",
     "logo": "sidetrade.jpg",
     "period": "Septembre 2024 – Janvier 2025"
+  },
+  {
+    "id": "freelance_dev",
+    "logo": "freelance-dev.png",
+    "period": "Depuis 2024"
   },
   {
     "id": "freelance",
