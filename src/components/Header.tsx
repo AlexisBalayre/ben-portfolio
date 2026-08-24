@@ -137,7 +137,7 @@ export const Header = () => {
             className="flex flex-col leading-none hover:opacity-80 transition-opacity"
           >
             <span className="font-bold text-xs sm:text-sm tracking-tight">Benjamin Balayre</span>
-            <span className="text-[10px] sm:text-[11px] text-base-content/50 font-normal">{t('header.student_role')}</span>
+            <span className="text-[10px] sm:text-[11px] text-base-content/50 font-normal">{t('header.role')}</span>
           </Link>
 
           {/* Desktop nav */}

@@ -9,7 +9,7 @@
     "portfolio": "Portfolio",
     "associative_career": "Parcours Associatif",
     "contact_details": "Contact",
-    "student_role": "Étudiant à l'ISEP",
+    "role": "Consultant Data & IA",
     "download_resume": "Télécharger mon CV",
     "open_menu": "Ouvrir le menu",
     "close_menu": "Fermer le menu",
@@ -22,7 +22,7 @@
   },
   "home": {
     "name": "Benjamin Balayre",
-    "role": "Étudiant en école d'ingénieurs | Photographe & Vidéaste freelance",
+    "role": "Consultant Capgemini Invent | Développeur & Photographe freelance",
     "welcome": "Bienvenue sur mon site ! Découvrez-y mon parcours, mes passions, ainsi que mes projets professionnels, personnels et associatifs.",
     "download_resume": "Télécharger mon CV",
     "quick_portfolio": "Voir mon portfolio photo et vidéo",
@@ -113,6 +113,11 @@
     "button": "Accéder au portfolio"
   },
   "experiences": {
+    "capgemini_cdi": {
+      "title": "Consultant en transformation Data & IA – Capgemini Invent (frog)",
+      "description": "Poste en CDI au sein de frog, l'entité design et innovation de Capgemini Invent, dans la continuité de mon stage. Accompagnement des transformations data et IA des grands comptes : cadrage des besoins, conception de cas d'usage et déploiement de solutions à l'échelle.",
+      "period": "À partir de septembre 2026"
+    },
     "capgemini": {
       "title": "Consultant Stagiaire – Capgemini Invent (frog)",
       "description": "Stage au sein du service Frog Customer Data & Tech. Conception de stratégies innovantes et accompagnement des transformations digitales à grande échelle. Missions de conseil auprès de directions générales sur la stratégie, l'organisation et l'efficacité opérationnelle.",
@@ -122,6 +127,11 @@
       "title": "Data Analyst Stagiaire – Sidetrade",
       "description": "Stage dans l’équipe Datalake Ingest. Analyse des données du datalake, création de tableaux de bord stratégiques (Power BI) et collaboration avec les équipes R&D et Produit dans un environnement anglophone.",
       "period": "Septembre 2024 – Janvier 2025"
+    },
+    "freelance_dev": {
+      "title": "Auto-entrepreneur – Développeur web & applications",
+      "description": "Conception et développement de sites web et d'applications en ligne pour des indépendants et des petites structures. Prise en charge complète du projet : cadrage du besoin, maquettes, développement, mise en production et maintenance.",
+      "period": "Depuis 2024"
     },
     "freelance": {
       "title": "Auto-entrepreneur – Photographe & Vidéaste",
@@ -164,8 +174,8 @@
   },
   "meta": {
     "home": {
-      "title": "Benjamin Balayre — Ingénieur ISEP & Photographe",
-      "description": "Découvrez le parcours de Benjamin Balayre : étudiant ingénieur à l'ISEP, photographe et vidéaste freelance. Formation, expériences, projets associatifs."
+      "title": "Benjamin Balayre — Consultant Data & IA, Développeur freelance",
+      "description": "Consultant en transformation Data & IA chez Capgemini Invent, développeur web et photographe freelance. Découvrez mon parcours, mes expériences et mes projets."
     },
     "portfolio": {
       "title": "Portfolio — Benjamin Balayre",
@@ -175,6 +185,6 @@
       "title": "Parcours Associatif — Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone : découvrez l'engagement associatif de Benjamin Balayre durant ses études à l'ISEP."
     },
-    "keywords": "Benjamin Balayre, ingénieur ISEP, photographe, vidéaste, Paris, Capgemini, portfolio, drone FPV, ISEP Live"
+    "keywords": "Benjamin Balayre, consultant Data & IA, Capgemini Invent, développeur web freelance, création de site web, application web, ingénieur ISEP, photographe, vidéaste, Paris, portfolio, drone FPV, ISEP Live"
   }
 }
