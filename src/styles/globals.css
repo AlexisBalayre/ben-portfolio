@@ -5,7 +5,7 @@
 /* ─── Base ───────────────────────────────────────────────── */
 
 :root {
-  /* Hauteur du header fixe — sert d'offset aux ancres de section. */
+  /* Hauteur du header fixe, qui sert d'offset aux ancres de section. */
   --header-h: 3.5rem;
 }
 

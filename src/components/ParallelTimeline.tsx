@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /** Préfixe de traduction : les libellés viennent toujours des locales. */
-type Prefix = 'formation' | 'experiences';
+type Prefix = 'formation' | 'experiences' | 'associative';
 
 interface RawExchange {
     id: string;
@@ -18,9 +18,9 @@ export interface JourneyEntry {
     start?: string;
     end?: string;
     ongoing?: boolean;
-    /** Nature affichée en surtitre de la barre — clé de `journey.nature.*`. */
+    /** Nature affichée en surtitre de la barre, clé de `journey.nature.*`. */
     nature?: string;
-    /** Identifiant du cursus dans lequel ce stage s'inscrit — il est alors rattaché à la voie Formation. */
+    /** Identifiant du cursus dans lequel ce stage s'inscrit : il rejoint alors la voie Formation. */
     integratedIn?: string;
     /** `"projects"` : l'entrée est rattachée à la voie Projets plutôt qu'à Expérience. */
     track?: string;
@@ -30,7 +30,7 @@ export interface JourneyEntry {
 interface Bar {
     id: string;
     prefix: Prefix;
-    kind: 'cursus' | 'exchange' | 'job' | 'project';
+    kind: 'cursus' | 'exchange' | 'job' | 'project' | 'association';
     nature: string;
     start: number;
     end: number;
@@ -51,6 +51,7 @@ const BAR_STYLES: Record<Bar['kind'], string> = {
     exchange: 'border-accent/70 bg-accent/20 text-primary hover:bg-accent/30',
     job: 'border-amber-600/40 bg-amber-100/70 text-amber-900 hover:bg-amber-100',
     project: 'border-teal-600/40 bg-teal-100/70 text-teal-900 hover:bg-teal-100',
+    association: 'border-violet-600/40 bg-violet-100/70 text-violet-900 hover:bg-violet-100',
 };
 
 /** Empile les barres qui se chevauchent sur des lignes distinctes. */
@@ -71,9 +72,10 @@ const isDated = (entry: JourneyEntry) => Boolean(entry.start && entry.end);
 interface ParallelTimelineProps {
     education: JourneyEntry[];
     experiences: JourneyEntry[];
+    associations: JourneyEntry[];
 }
 
-const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => {
+const ParallelTimeline = ({ education, experiences, associations }: ParallelTimelineProps) => {
     const { t } = useTranslation('common');
     const [selected, setSelected] = useState<Bar | null>(null);
     // Calculé après le montage : le rendu statique ne doit pas dépendre de la date.
@@ -133,7 +135,17 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
             .filter((entry) => !entry.integratedIn && entry.track !== 'projects')
             .map(toBar('job'));
 
-        const all = [...cursus, ...exchanges, ...internships, ...jobs, ...projects];
+        const associative: Bar[] = associations.filter(isDated).map((entry) => ({
+            id: entry.id,
+            prefix: 'associative',
+            kind: 'association',
+            nature: entry.nature ?? 'association',
+            start: toMonths(entry.start as string),
+            end: toMonths(entry.end as string),
+            ongoing: Boolean(entry.ongoing),
+        }));
+
+        const all = [...cursus, ...exchanges, ...internships, ...jobs, ...projects, ...associative];
         const start = Math.min(...all.map((bar) => bar.start)) - 1;
         const end = Math.max(...all.map((bar) => bar.end)) + 1;
 
@@ -174,9 +186,16 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                         { key: 'projects', label: null, lanes: packLanes(projects), overlays: [] as Bar[] },
                     ],
                 },
+                {
+                    key: 'associative',
+                    label: 'journey.track_associative',
+                    groups: [
+                        { key: 'associative', label: null, lanes: packLanes(associative), overlays: [] as Bar[] },
+                    ],
+                },
             ],
         };
-    }, [education, experiences]);
+    }, [education, experiences, associations]);
 
     const left = (month: number) => ((month - axisStart) / span) * 100;
     const todayLeft = todayMonth !== null ? left(todayMonth) : null;
@@ -242,6 +261,10 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                     <span className="h-3 w-6 rounded border border-teal-600/40 bg-teal-100/70" aria-hidden="true" />
                     {t('journey.legend_project')}
                 </span>
+                <span className="flex items-center gap-2">
+                    <span className="h-3 w-6 rounded border border-violet-600/40 bg-violet-100/70" aria-hidden="true" />
+                    {t('journey.legend_association')}
+                </span>
             </div>
 
             <p className="mb-3 text-xs text-base-content/50 xl:hidden">{t('journey.scroll_hint')}</p>
@@ -259,7 +282,7 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                         ))}
                     </div>
 
-                    {/* Repère « aujourd'hui » — au-dessus des barres */}
+                    {/* Repère « aujourd'hui », au-dessus des barres */}
                     {showToday && (
                         <div aria-hidden="true" className="pointer-events-none absolute inset-0 top-6 z-20">
                             <span

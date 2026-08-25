@@ -101,7 +101,7 @@ export const Header = () => {
     <header className="fixed inset-x-0 top-0 z-30 border-b border-base-300/70 bg-base-100/85 backdrop-blur-md">
       <div className="mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
 
-        {/* Left — logo + nav */}
+        {/* Gauche : logo et navigation */}
         <div className="flex items-center gap-4">
           {/* Mobile burger */}
           <div className="lg:hidden relative" ref={burgerMenuRef}>
@@ -152,7 +152,7 @@ export const Header = () => {
           </nav>
         </div>
 
-        {/* Right — lang + CV */}
+        {/* Droite : langue et CV */}
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
           <a

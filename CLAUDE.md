@@ -1,4 +1,4 @@
-# CLAUDE.md — Portfolio Benjamin Balayre
+# CLAUDE.md · Portfolio Benjamin Balayre
 
 Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en production sur Vercel.
 
@@ -6,14 +6,14 @@ Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en p
 
 ## Stack technique
 
-- **Framework** : Next.js 15 (Pages Router — pas App Router)
+- **Framework** : Next.js 15 (Pages Router, pas App Router)
 - **React** : 19
 - **Langage** : TypeScript (strict)
-- **CSS** : Tailwind CSS 3 + DaisyUI 4 (thème custom `mytheme`) — voir **Direction artistique** plus bas
+- **CSS** : Tailwind CSS 3 + DaisyUI 4 (thème custom `mytheme`). Voir **Direction artistique** plus bas
 - **i18n** : next-i18next + react-i18next (FR par défaut, EN secondaire)
 - **Animations** : Framer Motion
 - **Icons** : Heroicons + FontAwesome
-- **Police** : Plus Jakarta Sans **auto-hébergée** via `next/font/local` (fichier variable latin dans `src/fonts/`) — ne pas repasser sur `next/font/google` : le build redeviendrait dépendant du réseau
+- **Police** : Plus Jakarta Sans **auto-hébergée** via `next/font/local` (fichier variable latin dans `src/fonts/`). Ne pas repasser sur `next/font/google` : le build redeviendrait dépendant du réseau
 - **Deploy** : Vercel (production), branche `main`
 
 ---
@@ -24,29 +24,29 @@ Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en p
 ben-portfolio/
 ├── src/
 │   ├── pages/                    # Routes Next.js (Pages Router)
-│   │   ├── index.tsx             # Accueil — héros + 3 chapitres (parcours, voyages, explorer)
-│   │   ├── portfolio.tsx         # Portfolio créatif — héros + 4 chapitres
-│   │   ├── associativeCareer.tsx # Parcours associatif — héros + sommaire + 3 chapitres (données)
+│   │   ├── index.tsx             # Accueil : héros + 3 chapitres (parcours, image, associatif)
+│   │   ├── portfolio.tsx         # Portfolio créatif : héros + 4 chapitres
+│   │   ├── associativeCareer.tsx # Parcours associatif : héros, sommaire, 3 chapitres (données)
 │   │   ├── _app.tsx              # Wrapper global (ErrorBoundary, Header, Footer, fonts)
 │   │   └── _document.tsx         # Document HTML custom (lang, favicon)
 │   ├── components/
-│   │   ├── ui/                   # Socle de la DA — toute section neuve passe par là
+│   │   ├── ui/                   # Socle de la DA : toute section neuve passe par là
 │   │   │   ├── Section.tsx       # Surface + rythme vertical + container + apparition
 │   │   │   ├── SectionHeading.tsx# Numéro de chapitre + surtitre + titre + chapô
 │   │   │   ├── PageHero.tsx      # Héros de page intérieure (photo + voile encre)
-│   │   │   ├── Action.tsx        # actionClasses() — géométrie unique des boutons
+│   │   │   ├── Action.tsx        # actionClasses() : géométrie unique des boutons
 │   │   │   ├── motion.ts         # EASE, VIEWPORT, fadeUp, fadeIn, stagger
 │   │   │   └── index.ts          # Ré-exports
 │   │   ├── Header.tsx            # Header fixe (hauteur = --header-h) + burger mobile
 │   │   ├── Footer.tsx            # Footer encre : identité, navigation, contact, réseaux
 │   │   ├── JourneyDetail.tsx     # Onglets Formation / Expérience au-dessus de Timeline
-│   │   ├── Timeline.tsx          # Timeline verticale — imbrique les échanges
+│   │   ├── Timeline.tsx          # Timeline verticale, imbrique les échanges
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
 │   │   ├── PhotoProjects.tsx     # Les trois activités image (ReLive, Benevolence, prestations)
-│   │   ├── ExploreCard.tsx       # Carte de chapitre vers une page interne
+│   │   ├── AssociativePreview.tsx# Aperçu du parcours associatif sur l'accueil
 │   │   ├── Carousel.tsx          # Bandeau défilant des photos de voyage (sans titre propre)
 │   │   ├── AssoChapter.tsx       # Un engagement associatif, piloté par la donnée
-│   │   ├── LatestProject.tsx     # Dernier film — façade cliquable, YouTube chargé au clic
+│   │   ├── LatestProject.tsx     # Dernier film : façade cliquable, YouTube au clic
 │   │   ├── SkillsSection.tsx     # Savoir-faire créatifs
 │   │   ├── SkillCard.tsx         # Carte savoir-faire
 │   │   ├── Projects.tsx          # Bandeau plein écran vers le portfolio externe
@@ -66,7 +66,7 @@ ben-portfolio/
 │       └── PlusJakartaSans-latin-variable.woff2  # Police auto-hébergée (next/font/local)
 ├── public/
 │   ├── assets/
-│   │   ├── data/                 # JSON de contenu (experiences, formation, projects, skills, tech)
+│   │   ├── data/                 # JSON de contenu (associations, experiences, formation, skills)
 │   │   ├── documents/            # CVs PDF (FR + EN)
 │   │   ├── images/               # Images optimisées AVIF/WebP (~45 Mo)
 │   │   └── svg/                  # Composants React de logos SVG (GitHub, LinkedIn, Instagram, Discord, YouTube)
@@ -93,8 +93,8 @@ import data from '~~/public/assets/data/data.json';
 
 Deux alias sont définis dans `tsconfig.json` :
 
-- `~~/*` → racine du projet (`["./*"]`) — utilisé partout dans le code actuel, y compris pour les composants (`~~/src/components/...`)
-- `@/*` → dossier `src` (`["./src/*"]`) — déclaré mais pas encore utilisé
+- `~~/*` → racine du projet (`["./*"]`), utilisé partout dans le code actuel, y compris pour les composants (`~~/src/components/...`)
+- `@/*` → dossier `src` (`["./src/*"]`), déclaré mais pas encore utilisé
 
 ---
 
@@ -119,21 +119,22 @@ Tous les contenus dynamiques sont dans `public/assets/data/` :
 
 | Fichier | Contenu |
 |---|---|
-| `experiences.json` | Expériences professionnelles (Timeline) |
-| `formation.json` | Formations (Timeline) |
+| `experiences.json` | Expériences professionnelles et projets image (Timeline, frise, chapitre 02) |
+| `formation.json` | Formations (Timeline, frise) |
+| `associations.json` | Engagements associatifs (frise, aperçu de l'accueil) |
 | `projects.json` | Projets vidéo/photo (YouTube embeds) |
 | `skills.json` | Compétences créatives (SkillsSection) |
 | `tech.json` | Compétences tech (carousel dans Header ou autre) |
 
-Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de toucher aux composants.
+Modifier ces fichiers suffit pour mettre à jour le contenu, sans toucher aux composants.
 
 **Attention** : pour `experiences.json` et `formation.json`, le texte affiché vient **toujours** des locales (`experiences.<id>.title` / `.description` / `.period` / `.short`). Le JSON ne porte que la structure :
 
 | Champ | Utilisé par | Rôle |
 |---|---|---|
-| `id`, `logo` | `Timeline` | clé de traduction + logo rond |
-| `period` | — | mémo lisible ; l'affichage passe par la locale |
-| `nature` | `ParallelTimeline` | surtitre en petites majuscules sur la barre — clé de `journey.nature.*` (`cursus`, `exchange`, `internship`, `freelance`, `permanent`) |
+| `id`, `logo` | `Timeline` | clé de traduction et logo rond |
+| `period` | (aucun) | mémo lisible ; l'affichage passe par la locale |
+| `nature` | `ParallelTimeline` | surtitre en petites majuscules sur la barre, clé de `journey.nature.*` (`cursus`, `exchange`, `internship`, `freelance`, `permanent`) |
 | `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans ces champs, l'entrée n'apparaît pas dans la frise |
 | `ongoing` | `ParallelTimeline` | flèche « → » + dégradé de fuite : l'activité se poursuit au-delà de la frise |
 | `integratedIn` | `ParallelTimeline` | *(experiences.json)* id du cursus : le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus », au lieu de la voie Expérience |
@@ -146,16 +147,16 @@ Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `p
 
 Le parcours associatif suit le même principe : la liste `ASSOS` en tête de `src/pages/associativeCareer.tsx` décrit les trois engagements (logo, blocs, rôles, liens) et alimente à la fois le sommaire et les chapitres.
 
-`projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`). `tech.json` liste encore des compétences blockchain qui ne correspondent à rien de réel — à nettoyer ou supprimer.
+`projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`). `tech.json` liste encore des compétences blockchain qui ne correspondent à rien de réel : à nettoyer ou supprimer.
 
 ---
 
-## Composants — conventions
+## Composants : conventions
 
 - Tous les composants sont en `.tsx` dans `src/components/` ; le socle de la DA est dans `src/components/ui/`
-- Chargement dynamique (`next/dynamic`) pour tout ce qui est sous la ligne de flottaison — **jamais pour le héros**, qui est le LCP de la page
+- Chargement dynamique (`next/dynamic`) pour tout ce qui est sous la ligne de flottaison, mais **jamais pour le héros**, qui est le LCP de la page
 - Les images utilisent toujours `next/image` avec `fill` ou `width/height`, un `sizes` quand `fill` est utilisé, et un `alt` renseigné (`alt=""` pour une image purement décorative)
-- `quality` ne peut prendre qu'une valeur déclarée dans `images.qualities` de `next.config.mjs` (75, 80, 85, 90) — toute autre valeur fait planter le rendu
+- `quality` ne peut prendre qu'une valeur déclarée dans `images.qualities` de `next.config.mjs` (75, 80, 85, 90). Toute autre valeur fait planter le rendu
 - Les intégrations tierces (YouTube) se chargent au clic, jamais au chargement de la page
 - Les liens externes ont systématiquement `target="_blank" rel="noopener noreferrer"`
 - Les icônes SVG inline ont `aria-hidden="true"` ; les liens icône-only ont un `aria-label`
@@ -180,14 +181,15 @@ DA « éditorial bleu nuit ». Trois règles portent tout le reste.
 
 - **Bleu = académique.** `primary` `#1e3a8a` (cursus, actions principales), `accent` `#3b82f6` (échanges internationaux, numéros de chapitre, filets).
 - **Ambre = professionnel.** `amber-600/100` pour les expériences salariées dans la frise.
-- **Teal = mes projets.** `teal-600/100` pour la voie Projets — ce que je construis pour mon compte.
+- **Teal = mes projets.** `teal-600/100` pour la voie Projets, ce que je construis pour mon compte.
+- **Violet = engagement associatif.** `violet-600/100` pour la voie Associatif.
 - **Encre = structure.** `secondary` `#0f172a` pour le texte (`base-content`), les surfaces sombres et le repère « aujourd'hui ».
 
 ### 3. Chapitres numérotés
 
 Chaque page se lit comme un sommaire : `01`, `02`, `03`… Le numéro apparaît dans le `SectionHeading`, dans le sommaire de l'accueil et dans les cartes du parcours associatif.
 
-### Primitives — à utiliser, pas à recomposer
+### Primitives : à utiliser, pas à recomposer
 
 ```tsx
 import { Section, SectionHeading, PageHero, actionClasses, fadeUp, stagger, EASE, VIEWPORT } from '~~/src/components/ui';
@@ -202,11 +204,11 @@ import { Section, SectionHeading, PageHero, actionClasses, fadeUp, stagger, EASE
 | Primitive | Rôle |
 |---|---|
 | `<Section>` | surface (`tone`), rythme vertical (`size`), container, `scroll-mt` sous le header, apparition au scroll. `contained={false}` pour un contenu pleine largeur |
-| `<Container>` | colonne `max-w-5xl px-5 sm:px-8` — même gouttière partout |
+| `<Container>` | colonne `max-w-5xl px-5 sm:px-8`, même gouttière partout |
 | `<SectionHeading>` | numéro + surtitre + titre + chapô, décliné clair/`ink` via `tone` |
 | `<PageHero>` | héros de page intérieure : photo, voile encre, titre animé mot à mot |
 | `actionClasses(variant, tone, size, extra)` | `solid` \| `outline` \| `quiet` × `light` \| `dark` × `md` \| `sm`. **Tous** les boutons du site en viennent |
-| `motion.ts` | `EASE`, `VIEWPORT`, `fadeUp`, `fadeIn`, `stagger` — une seule courbe, un seul seuil |
+| `motion.ts` | `EASE`, `VIEWPORT`, `fadeUp`, `fadeIn`, `stagger` : une seule courbe, un seul seuil |
 
 ### Rayons
 
@@ -239,7 +241,7 @@ Node.js requis : **>=24.0.0**. Package manager : **yarn** (v3.6.4).
 - Images distantes autorisées : GitHub (repository-images, avatars, raw, user-images, opengraph), balayre.com, alexis.balayre.com
 
 **Ne jamais committer :**
-- `images_original_backup/` (backup 243 Mo — supprimé)
+- `images_original_backup/` (backup de 243 Mo, supprimé)
 - Fichiers `.env` ou secrets
 
 ---
@@ -250,13 +252,15 @@ Chaque page suit la même partition : héros → chapitres numérotés → foote
 
 | Route | Chapitres | Ancres |
 |---|---|---|
-| `/` | héros + sommaire → **01** Parcours → **02** L'image → **03** Aller plus loin | `#parcours`, `#image`, `#explorer` |
+| `/` | héros + sommaire → **01** Parcours → **02** L'image → **03** Vie associative | `#parcours`, `#image`, `#associatif` |
 | `/portfolio` | héros → **01** Dernier film → **02** Savoir-faire → **03** Portfolio complet → **04** Tirages | `#film`, `#savoir-faire`, `#galerie`, `#tirages` |
 | `/associativeCareer` | héros → sommaire → **01** ISEP Live → **02** Vizion BDE → **03** ISEP Drone | `#engagements`, `#iseplive`, `#vizion`, `#isepdrone` |
 
 Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) puis `JourneyDetail`, deux onglets qui posent Formation et Expérience au même endroit. Les ancres historiques `#education` et `#experience` restent valides : elles sélectionnent l'onglet correspondant.
 
-Le chapitre **02 L'image** introduit le versant photographique avant de montrer des images : les trois activités (prestations freelance, boutique **Benevolence**, produit web **ReLive**) puis le bandeau de clichés de voyage. C'est ce chapitre qui fait la transition entre le CV et le portfolio.
+Le chapitre **02 L'image** introduit le versant photographique avant de montrer des images : les trois activités (prestations freelance, boutique **Benevolence**, produit web **ReLive**), le bandeau de clichés de voyage, puis l'accès au portfolio. C'est ce chapitre qui fait la transition entre le CV et le portfolio.
+
+Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leur page. Chaque chapitre de l'accueil se termine ainsi sur une seule porte de sortie.
 
 La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exporté). « Contact » scrolle vers le footer.
 
@@ -272,26 +276,27 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 
 ## Points d'attention pour les agents
 
-- **Pages Router uniquement** — ne pas migrer vers App Router sans décision explicite
-- **Pas de base de données** — tout le contenu est dans les JSON de `public/assets/data/`
-- **i18n obligatoire** — toute chaîne visible par l'utilisateur passe par `t('key')`
+- **Pages Router uniquement** : ne pas migrer vers App Router sans décision explicite
+- **Pas de base de données** : tout le contenu est dans les JSON de `public/assets/data/`
+- **i18n obligatoire** : toute chaîne visible par l'utilisateur passe par `t('key')`
+- **Jamais de tiret en milieu de phrase** : ni cadratin (`—`), ni demi-cadratin (`–`), nulle part. Ni dans la copie du site, ni dans les titres, les périodes, les commentaires de code ou cette documentation. Utiliser une virgule, deux-points, une parenthèse, ou couper la phrase. Les ranges de dates s'écrivent « Septembre 2024 à janvier 2025 », les séparateurs de `meta.title` utilisent `·`. Les traits d'union à l'intérieur d'un mot (auto-entrepreneur, vice-président) restent bien sûr valides
 - **Images** : utiliser `next/image`, ne jamais utiliser `<img>` HTML natif
-- **Jamais `overflow-x-hidden` sur un conteneur de page** — le CSS force alors `overflow-y` à `auto`, ce qui crée un conteneur de défilement imbriqué et bloque le scroll au trackpad. Utiliser `overflow-x-clip`, qui rogne sans créer de scroller. Même logique pour un défileur horizontal : lui ajouter `overflow-y-hidden`
-- **Tailwind only** — pas de CSS modules, pas de styled-components
-- **Passer par les primitives** — une nouvelle section = `<Section>` + `<SectionHeading>`, un nouveau bouton = `actionClasses()`. Ne pas recomposer un titre ou un bouton à la main : c'est ce qui avait fait diverger le site
-- **Ne pas écrire de couleur en dur** — les trois tons (`base-100` / `base-200` / `secondary`) et les deux familles chromatiques couvrent tous les cas
-- **Attention aux conflits d'utilitaires Tailwind** — `w-full` et `w-40` appartiennent au même groupe : c'est l'ordre dans le CSS généré qui tranche, pas l'ordre dans `className`. Ne pas mettre deux classes du même groupe sur un élément
-- **DaisyUI** — utiliser les classes DaisyUI avant d'inventer des classes custom
-- **TypeScript strict** — `ignoreBuildErrors: false`, toujours typer correctement
-- **Yarn** — ne pas utiliser npm ou pnpm
+- **Jamais `overflow-x-hidden` sur un conteneur de page** : le CSS force alors `overflow-y` à `auto`, ce qui crée un conteneur de défilement imbriqué et bloque le scroll au trackpad. Utiliser `overflow-x-clip`, qui rogne sans créer de scroller. Même logique pour un défileur horizontal : lui ajouter `overflow-y-hidden`
+- **Tailwind only** : pas de CSS modules, pas de styled-components
+- **Passer par les primitives** : une nouvelle section = `<Section>` + `<SectionHeading>`, un nouveau bouton = `actionClasses()`. Ne pas recomposer un titre ou un bouton à la main : c'est ce qui avait fait diverger le site
+- **Ne pas écrire de couleur en dur** : les trois tons (`base-100` / `base-200` / `secondary`) et les deux familles chromatiques couvrent tous les cas
+- **Attention aux conflits d'utilitaires Tailwind** : `w-full` et `w-40` appartiennent au même groupe : c'est l'ordre dans le CSS généré qui tranche, pas l'ordre dans `className`. Ne pas mettre deux classes du même groupe sur un élément
+- **DaisyUI** : utiliser les classes DaisyUI avant d'inventer des classes custom
+- **TypeScript strict** : `ignoreBuildErrors: false`, toujours typer correctement
+- **Yarn** : ne pas utiliser npm ou pnpm
 
 ---
 
 ## Skills actifs
 
-- **ui-ux-pro-max** ([nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)) — Design intelligence : 67 styles UI, 161 palettes, 57 font pairings. Utiliser pour toute modification visuelle ou création de nouveau composant.
-- **frontend-design** — Interfaces frontend production-grade, éviter les esthétiques génériques AI.
-- **simplify** — Revue de code après modifications importantes.
+- **ui-ux-pro-max** ([nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)) : Design intelligence : 67 styles UI, 161 palettes, 57 font pairings. Utiliser pour toute modification visuelle ou création de nouveau composant.
+- **frontend-design** : Interfaces frontend production-grade, éviter les esthétiques génériques AI.
+- **simplify** : Revue de code après modifications importantes.
 
 ---
 

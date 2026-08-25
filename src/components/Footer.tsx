@@ -155,7 +155,7 @@ export const Footer = () => {
                 {/* Bas de page */}
                 <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
                     <p className="text-xs tracking-wide text-white/30">
-                        © {year} Benjamin Balayre — {t('home.rights_reserved')}
+                        © {year} Benjamin Balayre · {t('home.rights_reserved')}
                     </p>
                     <button
                         type="button"
