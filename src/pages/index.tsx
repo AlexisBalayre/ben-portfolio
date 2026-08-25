@@ -33,7 +33,7 @@ const Home: NextPage = () => {
     const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
 
     return (
-        <div className="pt-14 w-full overflow-x-hidden bg-white">
+        <div className="pt-14 w-full overflow-x-clip bg-white">
 
             {/* ── Hero ─────────────────────────────────────────────────── */}
             <motion.div

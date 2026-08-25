@@ -213,6 +213,7 @@ La nav est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exp
 - **Pas de base de données** — tout le contenu est dans les JSON de `public/assets/data/`
 - **i18n obligatoire** — toute chaîne visible par l'utilisateur passe par `t('key')`
 - **Images** : utiliser `next/image`, ne jamais utiliser `<img>` HTML natif
+- **Jamais `overflow-x-hidden` sur un conteneur de page** — le CSS force alors `overflow-y` à `auto`, ce qui crée un conteneur de défilement imbriqué et bloque le scroll au trackpad. Utiliser `overflow-x-clip`, qui rogne sans créer de scroller. Même logique pour un défileur horizontal : lui ajouter `overflow-y-hidden`
 - **Tailwind only** — pas de CSS modules, pas de styled-components
 - **DaisyUI** — utiliser les classes DaisyUI avant d'inventer des classes custom
 - **TypeScript strict** — `ignoreBuildErrors: false`, toujours typer correctement
