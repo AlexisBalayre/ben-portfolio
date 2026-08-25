@@ -4,19 +4,15 @@
 
 /* ─── Base ───────────────────────────────────────────────── */
 
-html {
-  scroll-behavior: smooth;
+:root {
+  /* Hauteur du header fixe, qui sert d'offset aux ancres de section. */
+  --header-h: 3.5rem;
 }
 
-/* ─── Reduced motion overrides ───────────────────────────── */
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+html {
+  scroll-behavior: smooth;
+  /* Toute cible d'ancre s'arrête sous le header au lieu de passer dessous. */
+  scroll-padding-top: calc(var(--header-h) + 1.5rem);
 }
 
 body {
@@ -31,77 +27,27 @@ body {
   box-sizing: border-box;
 }
 
-/* ─── Typography ─────────────────────────────────────────── */
+/* ─── Typographie ────────────────────────────────────────── */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 p {
   line-height: 1.7;
-  margin: 0.75rem 0;
 }
 
 /* ─── Focus ──────────────────────────────────────────────── */
 
 :focus-visible {
-  outline: 2px solid #1e3a8a;
+  outline: 2px solid #3b82f6;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ─── Buttons ────────────────────────────────────────────── */
-
-.btn-primary {
-  background-color: transparent;
-  background-image: none;
-  border: 1.5px solid #1e3a8a;
-  color: #1e3a8a;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  transition: all 0.25s ease;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, #1e3a8a, #1e1b4b);
-  color: white;
-  border-color: transparent;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
-}
-
-/* ─── Section trait animé ────────────────────────────────── */
-
-.section-avec-trait .trait {
-  display: block;
-  width: 48px;
-  height: 3px;
-  background: #1e3a8a;
-  border: none;
-  margin: 12px auto 20px;
-  border-radius: 9999px;
-  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 1.4),
-              box-shadow 0.3s ease;
-}
-
-.section-avec-trait:hover .trait {
-  width: 96px;
-  box-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
-}
-
-/* Trait aligné à gauche (ex: LatestProject) */
-.trait {
-  display: block;
-  width: 48px;
-  height: 3px;
-  background: #1e3a8a;
-  border: none;
-  border-radius: 9999px;
-}
-
-/* ─── Marquee animation ──────────────────────────────────── */
+/* ─── Marquee ────────────────────────────────────────────── */
 
 @keyframes scroll-infinite {
   0%   { transform: translateX(0); }
@@ -113,22 +59,18 @@ p {
 }
 
 @media (min-width: 640px) {
-  .animate-scroll {
-    animation-duration: 80s;
-  }
+  .animate-scroll { animation-duration: 80s; }
 }
 
 @media (min-width: 1024px) {
-  .animate-scroll {
-    animation-duration: 100s;
-  }
+  .animate-scroll { animation-duration: 100s; }
 }
 
 .animate-scroll:hover {
   animation-play-state: paused;
 }
 
-/* ─── Fade in ────────────────────────────────────────────── */
+/* ─── Apparition ─────────────────────────────────────────── */
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -137,4 +79,16 @@ p {
 
 .animate-fade-in-down {
   animation: fadeIn 0.7s ease-out both;
+}
+
+/* ─── Mouvement réduit ───────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
 }

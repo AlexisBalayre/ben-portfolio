@@ -4,129 +4,100 @@ import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 
-const printSrcs = [
-  '/assets/images/portfolio/Norway/image1.jpg',
-  '/assets/images/portfolio/Japon/image1.jpg',
-  '/assets/images/portfolio/Iceland/image1.jpg',
-];
+import { EASE, Section, SectionHeading, VIEWPORT, actionClasses, fadeUp, stagger } from '~~/src/components/ui';
 
-const fadeUp = {
-  hidden:  { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const stagger = {
-  hidden:  {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const printConfigs = [
-  { className: "absolute top-0 left-0 w-[58%] aspect-[4/3] -rotate-3", zDelay: 0 },
-  { className: "absolute top-[80px] left-[25%] w-[58%] aspect-[4/3] rotate-2 z-10", zDelay: 0.15 },
-  { className: "absolute top-[190px] right-0 w-[55%] aspect-[4/3] -rotate-1 z-20", zDelay: 0.3 },
+const PRINTS = [
+  { src: '/assets/images/portfolio/Norway/image1.jpg', country: 'home.countries.norway', className: 'absolute left-0 top-0 w-[58%] -rotate-3' },
+  { src: '/assets/images/portfolio/Japon/image1.jpg', country: 'home.countries.japan', className: 'absolute left-[25%] top-[80px] z-10 w-[58%] rotate-2' },
+  { src: '/assets/images/portfolio/Iceland/image1.jpg', country: 'home.countries.iceland', className: 'absolute right-0 top-[190px] z-20 w-[55%] -rotate-1' },
 ];
 
 const BenevolenceSection = () => {
   const { t } = useTranslation('common');
 
-  const prints = [
-    { src: printSrcs[0], label: t('home.countries.norway')  },
-    { src: printSrcs[1], label: t('home.countries.japan')   },
-    { src: printSrcs[2], label: t('home.countries.iceland') },
-  ];
-
   return (
-    <section className="w-full bg-white py-14 sm:py-20 md:py-28 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 flex flex-col md:flex-row items-center gap-10 sm:gap-16 md:gap-20">
-
-        {/* Left — Content */}
+    <Section id="tirages" tone="mist" size="lg" reveal={false}>
+      <div className="flex flex-col items-center gap-12 md:flex-row md:gap-16">
         <motion.div
-          className="flex-1 flex flex-col items-start"
+          className="flex-1"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={VIEWPORT}
         >
           <motion.div variants={fadeUp}>
             <Image
               src="/assets/images/benevolence.png"
               alt="Benevolence"
-              width={64}
-              height={64}
+              width={56}
+              height={56}
               className="mb-8 rounded-xl"
             />
           </motion.div>
 
-          <motion.span variants={fadeUp} className="text-neutral-500 text-xs tracking-[0.25em] uppercase mb-4">
-            {t('benevolence.tagline')}
-          </motion.span>
-
-          <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-            {t('benevolence.title')}
-          </motion.h2>
-
-          <motion.p variants={fadeUp} className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-10 max-w-sm">
-            {t('benevolence.desc')}
-          </motion.p>
-
           <motion.div variants={fadeUp}>
+            <SectionHeading
+              index="04"
+              eyebrow={t('benevolence.tagline')}
+              title={t('benevolence.title')}
+              lead={t('benevolence.desc')}
+            />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="mt-9">
             <a
               href="https://benevolence.fr"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 text-sm tracking-widest uppercase text-black border border-black/20 px-8 py-4 rounded-full hover:bg-black hover:text-white transition-all duration-300"
+              className={actionClasses('outline')}
             >
               {t('benevolence.button')}
-              <ArrowUpRightIcon className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+              <ArrowUpRightIcon
+                className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </a>
           </motion.div>
         </motion.div>
 
-        {/* Right — Staggered Print Gallery */}
-        <div className="flex-1 relative h-[420px] w-full hidden md:block">
-          {printConfigs.map((config, i) => (
-            <motion.div
-              key={i}
-              className={`${config.className} overflow-hidden rounded-sm shadow-[0_30px_80px_rgba(0,0,0,0.8)]`}
+        {/* Pile de tirages (desktop) */}
+        <div className="relative hidden h-[420px] flex-1 md:block">
+          {PRINTS.map((print, i) => (
+            <motion.figure
+              key={print.src}
+              className={`${print.className} aspect-[4/3] overflow-hidden rounded-sm shadow-[0_24px_60px_rgba(15,23,42,0.35)]`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: config.zDelay, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: i * 0.15, ease: EASE }}
               viewport={{ once: true }}
               whileHover={{ y: -8, rotate: 0, transition: { duration: 0.35, ease: 'easeOut' } }}
             >
-              <Image
-                src={prints[i].src}
-                alt={prints[i].label}
-                fill
-                className="object-cover"
-                sizes="33vw"
-              />
-              <div className="absolute inset-0 ring-[1.5px] ring-black/5" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-              <span className="absolute bottom-3 left-4 text-white/90 font-medium text-xs tracking-widest uppercase shadow-sm">
-                {prints[i].label}
-              </span>
-            </motion.div>
+              <Image src={print.src} alt={t(print.country)} fill className="object-cover" sizes="33vw" />
+              <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-secondary/25 to-transparent ring-1 ring-inset ring-secondary/10" />
+              <figcaption className="absolute bottom-3 left-4 text-xs font-semibold uppercase tracking-eyebrow text-white/90">
+                {t(print.country)}
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
 
-        {/* Mobile — simple photo strip */}
-        <div className="flex md:hidden gap-3 w-full overflow-x-auto pb-2 -mx-4 px-4">
-          {prints.map((p) => (
-            <div
-              key={p.src}
-              className="relative flex-shrink-0 w-[calc(80vw-1rem)] max-w-[300px] sm:w-64 aspect-[4/3] rounded-sm overflow-hidden shadow-xl"
+        {/* Bande photo (mobile) */}
+        <div className="-mx-5 flex w-[calc(100%+2.5rem)] gap-3 overflow-x-auto overflow-y-hidden px-5 pb-2 md:hidden">
+          {PRINTS.map((print) => (
+            <figure
+              key={print.src}
+              className="relative aspect-[4/3] w-[min(80vw,300px)] flex-shrink-0 overflow-hidden rounded-sm shadow-lg"
             >
-              <Image src={p.src} alt={p.label} fill className="object-cover" sizes="(max-width: 640px) 80vw, 256px" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-              <span className="absolute bottom-3 left-3 text-white/90 font-medium text-xs tracking-widest uppercase shadow-sm">
-                {p.label}
-              </span>
-            </div>
+              <Image src={print.src} alt={t(print.country)} fill className="object-cover" sizes="80vw" />
+              <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-secondary/25 to-transparent" />
+              <figcaption className="absolute bottom-3 left-3 text-xs font-semibold uppercase tracking-eyebrow text-white/90">
+                {t(print.country)}
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

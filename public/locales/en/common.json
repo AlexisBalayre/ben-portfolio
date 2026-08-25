@@ -18,7 +18,13 @@
   "footer": {
     "phone_aria": "Benjamin Balayre's phone number",
     "email_aria": "Benjamin Balayre's email address",
-    "social_aria": "Social media links"
+    "social_aria": "Social media links",
+    "tagline": "Data & AI consultant, freelance developer and photographer. Always up for a project that mixes data, code and image.",
+    "nav_title": "Navigation",
+    "contact_title": "Get in touch",
+    "elsewhere_title": "Elsewhere",
+    "location": "Paris, France",
+    "back_to_top": "Back to top"
   },
   "home": {
     "name": "Benjamin Balayre",
@@ -45,12 +51,19 @@
       "iceland": "Iceland",
       "norway": "Norway"
     },
-    "portfolio_preview_title": "Portfolio",
-    "portfolio_preview_desc": "Passionate about visuals, I share my photography portfolio and cinematic travel films here. Discover my latest projects and visual universe.",
     "portfolio_preview_button": "Discover the portfolio",
     "associative_preview_title": "Associative Engagement",
-    "associative_preview_desc": "My student life is deeply shaped by associative commitments. From presiding over an FPV drone club to managing the school’s media association (ISEP Live), explore my projects.",
-    "associative_preview_button": "View my journey"
+    "associative_preview_desc": "My student years were deeply shaped by student associations: the student union, the school media association I ended up chairing, and an FPV drone club I helped found.",
+    "associative_preview_button": "View my journey",
+    "hero_cta_journey": "See my background",
+    "summary_aria": "Page contents",
+    "chapter": {
+      "journey": "Background",
+      "associative": "Student life",
+      "projects": "My projects"
+    },
+    "projects_title": "What I build on the side",
+    "projects_lead": "My engineering path has a counterpart: a freelance business I have run since 2024. I design websites and web products, I shoot events, and I turn the results into a limited edition print shop."
   },
   "skills": {
     "video_editing": {
@@ -79,26 +92,50 @@
       "iseplife_title": "The ISEP Life App",
       "iseplife_desc": "The association internally develops and maintains the ISEP Life mobile app, a true hub for campus life: agendas, student directories, association news, and media galleries.",
       "path_title": "From Member to President",
-      "path_desc": "I joined ISEP Live in 2021 to improve my photography and audiovisual skills alongside other enthusiasts. <br /><br /> As Vice-President in 2022, I coordinated creation departments, significantly strengthening my project management and teamwork skills. <br /><br /> Continuing this commitment, I took on the presidency in 2023. This foundational experience taught me to lead a 25-person team, oversee the art direction of our productions, and structure our overall development."
+      "path_desc": "I joined ISEP Live in September 2022 to improve my photography and audiovisual skills alongside other enthusiasts. <br /><br /> I became Vice-President the following year, coordinating creation departments and significantly strengthening my project management and teamwork skills. <br /><br /> Continuing this commitment, I took on the presidency in 2024. This foundational experience taught me to lead a 25-person team, oversee the art direction of our productions, and structure our overall development.",
+      "eyebrow": "Student media",
+      "role": "Member, vice-president then president",
+      "lead": "The school’s media association: twenty-five people covering campus life in photo and video.",
+      "short": "ISEP Live",
+      "period": "2022 to 2025",
+      "description": "The media association of ISEP. Member in 2022, vice-president in 2023 then president in 2024, leading a team of twenty-five people covering campus life in photo and video."
     },
     "vizion": {
       "title": "Student Council: Vizion",
       "presentation_title": "A Team Dedicated to Students",
       "presentation_desc": "The Student Council (BDE) is the central body of associative life. The Vizion team, with its 40 members, set the pace for the student year with its events and projects. <br /><br /> I mainly worked within the Creation department, ensuring the visual identity of our term (logos, social media communication, apparel).",
       "path_title": "Creation & Events Department",
-      "path_desc": "Being part of a Student Council is a tremendous experience in high-pressure teamwork. In the Creation department, I expressed my creativity while meeting strict deadlines and concrete communication needs. <br /><br /> This human adventure gave me a real vision of event management, but more importantly, it built invaluable adaptability and collaboration skills."
+      "path_desc": "Being part of a Student Council is a tremendous experience in high-pressure teamwork. In the Creation department, I expressed my creativity while meeting strict deadlines and concrete communication needs. <br /><br /> This human adventure gave me a real vision of event management, but more importantly, it built invaluable adaptability and collaboration skills.",
+      "eyebrow": "Student union",
+      "role": "Creative & Events team",
+      "lead": "The ISEP student union: forty people setting the rhythm of the student year, including a creative team that signed the visual identity of the term.",
+      "short": "Vizion student union",
+      "period": "2023 to 2024",
+      "description": "The ISEP student union, forty people, for the 2023 term. Member of the creative team, responsible for its visual identity: logos, social media, merchandise."
     },
     "isepdrone": {
       "title": "ISEP Drone",
       "presentation_title": "The ISEP Drone Project",
       "presentation_desc": "First Person View (FPV) flying allows the pilot to steer a drone by seeing exactly what the onboard camera films through a video headset. <br /><br /> I helped found the ISEP Drone club in 2021 with a group of enthusiasts. Our mission: to democratize this technical discipline through assembly workshops, simulator coaching, and outdoor flight sessions.",
       "path_title": "My Role in the Club",
-      "path_desc": "As a founding member, I first shaped the visual identity of our new structure and managed digital communication to attract new members. <br /><br /> This dynamic naturally led me to the club presidency in 2023. This exciting term allowed me to organize internal competitions and run our weekly sessions, granting me solid experience in leading small teams and technical teaching.",
-      "timeline": {
-        "president": "Club President",
-        "comm_manager": "Communication Manager",
-        "founder": "Founding Member"
-      }
+      "path_desc": "As a founding member, I first ran the creative and communication team: I shaped the visual identity of our new structure and managed digital communication to attract new members. <br /><br /> This dynamic naturally led me to the club presidency in 2022. This exciting term allowed me to organize internal competitions and run our weekly sessions, granting me solid experience in leading small teams and technical teaching. <br /><br /> I then supported the next generation as Vice-President, in 2023 and again in 2024.",
+      "eyebrow": "FPV drone club",
+      "role": "Creative & comms, president then vice-president",
+      "lead": "A club founded in 2021 to open first-person-view flying to students: build workshops, simulator sessions and flight outings.",
+      "short": "ISEP Drone",
+      "period": "2021 to 2025",
+      "description": "An FPV flying club founded in 2021. Creative and communication lead in the first year, president in 2022, then vice-president in 2023 and 2024: build workshops, simulator sessions and flight outings."
+    },
+    "eyebrow": "Student life",
+    "summary_eyebrow": "Contents",
+    "summary_title": "Three commitments, three roles",
+    "summary_desc": "A student media association, a student union and a drone club: three organisations I helped run during my studies at ISEP.",
+    "roles": {
+      "president": "President",
+      "vice_president": "Vice-president",
+      "creative": "Creative team",
+      "member": "Member",
+      "creative_comm": "Creative & comms"
     }
   },
   "projects": {
@@ -132,77 +169,151 @@
   },
   "experiences": {
     "capgemini_cdi": {
-      "title": "Data & AI Transformation Consultant – Capgemini Invent (frog)",
+      "title": "Data & AI Transformation Consultant, Capgemini Invent (frog)",
       "description": "Full-time position within frog, the design and innovation arm of Capgemini Invent, following on from my internship. Supporting large accounts through their data and AI transformations: scoping needs, designing use cases, and deploying solutions at scale.",
-      "period": "From September 2026"
+      "period": "From September 2026",
+      "short": "Capgemini Invent"
     },
     "capgemini": {
-      "title": "Intern Consultant – Capgemini Invent (frog)",
+      "title": "Intern Consultant, Capgemini Invent (frog)",
       "description": "Internship within the Frog Customer Data & Tech service. Design of innovative strategies and support for large-scale digital transformations. Consulting missions for general management on strategy, organization, and operational efficiency.",
-      "period": "January 2026 – June 2026"
+      "period": "January 2026 to June 2026",
+      "short": "Capgemini"
     },
     "sidetrade": {
-      "title": "Intern Data Analyst – Sidetrade",
+      "title": "Intern Data Analyst, Sidetrade",
       "description": "Internship in the Datalake Ingest team. Analysis of datalake data, creation of strategic dashboards (Power BI), and collaboration with R&D and Product teams in an English-speaking environment.",
-      "period": "September 2024 – January 2025"
+      "period": "September 2024 to January 2025",
+      "short": "Sidetrade"
     },
     "freelance_dev": {
-      "title": "Freelancer – Web & Application Developer",
+      "title": "Freelancer, web & application developer",
       "description": "Design and development of websites and online applications for independent professionals and small organisations. End-to-end ownership of each project: scoping, mockups, development, deployment, and maintenance.",
-      "period": "Since 2024"
+      "period": "Since January 2026",
+      "short": "Web dev & apps"
     },
     "freelance": {
-      "title": "Freelancer – Photographer & Videographer",
+      "title": "Freelancer, photographer & videographer",
       "description": "Production of photo and video content for events and professional projects. Complete management of customer relations, shooting, editing, and artistic direction.",
-      "period": "Since 2024"
+      "period": "Since 2024",
+      "short": "Photo & video",
+      "kind": "Freelance work",
+      "card": "Photo and video work for events and professional projects: aftermovies, brand films, reportage. I take projects end to end, from scoping the brief to the final cut."
     },
     "microsoft": {
-      "title": "Observation Internship – Microsoft",
+      "title": "Observation internship at Microsoft",
       "description": "Observation internship within Microsoft, allowing discovery of software engineering professions, exploration of the digital world, and confirmation of orientation towards technologies and innovation.",
-      "period": "2017"
+      "period": "2017",
+      "short": "Microsoft"
+    },
+    "relive": {
+      "title": "ReLive, selfie search for photo galleries",
+      "short": "ReLive",
+      "kind": "Web product",
+      "period": "Since March 2026",
+      "card": "A wedding guest enters the gallery code, takes a selfie, and gets every photo they appear in within seconds. Face recognition, vector index, photographer dashboard: designed and built end to end.",
+      "description": "A web product born from a simple observation: after a wedding, nobody scrolls through two thousand gallery photos to find their own. ReLive solves it with face recognition. The photographer uploads the gallery, each guest identifies themselves with a selfie and retrieves their photos. Product design, Python API, face recognition model, vector index, web interface and hosting: the whole project is built solo."
+    },
+    "benevolence": {
+      "title": "Benevolence, fine art print shop",
+      "short": "Benevolence",
+      "kind": "Online shop",
+      "period": "Since January 2026",
+      "card": "My fine art print shop: images brought back from my travels, released in limited editions on canvas, aluminium, acrylic or paper. From selecting the images to running the shop, everything is done in-house.",
+      "description": "An online shop for fine art prints from my travels, in limited editions on canvas, aluminium, acrylic or paper. Image selection and preparation, brand identity, shop setup and order fulfilment."
+    },
+    "seed4soft": {
+      "title": "Seed4Soft, website rebuild for a business angel collective",
+      "short": "Seed4Soft",
+      "kind": "Website rebuild",
+      "period": "Since June 2026",
+      "card": "A full rebuild of the Seed4Soft website, a business angel collective: scoping, design system, development and release. Next.js, Tailwind CSS, bilingual content.",
+      "description": "A full rebuild of the website of Seed4Soft, a business angel collective. Scoping with the team, design system, development in Next.js and Tailwind CSS, bilingual editorial content, then release to production. The site is live and I keep improving it."
     }
   },
   "formation": {
     "oslomet": {
-      "title": "OsloMet (Norway) – International Academic Semester",
-      "description": "A semester abroad focused on Data Science and Artificial Intelligence. An academic immersion that allowed me to study business intelligence systems with an international approach.",
-      "period": "August 2025 - December 2025"
+      "title": "OsloMet, Oslo (Norway)",
+      "summary": "Third year of the ISEP engineering cycle · Data Science & Artificial Intelligence",
+      "description": "Exchange semester completed as part of my engineering cycle at ISEP, focused on Data Science and Artificial Intelligence. An academic immersion that let me study business intelligence systems with an international approach, in English and within multicultural teams.",
+      "period": "August 2025 to December 2025",
+      "short": "OsloMet"
     },
     "isep_ing": {
-      "title": "ISEP – Engineering Cycle (Paris)",
-      "description": "Digital engineering curriculum with a specialization in Business Intelligence (BI) and data architecture. Comprehensive training in IT professions: from software design to IS management.",
-      "period": "September 2023 - July 2026"
+      "title": "ISEP, engineering cycle (Paris)",
+      "description": "Digital engineering curriculum with a specialization in Business Intelligence (BI) and data architecture. Comprehensive training in IT professions, from software design to IS management, including an exchange semester at OsloMet (Norway).",
+      "period": "September 2023 to July 2026",
+      "short": "ISEP · Engineering cycle"
     },
     "inha": {
-      "title": "Inha University (South Korea) – International Academic Semester",
-      "description": "An enriching first semester abroad, featuring courses in system programming, leadership, electronics, and Korean language. Culturally, one of my most impactful experiences.",
-      "period": "February 2023 - June 2023"
+      "title": "Inha University, Incheon (South Korea)",
+      "summary": "Second year of the ISEP integrated international cycle · System programming & leadership",
+      "description": "Exchange semester completed as part of my integrated international cycle at ISEP, featuring courses in system programming, leadership, electronics and Korean language. My first time living abroad, and culturally one of my most impactful experiences.",
+      "period": "February 2023 to June 2023",
+      "short": "Inha"
     },
     "isep_cii": {
-      "title": "ISEP – Integrated International Cycle",
-      "description": "Integrated preparatory classes. Intensive training in mathematics, digital sciences, electronics, and international environments.",
-      "period": "2021 - 2023"
+      "title": "ISEP, international integrated preparatory programme",
+      "description": "Integrated preparatory programme of ISEP's international track, leading straight into the engineering cycle. Intensive training in mathematics, digital sciences and electronics, in an international environment including an exchange semester at Inha University (South Korea).",
+      "period": "2021 to 2023",
+      "short": "ISEP · Integrated prep programme"
     }
   },
   "timeline": {
     "read_more": "Read more",
     "show_less": "Show less",
-    "show_all": "Show all",
-    "collapse": "Show less"
+    "exchange_label": "Exchange semester within this programme"
   },
   "meta": {
     "home": {
-      "title": "Benjamin Balayre — Data & AI Consultant, Freelance Developer",
+      "title": "Benjamin Balayre · Data & AI consultant, freelance developer",
       "description": "Data & AI transformation consultant at Capgemini Invent, freelance web developer and photographer. Discover my background, experience, and projects."
     },
     "portfolio": {
-      "title": "Portfolio — Benjamin Balayre",
+      "title": "Portfolio · Benjamin Balayre",
       "description": "Photo and video portfolio by Benjamin Balayre. Travel cinematics and fine art prints available on Benevolence."
     },
     "associativeCareer": {
-      "title": "Associative Experience — Benjamin Balayre",
+      "title": "Associative experience · Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone: discover Benjamin Balayre's student associative involvement at ISEP."
     },
     "keywords": "Benjamin Balayre, Data & AI consultant, Capgemini Invent, freelance web developer, website development, web application, ISEP engineer, photographer, videographer, Paris, portfolio, FPV drone, ISEP Live"
+  },
+  "journey": {
+    "title": "The whole journey at a glance",
+    "subtitle": "Education and professional experience on a single time scale. My exchange semesters and internships sit inside my ISEP programme, not after it.",
+    "track_formation": "Education",
+    "track_experience": "Experience",
+    "legend_formation": "ISEP programme",
+    "legend_exchange": "International exchange",
+    "legend_experience": "Professional experience",
+    "hint": "Select a step to see the details.",
+    "scroll_hint": "Scroll the timeline horizontally →",
+    "ongoing": "ongoing",
+    "track_internship": "Internships within the programme",
+    "today": "Today",
+    "nature": {
+      "cursus": "Programme",
+      "exchange": "Exchange",
+      "internship": "Internship",
+      "freelance": "Freelance",
+      "permanent": "Full-time",
+      "project": "Project",
+      "association": "Association"
+    },
+    "tabs_aria": "Switch between education and professional experience",
+    "track_projects": "Projects",
+    "legend_project": "Personal project",
+    "track_associative": "Student life",
+    "legend_association": "Student association",
+    "year_range": "{{from}} to {{to}}"
+  },
+  "portfolio": {
+    "chapter": {
+      "hero": "Photo & video",
+      "film": "Latest film",
+      "skills": "Craft"
+    },
+    "play_video": "Play the video"
   }
 }
