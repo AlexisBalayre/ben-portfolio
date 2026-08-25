@@ -18,7 +18,13 @@
   "footer": {
     "phone_aria": "Benjamin Balayre's phone number",
     "email_aria": "Benjamin Balayre's email address",
-    "social_aria": "Social media links"
+    "social_aria": "Social media links",
+    "tagline": "Data & AI consultant, freelance developer and photographer. Always up for a project that mixes data, code and image.",
+    "nav_title": "Navigation",
+    "contact_title": "Get in touch",
+    "elsewhere_title": "Elsewhere",
+    "location": "Paris, France",
+    "back_to_top": "Back to top"
   },
   "home": {
     "name": "Benjamin Balayre",
