@@ -1,57 +1,87 @@
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion } from 'framer-motion';
 import {
+    AdjustmentsHorizontalIcon,
+    ArrowPathIcon,
     ArrowsPointingInIcon,
-    CheckBadgeIcon,
-    LockClosedIcon,
+    ArrowsRightLeftIcon,
+    BoltIcon,
+    BriefcaseIcon,
+    ChartBarIcon,
+    ChevronDoubleRightIcon,
+    CircleStackIcon,
+    ClipboardDocumentListIcon,
+    CloudIcon,
+    CodeBracketIcon,
+    CommandLineIcon,
+    CpuChipIcon,
+    CubeIcon,
+    CubeTransparentIcon,
+    LanguageIcon,
     MinusIcon,
     PlusIcon,
+    PresentationChartLineIcon,
+    RocketLaunchIcon,
+    ServerStackIcon,
     SparklesIcon,
-} from '@heroicons/react/24/solid';
+    Squares2X2Icon,
+    TableCellsIcon,
+    VideoCameraIcon,
+} from '@heroicons/react/24/outline';
+import { CheckCircleIcon, ClockIcon, LockClosedIcon } from '@heroicons/react/24/solid';
 
 type NodeStatus = 'unlocked' | 'progress' | 'locked';
+type IconType = React.ComponentType<{ className?: string }>;
 
 export interface SkillNode {
     id: string;
     icon: string;
     status: string;
+    after?: string[];
 }
 
 export interface SkillBranch {
     id: string;
-    icon: string;
     nodes: SkillNode[];
 }
 
-export interface SkillTreeData {
-    branches: SkillBranch[];
-    links: { from: string; to: string }[];
-}
+const ICONS: Record<string, IconType> = {
+    'command-line': CommandLineIcon,
+    'table-cells': TableCellsIcon,
+    'chart-bar': ChartBarIcon,
+    'cpu-chip': CpuChipIcon,
+    sparkles: SparklesIcon,
+    rocket: RocketLaunchIcon,
+    database: CircleStackIcon,
+    'arrows-right-left': ArrowsRightLeftIcon,
+    squares: Squares2X2Icon,
+    bolt: BoltIcon,
+    'cube-transparent': CubeTransparentIcon,
+    code: CodeBracketIcon,
+    server: ServerStackIcon,
+    cube: CubeIcon,
+    cloud: CloudIcon,
+    'arrow-path': ArrowPathIcon,
+    adjustments: AdjustmentsHorizontalIcon,
+    clipboard: ClipboardDocumentListIcon,
+    language: LanguageIcon,
+    video: VideoCameraIcon,
+    'presentation-chart': PresentationChartLineIcon,
+    briefcase: BriefcaseIcon,
+};
 
-/* ── Grille ──────────────────────────────────────────────────────────────
- * Chaque domaine part de la racine vers la gauche ou la droite ; ses
- * compétences se répartissent en quinconce sur deux colonnes.            */
-const COL = 104;
-const ROW = 80;
-const HUB_COL = 1.9;
-const NODE_COL = 3.4;
-const NODE_STAGGER = 1.1;
-const NODE_ROW_STEP = 0.6;
-const PADDING = 90;
-
-const ROOT_SIZE = 64;
-const HUB_SIZE = 56;
-const NODE_SIZE = 48;
-
-/** Placement des domaines autour de la racine : côté et hauteur. */
-const BRANCH_ANCHORS = [
-    { side: 1, row: -3.6 },
-    { side: 1, row: 0 },
-    { side: 1, row: 3.6 },
-    { side: -1, row: -1.9 },
-    { side: -1, row: 1.9 },
-];
+/* ── Grille ─────────────────────────────────────────────────────────────
+ * Une voie par domaine, les compétences s'enchaînant de gauche à droite
+ * dans l'ordre de leurs prérequis (`after`).                            */
+const CARD_W = 160;
+const CARD_H = 54;
+const COL_GAP = 48;
+const SUB_ROW = 78;
+const LANE_GAP = 92;
+const ROOT_W = 178;
+const ROOT_GAP = 84;
+const PADDING = 72;
+const TITLE_GAP = 26;
 
 const MIN_SCALE = 0.5;
 const MAX_SCALE = 1.8;
@@ -61,37 +91,50 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 const toStatus = (status: string): NodeStatus =>
     status === 'unlocked' || status === 'progress' ? status : 'locked';
 
-const TILE_STYLES: Record<NodeStatus, string> = {
-    unlocked: 'border-amber-300/80 bg-amber-300/10 shadow-[0_0_20px_-6px_rgba(252,211,77,0.9)]',
-    progress: 'border-sky-400/80 bg-sky-400/10 shadow-[0_0_20px_-6px_rgba(56,189,248,0.9)]',
-    locked: 'border-dashed border-white/25 bg-white/[0.02]',
+const CARD_STYLES: Record<NodeStatus, string> = {
+    unlocked: 'border-primary/25 bg-base-100 shadow-sm hover:border-primary/60 hover:shadow-md',
+    progress: 'border-accent/60 bg-accent/[0.06] shadow-sm hover:border-accent hover:shadow-md',
+    locked: 'border-dashed border-base-300 bg-base-100/60 hover:border-base-content/30',
 };
 
-const STROKES: Record<NodeStatus, string> = {
-    unlocked: 'rgba(252,211,77,0.5)',
-    progress: 'rgba(56,189,248,0.5)',
-    locked: 'rgba(255,255,255,0.14)',
+const ICON_STYLES: Record<NodeStatus, string> = {
+    unlocked: 'text-primary',
+    progress: 'text-accent',
+    locked: 'text-base-content/30',
+};
+
+const TEXT_STYLES: Record<NodeStatus, string> = {
+    unlocked: 'text-base-content',
+    progress: 'text-base-content',
+    locked: 'text-base-content/40',
+};
+
+const EDGE_STROKES: Record<NodeStatus, string> = {
+    unlocked: '#94a3b8',
+    progress: '#3b82f6',
+    locked: '#cbd5e1',
+};
+
+const STATUS_ICONS: Record<NodeStatus, IconType> = {
+    unlocked: CheckCircleIcon,
+    progress: ClockIcon,
+    locked: LockClosedIcon,
 };
 
 const BADGE_STYLES: Record<NodeStatus, string> = {
-    unlocked: 'border-amber-300/40 bg-amber-300/10 text-amber-200',
-    progress: 'border-sky-400/40 bg-sky-400/10 text-sky-200',
-    locked: 'border-white/20 bg-white/5 text-white/50',
-};
-
-const StatusIcon = ({ status, className }: { status: NodeStatus; className: string }) => {
-    if (status === 'unlocked') return <CheckBadgeIcon className={className} aria-hidden="true" />;
-    if (status === 'progress') return <SparklesIcon className={className} aria-hidden="true" />;
-    return <LockClosedIcon className={className} aria-hidden="true" />;
+    unlocked: 'border-primary/25 bg-primary/5 text-primary',
+    progress: 'border-accent/40 bg-accent/10 text-accent',
+    locked: 'border-base-300 bg-base-200 text-base-content/50',
 };
 
 const StatusBadge = ({ status }: { status: NodeStatus }) => {
     const { t } = useTranslation('common');
+    const Icon = STATUS_ICONS[status];
     return (
         <span
             className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-semibold ${BADGE_STYLES[status]}`}
         >
-            <StatusIcon status={status} className="h-3 w-3" />
+            <Icon className="h-3 w-3" aria-hidden="true" />
             {t(`skill_tree.status.${status}`)}
         </span>
     );
@@ -99,31 +142,18 @@ const StatusBadge = ({ status }: { status: NodeStatus }) => {
 
 interface Placed {
     id: string;
-    kind: 'hub' | 'node';
     branchId: string;
     icon: string;
     status: NodeStatus;
+    after: string[];
     x: number;
     y: number;
-    size: number;
 }
 
-/** Liaison orthogonale parent → enfant, terminée par une pointe de flèche. */
-const orthogonalPath = (from: Placed | { x: number; y: number; size: number }, to: Placed) => {
-    const dir = Math.sign(to.x - from.x) || 1;
-    const x1 = from.x + dir * (from.size / 2);
-    const x2 = to.x - dir * (to.size / 2 + 8);
-    const mid = x1 + (x2 - x1) / 2;
-    return {
-        d: `M ${x1} ${from.y} H ${mid} V ${to.y} H ${x2}`,
-        arrow: `${x2},${to.y - 5} ${x2},${to.y + 5} ${x2 + dir * 7},${to.y}`,
-    };
-};
-
-const SkillTree = ({ data }: { data: SkillTreeData }) => {
+const SkillTree = ({ branches }: { branches: SkillBranch[] }) => {
     const { t } = useTranslation('common');
-    const [selected, setSelected] = useState<string | null>(null);
     const [hovered, setHovered] = useState<string | null>(null);
+    const [selected, setSelected] = useState<string | null>(null);
     const [scale, setScale] = useState(1);
 
     const viewportRef = useRef<HTMLDivElement>(null);
@@ -131,89 +161,87 @@ const SkillTree = ({ data }: { data: SkillTreeData }) => {
     const pendingScroll = useRef<{ left: number; top: number } | null>(null);
 
     const layout = useMemo(() => {
-        const raw: Placed[] = [];
+        const placed: Placed[] = [];
+        const lanes: { id: string; titleY: number }[] = [];
+        const rootX = PADDING + ROOT_W / 2;
+        const firstCol = rootX + ROOT_W / 2 + ROOT_GAP + CARD_W / 2;
 
-        data.branches.forEach((branch, index) => {
-            const anchor = BRANCH_ANCHORS[index % BRANCH_ANCHORS.length];
-            raw.push({
-                id: branch.id,
-                kind: 'hub',
-                branchId: branch.id,
-                icon: branch.icon,
-                status: 'unlocked',
-                x: anchor.side * HUB_COL * COL,
-                y: anchor.row * ROW,
-                size: HUB_SIZE,
+        // Les voies s'empilent selon leur hauteur réelle : une voie qui
+        // bifurque occupe deux rangées et décale les suivantes d'autant.
+        let laneTop = PADDING + TITLE_GAP + 14;
+
+        branches.forEach((branch) => {
+            // Profondeur = position dans la chaîne de prérequis.
+            const depth = new Map<string, number>();
+            branch.nodes.forEach((node) => {
+                const previous = node.after ?? [];
+                depth.set(node.id, previous.length ? Math.max(...previous.map((id) => depth.get(id) ?? 0)) + 1 : 0);
             });
 
-            branch.nodes.forEach((node, k) => {
-                raw.push({
-                    id: node.id,
-                    kind: 'node',
-                    branchId: branch.id,
-                    icon: node.icon,
-                    status: toStatus(node.status),
-                    x: anchor.side * (NODE_COL + (k % 2) * NODE_STAGGER) * COL,
-                    y: (anchor.row + (k - (branch.nodes.length - 1) / 2) * NODE_ROW_STEP) * ROW,
-                    size: NODE_SIZE,
+            const byDepth = new Map<number, SkillNode[]>();
+            branch.nodes.forEach((node) => {
+                const d = depth.get(node.id) ?? 0;
+                byDepth.set(d, [...(byDepth.get(d) ?? []), node]);
+            });
+
+            const rows = Math.max(...[...byDepth.values()].map((group) => group.length));
+            const laneHeight = (rows - 1) * SUB_ROW + CARD_H;
+            const laneCentre = laneTop + laneHeight / 2;
+
+            lanes.push({ id: branch.id, titleY: laneTop - TITLE_GAP });
+
+            byDepth.forEach((group, d) => {
+                group.forEach((node, index) => {
+                    placed.push({
+                        id: node.id,
+                        branchId: branch.id,
+                        icon: node.icon,
+                        status: toStatus(node.status),
+                        after: node.after ?? [],
+                        x: firstCol + d * (CARD_W + COL_GAP),
+                        y: laneCentre + (index - (group.length - 1) / 2) * SUB_ROW,
+                    });
                 });
             });
+
+            laneTop += laneHeight + LANE_GAP;
         });
 
-        const xs = [0, ...raw.map((p) => p.x)];
-        const ys = [0, ...raw.map((p) => p.y)];
-        const minX = Math.min(...xs);
-        const minY = Math.min(...ys);
-        const width = Math.max(...xs) - minX + PADDING * 2;
-        const height = Math.max(...ys) - minY + PADDING * 2;
-
-        const placed = raw.map((p) => ({ ...p, x: p.x - minX + PADDING, y: p.y - minY + PADDING }));
-        const root = { x: -minX + PADDING, y: -minY + PADDING, size: ROOT_SIZE };
         const byId = new Map(placed.map((p) => [p.id, p]));
+        const width = Math.max(...placed.map((p) => p.x)) + CARD_W / 2 + PADDING;
+        const height = laneTop - LANE_GAP + PADDING;
+        const root = { x: rootX, y: height / 2 };
 
-        return { width, height, root, placed, byId };
-    }, [data]);
+        return { placed, lanes, byId, root, width, height, firstCol };
+    }, [branches]);
 
     const { unlocked, total } = useMemo(() => {
-        const nodes = data.branches.flatMap((branch) => branch.nodes);
+        const nodes = branches.flatMap((branch) => branch.nodes);
         return {
             unlocked: nodes.filter((node) => toStatus(node.status) === 'unlocked').length,
             total: nodes.length,
         };
-    }, [data]);
+    }, [branches]);
 
-    const related = useMemo(() => {
-        const map = new Map<string, string[]>();
-        data.links.forEach(({ from, to }) => {
-            map.set(from, [...(map.get(from) ?? []), to]);
-            map.set(to, [...(map.get(to) ?? []), from]);
+    const scrollTo = useCallback((x: number, y: number, behavior: ScrollBehavior = 'smooth') => {
+        const el = viewportRef.current;
+        if (!el) return;
+        el.scrollTo({
+            left: x * scaleRef.current - el.clientWidth / 2,
+            top: y * scaleRef.current - el.clientHeight / 2,
+            behavior,
         });
-        return map;
-    }, [data]);
-
-    const scrollTo = useCallback(
-        (x: number, y: number, behavior: ScrollBehavior = 'smooth') => {
-            const el = viewportRef.current;
-            if (!el) return;
-            el.scrollTo({
-                left: x * scaleRef.current - el.clientWidth / 2,
-                top: y * scaleRef.current - el.clientHeight / 2,
-                behavior,
-            });
-        },
-        [],
-    );
+    }, []);
 
     const centre = useCallback(() => {
         scaleRef.current = 1;
         setScale(1);
         pendingScroll.current = null;
-        requestAnimationFrame(() => scrollTo(layout.root.x, layout.root.y));
+        requestAnimationFrame(() => scrollTo(layout.root.x + layout.width / 4, layout.root.y));
     }, [layout, scrollTo]);
 
-    // Cadrage initial sur la racine.
     useEffect(() => {
-        scrollTo(layout.root.x, layout.root.y, 'auto');
+        scrollTo(layout.root.x + 260, layout.root.y, 'auto');
     }, [layout, scrollTo]);
 
     // Zoom à la molette, centré sur le curseur.
@@ -265,7 +293,7 @@ const SkillTree = ({ data }: { data: SkillTreeData }) => {
         setScale(next);
     };
 
-    // Déplacement à la souris ; la molette zoome, le tactile fait défiler nativement.
+    // Déplacement à la souris ; le tactile fait défiler nativement.
     const drag = useRef<{ x: number; y: number; left: number; top: number } | null>(null);
 
     const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -291,48 +319,25 @@ const SkillTree = ({ data }: { data: SkillTreeData }) => {
 
     const activeId = hovered ?? selected;
     const active = activeId ? layout.byId.get(activeId) : undefined;
-    const activeRelated = activeId ? (related.get(activeId) ?? []) : [];
     const nodeName = (id: string) => t(`skill_tree.nodes.${id}.name`);
 
-    const tileProps = (tile: Placed) => ({
-        onMouseEnter: () => setHovered(tile.id),
-        onMouseLeave: () => setHovered((current) => (current === tile.id ? null : current)),
-        onFocus: () => {
-            setHovered(tile.id);
-            scrollTo(tile.x, tile.y);
-        },
-        onBlur: () => setHovered((current) => (current === tile.id ? null : current)),
-        onClick: () => setSelected((current) => (current === tile.id ? null : tile.id)),
-    });
+    /** Liaison d'un prérequis vers la compétence suivante, avec pointe de flèche. */
+    const edge = (from: { x: number; y: number }, to: Placed, fromHalfWidth: number) => {
+        const x1 = from.x + fromHalfWidth;
+        const x2 = to.x - CARD_W / 2 - 8;
+        const mid = x1 + (x2 - x1) / 2;
+        return {
+            d: `M ${x1} ${from.y} H ${mid} V ${to.y} H ${x2}`,
+            arrow: `${x2},${to.y - 5} ${x2},${to.y + 5} ${x2 + 7},${to.y}`,
+        };
+    };
 
     return (
         <div className="relative">
-            {/* Racine */}
-            <div className="mb-4 flex items-center gap-4">
-                <span
-                    className="grid h-14 w-14 shrink-0 place-items-center rounded-xl border-2 border-amber-300/70 bg-amber-300/10 text-2xl shadow-[0_0_30px_-8px_rgba(252,211,77,0.9)]"
-                    aria-hidden="true"
-                >
-                    ⭐
-                </span>
-                <div className="min-w-0 flex-1">
-                    <p className="text-base font-bold text-white">{t('skill_tree.root')}</p>
-                    <p className="mt-0.5 text-sm text-white/60">
-                        {t('skill_tree.progress', { unlocked, total })}
-                    </p>
-                    <div className="mt-2 h-2 w-full max-w-sm overflow-hidden rounded-full border border-white/10 bg-white/5">
-                        <motion.div
-                            className="h-full rounded-full bg-gradient-to-r from-amber-400 to-amber-200"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${Math.round((unlocked / total) * 100)}%` }}
-                            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                            viewport={{ once: true }}
-                        />
-                    </div>
-                </div>
-            </div>
+            <p className="mb-4 text-sm font-semibold text-base-content/60">
+                {t('skill_tree.progress', { unlocked, total })}
+            </p>
 
-            {/* Fenêtre d'exploration */}
             <div className="relative">
                 <div
                     ref={viewportRef}
@@ -340,16 +345,24 @@ const SkillTree = ({ data }: { data: SkillTreeData }) => {
                     onPointerMove={onPointerMove}
                     onPointerUp={endDrag}
                     onPointerCancel={endDrag}
-                    className="relative h-[420px] cursor-grab overflow-auto overscroll-contain rounded-2xl border border-white/10 bg-slate-950/50 active:cursor-grabbing sm:h-[560px]"
+                    className="relative h-[420px] cursor-grab overflow-auto overscroll-contain rounded-2xl border border-base-300 bg-base-100 active:cursor-grabbing sm:h-[560px]"
                 >
-                    <div
-                        className="relative"
-                        style={{ width: layout.width * scale, height: layout.height * scale }}
-                    >
+                    <div className="relative" style={{ width: layout.width * scale, height: layout.height * scale }}>
                         <div
                             className="absolute left-0 top-0 origin-top-left"
                             style={{ width: layout.width, height: layout.height, transform: `scale(${scale})` }}
                         >
+                            {/* Quadrillage discret */}
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 opacity-[0.55]"
+                                style={{
+                                    backgroundImage:
+                                        'radial-gradient(circle, #cbd5e1 1px, transparent 1px)',
+                                    backgroundSize: '28px 28px',
+                                }}
+                            />
+
                             {/* Liaisons */}
                             <svg
                                 className="pointer-events-none absolute inset-0"
@@ -357,152 +370,115 @@ const SkillTree = ({ data }: { data: SkillTreeData }) => {
                                 height={layout.height}
                                 aria-hidden="true"
                             >
-                                {layout.placed
-                                    .filter((tile) => tile.kind === 'hub')
-                                    .map((hub) => {
-                                        const { d, arrow } = orthogonalPath(layout.root, hub);
+                                {layout.placed.map((node) => {
+                                    const sources = node.after.length
+                                        ? node.after.map((id) => layout.byId.get(id)).filter(Boolean)
+                                        : [layout.root];
+                                    return sources.map((source, index) => {
+                                        const from = source as { x: number; y: number };
+                                        const half = node.after.length ? CARD_W / 2 : ROOT_W / 2;
+                                        const { d, arrow } = edge(from, node, half);
                                         return (
-                                            <g key={`root-${hub.id}`}>
-                                                <path d={d} fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth={2} />
-                                                <polygon points={arrow} fill="rgba(255,255,255,0.35)" />
+                                            <g key={`${node.id}-${index}`}>
+                                                <path
+                                                    d={d}
+                                                    fill="none"
+                                                    stroke={EDGE_STROKES[node.status]}
+                                                    strokeWidth={2}
+                                                    strokeDasharray={node.status === 'locked' ? '5 5' : undefined}
+                                                />
+                                                <polygon points={arrow} fill={EDGE_STROKES[node.status]} />
                                             </g>
                                         );
-                                    })}
-
-                                {layout.placed
-                                    .filter((tile) => tile.kind === 'node')
-                                    .map((node) => {
-                                        const hub = layout.byId.get(node.branchId);
-                                        if (!hub) return null;
-                                        const { d, arrow } = orthogonalPath(hub, node);
-                                        return (
-                                            <g key={`hub-${node.id}`}>
-                                                <path d={d} fill="none" stroke={STROKES[node.status]} strokeWidth={2} />
-                                                <polygon points={arrow} fill={STROKES[node.status]} />
-                                            </g>
-                                        );
-                                    })}
-
-                                {data.links.map((link) => {
-                                    const a = layout.byId.get(link.from);
-                                    const b = layout.byId.get(link.to);
-                                    if (!a || !b) return null;
-                                    const on = activeId === link.from || activeId === link.to;
-                                    const cx = (a.x + b.x) / 2 + (layout.root.x - (a.x + b.x) / 2) * 0.5;
-                                    const cy = (a.y + b.y) / 2 + (layout.root.y - (a.y + b.y) / 2) * 0.5;
-                                    return (
-                                        <path
-                                            key={`${link.from}-${link.to}`}
-                                            d={`M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`}
-                                            fill="none"
-                                            stroke={on ? 'rgba(252,211,77,0.85)' : 'rgba(148,163,184,0.3)'}
-                                            strokeWidth={on ? 2 : 1.5}
-                                            strokeDasharray="4 6"
-                                        />
-                                    );
+                                    });
                                 })}
                             </svg>
 
-                            {/* Racine sur le plan */}
-                            <span
-                                className="absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-xl border-2 border-amber-300/80 bg-amber-300/15 text-2xl shadow-[0_0_30px_-6px_rgba(252,211,77,0.9)]"
-                                style={{
-                                    left: layout.root.x,
-                                    top: layout.root.y,
-                                    width: ROOT_SIZE,
-                                    height: ROOT_SIZE,
-                                }}
-                                aria-hidden="true"
-                            >
-                                ⭐
-                            </span>
+                            {/* Titres de domaine */}
+                            {layout.lanes.map((lane) => (
+                                <p
+                                    key={lane.id}
+                                    className="absolute whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.14em] text-base-content/45"
+                                    style={{ left: layout.firstCol - CARD_W / 2, top: lane.titleY }}
+                                >
+                                    {t(`skill_tree.branches.${lane.id}`)}
+                                </p>
+                            ))}
 
-                            {/* Cases */}
-                            {layout.placed.map((tile) => {
-                                const isActive = activeId === tile.id;
-                                const isLinked = activeRelated.includes(tile.id);
-                                const label =
-                                    tile.kind === 'hub'
-                                        ? t(`skill_tree.branches.${tile.id}.title`)
-                                        : nodeName(tile.id);
+                            {/* Racine */}
+                            <div
+                                className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-xl bg-primary px-4 text-base-100 shadow-lg"
+                                style={{ left: layout.root.x, top: layout.root.y, width: ROOT_W, height: CARD_H + 6 }}
+                            >
+                                <ChevronDoubleRightIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                                <span className="truncate text-sm font-bold">{t('skill_tree.root')}</span>
+                            </div>
+
+                            {/* Compétences */}
+                            {layout.placed.map((node) => {
+                                const Icon = ICONS[node.icon] ?? CubeIcon;
+                                const isActive = activeId === node.id;
                                 return (
                                     <button
-                                        key={tile.id}
+                                        key={node.id}
                                         type="button"
-                                        {...tileProps(tile)}
-                                        aria-pressed={selected === tile.id}
-                                        aria-label={
-                                            tile.kind === 'hub'
-                                                ? label
-                                                : t('skill_tree.node_aria', {
-                                                      name: label,
-                                                      status: t(`skill_tree.status.${tile.status}`),
-                                                  })
+                                        onMouseEnter={() => setHovered(node.id)}
+                                        onMouseLeave={() =>
+                                            setHovered((current) => (current === node.id ? null : current))
                                         }
-                                        className={`absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-md border-2 transition-transform duration-150 hover:scale-110 focus:outline-none ${
-                                            tile.kind === 'hub'
-                                                ? 'border-white/45 bg-white/[0.08] text-xl'
-                                                : `${TILE_STYLES[tile.status]} text-lg`
-                                        } ${isActive ? 'scale-110 ring-2 ring-white/70' : ''} ${
-                                            isLinked ? 'ring-2 ring-amber-300/70' : ''
-                                        }`}
-                                        style={{
-                                            left: tile.x,
-                                            top: tile.y,
-                                            width: tile.size,
-                                            height: tile.size,
+                                        onFocus={() => {
+                                            setHovered(node.id);
+                                            scrollTo(node.x, node.y);
                                         }}
+                                        onBlur={() => setHovered((current) => (current === node.id ? null : current))}
+                                        onClick={() =>
+                                            setSelected((current) => (current === node.id ? null : node.id))
+                                        }
+                                        aria-pressed={selected === node.id}
+                                        aria-label={t('skill_tree.node_aria', {
+                                            name: nodeName(node.id),
+                                            status: t(`skill_tree.status.${node.status}`),
+                                        })}
+                                        className={`absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-xl border px-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                                            CARD_STYLES[node.status]
+                                        } ${isActive ? 'ring-2 ring-primary/40' : ''}`}
+                                        style={{ left: node.x, top: node.y, width: CARD_W, height: CARD_H }}
                                     >
-                                        <span
-                                            className={
-                                                tile.kind === 'node' && tile.status === 'locked'
-                                                    ? 'opacity-30 grayscale'
-                                                    : ''
-                                            }
+                                        <Icon
+                                            className={`h-5 w-5 shrink-0 ${ICON_STYLES[node.status]}`}
                                             aria-hidden="true"
+                                        />
+                                        <span
+                                            className={`text-[13px] font-semibold leading-tight ${TEXT_STYLES[node.status]}`}
                                         >
-                                            {tile.icon}
+                                            {nodeName(node.id)}
                                         </span>
                                     </button>
                                 );
                             })}
                         </div>
 
-                        {/* Infobulle : hors du calque zoomé, pour rester lisible à toute échelle */}
+                        {/* Infobulle, hors du calque zoomé pour rester lisible */}
                         {active && (
                             <div
-                                className="pointer-events-none absolute z-20 w-[15rem] -translate-x-1/2"
+                                className="pointer-events-none absolute z-20 w-[16rem] -translate-x-1/2"
                                 style={{
                                     left: active.x * scale,
                                     top: active.y * scale,
                                     transform:
                                         active.y < layout.height * 0.4
-                                            ? `translate(-50%, ${(active.size / 2) * scale + 10}px)`
-                                            : `translate(-50%, calc(-100% - ${(active.size / 2) * scale + 10}px))`,
+                                            ? `translate(-50%, ${(CARD_H / 2) * scale + 12}px)`
+                                            : `translate(-50%, calc(-100% - ${(CARD_H / 2) * scale + 12}px))`,
                                 }}
                             >
-                                <div className="rounded-lg border border-white/20 bg-slate-950/95 p-3 shadow-xl">
+                                <div className="rounded-xl border border-base-300 bg-base-100 p-3 shadow-xl">
                                     <div className="flex flex-wrap items-center gap-2">
-                                        <p className="text-sm font-bold text-white">
-                                            {active.kind === 'hub'
-                                                ? t(`skill_tree.branches.${active.id}.title`)
-                                                : nodeName(active.id)}
-                                        </p>
-                                        {active.kind === 'node' && <StatusBadge status={active.status} />}
+                                        <p className="text-sm font-bold text-base-content">{nodeName(active.id)}</p>
+                                        <StatusBadge status={active.status} />
                                     </div>
-                                    <p className="mt-1 text-xs leading-relaxed text-white/60">
-                                        {active.kind === 'hub'
-                                            ? t(`skill_tree.branches.${active.id}.desc`)
-                                            : t(`skill_tree.nodes.${active.id}.desc`)}
+                                    <p className="mt-1 text-xs leading-relaxed text-base-content/60">
+                                        {t(`skill_tree.nodes.${active.id}.desc`)}
                                     </p>
-                                    {activeRelated.length > 0 && (
-                                        <p className="mt-2 text-[11px] text-white/50">
-                                            <span className="font-semibold uppercase tracking-wider text-amber-200/70">
-                                                {t('skill_tree.related')}
-                                            </span>{' '}
-                                            {activeRelated.map((id) => nodeName(id)).join(' · ')}
-                                        </p>
-                                    )}
                                 </div>
                             </div>
                         )}
@@ -522,7 +498,7 @@ const SkillTree = ({ data }: { data: SkillTreeData }) => {
                             onClick={onClick}
                             aria-label={label}
                             title={label}
-                            className="grid h-8 w-8 place-items-center rounded-md border border-white/20 bg-slate-900/80 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                            className="grid h-8 w-8 place-items-center rounded-lg border border-base-300 bg-base-100 text-base-content/50 shadow-sm transition-colors hover:bg-base-200 hover:text-base-content"
                         >
                             <Icon className="h-4 w-4" aria-hidden="true" />
                         </button>
@@ -535,14 +511,7 @@ const SkillTree = ({ data }: { data: SkillTreeData }) => {
                 <StatusBadge status="unlocked" />
                 <StatusBadge status="progress" />
                 <StatusBadge status="locked" />
-                <span className="inline-flex items-center gap-1.5 text-[11px] text-white/50">
-                    <span
-                        aria-hidden="true"
-                        className="inline-block h-px w-6 border-t border-dashed border-slate-400"
-                    />
-                    {t('skill_tree.legend_link')}
-                </span>
-                <span className="text-[11px] text-white/50">{t('skill_tree.pan_hint')}</span>
+                <span className="text-[11px] text-base-content/50">{t('skill_tree.pan_hint')}</span>
             </div>
         </div>
     );

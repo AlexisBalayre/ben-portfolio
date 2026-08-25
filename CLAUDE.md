@@ -41,7 +41,7 @@ ben-portfolio/
 │   │   ├── Timeline.tsx          # Timeline formations (fond gris) — imbrique les échanges
 │   │   ├── TimelineDark.tsx      # Timeline expériences (fond blanc)
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
-│   │   ├── SkillTree.tsx         # Arbre de compétences à racine unique (succès Minecraft)
+│   │   ├── SkillTree.tsx         # Arbre de compétences : carte explorable, chaînes de prérequis
 │   │   ├── Carousel.tsx          # Carousel images de voyage
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
 │   │   ├── MetaHeader.tsx        # Meta tags SEO par page
@@ -133,11 +133,11 @@ Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de to
 
 Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `period`, `short` dans `fr/common.json` **et** `en/common.json`.
 
-Pour `skillTree.json` : un objet `{ branches, links }`. Chaque branche a un `id`, un `icon` (emoji) et des `nodes` ; chaque node a `id`, `icon` et `status` (`unlocked` | `progress` | `locked`). `links` liste les corrélations **inter-branches** (`{ from, to }`), tracées en pointillés.
+Pour `skillTree.json` : un tableau de domaines, chacun avec un `id` et ses `nodes`. Chaque node porte `id`, `icon` (clé de la table `ICONS` du composant, pas un emoji), `status` (`unlocked` | `progress` | `locked`) et un `after` optionnel — la liste de ses prérequis. C'est `after` qui dessine les flèches : sans lui, la compétence part directement de la racine.
 
-Le placement est automatique : `SkillTree` répartit les domaines de part et d'autre de la racine (constantes `BRANCH_ANCHORS`, `COL`, `ROW` en tête du composant) et dispose les compétences en quinconce sur deux colonnes. Aucune coordonnée à saisir à la main ; ajouter une compétence = un bloc dans `nodes` + `skill_tree.nodes.<id>.name` / `.desc` en FR **et** EN.
+Le placement est automatique. `SkillTree` déduit la profondeur de chaque compétence de sa chaîne de prérequis, empile les domaines en voies de hauteur variable (une voie qui bifurque prend deux rangées et décale les suivantes) et trace des liaisons orthogonales fléchées. Aucune coordonnée à saisir ; ajouter une compétence = un bloc dans `nodes` + `skill_tree.nodes.<id>.name` / `.desc` en FR **et** EN, plus une entrée dans `ICONS` si l'icône Heroicon n'y est pas déjà.
 
-Les libellés ne sont pas affichés sur les cases : nom, statut, description et compétences liées apparaissent dans l'infobulle au survol (ou au clic sur mobile). La fenêtre se déplace à la souris, zoome à la molette (0,5× à 1,8×) et se recentre via les boutons en haut à droite.
+Les cartes affichent icône + intitulé ; la description et le statut apparaissent dans l'infobulle au survol (ou au clic sur mobile). La fenêtre se déplace à la souris, zoome à la molette (0,5× à 1,8×) et se recentre via les boutons en haut à droite.
 
 `projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`).
 
