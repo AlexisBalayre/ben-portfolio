@@ -17,9 +17,9 @@ import Carousel from '~~/src/components/Carousel';
 import ExploreCard from '~~/src/components/ExploreCard';
 import JourneyDetail from '~~/src/components/JourneyDetail';
 import ParallelTimeline from '~~/src/components/ParallelTimeline';
+import PhotoProjects from '~~/src/components/PhotoProjects';
 import { Container, Section, SectionHeading, actionClasses, fadeUp, stagger } from '~~/src/components/ui';
-import experiences from '~~/public/assets/data/experiences.json';
-import education from '~~/public/assets/data/formation.json';
+import { education, experiences, imageProjects, timelineExperiences } from '~~/src/data/journey';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('common');
@@ -30,8 +30,8 @@ const Home: NextPage = () => {
   // Sommaire de la page — le même découpage sert de fil rouge aux sections.
   const chapters = [
     { index: '01', href: '#parcours', label: t('home.chapter.journey'), icon: <CalendarDaysIcon className="h-4 w-4" aria-hidden="true" /> },
-    { index: '02', href: '#voyages', label: t('home.chapter.travel'), icon: <GlobeEuropeAfricaIcon className="h-4 w-4" aria-hidden="true" /> },
-    { index: '03', href: '#explorer', label: t('home.chapter.explore'), icon: <CameraIcon className="h-4 w-4" aria-hidden="true" /> },
+    { index: '02', href: '#image', label: t('home.chapter.image'), icon: <CameraIcon className="h-4 w-4" aria-hidden="true" /> },
+    { index: '03', href: '#explorer', label: t('home.chapter.explore'), icon: <GlobeEuropeAfricaIcon className="h-4 w-4" aria-hidden="true" /> },
   ];
 
   return (
@@ -146,22 +146,35 @@ const Home: NextPage = () => {
           <ParallelTimeline education={education} experiences={experiences} />
         </div>
 
-        <JourneyDetail education={education} experiences={experiences} />
+        <JourneyDetail education={education} experiences={timelineExperiences} />
       </Section>
 
-      {/* ── 02 · Carnet de voyage ─────────────────────────────── */}
-      <Section id="voyages" tone="paper" size="lg" contained={false}>
+      {/* ── 02 · L'image ──────────────────────────────────────── */}
+      <Section id="image" tone="paper" size="lg" contained={false}>
         <Container>
           <SectionHeading
             index="02"
-            eyebrow={t('home.chapter.travel')}
-            icon={<GlobeEuropeAfricaIcon className="h-4 w-4" />}
-            title={t('home.carousel_title')}
-            lead={t('home.travel_desc')}
+            eyebrow={t('home.chapter.image')}
+            icon={<CameraIcon className="h-4 w-4" />}
+            title={t('home.image_title')}
+            lead={t('home.image_lead')}
           />
+
+          <div className="mt-12">
+            <PhotoProjects projects={imageProjects} />
+          </div>
+
+          {/* Les projets racontent le métier ; la bande qui suit montre le résultat. */}
+          <div className="mt-16 flex items-center gap-4 sm:mt-20">
+            <span aria-hidden="true" className="h-px flex-1 bg-base-300" />
+            <span className="text-[11px] font-bold uppercase tracking-eyebrow text-base-content/45">
+              {t('home.carousel_title')}
+            </span>
+            <span aria-hidden="true" className="h-px flex-1 bg-base-300" />
+          </div>
         </Container>
 
-        <div className="mt-12">
+        <div className="mt-8">
           <Carousel />
         </div>
       </Section>
@@ -171,7 +184,7 @@ const Home: NextPage = () => {
         <SectionHeading
           index="03"
           eyebrow={t('home.chapter.explore')}
-          icon={<CameraIcon className="h-4 w-4" />}
+          icon={<GlobeEuropeAfricaIcon className="h-4 w-4" />}
           title={t('home.explore_title')}
           lead={t('home.explore_desc')}
         />
@@ -199,7 +212,7 @@ const Home: NextPage = () => {
             mais elles ne doivent pas non plus n'exister que dans le pied de page. */}
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
-            href="https://benjaminbalayre.myportfolio.com/"
+            href="https://portfolio.benevolence.fr"
             target="_blank"
             rel="noopener noreferrer"
             className={actionClasses('quiet', 'light', 'sm', '!px-0')}
