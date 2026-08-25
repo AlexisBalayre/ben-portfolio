@@ -56,7 +56,19 @@
     "portfolio_preview_button": "Discover the portfolio",
     "associative_preview_title": "Associative Engagement",
     "associative_preview_desc": "My student life is deeply shaped by associative commitments. From presiding over an FPV drone club to managing the school’s media association (ISEP Live), explore my projects.",
-    "associative_preview_button": "View my journey"
+    "associative_preview_button": "View my journey",
+    "hero_cta_journey": "See my background",
+    "summary_aria": "Page contents",
+    "chapter": {
+      "journey": "Background",
+      "travel": "Travel notebook",
+      "explore": "Going further",
+      "explore_portfolio": "Photo & video",
+      "explore_associative": "Student life"
+    },
+    "travel_desc": "The images I brought back from my exchanges and my travels — the thread that ties my engineering path to my photographic work.",
+    "explore_title": "Two other sides",
+    "explore_desc": "A résumé only tells half the story. The rest lives in my images and in the student associations I helped run."
   },
   "skills": {
     "video_editing": {
@@ -85,14 +97,20 @@
       "iseplife_title": "The ISEP Life App",
       "iseplife_desc": "The association internally develops and maintains the ISEP Life mobile app, a true hub for campus life: agendas, student directories, association news, and media galleries.",
       "path_title": "From Member to President",
-      "path_desc": "I joined ISEP Live in 2021 to improve my photography and audiovisual skills alongside other enthusiasts. <br /><br /> As Vice-President in 2022, I coordinated creation departments, significantly strengthening my project management and teamwork skills. <br /><br /> Continuing this commitment, I took on the presidency in 2023. This foundational experience taught me to lead a 25-person team, oversee the art direction of our productions, and structure our overall development."
+      "path_desc": "I joined ISEP Live in 2021 to improve my photography and audiovisual skills alongside other enthusiasts. <br /><br /> As Vice-President in 2022, I coordinated creation departments, significantly strengthening my project management and teamwork skills. <br /><br /> Continuing this commitment, I took on the presidency in 2023. This foundational experience taught me to lead a 25-person team, oversee the art direction of our productions, and structure our overall development.",
+      "eyebrow": "Student media",
+      "role": "Member, then vice-president, then president",
+      "lead": "The school’s media association: twenty-five people covering campus life in photo and video."
     },
     "vizion": {
       "title": "Student Council: Vizion",
       "presentation_title": "A Team Dedicated to Students",
       "presentation_desc": "The Student Council (BDE) is the central body of associative life. The Vizion team, with its 40 members, set the pace for the student year with its events and projects. <br /><br /> I mainly worked within the Creation department, ensuring the visual identity of our term (logos, social media communication, apparel).",
       "path_title": "Creation & Events Department",
-      "path_desc": "Being part of a Student Council is a tremendous experience in high-pressure teamwork. In the Creation department, I expressed my creativity while meeting strict deadlines and concrete communication needs. <br /><br /> This human adventure gave me a real vision of event management, but more importantly, it built invaluable adaptability and collaboration skills."
+      "path_desc": "Being part of a Student Council is a tremendous experience in high-pressure teamwork. In the Creation department, I expressed my creativity while meeting strict deadlines and concrete communication needs. <br /><br /> This human adventure gave me a real vision of event management, but more importantly, it built invaluable adaptability and collaboration skills.",
+      "eyebrow": "Student union",
+      "role": "Creative & Events team",
+      "lead": "Forty people setting the rhythm of the student year — and a creative team that signed the visual identity of the term."
     },
     "isepdrone": {
       "title": "ISEP Drone",
@@ -104,8 +122,15 @@
         "president": "Club President",
         "comm_manager": "Communication Manager",
         "founder": "Founding Member"
-      }
-    }
+      },
+      "eyebrow": "FPV drone club",
+      "role": "Founding member, then president",
+      "lead": "A club founded in 2021 to open first-person-view flying to students: build workshops, simulator sessions and flight outings."
+    },
+    "eyebrow": "Student life",
+    "summary_eyebrow": "Contents",
+    "summary_title": "Three commitments, three roles",
+    "summary_desc": "A student media association, a student union and a drone club: three organisations I helped run during my studies at ISEP."
   },
   "projects": {
     "aftermovies": {
@@ -205,8 +230,6 @@
   "timeline": {
     "read_more": "Read more",
     "show_less": "Show less",
-    "show_all": "Show all",
-    "collapse": "Show less",
     "exchange_label": "Exchange semester within this programme"
   },
   "meta": {
@@ -243,6 +266,15 @@
       "internship": "Internship",
       "freelance": "Freelance",
       "permanent": "Full-time"
-    }
+    },
+    "tabs_aria": "Switch between education and professional experience"
+  },
+  "portfolio": {
+    "chapter": {
+      "hero": "Photo & video",
+      "film": "Latest film",
+      "skills": "Craft"
+    },
+    "play_video": "Play the video"
   }
 }

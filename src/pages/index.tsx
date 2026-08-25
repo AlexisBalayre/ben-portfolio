@@ -1,241 +1,226 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { AcademicCapIcon, BriefcaseIcon, CalendarDaysIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
-
-import Timeline from '~~/src/components/Timeline';
-import TimelineDark from '~~/src/components/TimelineDark';
-import Carousel from '~~/src/components/Carousel';
-import ParallelTimeline from '~~/src/components/ParallelTimeline';
-import experiences from "~~/public/assets/data/experiences.json";
-import education from "~~/public/assets/data/formation.json";
 import { NextPage } from 'next/types';
+import { motion } from 'framer-motion';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import {
+  ArrowDownTrayIcon,
+  ArrowUpRightIcon,
+  CalendarDaysIcon,
+  CameraIcon,
+  GlobeEuropeAfricaIcon,
+} from '@heroicons/react/24/outline';
 
-const fadeUp = {
-  hidden:  { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const stagger = {
-  hidden:  {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
+import Carousel from '~~/src/components/Carousel';
+import ExploreCard from '~~/src/components/ExploreCard';
+import JourneyDetail from '~~/src/components/JourneyDetail';
+import ParallelTimeline from '~~/src/components/ParallelTimeline';
+import { Container, Section, SectionHeading, actionClasses, fadeUp, stagger } from '~~/src/components/ui';
+import experiences from '~~/public/assets/data/experiences.json';
+import education from '~~/public/assets/data/formation.json';
 
 const Home: NextPage = () => {
-    const { t } = useTranslation('common');
-    const { locale } = useRouter();
-    const [experienceExpanded, setExperienceExpanded] = useState(false);
+  const { t } = useTranslation('common');
+  const { locale } = useRouter();
 
-    const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
+  const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
 
-    return (
-        <div className="pt-14 w-full overflow-x-clip bg-white">
+  // Sommaire de la page — le même découpage sert de fil rouge aux sections.
+  const chapters = [
+    { index: '01', href: '#parcours', label: t('home.chapter.journey'), icon: <CalendarDaysIcon className="h-4 w-4" aria-hidden="true" /> },
+    { index: '02', href: '#voyages', label: t('home.chapter.travel'), icon: <GlobeEuropeAfricaIcon className="h-4 w-4" aria-hidden="true" /> },
+    { index: '03', href: '#explorer', label: t('home.chapter.explore'), icon: <CameraIcon className="h-4 w-4" aria-hidden="true" /> },
+  ];
 
-            {/* ── Hero ─────────────────────────────────────────────────── */}
-            <motion.div
-                className="hero mt-8 sm:mt-12 md:mt-20 md:mb-20"
-                variants={stagger}
-                initial="hidden"
-                animate="visible"
-            >
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <motion.div variants={fadeUp}>
-                        <Image
-                            src="/assets/images/pp.jpg"
-                            alt="Photo de Benjamin Balayre"
-                            width={300}
-                            height={300}
-                            className="w-48 sm:w-64 md:w-72 lg:max-w-sm rounded-full shadow-2xl"
-                            priority
-                        />
-                    </motion.div>
-                    <motion.div variants={stagger}>
-                        <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl font-bold">{t('home.name')}</motion.h1>
-                        <motion.h2 variants={fadeUp} className="text-xl sm:text-2xl md:text-3xl">{t('home.role')}</motion.h2>
-                        <motion.p variants={fadeUp} className="py-6">{t('home.welcome')}</motion.p>
-                        <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mt-2">
-                            <a href={`/assets/documents/${cvFile}`} className="btn btn-primary rounded-xl text-base-100" download>
-                                {t('home.download_resume')}
-                            </a>
-                            <a href="https://benjaminbalayre.myportfolio.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary rounded-xl text-base-100">
-                                {t('home.quick_portfolio')}
-                            </a>
-                            <a href="https://benevolence.fr" target="_blank" rel="noopener noreferrer" className="btn btn-primary rounded-xl text-base-100">
-                                {t('home.quick_benevolence')}
-                            </a>
-                        </motion.div>
-                    </motion.div>
-                </div>
-            </motion.div>
+  return (
+    <div className="w-full overflow-x-clip">
 
-            {/* ── Frise parcours (formation / expérience en parallèle) ──── */}
-            <motion.section
-                className="w-full px-4 sm:px-8 md:px-20 py-8 md:py-12 group"
-                id="parcours"
+      {/* ── Héros ─────────────────────────────────────────────── */}
+      <section className="w-full bg-base-100 pb-14 pt-[calc(var(--header-h)+3rem)] sm:pb-20 sm:pt-[calc(var(--header-h)+4.5rem)]">
+        <Container>
+          <motion.div
+            className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16"
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+          >
+            <div>
+              <motion.p
                 variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-            >
-                <div className="max-w-5xl mx-auto">
-                    <span className="flex flex-row items-center justify-center md:justify-start">
-                        <CalendarDaysIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:-translate-y-1">{t('journey.title')}</h2>
-                    </span>
-                    <p className="max-w-3xl py-6">{t('journey.subtitle')}</p>
-                    <ParallelTimeline education={education} experiences={experiences} />
-                </div>
-            </motion.section>
+                className="mb-5 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-eyebrow text-base-content/50"
+              >
+                <span aria-hidden="true" className="h-px w-8 bg-accent" />
+                {t('footer.location')}
+              </motion.p>
 
-            {/* ── Education Timeline ───────────────────────────────────── */}
-            <motion.div
-                className="py-8 md:py-12 mt-8 md:mt-0 bg-gray-100 w-full px-4 sm:px-8 md:px-20 group"
-                id="education"
+              <motion.h1
                 variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-            >
-                <div className="max-w-4xl mx-auto">
-                    <span className="flex flex-row items-center justify-center md:justify-start">
-                        <AcademicCapIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.education_title')}</h2>
-                    </span>
-                    <p className="py-6">{t('home.education_desc')}</p>
-                    <div className="pb-8">
-                        <Timeline items={education} />
-                    </div>
-                </div>
-            </motion.div>
+                className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+              >
+                {t('home.name')}
+              </motion.h1>
 
-            {/* ── Experience Timeline ──────────────────────────────────── */}
-            <motion.div
-                className="py-8 md:py-12 mt-8 md:mt-0 w-full px-4 sm:px-8 md:px-20 group"
-                id="experience"
+              <motion.p
                 variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-            >
-                <div className="max-w-4xl mx-auto">
-                    <span className="flex flex-row items-center justify-center md:justify-start">
-                        <BriefcaseIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.experience_title')}</h2>
-                    </span>
-                    <p className="py-2">{t('home.experience_desc')}</p>
-                    <div className="relative">
-                        <div
-                            className="overflow-hidden transition-all duration-500"
-                            style={{ maxHeight: experienceExpanded ? '2000px' : '420px' }}
-                        >
-                            <TimelineDark items={experiences} />
-                        </div>
-                        {!experienceExpanded && (
-                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-                        )}
-                    </div>
-                    <div className="flex justify-center mt-4 pb-8">
-                        <button
-                            onClick={() => setExperienceExpanded(!experienceExpanded)}
-                            className="flex items-center gap-2 text-sm font-medium text-primary border border-primary/30 px-6 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
-                        >
-                            {experienceExpanded ? t('timeline.collapse') : t('timeline.show_all')}
-                            <svg
-                                className={`w-4 h-4 transition-transform duration-300 ${experienceExpanded ? 'rotate-180' : ''}`}
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </motion.div>
+                className="mt-4 text-lg font-semibold text-primary sm:text-xl"
+              >
+                {t('home.role')}
+              </motion.p>
 
-            {/* ── Carousel voyages ─────────────────────────────────────── */}
-            <Carousel />
-
-            {/* ── Portfolio Preview ────────────────────────────────────── */}
-            <motion.div
-                className="w-full bg-base-200"
+              <motion.p
                 variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-            >
-                <div className="flex flex-col md:flex-row items-stretch">
-                    <div className="flex-1 flex flex-col justify-center p-6 sm:p-10 md:p-20 group">
-                        <div className="flex items-center mb-6">
-                            <CameraIcon className="h-8 w-8 mr-2 -mt-1.5 text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1" />
-                            <h2 className="text-3xl md:text-4xl font-bold text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.portfolio_preview_title')}</h2>
-                        </div>
-                        <p className="mb-6 text-base sm:text-lg">{t('home.portfolio_preview_desc')}</p>
-                        <div>
-                            <Link href="/portfolio" scroll={false} className="btn btn-primary rounded-xl text-base-100">
-                                {t('home.portfolio_preview_button')}
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="flex-1 relative min-h-[280px] sm:min-h-[400px] md:min-h-[600px] overflow-hidden" data-cursor="view">
-                        <motion.div
-                            className="absolute inset-0"
-                            whileHover={{ scale: 1.04 }}
-                            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        >
-                            <Image
-                                src="/assets/images/portfolio/Japon/image1.jpg"
-                                alt="Photographie de voyage au Japon"
-                                fill
-                                style={{ objectFit: "cover" }}
-                                quality={80}
-                            />
-                        </motion.div>
-                    </div>
-                </div>
-            </motion.div>
+                className="mt-6 max-w-xl text-base leading-relaxed text-base-content/65 sm:text-lg"
+              >
+                {t('home.welcome')}
+              </motion.p>
 
-            {/* ── Associative Career Preview ───────────────────────────── */}
-            <motion.div
-                className="w-full relative min-h-[400px] sm:min-h-[500px] md:h-[600px] overflow-hidden"
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-            >
-                <motion.div
-                    className="absolute inset-0"
-                    initial={{ scale: 1.08 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    viewport={{ once: true }}
-                >
-                    <Image
-                        src="/assets/images/portfolio/asso2.jpg"
-                        alt="Associative Career Preview"
-                        fill
-                        style={{ objectFit: "cover" }}
-                        className="z-0"
-                        data-cursor="view"
-                    />
-                </motion.div>
-                <div className="absolute inset-0 bg-black/60 z-10" />
-                <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 sm:px-8 md:px-20 group">
-                    <div className="flex items-center justify-center mb-6">
-                        <UserGroupIcon className="h-8 w-8 mr-2 -mt-1.5 text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-white/80 transition-all duration-500 group-hover:text-white group-hover:opacity-100 group-hover:-translate-y-1">{t('home.associative_preview_title')}</h2>
-                    </div>
-                    <p className="mb-8 text-base sm:text-lg text-white max-w-2xl">{t('home.associative_preview_desc')}</p>
-                    <Link href="/associativeCareer" scroll={false} className="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-xl hover:scale-105 transition-transform">
-                        {t('home.associative_preview_button')}
-                    </Link>
-                </div>
+              <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-3">
+                <a href={`/assets/documents/${cvFile}`} download className={actionClasses('solid')}>
+                  <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+                  {t('home.download_resume')}
+                </a>
+                <a href="#parcours" className={actionClasses('outline')}>
+                  {t('home.hero_cta_journey')}
+                </a>
+              </motion.div>
+            </div>
+
+            <motion.div variants={fadeUp} className="order-first flex justify-center lg:order-none lg:justify-end">
+              <div className="relative">
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-4 rounded-full bg-gradient-to-br from-accent/15 to-primary/5"
+                />
+                <Image
+                  src="/assets/images/pp.jpg"
+                  alt={t('home.name')}
+                  width={320}
+                  height={320}
+                  priority
+                  className="relative w-44 rounded-full object-cover shadow-xl ring-1 ring-base-300 sm:w-56 lg:w-72"
+                />
+              </div>
             </motion.div>
+          </motion.div>
+
+          {/* Sommaire */}
+          <motion.nav
+            aria-label={t('home.summary_aria')}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-base-300 bg-base-300 sm:mt-16 sm:grid-cols-3"
+          >
+            {chapters.map(({ index, href, label, icon }) => (
+              <a
+                key={href}
+                href={href}
+                className="group flex items-center gap-3 bg-base-100 px-5 py-4 transition-colors duration-200 hover:bg-base-200"
+              >
+                <span className="text-xs font-bold tracking-eyebrow text-accent">{index}</span>
+                <span className="text-base-content/40 transition-colors duration-200 group-hover:text-primary">
+                  {icon}
+                </span>
+                <span className="text-sm font-semibold text-base-content/75 transition-colors duration-200 group-hover:text-base-content">
+                  {label}
+                </span>
+              </a>
+            ))}
+          </motion.nav>
+        </Container>
+      </section>
+
+      {/* ── 01 · Parcours ─────────────────────────────────────── */}
+      <Section id="parcours" tone="mist" size="lg">
+        <SectionHeading
+          index="01"
+          eyebrow={t('home.chapter.journey')}
+          icon={<CalendarDaysIcon className="h-4 w-4" />}
+          title={t('journey.title')}
+          lead={t('journey.subtitle')}
+        />
+
+        <div className="mt-12 rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm sm:p-6">
+          <ParallelTimeline education={education} experiences={experiences} />
         </div>
-    );
-}
+
+        <JourneyDetail education={education} experiences={experiences} />
+      </Section>
+
+      {/* ── 02 · Carnet de voyage ─────────────────────────────── */}
+      <Section id="voyages" tone="paper" size="lg" contained={false}>
+        <Container>
+          <SectionHeading
+            index="02"
+            eyebrow={t('home.chapter.travel')}
+            icon={<GlobeEuropeAfricaIcon className="h-4 w-4" />}
+            title={t('home.carousel_title')}
+            lead={t('home.travel_desc')}
+          />
+        </Container>
+
+        <div className="mt-12">
+          <Carousel />
+        </div>
+      </Section>
+
+      {/* ── 03 · Aller plus loin ──────────────────────────────── */}
+      <Section id="explorer" tone="mist" size="lg">
+        <SectionHeading
+          index="03"
+          eyebrow={t('home.chapter.explore')}
+          icon={<CameraIcon className="h-4 w-4" />}
+          title={t('home.explore_title')}
+          lead={t('home.explore_desc')}
+        />
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <ExploreCard
+            href="/portfolio"
+            image="/assets/images/portfolio/Norway/image1.jpg"
+            eyebrow={t('home.chapter.explore_portfolio')}
+            title={t('home.portfolio_preview_title')}
+            description={t('home.portfolio_preview_desc')}
+            cta={t('home.portfolio_preview_button')}
+          />
+          <ExploreCard
+            href="/associativeCareer"
+            image="/assets/images/portfolio/asso2.jpg"
+            eyebrow={t('home.chapter.explore_associative')}
+            title={t('home.associative_preview_title')}
+            description={t('home.associative_preview_desc')}
+            cta={t('home.associative_preview_button')}
+          />
+        </div>
+
+        {/* Les deux destinations externes : elles ne méritent pas une carte,
+            mais elles ne doivent pas non plus n'exister que dans le pied de page. */}
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href="https://benjaminbalayre.myportfolio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={actionClasses('quiet', 'light', 'sm', '!px-0')}
+          >
+            {t('home.quick_portfolio')}
+            <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+          </a>
+          <a
+            href="https://benevolence.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={actionClasses('quiet', 'light', 'sm', '!px-0')}
+          >
+            {t('home.quick_benevolence')}
+            <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+          </a>
+        </div>
+      </Section>
+    </div>
+  );
+};
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   return {

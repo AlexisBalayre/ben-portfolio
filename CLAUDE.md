@@ -9,7 +9,7 @@ Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en p
 - **Framework** : Next.js 15 (Pages Router — pas App Router)
 - **React** : 19
 - **Langage** : TypeScript (strict)
-- **CSS** : Tailwind CSS 3 + DaisyUI 4 (thème custom `mytheme` — bleu/blanc)
+- **CSS** : Tailwind CSS 3 + DaisyUI 4 (thème custom `mytheme`) — voir **Direction artistique** plus bas
 - **i18n** : next-i18next + react-i18next (FR par défaut, EN secondaire)
 - **Animations** : Framer Motion
 - **Icons** : Heroicons + FontAwesome
@@ -24,28 +24,35 @@ Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en p
 ben-portfolio/
 ├── src/
 │   ├── pages/                    # Routes Next.js (Pages Router)
-│   │   ├── index.tsx             # Page CV — formations, expériences, aperçu portfolio/asso
-│   │   ├── portfolio.tsx         # Page Portfolio créatif (photo/vidéo)
-│   │   ├── associativeCareer.tsx # Parcours associatif (ISEP Live, Vizion BDE, ISEP Drone)
+│   │   ├── index.tsx             # Accueil — héros + 3 chapitres (parcours, voyages, explorer)
+│   │   ├── portfolio.tsx         # Portfolio créatif — héros + 4 chapitres
+│   │   ├── associativeCareer.tsx # Parcours associatif — héros + sommaire + 3 chapitres (données)
 │   │   ├── _app.tsx              # Wrapper global (ErrorBoundary, Header, Footer, fonts)
-│   │   └── _document.tsx         # Document HTML custom (meta, lang)
-│   ├── components/               # Composants React
-│   │   ├── Header.tsx            # Header fixe avec nav pills + burger mobile
-│   │   ├── Footer.tsx            # Footer avec coordonnées + réseaux sociaux
-│   │   ├── HeroSection.tsx       # Hero parallax pour la page Portfolio
-│   │   ├── BenevolenceSection.tsx# Section boutique fine art (Framer Motion)
-│   │   ├── Projects.tsx          # Grille de projets vidéo (YouTube embeds)
-│   │   ├── LatestProject.tsx     # Dernier projet vidéo (Norvège)
-│   │   ├── SkillsSection.tsx     # Compétences créatives avec SkillCard
-│   │   ├── SkillCard.tsx         # Carte skill individuelle
-│   │   ├── Timeline.tsx          # Timeline formations (fond gris) — imbrique les échanges
-│   │   ├── TimelineDark.tsx      # Timeline expériences (fond blanc)
+│   │   └── _document.tsx         # Document HTML custom (lang, favicon)
+│   ├── components/
+│   │   ├── ui/                   # Socle de la DA — toute section neuve passe par là
+│   │   │   ├── Section.tsx       # Surface + rythme vertical + container + apparition
+│   │   │   ├── SectionHeading.tsx# Numéro de chapitre + surtitre + titre + chapô
+│   │   │   ├── PageHero.tsx      # Héros de page intérieure (photo + voile encre)
+│   │   │   ├── Action.tsx        # actionClasses() — géométrie unique des boutons
+│   │   │   ├── motion.ts         # EASE, VIEWPORT, fadeUp, fadeIn, stagger
+│   │   │   └── index.ts          # Ré-exports
+│   │   ├── Header.tsx            # Header fixe (hauteur = --header-h) + burger mobile
+│   │   ├── Footer.tsx            # Footer encre : identité, navigation, contact, réseaux
+│   │   ├── JourneyDetail.tsx     # Onglets Formation / Expérience au-dessus de Timeline
+│   │   ├── Timeline.tsx          # Timeline verticale — imbrique les échanges
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
-│   │   ├── Carousel.tsx          # Carousel images de voyage
+│   │   ├── ExploreCard.tsx       # Carte de chapitre vers une page interne
+│   │   ├── Carousel.tsx          # Bandeau défilant des photos de voyage (sans titre propre)
+│   │   ├── AssoChapter.tsx       # Un engagement associatif, piloté par la donnée
+│   │   ├── LatestProject.tsx     # Dernier film — façade cliquable, YouTube chargé au clic
+│   │   ├── SkillsSection.tsx     # Savoir-faire créatifs
+│   │   ├── SkillCard.tsx         # Carte savoir-faire
+│   │   ├── Projects.tsx          # Bandeau plein écran vers le portfolio externe
+│   │   ├── BenevolenceSection.tsx# Boutique fine art
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
-│   │   ├── MetaHeader.tsx        # Meta tags SEO par page
-│   │   ├── ErrorBoundary.tsx     # Error boundary global
-│   │   └── CustomCursor.tsx      # Curseur custom — actuellement importé nulle part
+│   │   ├── MetaHeader.tsx        # Meta tags SEO par page (dont viewport)
+│   │   └── ErrorBoundary.tsx     # Error boundary global
 │   ├── hooks/
 │   │   ├── index.ts              # Re-exports des hooks
 │   │   ├── useOutsideClick.ts    # Fermeture dropdown au clic extérieur
@@ -121,43 +128,86 @@ Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de to
 
 | Champ | Utilisé par | Rôle |
 |---|---|---|
-| `id`, `logo` | `Timeline`, `TimelineDark` | clé de traduction + logo rond |
+| `id`, `logo` | `Timeline` | clé de traduction + logo rond |
 | `period` | — | mémo lisible ; l'affichage passe par la locale |
 | `nature` | `ParallelTimeline` | surtitre en petites majuscules sur la barre — clé de `journey.nature.*` (`cursus`, `exchange`, `internship`, `freelance`, `permanent`) |
 | `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans ces champs, l'entrée n'apparaît pas dans la frise |
 | `ongoing` | `ParallelTimeline` | flèche « → » + dégradé de fuite : l'activité se poursuit au-delà de la frise |
 | `integratedIn` | `ParallelTimeline` | *(experiences.json)* id du cursus : le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus », au lieu de la voie Expérience |
-| `exchanges[]` | `Timeline` + `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la timeline, segment ambre à l'intérieur de la barre dans la frise |
+| `exchanges[]` | `Timeline` + `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la timeline, segment bleu vif à l'intérieur de la barre dans la frise |
 
 Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `period`, `short` dans `fr/common.json` **et** `en/common.json`.
 
+Le parcours associatif suit le même principe : la liste `ASSOS` en tête de `src/pages/associativeCareer.tsx` décrit les trois engagements (logo, blocs, rôles, liens) et alimente à la fois le sommaire et les chapitres.
 
-`projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`).
+`projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`). `tech.json` liste encore des compétences blockchain qui ne correspondent à rien de réel — à nettoyer ou supprimer.
 
 ---
 
 ## Composants — conventions
 
-- Tous les composants sont en `.tsx` dans `src/components/`
-- Chargement dynamique (`next/dynamic`) utilisé dans `src/pages/portfolio.tsx` pour les composants lourds
-- Les images utilisent toujours `next/image` avec `fill`, `width/height`, `quality`, et `alt` renseignés
+- Tous les composants sont en `.tsx` dans `src/components/` ; le socle de la DA est dans `src/components/ui/`
+- Chargement dynamique (`next/dynamic`) pour tout ce qui est sous la ligne de flottaison — **jamais pour le héros**, qui est le LCP de la page
+- Les images utilisent toujours `next/image` avec `fill` ou `width/height`, un `sizes` quand `fill` est utilisé, et un `alt` renseigné (`alt=""` pour une image purement décorative)
+- `quality` ne peut prendre qu'une valeur déclarée dans `images.qualities` de `next.config.mjs` (75, 80, 85, 90) — toute autre valeur fait planter le rendu
+- Les intégrations tierces (YouTube) se chargent au clic, jamais au chargement de la page
 - Les liens externes ont systématiquement `target="_blank" rel="noopener noreferrer"`
 - Les icônes SVG inline ont `aria-hidden="true"` ; les liens icône-only ont un `aria-label`
 
 ---
 
-## Thème DaisyUI
+## Direction artistique
 
-Thème personnalisé `mytheme` défini dans `tailwind.config.ts` :
+DA « éditorial bleu nuit ». Trois règles portent tout le reste.
 
-| Token | Valeur |
+### 1. Trois surfaces, jamais plus
+
+| Ton | Classe | Usage |
+|---|---|---|
+| `paper` | `bg-base-100` (`#ffffff`) | fond par défaut |
+| `mist` | `bg-base-200` (`#f4f6fa`) | section alternée, panneaux |
+| `ink` | `bg-secondary` (`#0f172a`) | bandeaux forts, footer, voiles photo |
+
+`base-300` (`#e3e8f0`) sert aux filets et bordures. **Aucune couleur de fond en dur** (`bg-white`, `bg-gray-100`, `bg-[#0c0c0c]`) : passer par les tons.
+
+### 2. Deux familles chromatiques
+
+- **Bleu = académique.** `primary` `#1e3a8a` (cursus, actions principales), `accent` `#3b82f6` (échanges internationaux, numéros de chapitre, filets).
+- **Ambre = professionnel.** `amber-600/100` pour les expériences dans la frise.
+- **Encre = structure.** `secondary` `#0f172a` pour le texte (`base-content`), les surfaces sombres et le repère « aujourd'hui ».
+
+### 3. Chapitres numérotés
+
+Chaque page se lit comme un sommaire : `01`, `02`, `03`… Le numéro apparaît dans le `SectionHeading`, dans le sommaire de l'accueil et dans les cartes du parcours associatif.
+
+### Primitives — à utiliser, pas à recomposer
+
+```tsx
+import { Section, SectionHeading, PageHero, actionClasses, fadeUp, stagger, EASE, VIEWPORT } from '~~/src/components/ui';
+
+<Section id="parcours" tone="mist" size="lg">
+  <SectionHeading index="01" eyebrow="Parcours" icon={<Icon className="h-4 w-4" />}
+                  title={t('journey.title')} lead={t('journey.subtitle')} />
+  …
+</Section>
+```
+
+| Primitive | Rôle |
 |---|---|
-| `primary` | `#1e3a8a` (bleu marine) |
-| `secondary` | `#0f172a` |
-| `accent` | `#3b82f6` |
-| `base-100` | `#ffffff` |
+| `<Section>` | surface (`tone`), rythme vertical (`size`), container, `scroll-mt` sous le header, apparition au scroll. `contained={false}` pour un contenu pleine largeur |
+| `<Container>` | colonne `max-w-5xl px-5 sm:px-8` — même gouttière partout |
+| `<SectionHeading>` | numéro + surtitre + titre + chapô, décliné clair/`ink` via `tone` |
+| `<PageHero>` | héros de page intérieure : photo, voile encre, titre animé mot à mot |
+| `actionClasses(variant, tone, size, extra)` | `solid` \| `outline` \| `quiet` × `light` \| `dark` × `md` \| `sm`. **Tous** les boutons du site en viennent |
+| `motion.ts` | `EASE`, `VIEWPORT`, `fadeUp`, `fadeIn`, `stagger` — une seule courbe, un seul seuil |
 
-Classes utiles : `btn btn-primary text-base-100`, `bg-base-200`, `text-base-content`.
+### Rayons
+
+`rounded-full` (boutons, pastilles, avatars) · `rounded-2xl` (cartes, panneaux, médias) · `rounded-xl` (blocs internes, tuiles d'icône ≥ 44 px) · `rounded-lg` (tuiles < 44 px) · `rounded-md` / `rounded` (barres et pastilles de la frise) · `rounded-sm` (tirages fine art, volontairement anguleux).
+
+### Header
+
+Sa hauteur est la variable CSS `--header-h` (`3.5rem`), lue par `scroll-padding-top` sur `html` et par le `scroll-mt` des sections. Changer la hauteur du header = changer cette seule variable.
 
 ---
 
@@ -189,13 +239,17 @@ Node.js requis : **>=24.0.0**. Package manager : **yarn** (v3.6.4).
 
 ## Pages et navigation
 
-| Route | Page | Description |
-|---|---|---|
-| `/` | `src/pages/index.tsx` | CV : frise parcours (`#parcours`), formation (`#education`), expériences (`#experience`), aperçu portfolio & asso |
-| `/portfolio` | `src/pages/portfolio.tsx` | Portfolio photo/vidéo + boutique Benevolence |
-| `/associativeCareer` | `src/pages/associativeCareer.tsx` | ISEP Live, Vizion BDE, ISEP Drone |
+Chaque page suit la même partition : héros → chapitres numérotés → footer.
 
-La nav est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exporté). "Contact" scrolle vers le footer.
+| Route | Chapitres | Ancres |
+|---|---|---|
+| `/` | héros + sommaire → **01** Parcours → **02** Carnet de voyage → **03** Aller plus loin | `#parcours`, `#voyages`, `#explorer` |
+| `/portfolio` | héros → **01** Dernier film → **02** Savoir-faire → **03** Portfolio complet → **04** Tirages | `#film`, `#savoir-faire`, `#galerie`, `#tirages` |
+| `/associativeCareer` | héros → sommaire → **01** ISEP Live → **02** Vizion BDE → **03** ISEP Drone | `#engagements`, `#iseplive`, `#vizion`, `#isepdrone` |
+
+Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) puis `JourneyDetail`, deux onglets qui posent Formation et Expérience au même endroit. Les ancres historiques `#education` et `#experience` restent valides : elles sélectionnent l'onglet correspondant.
+
+La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exporté). « Contact » scrolle vers le footer.
 
 ---
 
@@ -215,6 +269,9 @@ La nav est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exp
 - **Images** : utiliser `next/image`, ne jamais utiliser `<img>` HTML natif
 - **Jamais `overflow-x-hidden` sur un conteneur de page** — le CSS force alors `overflow-y` à `auto`, ce qui crée un conteneur de défilement imbriqué et bloque le scroll au trackpad. Utiliser `overflow-x-clip`, qui rogne sans créer de scroller. Même logique pour un défileur horizontal : lui ajouter `overflow-y-hidden`
 - **Tailwind only** — pas de CSS modules, pas de styled-components
+- **Passer par les primitives** — une nouvelle section = `<Section>` + `<SectionHeading>`, un nouveau bouton = `actionClasses()`. Ne pas recomposer un titre ou un bouton à la main : c'est ce qui avait fait diverger le site
+- **Ne pas écrire de couleur en dur** — les trois tons (`base-100` / `base-200` / `secondary`) et les deux familles chromatiques couvrent tous les cas
+- **Attention aux conflits d'utilitaires Tailwind** — `w-full` et `w-40` appartiennent au même groupe : c'est l'ordre dans le CSS généré qui tranche, pas l'ordre dans `className`. Ne pas mettre deux classes du même groupe sur un élément
 - **DaisyUI** — utiliser les classes DaisyUI avant d'inventer des classes custom
 - **TypeScript strict** — `ignoreBuildErrors: false`, toujours typer correctement
 - **Yarn** — ne pas utiliser npm ou pnpm

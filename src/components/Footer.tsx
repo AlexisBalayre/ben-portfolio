@@ -13,6 +13,7 @@ import { LinkedinLogo } from '~~/public/assets/svg/LinkedinLogo';
 import { GithubLogo } from '~~/public/assets/svg/GithubLogo';
 import { InstagramLogo } from '~~/public/assets/svg/InstagramLogo';
 import { YouTubeLogo } from '~~/public/assets/svg/YouTubeLogo';
+import { actionClasses } from '~~/src/components/ui';
 
 const socials = [
     { href: 'https://www.linkedin.com/in/Benjamin-balayre', label: 'LinkedIn', icon: LinkedinLogo },
@@ -68,7 +69,7 @@ export const Footer = () => {
                         <a
                             href={`/assets/documents/${cvFile}`}
                             download
-                            className="mt-6 inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-white/20 px-4 text-sm font-semibold text-white transition-colors duration-200 hover:border-white/40 hover:bg-white/10"
+                            className={actionClasses('outline', 'dark', 'md', 'mt-6')}
                         >
                             <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
                             {t('home.download_resume')}
@@ -140,7 +141,7 @@ export const Footer = () => {
                                             rel="noopener noreferrer"
                                             aria-label={label}
                                             title={label}
-                                            className="group grid h-11 w-11 place-items-center rounded-lg border border-white/15 transition-colors duration-200 hover:border-white/40 hover:bg-white/10"
+                                            className="group grid h-11 w-11 place-items-center rounded-xl border border-white/15 transition-all duration-200 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10"
                                         >
                                             <Icon className="h-4 w-4 text-white/50 transition-colors duration-200 group-hover:text-white" />
                                         </a>

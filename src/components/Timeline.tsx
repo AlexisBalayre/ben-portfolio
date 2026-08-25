@@ -81,9 +81,9 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
             </motion.span>
 
             <motion.div
-                whileHover={{ scale: 1.015, x: 4 }}
+                whileHover={{ y: -3 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="ml-6 sm:ml-8 p-4 sm:p-6 bg-base-100 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-base-200 max-w-3xl"
+                className="ml-6 sm:ml-8 max-w-3xl rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm transition-shadow duration-300 hover:shadow-xl sm:p-6"
             >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
                     <h3 className="text-base sm:text-xl font-bold text-base-content">
@@ -98,19 +98,19 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                 {exchanges.length > 0 && (
                     <div className="mb-4">
                         <div className="flex items-center gap-1.5 mb-2">
-                            <GlobeAltIcon className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
-                            <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                            <GlobeAltIcon className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                            <span className="text-[11px] font-bold uppercase tracking-eyebrow text-accent">
                                 {t('timeline.exchange_label')}
                             </span>
                         </div>
-                        <ul className="space-y-3 pl-5 border-l-2 border-dashed border-primary/30">
+                        <ul className="space-y-3 border-l-2 border-dashed border-accent/40 pl-5">
                             {exchanges.map((exchange) => (
                                 <li key={exchange.id} className="relative">
                                     <span
                                         aria-hidden="true"
-                                        className="absolute -left-[1.55rem] top-5 h-2.5 w-2.5 rounded-full bg-primary/50 ring-4 ring-base-100"
+                                        className="absolute -left-[1.55rem] top-5 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-base-100"
                                     />
-                                    <div className="flex items-start gap-3 rounded-lg border border-primary/15 bg-primary/5 p-3">
+                                    <div className="flex items-start gap-3 rounded-xl border border-accent/20 bg-accent/[0.07] p-3">
                                         <Image
                                             className="rounded-full object-cover shrink-0"
                                             src={`/assets/images/${exchange.logo}`}
@@ -126,7 +126,7 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                                                     )}
                                                     {t(`${translationPrefix}.${exchange.id}.title`)}
                                                 </p>
-                                                <span className="text-[11px] font-semibold text-primary whitespace-nowrap">
+                                                <span className="whitespace-nowrap text-[11px] font-semibold text-primary">
                                                     {t(`${translationPrefix}.${exchange.id}.period`)}
                                                 </span>
                                             </div>
@@ -150,13 +150,13 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                         >
-                            <div className="p-4 mb-4 text-sm text-base-content/70 bg-base-200/50 rounded-lg border-l-4 border-primary">
+                            <div className="mb-4 rounded-xl border-l-[3px] border-primary bg-base-200 p-4 text-sm leading-relaxed text-base-content/70">
                                 {renderHtmlText(t(`${translationPrefix}.${item.id}.description`))}
                             </div>
                             {exchanges.map((exchange) => (
                                 <div
                                     key={exchange.id}
-                                    className="p-4 mb-4 text-sm text-base-content/70 bg-base-200/50 rounded-lg border-l-4 border-primary/40"
+                                    className="mb-4 rounded-xl border-l-[3px] border-accent bg-base-200 p-4 text-sm leading-relaxed text-base-content/70"
                                 >
                                     <p className="mb-1 font-semibold text-base-content">
                                         {t(`${translationPrefix}.${exchange.id}.title`)}
@@ -172,7 +172,7 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                     onClick={() => setExpanded(!expanded)}
                     aria-expanded={expanded}
                     aria-label={expanded ? t('timeline.show_less') : t('timeline.read_more')}
-                    className="flex items-center text-sm font-medium text-primary hover:text-primary-focus transition-colors"
+                    className="inline-flex min-h-[36px] items-center text-sm font-semibold text-primary transition-colors hover:text-accent"
                 >
                     {expanded ? t('timeline.show_less') : t('timeline.read_more')}
                     <svg
@@ -200,7 +200,7 @@ const Timeline = ({ items, translationPrefix = 'formation' }: TimelineProps) => 
         <ol className="relative mt-10 ml-4 sm:ml-6 space-y-10">
             {/* Animated vertical line */}
             <motion.div
-                className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary/20 origin-top"
+                className="absolute bottom-0 left-0 top-0 w-0.5 origin-top bg-primary/15"
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}

@@ -1,385 +1,161 @@
-// pages/asso.tsx
-import type { NextPage } from "next";
-import React, { Fragment } from 'react';
-import Image from "next/image";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { InstagramLogo } from "~~/public/assets/svg/InstagramLogo";
+import type { NextPage } from 'next';
+import React from 'react';
+import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const renderHtmlText = (text: string) => {
-  const parts = text.split(/<br\s*\/?>/gi);
-  return parts.map((part, i) => (
-    <Fragment key={i}>
-      {part}
-      {i < parts.length - 1 && <br />}
-    </Fragment>
-  ));
-};
+import AssoChapter, { AssoChapterProps } from '~~/src/components/AssoChapter';
+import { PageHero, Section, SectionHeading, type Tone } from '~~/src/components/ui';
+
+/**
+ * Les trois engagements, décrits par la donnée plutôt que par trois blocs de
+ * balisage recopiés. Le sommaire en tête de page et les chapitres lisent la
+ * même liste, ils ne peuvent donc pas diverger.
+ */
+const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
+  {
+    id: 'iseplive',
+    index: '01',
+    tone: 'paper' as Tone,
+    logo: '/assets/images/iseplive.png',
+    titleKey: 'associative.iseplive.title',
+    eyebrowKey: 'associative.iseplive.eyebrow',
+    leadKey: 'associative.iseplive.lead',
+    roleKey: 'associative.iseplive.role',
+    blocks: [
+      {
+        titleKey: 'associative.iseplive.presentation_title',
+        descKey: 'associative.iseplive.presentation_desc',
+        media: [{ src: '/assets/images/iseplive.png', alt: 'ISEP Live', shape: 'logo' }],
+      },
+      {
+        titleKey: 'associative.iseplive.iseplife_title',
+        descKey: 'associative.iseplive.iseplife_desc',
+        media: [{ src: '/assets/images/portfolio/logos/Iseplife.png', alt: 'ISEP Life', shape: 'logo' }],
+      },
+      {
+        titleKey: 'associative.iseplive.path_title',
+        descKey: 'associative.iseplive.path_desc',
+        media: [
+          { src: '/assets/images/portfolio/IL.jpg', alt: 'ISEP Live en reportage', shape: 'wide' },
+          { src: '/assets/images/portfolio/IL2.jpg', alt: 'ISEP Live en reportage', shape: 'wide' },
+        ],
+      },
+    ],
+    links: [
+      { href: 'https://www.instagram.com/iseplive', kind: 'instagram' },
+      { href: 'https://www.youtube.com/@iseplive', kind: 'youtube' },
+    ],
+  },
+  {
+    id: 'vizion',
+    index: '02',
+    tone: 'mist' as Tone,
+    logo: '/assets/images/Vizion.png',
+    titleKey: 'associative.vizion.title',
+    eyebrowKey: 'associative.vizion.eyebrow',
+    leadKey: 'associative.vizion.lead',
+    roleKey: 'associative.vizion.role',
+    blocks: [
+      {
+        titleKey: 'associative.vizion.presentation_title',
+        descKey: 'associative.vizion.presentation_desc',
+        media: [{ src: '/assets/images/Vizion.png', alt: 'Vizion BDE', shape: 'logo' }],
+      },
+      {
+        titleKey: 'associative.vizion.path_title',
+        descKey: 'associative.vizion.path_desc',
+        media: [
+          { src: '/assets/images/Vizion_illustration.jpg', alt: 'Événement Vizion BDE', shape: 'portrait' },
+        ],
+      },
+    ],
+    links: [{ href: 'https://www.instagram.com/vizion_bdeisep', kind: 'instagram' }],
+  },
+  {
+    id: 'isepdrone',
+    index: '03',
+    tone: 'paper' as Tone,
+    logo: '/assets/images/isepdrone.png',
+    titleKey: 'associative.isepdrone.title',
+    eyebrowKey: 'associative.isepdrone.eyebrow',
+    leadKey: 'associative.isepdrone.lead',
+    roleKey: 'associative.isepdrone.role',
+    blocks: [
+      {
+        titleKey: 'associative.isepdrone.presentation_title',
+        descKey: 'associative.isepdrone.presentation_desc',
+        media: [{ src: '/assets/images/isepdrone.png', alt: 'ISEP Drone', shape: 'logo' }],
+      },
+      {
+        titleKey: 'associative.isepdrone.path_title',
+        descKey: 'associative.isepdrone.path_desc',
+        roles: [
+          { year: '2023', labelKey: 'associative.isepdrone.timeline.president' },
+          { year: '2022', labelKey: 'associative.isepdrone.timeline.comm_manager' },
+          { year: '2021', labelKey: 'associative.isepdrone.timeline.founder' },
+        ],
+        media: [{ src: '/assets/images/drone_illustration.JPG', alt: 'Vol FPV', shape: 'wide' }],
+      },
+    ],
+    links: [{ href: 'https://www.instagram.com/isep_drone', kind: 'instagram' }],
+  },
+];
 
 const AssociativeCareer: NextPage = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
+
   return (
-    <div className="w-full overflow-hidden">
-      {/* Hero Section */}
-      <div className="hero min-h-screen relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/assets/images/portfolio/asso2.jpg"
-            alt="Hero background"
-            fill
-            style={{ objectFit: 'cover' }}
-            quality={80}
-            priority
-          />
-        </div>
-        <div className="hero-overlay bg-opacity-20 z-10 absolute inset-0" />
-        <div className="hero-content text-center text-neutral-content flex justify-center items-center flex-col z-20 relative">
-          <div className="animate-fade-in-down max-w-lg px-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white">{t("associative.title")}</h1>
-            <p className="mb-6 text-base sm:text-lg text-white">
-              {t("associative.hero_desc")}
-            </p>
-          </div>
-        </div>
-      </div>
+    <div className="w-full overflow-x-clip">
+      <PageHero
+        image="/assets/images/portfolio/asso2.jpg"
+        eyebrow={t('associative.eyebrow')}
+        title={t('associative.title')}
+        lead={t('associative.hero_desc')}
+      />
 
-      {/* ISEP Live */}
-      <div className="w-full p-6 sm:p-10 md:px-24 lg:px-40 grid">
-        <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center">{t("associative.iseplive.title")}</h2>
-          <hr className="trait" aria-hidden="true" />
-        </div>
-
-        <Image
-          src="/assets/images/iseplive.png"
-          alt="ISEP Live Logo"
-          width={150}
-          height={150}
-          className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
+      {/* Sommaire — les trois engagements avant d'entrer dans le détail. */}
+      <Section id="engagements" tone="mist" size="md">
+        <SectionHeading
+          eyebrow={t('associative.summary_eyebrow')}
+          title={t('associative.summary_title')}
+          lead={t('associative.summary_desc')}
         />
-        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
-          <div className="md:pr-10">
-            <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
-              {t("associative.iseplive.presentation_title")}
-            </h3>
-            <p className="leading-relaxed lg:text-lg text-justify">
-              {renderHtmlText(t("associative.iseplive.presentation_desc"))}
-            </p>
-          </div>
-          <Image
-            src="/assets/images/iseplive.png"
-            alt="ISEP Live Logo"
-            width={300}
-            height={300}
-            className="rounded-full flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
-          />
-        </div>
 
-        <Image
-          src="/assets/images/portfolio/logos/Iseplife.png"
-          alt="ISEP Life Logo"
-          width={150}
-          height={150}
-          className="rounded-full flex-shrink-0 md:hidden place-self-center"
-        />
-        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
-          <Image
-            src="/assets/images/portfolio/logos/Iseplife.png"
-            alt="ISEP Life Logo"
-            width={300}
-            height={300}
-            className="rounded-full flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
-          />
-          <div className="md:pl-10 sm:mb-8">
-            <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
-              {t("associative.iseplive.iseplife_title")}
-            </h3>
-            <p className="leading-relaxed lg:text-lg text-justify">
-              {t("associative.iseplive.iseplife_desc")}
-            </p>
-          </div>
-        </div>
-
-        <Image
-          src="/assets/images/portfolio/IL.jpg"
-          alt="ISEP Live illustration"
-          width={150}
-          height={150}
-          className="rounded flex-shrink-0 md:hidden place-self-center mt-3"
-        />
-        <Image
-          src="/assets/images/portfolio/IL2.jpg"
-          alt="ISEP Live illustration"
-          width={150}
-          height={150}
-          className="rounded flex-shrink-0 md:hidden place-self-center mt-3"
-        />
-        <div className="mt-4 flex flex-row justify-between items-center h-full w-full">
-          <div className="md:pr-10 sm:mb-8 md:basis-3/4">
-            <h3 className="font-bold text-2xl md:text-2xl lg:text-xl xl:text-2xl">
-              {t("associative.iseplive.path_title")}
-            </h3>
-            <p className="leading-relaxed lg:text-lg text-justify">
-              {renderHtmlText(t("associative.iseplive.path_desc"))}
-            </p>
-          </div>
-          <div className="gap-4 flex flex-col basis-1/4">
-            <Image
-              src="/assets/images/portfolio/IL.jpg"
-              alt="ISEP Live illustration"
-              width={300}
-              height={300}
-              className="rounded hidden md:block"
-            />
-            <Image
-              src="/assets/images/portfolio/IL2.jpg"
-              alt="ISEP Live illustration"
-              width={300}
-              height={300}
-              className="rounded hidden md:block"
-            />
-          </div>
-        </div>
-
-        <div className="flex justify-center gap-4 md:mt-10">
-          <a
-            href="https://www.instagram.com/iseplive?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="ISEP Live on Instagram"
-          >
-            <InstagramLogo className="w-20 h-20 transition hover:text-primary" />
-          </a>
-          <a
-            href="https://www.youtube.com/@iseplive"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="ISEP Live on YouTube"
-          >
-            <svg
-              className="w-20 h-20 transition hover:text-primary text-black"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
+        <div className="mt-12 grid gap-4 sm:grid-cols-3">
+          {ASSOS.map(({ id, index, logo, titleKey, eyebrowKey, roleKey }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className="group flex flex-col gap-4 rounded-2xl border border-base-300 bg-base-100 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
             >
-              <path d="M23.498 6.186a2.986 2.986 0 00-2.101-2.11C19.513 3.5 12 3.5 12 3.5s-7.513 0-9.397.576a2.986 2.986 0 00-2.101 2.11C0 8.069 0 12 0 12s0 3.931.502 5.814a2.986 2.986 0 002.101 2.11C4.487 20.5 12 20.5 12 20.5s7.513 0 9.397-.576a2.986 2.986 0 002.101-2.11C24 15.931 24 12 24 12s0-3.931-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      {/* VIZION BDE */}
-      <div className="bg-base-content w-full p-6 sm:p-10 md:px-24 lg:px-40 grid">
-        <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-base-100 text-center">
-            {t("associative.vizion.title")}
-          </h2>
-          <hr className="trait" aria-hidden="true" />
-        </div>
-
-        <Image
-          src="/assets/images/Vizion.png"
-          alt="Vizion BDE Logo"
-          width={150}
-          height={150}
-          className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
-        />
-
-        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
-          <div className="md:pr-10 sm:mb-8">
-            <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              {t("associative.vizion.presentation_title")}
-            </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-              {renderHtmlText(t("associative.vizion.presentation_desc"))}
-            </p>
-          </div>
-          <Image
-            src="/assets/images/Vizion.png"
-            alt="Vizion BDE Logo"
-            width={300}
-            height={300}
-            className="rounded-full hidden md:block"
-          />
-        </div>
-
-        <Image
-          src="/assets/images/Vizion_illustration.jpg"
-          alt="Vizion BDE illustration"
-          width={150}
-          height={150}
-          className="rounded flex-shrink-0 md:hidden place-self-center mt-3"
-        />
-
-        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
-          <div className="md:pr-10 sm:mb-8">
-            <h3 className="font-bold text-base-100 text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              {t("associative.vizion.path_title")}
-            </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-base-100">
-              {renderHtmlText(t("associative.vizion.path_desc"))}
-            </p>
-          </div>
-          <Image
-            src="/assets/images/Vizion_illustration.jpg"
-            alt="Vizion BDE illustration"
-            width={300}
-            height={300}
-            className="rounded-xl hidden md:block"
-          />
-        </div>
-
-        <a
-          href="https://www.instagram.com/vizion_bdeisep?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Vizion BDE on Instagram"
-          className="place-self-center md:mt-10"
-        >
-          <InstagramLogo className="w-20 h-20 transition hover:text-primary text-base-100" />
-        </a>
-      </div>
-
-      {/* ISEP Drone */}
-      <div className="bg-white w-full p-6 sm:p-10 md:px-24 lg:px-40 grid">
-        <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-black text-center">
-            {t("associative.isepdrone.title")}
-          </h2>
-          <hr className="trait" aria-hidden="true" />
-        </div>
-
-        <Image
-          src="/assets/images/isepdrone.png"
-          alt="ISEP Drone Logo"
-          width={150}
-          height={150}
-          className="rounded-full flex-shrink-0 md:hidden place-self-center mt-3"
-        />
-
-        <div className="mt-4 flex flex-col md:flex-row justify-between items-center h-full">
-          <div className="md:pr-10 sm:mb-8">
-            <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              {t("associative.isepdrone.presentation_title")}
-            </h3>
-            <p className="leading-relaxed lg:text-lg text-justify text-black">
-              {renderHtmlText(t("associative.isepdrone.presentation_desc"))}
-            </p>
-          </div>
-          <Image
-            src="/assets/images/isepdrone.png"
-            alt="ISEP Drone Logo"
-            width={300}
-            height={300}
-            className="rounded-full flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
-          />
-        </div>
-
-        <div className="mt-20 w-full grid">
-          <h3 className="font-bold text-black text-2xl mb-10">{t("associative.isepdrone.path_title")}</h3>
-          <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical text-black">
-            <li>
-              <div className="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              <div className="flex items-center justify-between">
+                <Image
+                  src={logo}
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+                <span className="text-xs font-bold tracking-eyebrow text-accent">{index}</span>
               </div>
-              <div className="timeline-start md:text-end mb-10">
-                <time className="font-mono italic">2023</time>
-                <div className="text-lg font-black">{t("associative.isepdrone.timeline.president")}</div>
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-eyebrow text-base-content/45">
+                  {t(eyebrowKey)}
+                </p>
+                <p className="mt-1 font-bold transition-colors duration-200 group-hover:text-primary">
+                  {t(titleKey)}
+                </p>
+                <p className="mt-2 text-sm text-base-content/60">{t(roleKey)}</p>
               </div>
-              <hr className="bg-primary" />
-            </li>
-            <li>
-              <hr className="bg-primary" />
-              <div className="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="timeline-end mb-10">
-                <time className="font-mono italic">2022</time>
-                <div className="text-lg font-black">
-                  {t("associative.isepdrone.timeline.comm_manager")}
-                </div>
-              </div>
-              <hr className="bg-primary" />
-            </li>
-            <li>
-              <hr className="bg-primary" />
-              <div className="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="timeline-start md:text-end mb-10">
-                <time className="font-mono italic">2021</time>
-                <div className="text-lg font-black">{t("associative.isepdrone.timeline.founder")}</div>
-              </div>
-              <hr className="bg-primary" />
-            </li>
-          </ul>
+            </a>
+          ))}
         </div>
+      </Section>
 
-        <div className="mt-10 flex flex-col md:flex-row justify-between items-center h-full">
-          <div className="md:pr-10 sm:mb-8">
-            <h3 className="font-bold text-black text-2xl sm:text-lg md:text-2xl lg:text-xl xl:text-2xl">
-              {t("associative.isepdrone.presentation_title")}
-            </h3>
-            <p className="text-black leading-relaxed lg:text-lg text-justify">
-              {renderHtmlText(t("associative.isepdrone.path_desc"))}
-            </p>
-          </div>
-          <Image
-            src="/assets/images/drone_illustration.JPG"
-            alt="ISEP Drone illustration"
-            width={300}
-            height={300}
-            className="rounded-xl flex-shrink-0 md:w-48 lg:w-64 xl:w-72 hidden md:block"
-          />
-        </div>
-
-        <a
-          href="https://www.instagram.com/isep_drone?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="ISEP Drone on Instagram"
-          className="place-self-center md:mt-10"
-        >
-          <InstagramLogo className="w-20 h-20 transition hover:text-primary text-black" />
-        </a>
-      </div>
+      {ASSOS.map(({ logo, roleKey, ...chapter }) => (
+        <AssoChapter key={chapter.id} {...chapter} />
+      ))}
     </div>
   );
 };
@@ -387,7 +163,7 @@ const AssociativeCareer: NextPage = () => {
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 };
