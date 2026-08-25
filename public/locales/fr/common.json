@@ -92,13 +92,13 @@
       "iseplife_title": "L'application ISEP Life",
       "iseplife_desc": "L'association développe et maintient en interne l'application mobile ISEP Life, véritable hub de la vie de campus : agendas, trombinoscope, actualités des associations et galeries médias.",
       "path_title": "De membre à Président",
-      "path_desc": "J’ai rejoint ISEP Live en septembre 2022 pour me perfectionner en photographie et audiovisuel au contact d’autres passionnés. <br /><br /> Vice-président dès ma première année, j’ai eu l’occasion de coordonner des pôles de création, renforçant considérablement mes compétences en gestion de projet et en travail d’équipe. <br /><br /> Poursuivant cet engagement, j’ai pris la présidence de l’association en 2023. Cette expérience fondatrice m’a appris à fédérer une équipe de 25 personnes, piloter la direction artistique de nos productions, et structurer notre développement.",
+      "path_desc": "J’ai rejoint ISEP Live en septembre 2022 pour me perfectionner en photographie et audiovisuel au contact d’autres passionnés. <br /><br /> Devenu vice-président l’année suivante, j’ai eu l’occasion de coordonner des pôles de création, renforçant considérablement mes compétences en gestion de projet et en travail d’équipe. <br /><br /> Poursuivant cet engagement, j’ai pris la présidence de l’association en 2024. Cette expérience fondatrice m’a appris à fédérer une équipe de 25 personnes, piloter la direction artistique de nos productions, et structurer notre développement.",
       "eyebrow": "Média étudiant",
-      "role": "Vice-président puis président",
+      "role": "Membre, vice-président puis président",
       "lead": "L’association média de l’école : vingt-cinq personnes pour couvrir en photo et en vidéo toute la vie du campus.",
       "short": "ISEP Live",
-      "period": "2022 à 2024",
-      "description": "Association média de l’ISEP. Vice-président sur l’année 2022 puis président en 2023, à la tête d’une équipe de vingt-cinq personnes qui couvre en photo et en vidéo toute la vie du campus."
+      "period": "2022 à 2025",
+      "description": "Association média de l’ISEP. Membre en 2022, vice-président en 2023 puis président en 2024, à la tête d’une équipe de vingt-cinq personnes qui couvre en photo et en vidéo toute la vie du campus."
     },
     "vizion": {
       "title": "Bureau des Élèves : Vizion",
@@ -118,18 +118,13 @@
       "presentation_title": "Le projet ISEP Drone",
       "presentation_desc": "Le vol en immersion ou FPV (First Person View) permet au pilote de diriger son drone en voyant exactement ce que la caméra embarquée filme grâce à un casque vidéo. <br /><br /> J'ai participé à la fondation du club ISEP Drone en 2021 avec un groupe de passionnés. Notre mission : démocratiser cette discipline technique via des ateliers de montage, de pilotage sur simulateur et des sorties de vol.",
       "path_title": "Mon rôle dans le club",
-      "path_desc": "Membre fondateur, j'ai d'abord forgé l'identité visuelle de notre nouvelle structure et géré notre communication digitale pour attirer de nouveaux passionnés. <br /><br /> Cette dynamique m'a naturellement conduit à la présidence du club de drone en 2023. Ce mandat passionnant m'a permis d'organiser des compétitions internes et d'animer chaque semaine nos séances, me conférant une solide expérience en leadership de petites équipes et en transmission technique.",
-      "timeline": {
-        "president": "Président du Club",
-        "comm_manager": "Responsable Communication",
-        "founder": "Membre Fondateur"
-      },
+      "path_desc": "Membre fondateur, j’ai d’abord tenu le pôle créa et com : j’ai forgé l’identité visuelle de notre nouvelle structure et géré notre communication digitale pour attirer de nouveaux passionnés. <br /><br /> Cette dynamique m’a naturellement conduit à la présidence du club en 2022. Ce mandat passionnant m’a permis d’organiser des compétitions internes et d’animer chaque semaine nos séances, me conférant une solide expérience en leadership de petites équipes et en transmission technique. <br /><br /> J’ai ensuite accompagné la relève comme vice-président en 2023.",
       "eyebrow": "Club de drone FPV",
-      "role": "Membre fondateur puis président",
+      "role": "Créa et com, président puis vice-président",
       "lead": "Un club fondé en 2021 pour ouvrir le vol en immersion aux étudiants : ateliers de montage, simulateur et sorties de vol.",
       "short": "ISEP Drone",
       "period": "2021 à 2024",
-      "description": "Club de vol en immersion fondé en 2021. Fondateur, puis responsable communication en 2022 et président en 2023 : ateliers de montage, séances sur simulateur et sorties de vol."
+      "description": "Club de vol en immersion fondé en 2021. Pôle créa et com la première année, président en 2022 puis vice-président en 2023 : ateliers de montage, séances sur simulateur et sorties de vol."
     },
     "eyebrow": "Vie étudiante",
     "summary_eyebrow": "Sommaire",
@@ -138,9 +133,9 @@
     "roles": {
       "president": "Président",
       "vice_president": "Vice-président",
-      "founder": "Fondateur",
-      "comm_manager": "Communication",
-      "creative": "Pôle Création"
+      "creative": "Pôle Création",
+      "member": "Membre",
+      "creative_comm": "Pôle Créa & Com"
     }
   },
   "benevolence": {

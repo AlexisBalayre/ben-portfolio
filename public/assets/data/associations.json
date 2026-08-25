@@ -2,11 +2,12 @@
   {
     "id": "iseplive",
     "logo": "iseplive.png",
-    "period": "2022 à 2024",
+    "period": "2022 à 2025",
     "nature": "association",
     "roles": [
-      { "role": "vice_president", "start": "2022-09", "end": "2023-09" },
-      { "role": "president", "start": "2023-09", "end": "2024-09" }
+      { "role": "member", "start": "2022-09", "end": "2023-09" },
+      { "role": "vice_president", "start": "2023-09", "end": "2024-09" },
+      { "role": "president", "start": "2024-09", "end": "2025-09" }
     ]
   },
   {
@@ -24,9 +25,9 @@
     "period": "2021 à 2024",
     "nature": "association",
     "roles": [
-      { "role": "founder", "start": "2021-09", "end": "2022-09" },
-      { "role": "comm_manager", "start": "2022-09", "end": "2023-09" },
-      { "role": "president", "start": "2023-09", "end": "2024-09" }
+      { "role": "creative_comm", "start": "2021-09", "end": "2022-09" },
+      { "role": "president", "start": "2022-09", "end": "2023-09" },
+      { "role": "vice_president", "start": "2023-09", "end": "2024-09" }
     ]
   }
 ]
