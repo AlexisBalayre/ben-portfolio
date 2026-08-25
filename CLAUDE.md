@@ -307,6 +307,6 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 
 ## Ressources externes
 
-- Portfolio photo : [benjaminbalayre.myportfolio.com](https://benjaminbalayre.myportfolio.com/)
+- Portfolio photo : [portfolio.benevolence.fr](https://portfolio.benevolence.fr) (l'ancienne adresse `benjaminbalayre.myportfolio.com` y redirige)
 - Boutique fine art : [benevolence.fr](https://benevolence.fr)
-- Site Vercel : balayre.com
+- Site en production : [benjamin.balayre.com](https://benjamin.balayre.com)
