@@ -1,67 +1,44 @@
-{
-  "branches": [
-    {
-      "id": "data_ai",
-      "icon": "🧠",
-      "nodes": [
-        { "id": "python", "icon": "🐍", "status": "unlocked" },
-        { "id": "ml", "icon": "📊", "status": "unlocked" },
-        { "id": "deeplearning", "icon": "🔥", "status": "unlocked" },
-        { "id": "genai", "icon": "🤖", "status": "progress" },
-        { "id": "mlops", "icon": "⚙️", "status": "locked" }
-      ]
-    },
-    {
-      "id": "data_eng",
-      "icon": "🗄️",
-      "nodes": [
-        { "id": "databases", "icon": "🗃️", "status": "unlocked" },
-        { "id": "pipelines", "icon": "🌬️", "status": "unlocked" },
-        { "id": "bigdata", "icon": "⚡", "status": "unlocked" },
-        { "id": "streaming", "icon": "📡", "status": "progress" },
-        { "id": "modeling", "icon": "🧱", "status": "locked" }
-      ]
-    },
-    {
-      "id": "software",
-      "icon": "💻",
-      "nodes": [
-        { "id": "typescript", "icon": "🔷", "status": "unlocked" },
-        { "id": "frontend", "icon": "⚛️", "status": "unlocked" },
-        { "id": "backend", "icon": "🧩", "status": "unlocked" },
-        { "id": "mobile", "icon": "📱", "status": "progress" },
-        { "id": "testing", "icon": "🧪", "status": "locked" }
-      ]
-    },
-    {
-      "id": "cloud",
-      "icon": "☁️",
-      "nodes": [
-        { "id": "containers", "icon": "🐳", "status": "unlocked" },
-        { "id": "cloud_services", "icon": "📦", "status": "unlocked" },
-        { "id": "cicd", "icon": "🔁", "status": "progress" },
-        { "id": "orchestration", "icon": "☸️", "status": "locked" }
-      ]
-    },
-    {
-      "id": "consulting",
-      "icon": "🧭",
-      "nodes": [
-        { "id": "project", "icon": "🗂️", "status": "unlocked" },
-        { "id": "dataviz", "icon": "📈", "status": "unlocked" },
-        { "id": "english", "icon": "🌍", "status": "unlocked" },
-        { "id": "visual", "icon": "🎬", "status": "unlocked" },
-        { "id": "advisory", "icon": "💼", "status": "progress" }
-      ]
-    }
-  ],
-  "links": [
-    { "from": "python", "to": "pipelines" },
-    { "from": "ml", "to": "dataviz" },
-    { "from": "genai", "to": "advisory" },
-    { "from": "databases", "to": "backend" },
-    { "from": "mlops", "to": "containers" },
-    { "from": "cicd", "to": "testing" },
-    { "from": "visual", "to": "frontend" }
-  ]
-}
+[
+  {
+    "id": "data_ai",
+    "nodes": [
+      { "id": "programming", "icon": "command-line", "status": "unlocked" },
+      { "id": "data_analysis", "icon": "table-cells", "status": "unlocked", "after": ["programming"] },
+      { "id": "ml", "icon": "chart-bar", "status": "unlocked", "after": ["data_analysis"] },
+      { "id": "deep_learning", "icon": "cpu-chip", "status": "unlocked", "after": ["ml"] },
+      { "id": "genai", "icon": "sparkles", "status": "progress", "after": ["deep_learning"] },
+      { "id": "mlops", "icon": "rocket", "status": "locked", "after": ["genai"] }
+    ]
+  },
+  {
+    "id": "data_eng",
+    "nodes": [
+      { "id": "databases", "icon": "database", "status": "unlocked" },
+      { "id": "pipelines", "icon": "arrows-right-left", "status": "unlocked", "after": ["databases"] },
+      { "id": "bigdata", "icon": "squares", "status": "unlocked", "after": ["pipelines"] },
+      { "id": "streaming", "icon": "bolt", "status": "progress", "after": ["bigdata"] },
+      { "id": "analytics", "icon": "cube-transparent", "status": "locked", "after": ["streaming"] }
+    ]
+  },
+  {
+    "id": "engineering",
+    "nodes": [
+      { "id": "web", "icon": "code", "status": "unlocked" },
+      { "id": "api", "icon": "server", "status": "unlocked", "after": ["web"] },
+      { "id": "containers", "icon": "cube", "status": "unlocked", "after": ["api"] },
+      { "id": "cloud", "icon": "cloud", "status": "unlocked", "after": ["containers"] },
+      { "id": "cicd", "icon": "arrow-path", "status": "progress", "after": ["cloud"] },
+      { "id": "orchestration", "icon": "adjustments", "status": "locked", "after": ["cicd"] }
+    ]
+  },
+  {
+    "id": "consulting",
+    "nodes": [
+      { "id": "project", "icon": "clipboard", "status": "unlocked" },
+      { "id": "english", "icon": "language", "status": "unlocked", "after": ["project"] },
+      { "id": "visual", "icon": "video", "status": "unlocked", "after": ["project"] },
+      { "id": "dataviz", "icon": "presentation-chart", "status": "unlocked", "after": ["english"] },
+      { "id": "advisory", "icon": "briefcase", "status": "progress", "after": ["dataviz"] }
+    ]
+  }
+]

@@ -159,29 +159,20 @@ const Home: NextPage = () => {
 
             {/* ── Skill Tree ───────────────────────────────────────────── */}
             <motion.section
-                className="relative w-full overflow-hidden bg-secondary py-10 md:py-16 px-4 sm:px-8 md:px-20 group"
+                className="w-full bg-gray-100 px-4 sm:px-8 md:px-20 py-8 md:py-12 group"
                 id="competences"
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: '-80px' }}
             >
-                <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 opacity-[0.05]"
-                    style={{
-                        backgroundImage:
-                            'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-                        backgroundSize: '28px 28px',
-                    }}
-                />
-                <div className="relative max-w-5xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
-                        <Squares2X2Icon className="h-8 w-8 mr-2 -mt-1.5 text-white/80 transition-all duration-500 group-hover:text-white group-hover:-translate-y-1" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-white/80 transition-all duration-500 group-hover:text-white group-hover:-translate-y-1">{t('skill_tree.title')}</h2>
+                        <Squares2X2Icon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:-translate-y-1">{t('skill_tree.title')}</h2>
                     </span>
-                    <p className="max-w-2xl py-6 text-sm sm:text-base text-white/60">{t('skill_tree.subtitle')}</p>
-                    <SkillTree data={skillTree} />
+                    <p className="max-w-3xl py-6">{t('skill_tree.subtitle')}</p>
+                    <SkillTree branches={skillTree} />
                 </div>
             </motion.section>
 
