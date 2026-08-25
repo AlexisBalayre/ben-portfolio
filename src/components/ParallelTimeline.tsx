@@ -18,6 +18,8 @@ export interface JourneyEntry {
     start?: string;
     end?: string;
     ongoing?: boolean;
+    /** `false` exclut l'entrée de la frise sans lui retirer ses dates. */
+    journey?: boolean;
     /** Nature affichée en surtitre de la barre — clé de `journey.nature.*`. */
     nature?: string;
     /** Identifiant du cursus dans lequel ce stage s'inscrit — il est alors rattaché à la voie Formation. */
@@ -63,7 +65,7 @@ const packLanes = (bars: Bar[]): Bar[][] => {
     return lanes;
 };
 
-const isDated = (entry: JourneyEntry) => Boolean(entry.start && entry.end);
+const isDated = (entry: JourneyEntry) => Boolean(entry.start && entry.end) && entry.journey !== false;
 
 interface ParallelTimelineProps {
     education: JourneyEntry[];

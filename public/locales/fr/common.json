@@ -27,10 +27,6 @@
     "download_resume": "Télécharger mon CV",
     "quick_portfolio": "Voir mon portfolio photo et vidéo",
     "quick_benevolence": "Voir ma boutique de tirage",
-    "education_title": "Formation",
-    "education_desc": "Passionné d'innovation et de nouvelles technologies depuis toujours, j'ai choisi de poursuivre un cursus en ingénierie du numérique à l'ISEP.",
-    "experience_title": "Expériences",
-    "experience_desc": "Mon objectif : consolider mon expertise dans le domaine du numérique, tout en comprenant ses enjeux afin de contribuer activement aux innovations de demain.",
     "skills_title": "Compétences",
     "skills_desc": "Aperçu des outils et domaines dans lesquels j'évolue au quotidien, de la création visuelle au développement de produits numériques.",
     "rights_reserved": "Tous droits réservés.",
@@ -50,7 +46,9 @@
     "portfolio_preview_button": "Découvrir le portfolio",
     "associative_preview_title": "Engagement Associatif",
     "associative_preview_desc": "Mon parcours étudiant est profondément marqué par le milieu associatif. De la présidence d'un club de drone (FPV) à celle du média de l'école (ISEP Live), découvrez mes engagements étudiants et associatifs.",
-    "associative_preview_button": "Voir mon parcours"
+    "associative_preview_button": "Voir mon parcours",
+    "career_title": "Formation & expériences",
+    "career_desc": "Mon parcours dans le détail, formation d'un côté de l'axe et expérience professionnelle de l'autre. Passionné d'innovation depuis toujours, j'ai choisi l'ingénierie du numérique à l'ISEP pour comprendre les enjeux du secteur et contribuer aux innovations de demain."
   },
   "skills": {
     "video_editing": {
@@ -183,7 +181,8 @@
     "show_less": "Réduire",
     "show_all": "Voir tout",
     "collapse": "Voir moins",
-    "exchange_label": "Semestre d'échange intégré à ce cursus"
+    "exchange_label": "Semestre d'échange intégré à ce cursus",
+    "integrated": "Intégré au cursus ISEP"
   },
   "meta": {
     "home": {
