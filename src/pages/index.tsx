@@ -190,28 +190,17 @@ const Home: NextPage = () => {
               />
             </Link>
 
-            {/* Les deux destinations externes : elles ne méritent pas de bouton,
-                mais elles ne doivent pas non plus n'exister que dans le pied de page. */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-              <a
-                href="https://portfolio.benevolence.fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={actionClasses('quiet', 'light', 'sm', '!px-0')}
-              >
-                {t('home.quick_portfolio')}
-                <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
-              </a>
-              <a
-                href="https://benevolence.fr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={actionClasses('quiet', 'light', 'sm', '!px-0')}
-              >
-                {t('home.quick_benevolence')}
-                <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
-              </a>
-            </div>
+            {/* La boutique a déjà sa carte plus haut : seul le portfolio externe
+                mérite un rappel ici, il n'existe sinon que dans le pied de page. */}
+            <a
+              href="https://portfolio.benevolence.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={actionClasses('quiet', 'light', 'sm', '!px-0')}
+            >
+              {t('home.quick_portfolio')}
+              <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
           </div>
         </Container>
       </Section>
