@@ -2,25 +2,31 @@
   {
     "id": "iseplive",
     "logo": "iseplive.png",
-    "period": "2021 à 2024",
+    "period": "2022 à 2024",
     "nature": "association",
-    "start": "2021-09",
-    "end": "2024-07"
+    "roles": [
+      { "role": "vice_president", "start": "2022-09", "end": "2023-09" },
+      { "role": "president", "start": "2023-09", "end": "2024-09" }
+    ]
   },
   {
     "id": "vizion",
     "logo": "Vizion.png",
-    "period": "2022 à 2023",
+    "period": "2023 à 2024",
     "nature": "association",
-    "start": "2022-09",
-    "end": "2023-07"
+    "roles": [
+      { "role": "creative", "start": "2023-09", "end": "2024-09" }
+    ]
   },
   {
     "id": "isepdrone",
     "logo": "isepdrone.png",
     "period": "2021 à 2024",
     "nature": "association",
-    "start": "2021-09",
-    "end": "2024-07"
+    "roles": [
+      { "role": "founder", "start": "2021-09", "end": "2022-09" },
+      { "role": "comm_manager", "start": "2022-09", "end": "2023-09" },
+      { "role": "president", "start": "2023-09", "end": "2024-09" }
+    ]
   }
 ]

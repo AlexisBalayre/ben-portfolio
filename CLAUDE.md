@@ -121,7 +121,7 @@ Tous les contenus dynamiques sont dans `public/assets/data/` :
 |---|---|
 | `experiences.json` | Expériences professionnelles et projets image (Timeline, frise, chapitre 02) |
 | `formation.json` | Formations (Timeline, frise) |
-| `associations.json` | Engagements associatifs (frise, aperçu de l'accueil) |
+| `associations.json` | Engagements associatifs (frise, aperçu de l'accueil). Les dates vivent dans `roles[]`, pas au niveau de l'entrée |
 | `projects.json` | Projets vidéo/photo (YouTube embeds) |
 | `skills.json` | Compétences créatives (SkillsSection) |
 | `tech.json` | Compétences tech (carousel dans Header ou autre) |
@@ -141,6 +141,7 @@ Modifier ces fichiers suffit pour mettre à jour le contenu, sans toucher aux co
 | `track` | `ParallelTimeline`, `src/data/journey.ts` | *(experiences.json)* `"projects"` : l'entrée rejoint la voie **Projets** de la frise et la grille du chapitre « L'image » de l'accueil |
 | `nature: "project"` | `src/data/journey.ts` | l'entrée est un produit, pas un poste : elle sort de la timeline des expériences pour n'être racontée que dans le chapitre « L'image » |
 | `url` | `PhotoProjects` | lien externe affiché en pied de carte projet |
+| `roles[]` | `ParallelTimeline` | *(associations.json)* un objet `{ role, start, end }` par année scolaire. La frise dessine un segment par mandat, coupé à chaque rentrée de septembre, et affiche le rôle dessus. `role` est une clé de `associative.roles.*` |
 | `exchanges[]` | `Timeline` + `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la timeline, segment bleu vif à l'intérieur de la barre dans la frise |
 
 Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `period`, `short` dans `fr/common.json` **et** `en/common.json`.
@@ -261,6 +262,8 @@ Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) pui
 Le chapitre **02 L'image** introduit le versant photographique avant de montrer des images : les trois activités (prestations freelance, boutique **Benevolence**, produit web **ReLive**), le bandeau de clichés de voyage, puis l'accès au portfolio. C'est ce chapitre qui fait la transition entre le CV et le portfolio.
 
 Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leur page. Chaque chapitre de l'accueil se termine ainsi sur une seule porte de sortie.
+
+Dans la frise, la voie **Associatif** ne dessine pas une barre continue par association mais **un segment par année scolaire**, coupé à chaque rentrée de septembre, portant le rôle tenu cette année-là. Les segments d'un même engagement restent groupés sur une ligne : c'est le rôle de `packGroupedLanes`, distinct de `packLanes` utilisé par les autres voies.
 
 La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exporté). « Contact » scrolle vers le footer.
 
