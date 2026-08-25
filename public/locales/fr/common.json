@@ -202,10 +202,14 @@
   },
   "skill_tree": {
     "title": "Arbre de compétences",
-    "subtitle": "Chaque case pleine est une compétence déjà mise en pratique sur le terrain. Les cases en transparence sont mes prochains objectifs.",
-    "hint": "Sélectionne une case pour afficher le détail.",
+    "subtitle": "Un seul arbre, cinq grands domaines partis du même point. Les traits pleins relient une compétence à son domaine, les pointillés relient des compétences proches d'un domaine à l'autre.",
+    "root": "Ingénieur Data & IA",
+    "pan_hint": "Glissez pour vous déplacer, molette pour zoomer, survolez une case pour le détail.",
+    "recenter": "Recentrer",
     "progress": "{{unlocked}} compétences débloquées sur {{total}}",
     "branch_progress": "{{unlocked}}/{{total}}",
+    "related": "Compétences proches",
+    "legend_link": "Corrélation entre domaines",
     "status": {
       "unlocked": "Débloqué",
       "progress": "En cours",
@@ -214,84 +218,131 @@
     "node_aria": "{{name}} — {{status}}",
     "branches": {
       "data_ai": {
-        "title": "Data & Intelligence Artificielle",
+        "short": "Données & IA",
+        "title": "Données & Intelligence Artificielle",
         "desc": "Analyser, modéliser et faire parler la donnée."
       },
       "data_eng": {
-        "title": "Data Engineering",
-        "desc": "Construire les pipelines et les socles qui alimentent la donnée."
+        "short": "Ingénierie data",
+        "title": "Ingénierie des données",
+        "desc": "Construire les socles et les flux qui alimentent la donnée."
       },
       "software": {
-        "title": "Développement & Web",
-        "desc": "Concevoir des produits web du front au back."
-      },
-      "web3": {
-        "title": "Blockchain & Web3",
-        "desc": "Smart contracts, oracles et données on-chain."
+        "short": "Logiciel & Web",
+        "title": "Ingénierie logicielle",
+        "desc": "Concevoir et livrer des produits web, du front au back."
       },
       "cloud": {
-        "title": "Cloud & DevOps",
+        "short": "Cloud & Ops",
+        "title": "Cloud & Industrialisation",
         "desc": "Déployer, sécuriser et opérer en production."
       },
       "consulting": {
-        "title": "Conseil & Leadership",
-        "desc": "Cadrer, piloter et embarquer les équipes."
-      },
-      "creative": {
-        "title": "Création visuelle",
-        "desc": "Raconter des histoires en image et en mouvement."
+        "short": "Conseil & Com.",
+        "title": "Conseil & Communication",
+        "desc": "Cadrer, piloter et restituer — du besoin client à l'image."
       }
     },
     "nodes": {
-      "python": "Mon langage principal depuis 2021 : data, scripting, IA.",
-      "pandas": "Nettoyage et manipulation de jeux de données volumineux.",
-      "sklearn": "Modèles de machine learning supervisés et non supervisés.",
-      "pytorch": "Deep learning appliqué et entraînement de modèles.",
-      "powerbi": "Tableaux de bord stratégiques construits chez Sidetrade.",
-      "genai": "LLM, RAG et agents : au cœur de mes missions chez Capgemini Invent.",
-      "mlops": "Industrialiser, monitorer et versionner les modèles en production.",
-      "sql": "Modélisation relationnelle, requêtes analytiques et optimisation.",
-      "nosql": "MongoDB, Cassandra ou InfluxDB selon les cas d'usage.",
-      "airflow": "Orchestration de pipelines de données planifiés.",
-      "spark": "Traitement distribué de gros volumes de données.",
-      "elastic": "Indexation et exploration de données avec Kibana.",
-      "kafka": "Streaming d'événements en temps réel.",
-      "dbt": "Transformations analytiques versionnées et testées.",
-      "javascript": "La base de tous mes projets web depuis mes débuts.",
-      "typescript": "Typage strict sur l'ensemble de mes projets récents.",
-      "react": "Interfaces composables et gestion d'état applicatif.",
-      "nextjs": "Ce site, ainsi que les projets livrés en freelance.",
-      "nestjs": "APIs Node structurées, typées et testées.",
-      "reactnative": "Portage mobile de mes applications web.",
-      "rust": "Performance et sûreté mémoire côté back-end.",
-      "solidity": "Smart contracts conçus et déployés sur EVM.",
-      "hardhat": "Tests, déploiement et scripts d'automatisation.",
-      "foundry": "Tests écrits en Solidity et fuzzing de contrats.",
-      "chainlink": "Oracles et connexion aux données off-chain.",
-      "thegraph": "Indexation de données on-chain via des subgraphs.",
-      "cosmos": "Chaînes applicatives construites avec le Cosmos SDK.",
-      "zk": "Preuves à divulgation nulle de connaissance.",
-      "git": "Workflow Git, revues de code et intégration continue.",
-      "docker": "Conteneurisation de mes services et environnements.",
-      "hosting": "Mise en ligne sur Vercel, Netlify et Digital Ocean.",
-      "cloudflare": "DNS, CDN et protection des sites que je livre.",
-      "aws": "Services managés : S3, Timestream et compagnie.",
-      "cicd": "Pipelines GitHub Actions de bout en bout.",
-      "kubernetes": "Orchestration de conteneurs à l'échelle.",
-      "aws_cert": "Objectif : certification AWS Solutions Architect.",
-      "project": "Cadrage, planning et pilotage de projets de bout en bout.",
-      "assoc": "ISEP Live, BDE Vizion et ISEP Drone : équipes et budgets.",
-      "english": "Quotidien en anglais chez Sidetrade et à OsloMet.",
-      "advisory": "Conseil en transformation data & IA chez Capgemini Invent.",
-      "speaking": "Animer des ateliers clients et prendre la parole en public.",
-      "korean": "Reprendre le coréen découvert à Inha University.",
-      "photo": "Reportage et photo de voyage, retouche sous Lightroom.",
-      "video": "Montage Premiere Pro et Final Cut, du rush au master.",
-      "design": "Identités visuelles, affiches et illustrations.",
-      "drone": "Prises de vue aériennes avec le club ISEP Drone.",
-      "fineart": "Benevolence : tirages fine art et direction artistique.",
-      "grading": "Étalonnage avancé sous DaVinci Resolve."
-    }
+      "python": {
+        "name": "Python",
+        "desc": "Mon langage principal depuis 2021 : analyse, scripting et modèles."
+      },
+      "ml": {
+        "name": "Machine Learning",
+        "desc": "Modèles supervisés et non supervisés, de la préparation à l'évaluation."
+      },
+      "deeplearning": {
+        "name": "Deep Learning",
+        "desc": "Réseaux de neurones entraînés avec PyTorch."
+      },
+      "genai": {
+        "name": "LLM & IA générative",
+        "desc": "RAG et agents : le cœur de mes missions chez Capgemini Invent."
+      },
+      "mlops": {
+        "name": "MLOps",
+        "desc": "Industrialiser, monitorer et versionner les modèles en production."
+      },
+      "databases": {
+        "name": "Bases de données",
+        "desc": "Modélisation relationnelle et bases NoSQL (MongoDB, Cassandra, InfluxDB)."
+      },
+      "pipelines": {
+        "name": "Pipelines & orchestration",
+        "desc": "Chaînes de traitement planifiées avec Apache Airflow."
+      },
+      "bigdata": {
+        "name": "Traitement distribué",
+        "desc": "Gros volumes traités avec Apache Spark."
+      },
+      "streaming": {
+        "name": "Streaming temps réel",
+        "desc": "Flux d'événements avec Apache Kafka."
+      },
+      "modeling": {
+        "name": "Modélisation analytique",
+        "desc": "Transformations versionnées et testées, façon dbt."
+      },
+      "typescript": {
+        "name": "TypeScript",
+        "desc": "Typage strict sur l'ensemble de mes projets récents."
+      },
+      "frontend": {
+        "name": "Front-end",
+        "desc": "Interfaces React et applications Next.js, dont ce site."
+      },
+      "backend": {
+        "name": "Back-end & API",
+        "desc": "Services Node structurés et testés avec NestJS."
+      },
+      "mobile": {
+        "name": "Mobile",
+        "desc": "Portage de mes applications web avec React Native."
+      },
+      "testing": {
+        "name": "Tests & qualité",
+        "desc": "Couverture automatisée et revues systématiques."
+      },
+      "containers": {
+        "name": "Conteneurisation",
+        "desc": "Services et environnements empaquetés avec Docker."
+      },
+      "cloud_services": {
+        "name": "Cloud",
+        "desc": "Services managés AWS, hébergement Vercel et Cloudflare."
+      },
+      "cicd": {
+        "name": "CI/CD",
+        "desc": "Pipelines GitHub Actions de bout en bout."
+      },
+      "orchestration": {
+        "name": "Orchestration",
+        "desc": "Conteneurs pilotés à l'échelle avec Kubernetes."
+      },
+      "project": {
+        "name": "Gestion de projet",
+        "desc": "Cadrage, planning et pilotage de bout en bout."
+      },
+      "dataviz": {
+        "name": "Restitution & dataviz",
+        "desc": "Tableaux de bord Power BI construits chez Sidetrade."
+      },
+      "english": {
+        "name": "Anglais professionnel",
+        "desc": "Quotidien en anglais chez Sidetrade et à OsloMet."
+      },
+      "visual": {
+        "name": "Image & vidéo",
+        "desc": "Photo, montage et direction artistique en freelance."
+      },
+      "advisory": {
+        "name": "Conseil Data & IA",
+        "desc": "Transformation data et IA chez Capgemini Invent."
+      }
+    },
+    "zoom_in": "Zoomer",
+    "zoom_out": "Dézoomer"
   },
   "journey": {
     "title": "Parcours en un coup d’œil",
