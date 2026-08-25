@@ -26,7 +26,7 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full overflow-x-clip" aria-label={t('home.carousel_title')}>
-      {/* Fondus latéraux — la piste entre et sort du cadre au lieu d'être coupée. */}
+      {/* Fondus latéraux : la piste entre et sort du cadre au lieu d'être coupée. */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-8 bg-gradient-to-r from-base-100 to-transparent sm:w-20 md:w-32" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-8 bg-gradient-to-l from-base-100 to-transparent sm:w-20 md:w-32" />
 

@@ -15,7 +15,7 @@ export interface TimelineEntry {
     id: string;
     logo: string;
     period: string;
-    /** Semestres d'échange effectués *pendant* ce cursus — affichés en sous-branche. */
+    /** Semestres d'échange effectués *pendant* ce cursus, affichés en sous-branche. */
     exchanges?: ExchangeEntry[];
 }
 

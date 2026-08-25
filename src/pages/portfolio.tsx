@@ -25,7 +25,7 @@ const BenevolenceSection = dynamic(() => import('~~/src/components/BenevolenceSe
 });
 
 /**
- * Portfolio créatif — quatre chapitres numérotés, du dernier film réalisé
+ * Portfolio créatif : quatre chapitres numérotés, du dernier film réalisé
  * jusqu'à la boutique de tirages.
  */
 const Portfolio: NextPage = () => {

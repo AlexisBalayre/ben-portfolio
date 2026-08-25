@@ -11,8 +11,8 @@ const EMBED = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel
 const POSTER = '/assets/images/portfolio/Norway/image1.jpg';
 
 /**
- * Dernier film. La vidéo n'est chargée qu'au clic : la page ne tire pas le
- * lecteur YouTube — ni ses cookies — tant que le visiteur ne l'a pas demandé.
+ * Dernier film. La vidéo n'est chargée qu'au clic : la page ne tire ni le
+ * lecteur YouTube ni ses cookies tant que le visiteur ne l'a pas demandé.
  */
 const LatestProject = () => {
   const { t } = useTranslation('common');

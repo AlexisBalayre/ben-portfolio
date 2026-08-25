@@ -93,7 +93,7 @@ const Roles = ({ roles }: { roles: AssoRole[] }) => {
 
 /**
  * Un engagement associatif. Les trois associations partagent cette forme :
- * même en-tête numérotée, mêmes blocs texte/image alternés, mêmes liens.
+ * même en-tête numérotée, mêmes blocs texte et image alternés, mêmes liens.
  */
 const AssoChapter = ({
   id,
@@ -151,7 +151,7 @@ const AssoChapter = ({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${name} — ${kind === 'instagram' ? 'Instagram' : 'YouTube'}`}
+              aria-label={`${name} sur ${kind === 'instagram' ? 'Instagram' : 'YouTube'}`}
               className="grid h-12 w-12 place-items-center rounded-xl border border-base-300 bg-base-100 text-base-content/50 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
             >
               <Logo className="h-5 w-5" />

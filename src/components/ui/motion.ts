@@ -1,6 +1,6 @@
 import type { Variants } from 'framer-motion';
 
-/** Courbe unique du site — toute transition s'y réfère. */
+/** Courbe unique du site : toute transition s'y réfère. */
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Réglage d'apparition partagé : une seule fois, déclenché avant l'entrée réelle. */

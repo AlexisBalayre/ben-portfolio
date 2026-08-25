@@ -51,8 +51,6 @@
       "iceland": "Islande",
       "norway": "Norvège"
     },
-    "portfolio_preview_title": "Portfolio",
-    "portfolio_preview_desc": "Passionné par l'image, je vous partage ici mon portfolio photographique et mes films cinématiques de voyage. Découvrez mes dernières réalisations et mon univers visuel.",
     "portfolio_preview_button": "Découvrir le portfolio",
     "associative_preview_title": "Engagement Associatif",
     "associative_preview_desc": "Mon parcours étudiant est profondément marqué par le milieu associatif. De la présidence d'un club de drone (FPV) à celle du média de l'école (ISEP Live), découvrez mes engagements étudiants et associatifs.",
@@ -61,15 +59,11 @@
     "summary_aria": "Sommaire de la page",
     "chapter": {
       "journey": "Parcours",
-      "explore": "Aller plus loin",
-      "explore_portfolio": "Photo & vidéo",
-      "explore_associative": "Vie associative",
-      "image": "L’image"
+      "image": "L’image",
+      "associative": "Vie associative"
     },
-    "explore_title": "Deux autres facettes",
-    "explore_desc": "Un CV ne raconte que la moitié de l’histoire. Le reste tient dans mes images et dans les associations que j’ai fait tourner pendant mes études.",
     "image_title": "Trois projets autour de l’image",
-    "image_lead": "La photographie n’est pas un à-côté de mon parcours d’ingénieur : c’est la même envie de construire, appliquée à l’image. Elle se décline aujourd’hui en trois activités — des prestations pour des événements, une boutique de tirages, et un produit web né de mes propres besoins de photographe."
+    "image_lead": "La photographie n’est pas un à-côté de mon parcours d’ingénieur. C’est la même envie de construire, appliquée à l’image. Elle se décline aujourd’hui en trois activités : des prestations pour des événements, une boutique de tirages, et un produit web né de mes propres besoins de photographe."
   },
   "skills": {
     "video_editing": {
@@ -101,7 +95,10 @@
       "path_desc": "J'ai rejoint ISEP Live en 2021 pour me perfectionner en photographie et audiovisuel au contact d'autres passionnés. <br /><br /> Devenu Vice-président en 2022, j'ai eu l'occasion de cordonner des pôles de création, renforçant considérablement mes compétences en gestion de projet et en travail d'équipe. <br /><br /> Poursuivant cet engagement, j'ai pris la présidence de l'association en 2023. Cette expérience fondatrice m'a appris à fédérer une équipe de 25 personnes, piloter la direction artistique de nos productions, et structurer notre développement.",
       "eyebrow": "Média étudiant",
       "role": "Membre, vice-président puis président",
-      "lead": "L’association média de l’école : vingt-cinq personnes pour couvrir en photo et en vidéo toute la vie du campus."
+      "lead": "L’association média de l’école : vingt-cinq personnes pour couvrir en photo et en vidéo toute la vie du campus.",
+      "short": "ISEP Live",
+      "period": "2021 à 2024",
+      "description": "Association média de l’ISEP. Membre en 2021, vice-président en 2022 puis président en 2023, à la tête d’une équipe de vingt-cinq personnes qui couvre en photo et en vidéo toute la vie du campus."
     },
     "vizion": {
       "title": "Bureau des Élèves : Vizion",
@@ -111,7 +108,10 @@
       "path_desc": "Être au sein d'un Bureau des Élèves est une formidable expérience de travail en équipe sous pression. Au sein du pôle Création, j'ai pu exprimer ma créativité tout en répondant à des délais stricts et des besoins de communication concrets. <br /><br /> Cette aventure humaine m'a apporté une vraie vision de l'événementiel, mais m'a surtout forgé des capacités d'adaptation et de collaboration inestimables.",
       "eyebrow": "Bureau des élèves",
       "role": "Pôle Création & Événementiel",
-      "lead": "Quarante personnes pour rythmer l’année étudiante — et un pôle Création qui signait l’identité visuelle du mandat."
+      "lead": "Quarante personnes pour rythmer l’année étudiante, dont un pôle Création qui signait l’identité visuelle du mandat.",
+      "short": "Vizion",
+      "period": "2022 à 2023",
+      "description": "Bureau des élèves de l’ISEP, quarante personnes. Membre du pôle Création, garant de l’identité visuelle du mandat : logos, communication sur les réseaux, textiles."
     },
     "isepdrone": {
       "title": "ISEP Drone",
@@ -126,7 +126,10 @@
       },
       "eyebrow": "Club de drone FPV",
       "role": "Membre fondateur puis président",
-      "lead": "Un club fondé en 2021 pour ouvrir le vol en immersion aux étudiants : ateliers de montage, simulateur et sorties de vol."
+      "lead": "Un club fondé en 2021 pour ouvrir le vol en immersion aux étudiants : ateliers de montage, simulateur et sorties de vol.",
+      "short": "ISEP Drone",
+      "period": "2021 à 2024",
+      "description": "Club de vol en immersion fondé en 2021. Membre fondateur puis responsable communication en 2022 et président en 2023 : ateliers de montage, séances sur simulateur et sorties de vol."
     },
     "eyebrow": "Vie étudiante",
     "summary_eyebrow": "Sommaire",
@@ -146,53 +149,53 @@
   },
   "experiences": {
     "capgemini_cdi": {
-      "title": "Consultant en transformation Data & IA – Capgemini Invent (frog)",
+      "title": "Consultant en transformation Data & IA, Capgemini Invent (frog)",
       "description": "Poste en CDI au sein de frog, l'entité design et innovation de Capgemini Invent, dans la continuité de mon stage. Accompagnement des transformations data et IA des grands comptes : cadrage des besoins, conception de cas d'usage et déploiement de solutions à l'échelle.",
       "period": "À partir de septembre 2026",
       "short": "Capgemini Invent"
     },
     "capgemini": {
-      "title": "Consultant Stagiaire – Capgemini Invent (frog)",
+      "title": "Consultant stagiaire, Capgemini Invent (frog)",
       "description": "Stage au sein du service Frog Customer Data & Tech. Conception de stratégies innovantes et accompagnement des transformations digitales à grande échelle. Missions de conseil auprès de directions générales sur la stratégie, l'organisation et l'efficacité opérationnelle.",
-      "period": "Janvier 2026 – Juin 2026",
+      "period": "Janvier 2026 à juin 2026",
       "short": "Capgemini"
     },
     "sidetrade": {
-      "title": "Data Analyst Stagiaire – Sidetrade",
+      "title": "Data Analyst stagiaire, Sidetrade",
       "description": "Stage dans l’équipe Datalake Ingest. Analyse des données du datalake, création de tableaux de bord stratégiques (Power BI) et collaboration avec les équipes R&D et Produit dans un environnement anglophone.",
-      "period": "Septembre 2024 – Janvier 2025",
+      "period": "Septembre 2024 à janvier 2025",
       "short": "Sidetrade"
     },
     "freelance_dev": {
-      "title": "Auto-entrepreneur – Développeur web & applications",
+      "title": "Auto-entrepreneur, développeur web & applications",
       "description": "Conception et développement de sites web et d'applications en ligne pour des indépendants et des petites structures. Prise en charge complète du projet : cadrage du besoin, maquettes, développement, mise en production et maintenance.",
       "period": "Depuis janvier 2026",
       "short": "Dev web & apps"
     },
     "freelance": {
-      "title": "Auto-entrepreneur – Photographe & Vidéaste",
+      "title": "Auto-entrepreneur, photographe & vidéaste",
       "description": "Réalisation de contenus photo et vidéo pour événements et projets professionnels. Gestion complète de la relation client, captation, montage et direction artistique.",
       "period": "Depuis 2024",
       "short": "Photo & vidéo",
       "kind": "Prestations freelance",
-      "card": "Captation photo et vidéo pour des événements et des projets professionnels : aftermovies, films de marque, reportages. Prise en charge complète — cadrage du besoin, tournage, montage et direction artistique."
+      "card": "Captation photo et vidéo pour des événements et des projets professionnels : aftermovies, films de marque, reportages. Je prends le projet en charge de bout en bout, du cadrage du besoin au montage final."
     },
     "microsoft": {
-      "title": "Stage d’observation – Microsoft",
+      "title": "Stage d’observation chez Microsoft",
       "description": "Stage d’observation au sein de Microsoft, permettant de découvrir les métiers de l’ingénierie logicielle, d’explorer l’univers du numérique et de confirmer mon orientation vers les technologies et l’innovation.",
       "period": "2017",
       "short": "Microsoft"
     },
     "relive": {
-      "title": "ReLive — recherche par selfie pour galeries photo",
+      "title": "ReLive, recherche par selfie pour les galeries photo",
       "short": "ReLive",
       "kind": "Produit web",
       "period": "Depuis mars 2026",
       "card": "L’invité d’un mariage entre le code de la galerie, se prend en photo, et retrouve en quelques secondes tous les clichés où il apparaît. Reconnaissance faciale, index vectoriel, espace photographe : conçu et développé de bout en bout.",
-      "description": "Produit web né d’un constat de terrain : après un mariage, personne ne parcourt les deux mille photos de la galerie pour retrouver les siennes. ReLive résout le problème par la reconnaissance faciale — le photographe dépose sa galerie, chaque invité s’identifie par un selfie et récupère ses photos. Conception produit, API Python, modèle de reconnaissance faciale, index vectoriel, interface web et hébergement : tout le projet est mené seul."
+      "description": "Produit web né d’un constat de terrain : après un mariage, personne ne parcourt les deux mille photos de la galerie pour retrouver les siennes. ReLive résout le problème par la reconnaissance faciale. Le photographe dépose sa galerie, chaque invité s’identifie par un selfie et récupère ses photos. Conception produit, API Python, modèle de reconnaissance faciale, index vectoriel, interface web et hébergement : tout le projet est mené seul."
     },
     "benevolence": {
-      "title": "Benevolence — boutique de tirages fine art",
+      "title": "Benevolence, boutique de tirages fine art",
       "short": "Benevolence",
       "kind": "Boutique en ligne",
       "period": "Depuis janvier 2026",
@@ -202,29 +205,29 @@
   },
   "formation": {
     "oslomet": {
-      "title": "OsloMet – Oslo, Norvège",
+      "title": "OsloMet, Oslo (Norvège)",
       "summary": "3ᵉ année du cycle ingénieur ISEP · Data Science & Intelligence Artificielle",
       "description": "Semestre d'échange effectué dans le cadre de mon cycle ingénieur à l'ISEP, orienté Data Science et Intelligence Artificielle. Une immersion académique qui m'a permis d'étudier les systèmes d'information décisionnels avec une approche internationale, en anglais et au sein d'équipes multiculturelles.",
-      "period": "Août 2025 - Décembre 2025",
+      "period": "Août 2025 à décembre 2025",
       "short": "OsloMet"
     },
     "isep_ing": {
-      "title": "ISEP – Cycle ingénieur (Paris)",
+      "title": "ISEP, cycle ingénieur (Paris)",
       "description": "Cursus d'ingénieur du numérique avec une spécialisation en Business Intelligence (BI) et architecture des données. Formation globale aux métiers de l'informatique : de la conception logicielle au management des SI, incluant un semestre d'échange à OsloMet (Norvège).",
-      "period": "Septembre 2023 - Juillet 2026",
+      "period": "Septembre 2023 à juillet 2026",
       "short": "ISEP · Cycle ingénieur"
     },
     "inha": {
-      "title": "Inha University – Incheon, Corée du Sud",
+      "title": "Inha University, Incheon (Corée du Sud)",
       "summary": "2ᵉ année du cycle international intégré ISEP · Programmation système & leadership",
       "description": "Semestre d'échange effectué dans le cadre de mon cycle international intégré à l'ISEP, avec des cours de programmation système, leadership, électronique et de langue coréenne. Une première expatriation, culturellement l'une de mes expériences les plus marquantes.",
-      "period": "Février 2023 - Juin 2023",
+      "period": "Février 2023 à juin 2023",
       "short": "Inha"
     },
     "isep_cii": {
-      "title": "ISEP – Classe préparatoire intégrée internationale",
+      "title": "ISEP, classe préparatoire intégrée internationale",
       "description": "Classe préparatoire intégrée du cycle international de l'ISEP, enchaînée directement sur le cycle ingénieur. Formation accélérée en mathématiques, sciences du numérique et électronique, dans un environnement international incluant un semestre d'échange à Inha University (Corée du Sud).",
-      "period": "2021 - 2023",
+      "period": "2021 à 2023",
       "short": "ISEP · Prépa intégrée internationale"
     }
   },
@@ -235,15 +238,15 @@
   },
   "meta": {
     "home": {
-      "title": "Benjamin Balayre — Consultant Data & IA, Développeur freelance",
+      "title": "Benjamin Balayre · Consultant Data & IA, développeur freelance",
       "description": "Consultant en transformation Data & IA chez Capgemini Invent, développeur web et photographe freelance. Découvrez mon parcours, mes expériences et mes projets."
     },
     "portfolio": {
-      "title": "Portfolio — Benjamin Balayre",
+      "title": "Portfolio · Benjamin Balayre",
       "description": "Portfolio photo et vidéo de Benjamin Balayre. Voyages, cinématique, tirages fine art disponibles sur Benevolence."
     },
     "associativeCareer": {
-      "title": "Parcours Associatif — Benjamin Balayre",
+      "title": "Parcours associatif · Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone : découvrez l'engagement associatif de Benjamin Balayre durant ses études à l'ISEP."
     },
     "keywords": "Benjamin Balayre, consultant Data & IA, Capgemini Invent, développeur web freelance, création de site web, application web, ingénieur ISEP, photographe, vidéaste, Paris, portfolio, drone FPV, ISEP Live"
@@ -267,11 +270,14 @@
       "internship": "Stage",
       "freelance": "Freelance",
       "permanent": "CDI",
-      "project": "Projet"
+      "project": "Projet",
+      "association": "Association"
     },
     "tabs_aria": "Choisir entre formation et expérience professionnelle",
     "track_projects": "Projets",
-    "legend_project": "Projet personnel"
+    "legend_project": "Projet personnel",
+    "track_associative": "Associatif",
+    "legend_association": "Engagement associatif"
   },
   "portfolio": {
     "chapter": {

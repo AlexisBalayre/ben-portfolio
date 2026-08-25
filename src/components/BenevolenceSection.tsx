@@ -60,7 +60,7 @@ const BenevolenceSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* Pile de tirages — desktop */}
+        {/* Pile de tirages (desktop) */}
         <div className="relative hidden h-[420px] flex-1 md:block">
           {PRINTS.map((print, i) => (
             <motion.figure
@@ -81,7 +81,7 @@ const BenevolenceSection = () => {
           ))}
         </div>
 
-        {/* Bande photo — mobile */}
+        {/* Bande photo (mobile) */}
         <div className="-mx-5 flex w-[calc(100%+2.5rem)] gap-3 overflow-x-auto overflow-y-hidden px-5 pb-2 md:hidden">
           {PRINTS.map((print) => (
             <figure

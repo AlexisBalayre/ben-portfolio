@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { NextPage } from 'next/types';
@@ -7,19 +8,20 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import {
   ArrowDownTrayIcon,
+  ArrowRightIcon,
   ArrowUpRightIcon,
   CalendarDaysIcon,
   CameraIcon,
-  GlobeEuropeAfricaIcon,
+  UserGroupIcon,
 } from '@heroicons/react/24/outline';
 
+import AssociativePreview from '~~/src/components/AssociativePreview';
 import Carousel from '~~/src/components/Carousel';
-import ExploreCard from '~~/src/components/ExploreCard';
 import JourneyDetail from '~~/src/components/JourneyDetail';
 import ParallelTimeline from '~~/src/components/ParallelTimeline';
 import PhotoProjects from '~~/src/components/PhotoProjects';
 import { Container, Section, SectionHeading, actionClasses, fadeUp, stagger } from '~~/src/components/ui';
-import { education, experiences, imageProjects, timelineExperiences } from '~~/src/data/journey';
+import { associations, education, experiences, imageProjects, timelineExperiences } from '~~/src/data/journey';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('common');
@@ -27,11 +29,11 @@ const Home: NextPage = () => {
 
   const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
 
-  // Sommaire de la page — le même découpage sert de fil rouge aux sections.
+  // Sommaire de la page : le même découpage sert de fil rouge aux sections.
   const chapters = [
     { index: '01', href: '#parcours', label: t('home.chapter.journey'), icon: <CalendarDaysIcon className="h-4 w-4" aria-hidden="true" /> },
     { index: '02', href: '#image', label: t('home.chapter.image'), icon: <CameraIcon className="h-4 w-4" aria-hidden="true" /> },
-    { index: '03', href: '#explorer', label: t('home.chapter.explore'), icon: <GlobeEuropeAfricaIcon className="h-4 w-4" aria-hidden="true" /> },
+    { index: '03', href: '#associatif', label: t('home.chapter.associative'), icon: <UserGroupIcon className="h-4 w-4" aria-hidden="true" /> },
   ];
 
   return (
@@ -143,7 +145,7 @@ const Home: NextPage = () => {
         />
 
         <div className="mt-12 rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm sm:p-6">
-          <ParallelTimeline education={education} experiences={experiences} />
+          <ParallelTimeline education={education} experiences={experiences} associations={associations} />
         </div>
 
         <JourneyDetail education={education} experiences={timelineExperiences} />
@@ -177,60 +179,46 @@ const Home: NextPage = () => {
         <div className="mt-8">
           <Carousel />
         </div>
+
+        <Container>
+          <div className="mt-12 flex flex-col items-center gap-5 text-center">
+            <Link href="/portfolio" scroll={false} className={actionClasses('solid')}>
+              {t('home.portfolio_preview_button')}
+              <ArrowRightIcon
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </Link>
+
+            {/* Les deux destinations externes : elles ne méritent pas de bouton,
+                mais elles ne doivent pas non plus n'exister que dans le pied de page. */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              <a
+                href="https://portfolio.benevolence.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={actionClasses('quiet', 'light', 'sm', '!px-0')}
+              >
+                {t('home.quick_portfolio')}
+                <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+              <a
+                href="https://benevolence.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={actionClasses('quiet', 'light', 'sm', '!px-0')}
+              >
+                {t('home.quick_benevolence')}
+                <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </Container>
       </Section>
 
-      {/* ── 03 · Aller plus loin ──────────────────────────────── */}
-      <Section id="explorer" tone="mist" size="lg">
-        <SectionHeading
-          index="03"
-          eyebrow={t('home.chapter.explore')}
-          icon={<GlobeEuropeAfricaIcon className="h-4 w-4" />}
-          title={t('home.explore_title')}
-          lead={t('home.explore_desc')}
-        />
+      {/* ── 03 · Vie associative ──────────────────────────────── */}
+      <AssociativePreview associations={associations} />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <ExploreCard
-            href="/portfolio"
-            image="/assets/images/portfolio/Norway/image1.jpg"
-            eyebrow={t('home.chapter.explore_portfolio')}
-            title={t('home.portfolio_preview_title')}
-            description={t('home.portfolio_preview_desc')}
-            cta={t('home.portfolio_preview_button')}
-          />
-          <ExploreCard
-            href="/associativeCareer"
-            image="/assets/images/portfolio/asso2.jpg"
-            eyebrow={t('home.chapter.explore_associative')}
-            title={t('home.associative_preview_title')}
-            description={t('home.associative_preview_desc')}
-            cta={t('home.associative_preview_button')}
-          />
-        </div>
-
-        {/* Les deux destinations externes : elles ne méritent pas une carte,
-            mais elles ne doivent pas non plus n'exister que dans le pied de page. */}
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a
-            href="https://portfolio.benevolence.fr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={actionClasses('quiet', 'light', 'sm', '!px-0')}
-          >
-            {t('home.quick_portfolio')}
-            <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
-          <a
-            href="https://benevolence.fr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={actionClasses('quiet', 'light', 'sm', '!px-0')}
-          >
-            {t('home.quick_benevolence')}
-            <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
-        </div>
-      </Section>
     </div>
   );
 };

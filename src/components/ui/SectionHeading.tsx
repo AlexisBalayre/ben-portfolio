@@ -2,7 +2,7 @@ import React from 'react';
 import type { Tone } from './Section';
 
 interface SectionHeadingProps {
-  /** Numéro de chapitre — c'est lui qui donne le fil de lecture de la page. */
+  /** Numéro de chapitre : c'est lui qui donne le fil de lecture de la page. */
   index?: string;
   eyebrow?: string;
   icon?: React.ReactNode;

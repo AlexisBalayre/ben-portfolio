@@ -1,5 +1,5 @@
 /**
- * Boutons et liens d'action — géométrie unique sur tout le site.
+ * Boutons et liens d'action : géométrie unique sur tout le site.
  *
  * `variant` porte le poids visuel, `tone` indique la surface sur laquelle
  * l'action est posée (claire ou sombre). Rien d'autre : pas de bouton

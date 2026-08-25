@@ -114,7 +114,7 @@ const AssociativeCareer: NextPage = () => {
         lead={t('associative.hero_desc')}
       />
 
-      {/* Sommaire — les trois engagements avant d'entrer dans le détail. */}
+      {/* Sommaire : les trois engagements avant d'entrer dans le détail. */}
       <Section id="engagements" tone="mist" size="md">
         <SectionHeading
           eyebrow={t('associative.summary_eyebrow')}

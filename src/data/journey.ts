@@ -1,16 +1,17 @@
+import associationsData from '~~/public/assets/data/associations.json';
 import educationData from '~~/public/assets/data/formation.json';
 import experiencesData from '~~/public/assets/data/experiences.json';
 
 /**
  * Forme commune des entrées de parcours. Les fichiers JSON ne portent que la
- * structure — chaque libellé vient des locales, sous `formation.<id>.*` ou
+ * structure. Chaque libellé vient des locales, sous `formation.<id>.*` ou
  * `experiences.<id>.*`.
  */
 export interface JourneyItem {
   id: string;
   logo: string;
   period: string;
-  /** Surtitre de la barre dans la frise — clé de `journey.nature.*`. */
+  /** Surtitre de la barre dans la frise, clé de `journey.nature.*`. */
   nature?: string;
   /** `"projects"` : rattaché à la voie Projets de la frise. */
   track?: string;
@@ -35,8 +36,11 @@ export interface JourneyItem {
 export const education = educationData as JourneyItem[];
 export const experiences = experiencesData as JourneyItem[];
 
+/** Engagements associatifs : voie dédiée dans la frise, section dédiée sur l'accueil. */
+export const associations = associationsData as JourneyItem[];
+
 /**
- * Les trois activités image — prestations, boutique de tirages, produit web.
+ * Les trois activités image : prestations, boutique de tirages, produit web.
  * Elles alimentent le chapitre « L'image » et la voie Projets de la frise.
  */
 export const imageProjects = experiences.filter((entry) => entry.track === 'projects');
