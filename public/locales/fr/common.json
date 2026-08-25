@@ -56,7 +56,19 @@
     "portfolio_preview_button": "Découvrir le portfolio",
     "associative_preview_title": "Engagement Associatif",
     "associative_preview_desc": "Mon parcours étudiant est profondément marqué par le milieu associatif. De la présidence d'un club de drone (FPV) à celle du média de l'école (ISEP Live), découvrez mes engagements étudiants et associatifs.",
-    "associative_preview_button": "Voir mon parcours"
+    "associative_preview_button": "Voir mon parcours",
+    "hero_cta_journey": "Voir mon parcours",
+    "summary_aria": "Sommaire de la page",
+    "chapter": {
+      "journey": "Parcours",
+      "travel": "Carnet de voyage",
+      "explore": "Aller plus loin",
+      "explore_portfolio": "Photo & vidéo",
+      "explore_associative": "Vie associative"
+    },
+    "travel_desc": "Les images rapportées de mes séjours et de mes voyages — le fil qui relie mon parcours d’ingénieur à mon travail photographique.",
+    "explore_title": "Deux autres facettes",
+    "explore_desc": "Un CV ne raconte que la moitié de l’histoire. Le reste tient dans mes images et dans les associations que j’ai fait tourner pendant mes études."
   },
   "skills": {
     "video_editing": {
@@ -85,14 +97,20 @@
       "iseplife_title": "L'application ISEP Life",
       "iseplife_desc": "L'association développe et maintient en interne l'application mobile ISEP Life, véritable hub de la vie de campus : agendas, trombinoscope, actualités des associations et galeries médias.",
       "path_title": "De membre à Président",
-      "path_desc": "J'ai rejoint ISEP Live en 2021 pour me perfectionner en photographie et audiovisuel au contact d'autres passionnés. <br /><br /> Devenu Vice-président en 2022, j'ai eu l'occasion de cordonner des pôles de création, renforçant considérablement mes compétences en gestion de projet et en travail d'équipe. <br /><br /> Poursuivant cet engagement, j'ai pris la présidence de l'association en 2023. Cette expérience fondatrice m'a appris à fédérer une équipe de 25 personnes, piloter la direction artistique de nos productions, et structurer notre développement."
+      "path_desc": "J'ai rejoint ISEP Live en 2021 pour me perfectionner en photographie et audiovisuel au contact d'autres passionnés. <br /><br /> Devenu Vice-président en 2022, j'ai eu l'occasion de cordonner des pôles de création, renforçant considérablement mes compétences en gestion de projet et en travail d'équipe. <br /><br /> Poursuivant cet engagement, j'ai pris la présidence de l'association en 2023. Cette expérience fondatrice m'a appris à fédérer une équipe de 25 personnes, piloter la direction artistique de nos productions, et structurer notre développement.",
+      "eyebrow": "Média étudiant",
+      "role": "Membre, vice-président puis président",
+      "lead": "L’association média de l’école : vingt-cinq personnes pour couvrir en photo et en vidéo toute la vie du campus."
     },
     "vizion": {
       "title": "Bureau des Élèves : Vizion",
       "presentation_title": "Une équipe au service des étudiants",
       "presentation_desc": "Le Bureau des Élèves (BDE) est l'organe central de la vie associative. L'équipe Vizion, forte de 40 membres, a rythmé l'année étudiante par ses événements et ses projets. <br /><br /> J'ai principalement œuvré au sein du pôle Création, garant de l'identité visuelle de notre mandat (logos, communication réseaux, textiles).",
       "path_title": "Pôle Création & Événementiel",
-      "path_desc": "Être au sein d'un Bureau des Élèves est une formidable expérience de travail en équipe sous pression. Au sein du pôle Création, j'ai pu exprimer ma créativité tout en répondant à des délais stricts et des besoins de communication concrets. <br /><br /> Cette aventure humaine m'a apporté une vraie vision de l'événementiel, mais m'a surtout forgé des capacités d'adaptation et de collaboration inestimables."
+      "path_desc": "Être au sein d'un Bureau des Élèves est une formidable expérience de travail en équipe sous pression. Au sein du pôle Création, j'ai pu exprimer ma créativité tout en répondant à des délais stricts et des besoins de communication concrets. <br /><br /> Cette aventure humaine m'a apporté une vraie vision de l'événementiel, mais m'a surtout forgé des capacités d'adaptation et de collaboration inestimables.",
+      "eyebrow": "Bureau des élèves",
+      "role": "Pôle Création & Événementiel",
+      "lead": "Quarante personnes pour rythmer l’année étudiante — et un pôle Création qui signait l’identité visuelle du mandat."
     },
     "isepdrone": {
       "title": "ISEP Drone",
@@ -104,8 +122,15 @@
         "president": "Président du Club",
         "comm_manager": "Responsable Communication",
         "founder": "Membre Fondateur"
-      }
-    }
+      },
+      "eyebrow": "Club de drone FPV",
+      "role": "Membre fondateur puis président",
+      "lead": "Un club fondé en 2021 pour ouvrir le vol en immersion aux étudiants : ateliers de montage, simulateur et sorties de vol."
+    },
+    "eyebrow": "Vie étudiante",
+    "summary_eyebrow": "Sommaire",
+    "summary_title": "Trois engagements, trois rôles",
+    "summary_desc": "Un média étudiant, un bureau des élèves et un club de drone : trois structures que j’ai contribué à faire tourner pendant mes études à l’ISEP."
   },
   "benevolence": {
     "tagline": "Tirages Fine Art",
@@ -187,8 +212,6 @@
   "timeline": {
     "read_more": "En savoir plus",
     "show_less": "Réduire",
-    "show_all": "Voir tout",
-    "collapse": "Voir moins",
     "exchange_label": "Semestre d'échange intégré à ce cursus"
   },
   "meta": {
@@ -225,6 +248,15 @@
       "internship": "Stage",
       "freelance": "Freelance",
       "permanent": "CDI"
-    }
+    },
+    "tabs_aria": "Choisir entre formation et expérience professionnelle"
+  },
+  "portfolio": {
+    "chapter": {
+      "hero": "Photo & vidéo",
+      "film": "Dernier film",
+      "skills": "Savoir-faire"
+    },
+    "play_video": "Lancer la vidéo"
   }
 }

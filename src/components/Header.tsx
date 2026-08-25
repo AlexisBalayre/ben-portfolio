@@ -3,6 +3,7 @@ import Link from "next/link";
 import LanguageSwitcher from './LanguageSwitcher';
 import {
   AcademicCapIcon,
+  ArrowDownTrayIcon,
   Bars3Icon,
   EnvelopeIcon,
   CameraIcon,
@@ -10,6 +11,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { useOutsideClick } from "~~/src/hooks";
+import { actionClasses } from "~~/src/components/ui";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { motion, AnimatePresence } from "framer-motion";
@@ -96,8 +98,8 @@ export const Header = () => {
   useOutsideClick(burgerMenuRef, useCallback(() => setIsDrawerOpen(false), []));
 
   return (
-    <header className="fixed top-0 inset-x-0 z-20 bg-white/90 backdrop-blur-md border-b border-base-200/60 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+    <header className="fixed inset-x-0 top-0 z-30 border-b border-base-300/70 bg-base-100/85 backdrop-blur-md">
+      <div className="mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
 
         {/* Left — logo + nav */}
         <div className="flex items-center gap-4">
@@ -122,7 +124,7 @@ export const Header = () => {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: -8 }}
                   transition={{ duration: 0.18, ease: 'easeOut' }}
-                  className="absolute top-full left-0 mt-2 w-56 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-xl border border-base-200 p-2 flex flex-col gap-1"
+                  className="absolute left-0 top-full mt-2 flex w-56 max-w-[calc(100vw-2rem)] flex-col gap-1 rounded-2xl border border-base-300 bg-base-100 p-2 shadow-xl"
                 >
                   <HeaderMenuLinks onSelect={() => setIsDrawerOpen(false)} />
                 </motion.ul>
@@ -136,8 +138,10 @@ export const Header = () => {
             scroll={false}
             className="flex flex-col leading-none hover:opacity-80 transition-opacity"
           >
-            <span className="font-bold text-xs sm:text-sm tracking-tight">Benjamin Balayre</span>
-            <span className="text-[10px] sm:text-[11px] text-base-content/50 font-normal">{t('header.role')}</span>
+            <span className="whitespace-nowrap text-xs font-bold tracking-tight sm:text-sm">Benjamin Balayre</span>
+            <span className="hidden whitespace-nowrap text-[11px] font-normal text-base-content/50 sm:block">
+              {t('header.role')}
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -154,9 +158,11 @@ export const Header = () => {
           <a
             href={`/assets/documents/${cvFile}`}
             download
-            className="btn btn-primary text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-lg min-h-[40px]"
+            className={actionClasses('solid', 'light', 'sm')}
           >
-            {t('header.download_resume')}
+            <ArrowDownTrayIcon className="h-4 w-4 sm:hidden" aria-hidden="true" />
+            <span className="hidden sm:inline">{t('header.download_resume')}</span>
+            <span className="sm:hidden">CV</span>
           </a>
         </div>
       </div>

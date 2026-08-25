@@ -45,9 +45,9 @@ const toMonths = (value: string) => {
 };
 
 const BAR_STYLES: Record<Bar['kind'], string> = {
-    cursus: 'border-primary/40 bg-primary/10 text-primary hover:bg-primary/20',
-    exchange: 'border-amber-500/60 bg-amber-100 text-amber-900 hover:bg-amber-200',
-    job: 'border-emerald-600/40 bg-emerald-50 text-emerald-800 hover:bg-emerald-100',
+    cursus: 'border-primary/30 bg-primary/[0.08] text-primary hover:bg-primary/[0.15]',
+    exchange: 'border-accent/70 bg-accent/20 text-primary hover:bg-accent/30',
+    job: 'border-amber-600/40 bg-amber-100/70 text-amber-900 hover:bg-amber-100',
 };
 
 /** Empile les barres qui se chevauchent sur des lignes distinctes. */
@@ -212,15 +212,15 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
             {/* Légende */}
             <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-base-content/60">
                 <span className="flex items-center gap-2">
-                    <span className="h-3 w-6 rounded border border-primary/40 bg-primary/10" aria-hidden="true" />
+                    <span className="h-3 w-6 rounded border border-primary/30 bg-primary/[0.08]" aria-hidden="true" />
                     {t('journey.legend_formation')}
                 </span>
                 <span className="flex items-center gap-2">
-                    <span className="h-3 w-6 rounded border border-amber-500/60 bg-amber-100" aria-hidden="true" />
+                    <span className="h-3 w-6 rounded border border-accent/70 bg-accent/20" aria-hidden="true" />
                     {t('journey.legend_exchange')}
                 </span>
                 <span className="flex items-center gap-2">
-                    <span className="h-3 w-6 rounded border border-emerald-600/40 bg-emerald-50" aria-hidden="true" />
+                    <span className="h-3 w-6 rounded border border-amber-600/40 bg-amber-100/70" aria-hidden="true" />
                     {t('journey.legend_experience')}
                 </span>
             </div>
@@ -244,7 +244,7 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                     {showToday && (
                         <div aria-hidden="true" className="pointer-events-none absolute inset-0 top-6 z-20">
                             <span
-                                className="absolute inset-y-0 w-0.5 bg-rose-500/70"
+                                className="absolute inset-y-0 w-0.5 bg-secondary/60"
                                 style={{ left: `${todayLeft}%` }}
                             />
                         </div>
@@ -263,7 +263,7 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                         ))}
                         {showToday && (
                             <span
-                                className="absolute -top-0.5 -translate-x-1/2 whitespace-nowrap rounded-full bg-rose-500 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm"
+                                className="absolute -top-0.5 -translate-x-1/2 whitespace-nowrap rounded-full bg-secondary px-2 py-0.5 text-[10px] font-bold text-white shadow-sm"
                                 style={{ left: `${todayLeft}%` }}
                             >
                                 {t('journey.today')}
@@ -283,7 +283,7 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                                     .map((group) => (
                                         <div key={group.key}>
                                             {group.label && (
-                                                <p className="mb-1.5 mt-3 text-[10px] font-semibold uppercase tracking-wider text-emerald-700/70">
+                                                <p className="mb-1.5 mt-3 text-[10px] font-semibold uppercase tracking-wider text-amber-800/70">
                                                     ↳ {t(group.label)}
                                                 </p>
                                             )}
@@ -317,7 +317,7 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -8 }}
                             transition={{ duration: 0.25, ease: 'easeOut' }}
-                            className="mt-2 rounded-xl border border-base-200 bg-base-100 p-4 shadow-sm"
+                            className="mt-2 rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm"
                         >
                             <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-base-content/40">
                                 {t(`journey.nature.${selected.nature}`)}
