@@ -47,7 +47,7 @@ const Projects = () => {
         />
         <div className="mt-10 flex justify-center">
           <a
-            href="https://benjaminbalayre.myportfolio.com/"
+            href="https://portfolio.benevolence.fr"
             target="_blank"
             rel="noopener noreferrer"
             className={actionClasses('solid', 'dark')}

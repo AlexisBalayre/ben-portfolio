@@ -22,13 +22,15 @@ export interface JourneyEntry {
     nature?: string;
     /** Identifiant du cursus dans lequel ce stage s'inscrit — il est alors rattaché à la voie Formation. */
     integratedIn?: string;
+    /** `"projects"` : l'entrée est rattachée à la voie Projets plutôt qu'à Expérience. */
+    track?: string;
     exchanges?: RawExchange[];
 }
 
 interface Bar {
     id: string;
     prefix: Prefix;
-    kind: 'cursus' | 'exchange' | 'job';
+    kind: 'cursus' | 'exchange' | 'job' | 'project';
     nature: string;
     start: number;
     end: number;
@@ -48,6 +50,7 @@ const BAR_STYLES: Record<Bar['kind'], string> = {
     cursus: 'border-primary/30 bg-primary/[0.08] text-primary hover:bg-primary/[0.15]',
     exchange: 'border-accent/70 bg-accent/20 text-primary hover:bg-accent/30',
     job: 'border-amber-600/40 bg-amber-100/70 text-amber-900 hover:bg-amber-100',
+    project: 'border-teal-600/40 bg-teal-100/70 text-teal-900 hover:bg-teal-100',
 };
 
 /** Empile les barres qui se chevauchent sur des lignes distinctes. */
@@ -111,10 +114,10 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
             });
         });
 
-        const toJob = (entry: JourneyEntry): Bar => ({
+        const toBar = (kind: Bar['kind']) => (entry: JourneyEntry): Bar => ({
             id: entry.id,
             prefix: 'experiences',
-            kind: 'job',
+            kind,
             nature: entry.nature ?? (entry.integratedIn ? 'internship' : 'job'),
             start: toMonths(entry.start as string),
             end: toMonths(entry.end as string),
@@ -122,10 +125,15 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
         });
 
         const dated = experiences.filter(isDated);
-        const internships = dated.filter((entry) => entry.integratedIn).map(toJob);
-        const jobs = dated.filter((entry) => !entry.integratedIn).map(toJob);
+        const internships = dated.filter((entry) => entry.integratedIn).map(toBar('job'));
+        const projects = dated
+            .filter((entry) => !entry.integratedIn && entry.track === 'projects')
+            .map(toBar('project'));
+        const jobs = dated
+            .filter((entry) => !entry.integratedIn && entry.track !== 'projects')
+            .map(toBar('job'));
 
-        const all = [...cursus, ...exchanges, ...internships, ...jobs];
+        const all = [...cursus, ...exchanges, ...internships, ...jobs, ...projects];
         const start = Math.min(...all.map((bar) => bar.start)) - 1;
         const end = Math.max(...all.map((bar) => bar.end)) + 1;
 
@@ -157,6 +165,13 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                     label: 'journey.track_experience',
                     groups: [
                         { key: 'jobs', label: null, lanes: packLanes(jobs), overlays: [] as Bar[] },
+                    ],
+                },
+                {
+                    key: 'projects',
+                    label: 'journey.track_projects',
+                    groups: [
+                        { key: 'projects', label: null, lanes: packLanes(projects), overlays: [] as Bar[] },
                     ],
                 },
             ],
@@ -222,6 +237,10 @@ const ParallelTimeline = ({ education, experiences }: ParallelTimelineProps) => 
                 <span className="flex items-center gap-2">
                     <span className="h-3 w-6 rounded border border-amber-600/40 bg-amber-100/70" aria-hidden="true" />
                     {t('journey.legend_experience')}
+                </span>
+                <span className="flex items-center gap-2">
+                    <span className="h-3 w-6 rounded border border-teal-600/40 bg-teal-100/70" aria-hidden="true" />
+                    {t('journey.legend_project')}
                 </span>
             </div>
 

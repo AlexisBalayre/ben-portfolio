@@ -61,14 +61,15 @@
     "summary_aria": "Sommaire de la page",
     "chapter": {
       "journey": "Parcours",
-      "travel": "Carnet de voyage",
       "explore": "Aller plus loin",
       "explore_portfolio": "Photo & vidéo",
-      "explore_associative": "Vie associative"
+      "explore_associative": "Vie associative",
+      "image": "L’image"
     },
-    "travel_desc": "Les images rapportées de mes séjours et de mes voyages — le fil qui relie mon parcours d’ingénieur à mon travail photographique.",
     "explore_title": "Deux autres facettes",
-    "explore_desc": "Un CV ne raconte que la moitié de l’histoire. Le reste tient dans mes images et dans les associations que j’ai fait tourner pendant mes études."
+    "explore_desc": "Un CV ne raconte que la moitié de l’histoire. Le reste tient dans mes images et dans les associations que j’ai fait tourner pendant mes études.",
+    "image_title": "Trois projets autour de l’image",
+    "image_lead": "La photographie n’est pas un à-côté de mon parcours d’ingénieur : c’est la même envie de construire, appliquée à l’image. Elle se décline aujourd’hui en trois activités — des prestations pour des événements, une boutique de tirages, et un produit web né de mes propres besoins de photographe."
   },
   "skills": {
     "video_editing": {
@@ -172,13 +173,31 @@
       "title": "Auto-entrepreneur – Photographe & Vidéaste",
       "description": "Réalisation de contenus photo et vidéo pour événements et projets professionnels. Gestion complète de la relation client, captation, montage et direction artistique.",
       "period": "Depuis 2024",
-      "short": "Photo & vidéo"
+      "short": "Photo & vidéo",
+      "kind": "Prestations freelance",
+      "card": "Captation photo et vidéo pour des événements et des projets professionnels : aftermovies, films de marque, reportages. Prise en charge complète — cadrage du besoin, tournage, montage et direction artistique."
     },
     "microsoft": {
       "title": "Stage d’observation – Microsoft",
       "description": "Stage d’observation au sein de Microsoft, permettant de découvrir les métiers de l’ingénierie logicielle, d’explorer l’univers du numérique et de confirmer mon orientation vers les technologies et l’innovation.",
       "period": "2017",
       "short": "Microsoft"
+    },
+    "relive": {
+      "title": "ReLive — recherche par selfie pour galeries photo",
+      "short": "ReLive",
+      "kind": "Produit web",
+      "period": "Depuis mars 2026",
+      "card": "L’invité d’un mariage entre le code de la galerie, se prend en photo, et retrouve en quelques secondes tous les clichés où il apparaît. Reconnaissance faciale, index vectoriel, espace photographe : conçu et développé de bout en bout.",
+      "description": "Produit web né d’un constat de terrain : après un mariage, personne ne parcourt les deux mille photos de la galerie pour retrouver les siennes. ReLive résout le problème par la reconnaissance faciale — le photographe dépose sa galerie, chaque invité s’identifie par un selfie et récupère ses photos. Conception produit, API Python, modèle de reconnaissance faciale, index vectoriel, interface web et hébergement : tout le projet est mené seul."
+    },
+    "benevolence": {
+      "title": "Benevolence — boutique de tirages fine art",
+      "short": "Benevolence",
+      "kind": "Boutique en ligne",
+      "period": "Depuis janvier 2026",
+      "card": "Ma boutique de tirages d’art : les images rapportées de mes voyages, éditées en série limitée sur toile, aluminium, acrylique ou papier. De la sélection des images à la boutique en ligne, tout est fait maison.",
+      "description": "Boutique en ligne de tirages d’art tirés de mes voyages, en édition limitée sur toile, aluminium, acrylique ou papier. Sélection et préparation des images, identité de la marque, mise en place de la boutique et suivi des commandes."
     }
   },
   "formation": {
@@ -247,9 +266,12 @@
       "exchange": "Échange",
       "internship": "Stage",
       "freelance": "Freelance",
-      "permanent": "CDI"
+      "permanent": "CDI",
+      "project": "Projet"
     },
-    "tabs_aria": "Choisir entre formation et expérience professionnelle"
+    "tabs_aria": "Choisir entre formation et expérience professionnelle",
+    "track_projects": "Projets",
+    "legend_project": "Projet personnel"
   },
   "portfolio": {
     "chapter": {

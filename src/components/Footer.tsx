@@ -29,7 +29,7 @@ const pages = [
 ];
 
 const elsewhere = [
-    { href: 'https://benjaminbalayre.myportfolio.com/', label: 'home.quick_portfolio' },
+    { href: 'https://portfolio.benevolence.fr', label: 'home.quick_portfolio' },
     { href: 'https://benevolence.fr', label: 'home.quick_benevolence' },
 ];
 

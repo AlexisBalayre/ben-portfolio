@@ -42,6 +42,7 @@ ben-portfolio/
 │   │   ├── JourneyDetail.tsx     # Onglets Formation / Expérience au-dessus de Timeline
 │   │   ├── Timeline.tsx          # Timeline verticale — imbrique les échanges
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
+│   │   ├── PhotoProjects.tsx     # Les trois activités image (ReLive, Benevolence, prestations)
 │   │   ├── ExploreCard.tsx       # Carte de chapitre vers une page interne
 │   │   ├── Carousel.tsx          # Bandeau défilant des photos de voyage (sans titre propre)
 │   │   ├── AssoChapter.tsx       # Un engagement associatif, piloté par la donnée
@@ -53,6 +54,8 @@ ben-portfolio/
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
 │   │   ├── MetaHeader.tsx        # Meta tags SEO par page (dont viewport)
 │   │   └── ErrorBoundary.tsx     # Error boundary global
+│   ├── data/
+│   │   └── journey.ts            # Typage et dérivations des JSON parcours (source unique)
 │   ├── hooks/
 │   │   ├── index.ts              # Re-exports des hooks
 │   │   ├── useOutsideClick.ts    # Fermeture dropdown au clic extérieur
@@ -134,6 +137,9 @@ Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de to
 | `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans ces champs, l'entrée n'apparaît pas dans la frise |
 | `ongoing` | `ParallelTimeline` | flèche « → » + dégradé de fuite : l'activité se poursuit au-delà de la frise |
 | `integratedIn` | `ParallelTimeline` | *(experiences.json)* id du cursus : le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus », au lieu de la voie Expérience |
+| `track` | `ParallelTimeline`, `src/data/journey.ts` | *(experiences.json)* `"projects"` : l'entrée rejoint la voie **Projets** de la frise et la grille du chapitre « L'image » de l'accueil |
+| `nature: "project"` | `src/data/journey.ts` | l'entrée est un produit, pas un poste : elle sort de la timeline des expériences pour n'être racontée que dans le chapitre « L'image » |
+| `url` | `PhotoProjects` | lien externe affiché en pied de carte projet |
 | `exchanges[]` | `Timeline` + `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la timeline, segment bleu vif à l'intérieur de la barre dans la frise |
 
 Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `period`, `short` dans `fr/common.json` **et** `en/common.json`.
@@ -173,7 +179,8 @@ DA « éditorial bleu nuit ». Trois règles portent tout le reste.
 ### 2. Deux familles chromatiques
 
 - **Bleu = académique.** `primary` `#1e3a8a` (cursus, actions principales), `accent` `#3b82f6` (échanges internationaux, numéros de chapitre, filets).
-- **Ambre = professionnel.** `amber-600/100` pour les expériences dans la frise.
+- **Ambre = professionnel.** `amber-600/100` pour les expériences salariées dans la frise.
+- **Teal = mes projets.** `teal-600/100` pour la voie Projets — ce que je construis pour mon compte.
 - **Encre = structure.** `secondary` `#0f172a` pour le texte (`base-content`), les surfaces sombres et le repère « aujourd'hui ».
 
 ### 3. Chapitres numérotés
@@ -243,11 +250,13 @@ Chaque page suit la même partition : héros → chapitres numérotés → foote
 
 | Route | Chapitres | Ancres |
 |---|---|---|
-| `/` | héros + sommaire → **01** Parcours → **02** Carnet de voyage → **03** Aller plus loin | `#parcours`, `#voyages`, `#explorer` |
+| `/` | héros + sommaire → **01** Parcours → **02** L'image → **03** Aller plus loin | `#parcours`, `#image`, `#explorer` |
 | `/portfolio` | héros → **01** Dernier film → **02** Savoir-faire → **03** Portfolio complet → **04** Tirages | `#film`, `#savoir-faire`, `#galerie`, `#tirages` |
 | `/associativeCareer` | héros → sommaire → **01** ISEP Live → **02** Vizion BDE → **03** ISEP Drone | `#engagements`, `#iseplive`, `#vizion`, `#isepdrone` |
 
 Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) puis `JourneyDetail`, deux onglets qui posent Formation et Expérience au même endroit. Les ancres historiques `#education` et `#experience` restent valides : elles sélectionnent l'onglet correspondant.
+
+Le chapitre **02 L'image** introduit le versant photographique avant de montrer des images : les trois activités (prestations freelance, boutique **Benevolence**, produit web **ReLive**) puis le bandeau de clichés de voyage. C'est ce chapitre qui fait la transition entre le CV et le portfolio.
 
 La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exporté). « Contact » scrolle vers le footer.
 

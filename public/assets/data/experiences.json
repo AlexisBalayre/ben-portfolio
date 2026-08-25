@@ -36,13 +36,35 @@
     "ongoing": true
   },
   {
+    "id": "relive",
+    "logo": "benevolence.png",
+    "period": "Depuis mars 2026",
+    "nature": "project",
+    "track": "projects",
+    "start": "2026-03",
+    "end": "2027-07",
+    "ongoing": true
+  },
+  {
+    "id": "benevolence",
+    "logo": "benevolence.png",
+    "period": "Depuis janvier 2026",
+    "nature": "project",
+    "track": "projects",
+    "start": "2026-01",
+    "end": "2027-07",
+    "ongoing": true,
+    "url": "https://benevolence.fr"
+  },
+  {
     "id": "freelance",
     "logo": "benevolence.png",
     "period": "Depuis 2024",
     "nature": "freelance",
     "start": "2024-01",
     "end": "2027-07",
-    "ongoing": true
+    "ongoing": true,
+    "track": "projects"
   },
   {
     "id": "microsoft",
