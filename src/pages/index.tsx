@@ -175,13 +175,13 @@ const Home: NextPage = () => {
                         backgroundSize: '28px 28px',
                     }}
                 />
-                <div className="relative max-w-4xl mx-auto">
+                <div className="relative max-w-5xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
                         <Squares2X2Icon className="h-8 w-8 mr-2 -mt-1.5 text-white/80 transition-all duration-500 group-hover:text-white group-hover:-translate-y-1" />
                         <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-white/80 transition-all duration-500 group-hover:text-white group-hover:-translate-y-1">{t('skill_tree.title')}</h2>
                     </span>
                     <p className="max-w-2xl py-6 text-sm sm:text-base text-white/60">{t('skill_tree.subtitle')}</p>
-                    <SkillTree branches={skillTree} />
+                    <SkillTree data={skillTree} />
                 </div>
             </motion.section>
 

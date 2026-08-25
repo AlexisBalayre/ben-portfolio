@@ -41,7 +41,7 @@ ben-portfolio/
 │   │   ├── Timeline.tsx          # Timeline formations (fond gris) — imbrique les échanges
 │   │   ├── TimelineDark.tsx      # Timeline expériences (fond blanc)
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
-│   │   ├── SkillTree.tsx         # Arbre de compétences façon succès Minecraft
+│   │   ├── SkillTree.tsx         # Arbre de compétences à racine unique (succès Minecraft)
 │   │   ├── Carousel.tsx          # Carousel images de voyage
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
 │   │   ├── MetaHeader.tsx        # Meta tags SEO par page
@@ -133,7 +133,11 @@ Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de to
 
 Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `period`, `short` dans `fr/common.json` **et** `en/common.json`.
 
-Pour `skillTree.json` : chaque branche a un `id`, un `icon` (emoji) et des `nodes` ; chaque node a `id`, `name` (nom propre, non traduit), `icon` et `status` (`unlocked` | `progress` | `locked`). Le contexte de chaque compétence est traduit dans `skill_tree.nodes.<id>`.
+Pour `skillTree.json` : un objet `{ branches, links }`. Chaque branche a un `id`, un `icon` (emoji) et des `nodes` ; chaque node a `id`, `icon` et `status` (`unlocked` | `progress` | `locked`). `links` liste les corrélations **inter-branches** (`{ from, to }`), tracées en pointillés.
+
+Le placement est automatique : `SkillTree` répartit les domaines de part et d'autre de la racine (constantes `BRANCH_ANCHORS`, `COL`, `ROW` en tête du composant) et dispose les compétences en quinconce sur deux colonnes. Aucune coordonnée à saisir à la main ; ajouter une compétence = un bloc dans `nodes` + `skill_tree.nodes.<id>.name` / `.desc` en FR **et** EN.
+
+Les libellés ne sont pas affichés sur les cases : nom, statut, description et compétences liées apparaissent dans l'infobulle au survol (ou au clic sur mobile). La fenêtre se déplace à la souris, zoome à la molette (0,5× à 1,8×) et se recentre via les boutons en haut à droite.
 
 `projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`).
 

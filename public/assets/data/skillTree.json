@@ -1,92 +1,67 @@
-[
-  {
-    "id": "data_ai",
-    "icon": "🧠",
-    "nodes": [
-      { "id": "python", "name": "Python", "icon": "🐍", "status": "unlocked" },
-      { "id": "pandas", "name": "Pandas / NumPy", "icon": "🐼", "status": "unlocked" },
-      { "id": "sklearn", "name": "Scikit-learn", "icon": "📊", "status": "unlocked" },
-      { "id": "pytorch", "name": "PyTorch", "icon": "🔥", "status": "unlocked" },
-      { "id": "powerbi", "name": "Power BI", "icon": "📈", "status": "unlocked" },
-      { "id": "genai", "name": "LLM & GenAI", "icon": "🤖", "status": "progress" },
-      { "id": "mlops", "name": "MLOps", "icon": "⚙️", "status": "locked" }
-    ]
-  },
-  {
-    "id": "data_eng",
-    "icon": "🗄️",
-    "nodes": [
-      { "id": "sql", "name": "SQL", "icon": "🗃️", "status": "unlocked" },
-      { "id": "nosql", "name": "NoSQL", "icon": "🍃", "status": "unlocked" },
-      { "id": "airflow", "name": "Apache Airflow", "icon": "🌬️", "status": "unlocked" },
-      { "id": "spark", "name": "Apache Spark", "icon": "⚡", "status": "unlocked" },
-      { "id": "elastic", "name": "Elasticsearch", "icon": "🔍", "status": "unlocked" },
-      { "id": "kafka", "name": "Apache Kafka", "icon": "📡", "status": "progress" },
-      { "id": "dbt", "name": "dbt", "icon": "🧱", "status": "locked" }
-    ]
-  },
-  {
-    "id": "software",
-    "icon": "💻",
-    "nodes": [
-      { "id": "javascript", "name": "JavaScript", "icon": "🟨", "status": "unlocked" },
-      { "id": "typescript", "name": "TypeScript", "icon": "🔷", "status": "unlocked" },
-      { "id": "react", "name": "React", "icon": "⚛️", "status": "unlocked" },
-      { "id": "nextjs", "name": "Next.js", "icon": "🔺", "status": "unlocked" },
-      { "id": "nestjs", "name": "NestJS", "icon": "🐈", "status": "unlocked" },
-      { "id": "reactnative", "name": "React Native", "icon": "📱", "status": "progress" },
-      { "id": "rust", "name": "Rust", "icon": "🦀", "status": "locked" }
-    ]
-  },
-  {
-    "id": "web3",
-    "icon": "⛓️",
-    "nodes": [
-      { "id": "solidity", "name": "Solidity", "icon": "📜", "status": "unlocked" },
-      { "id": "hardhat", "name": "Hardhat", "icon": "🎩", "status": "unlocked" },
-      { "id": "foundry", "name": "Foundry", "icon": "🔨", "status": "unlocked" },
-      { "id": "chainlink", "name": "Chainlink", "icon": "🔗", "status": "unlocked" },
-      { "id": "thegraph", "name": "The Graph", "icon": "🕸️", "status": "unlocked" },
-      { "id": "cosmos", "name": "Cosmos SDK", "icon": "🌌", "status": "progress" },
-      { "id": "zk", "name": "Zero-Knowledge", "icon": "🕵️", "status": "locked" }
-    ]
-  },
-  {
-    "id": "cloud",
-    "icon": "☁️",
-    "nodes": [
-      { "id": "git", "name": "Git", "icon": "🌿", "status": "unlocked" },
-      { "id": "docker", "name": "Docker", "icon": "🐳", "status": "unlocked" },
-      { "id": "hosting", "name": "Vercel / Netlify", "icon": "🚀", "status": "unlocked" },
-      { "id": "cloudflare", "name": "Cloudflare", "icon": "🛡️", "status": "unlocked" },
-      { "id": "aws", "name": "AWS", "icon": "📦", "status": "unlocked" },
-      { "id": "cicd", "name": "CI/CD", "icon": "🔁", "status": "progress" },
-      { "id": "kubernetes", "name": "Kubernetes", "icon": "☸️", "status": "locked" },
-      { "id": "aws_cert", "name": "Certification AWS", "icon": "🎓", "status": "locked" }
-    ]
-  },
-  {
-    "id": "consulting",
-    "icon": "🧭",
-    "nodes": [
-      { "id": "project", "name": "Gestion de projet", "icon": "🗂️", "status": "unlocked" },
-      { "id": "assoc", "name": "Leadership associatif", "icon": "🎪", "status": "unlocked" },
-      { "id": "english", "name": "Anglais professionnel", "icon": "🌍", "status": "unlocked" },
-      { "id": "advisory", "name": "Conseil Data & IA", "icon": "💼", "status": "progress" },
-      { "id": "speaking", "name": "Prise de parole", "icon": "🎤", "status": "locked" },
-      { "id": "korean", "name": "Coréen", "icon": "🇰🇷", "status": "locked" }
-    ]
-  },
-  {
-    "id": "creative",
-    "icon": "🎬",
-    "nodes": [
-      { "id": "photo", "name": "Photographie", "icon": "📷", "status": "unlocked" },
-      { "id": "video", "name": "Montage vidéo", "icon": "🎞️", "status": "unlocked" },
-      { "id": "design", "name": "Design graphique", "icon": "🎨", "status": "unlocked" },
-      { "id": "drone", "name": "Pilotage drone", "icon": "🚁", "status": "unlocked" },
-      { "id": "fineart", "name": "Direction artistique", "icon": "🖼️", "status": "unlocked" },
-      { "id": "grading", "name": "Étalonnage DaVinci", "icon": "🌈", "status": "locked" }
-    ]
-  }
-]
+{
+  "branches": [
+    {
+      "id": "data_ai",
+      "icon": "🧠",
+      "nodes": [
+        { "id": "python", "icon": "🐍", "status": "unlocked" },
+        { "id": "ml", "icon": "📊", "status": "unlocked" },
+        { "id": "deeplearning", "icon": "🔥", "status": "unlocked" },
+        { "id": "genai", "icon": "🤖", "status": "progress" },
+        { "id": "mlops", "icon": "⚙️", "status": "locked" }
+      ]
+    },
+    {
+      "id": "data_eng",
+      "icon": "🗄️",
+      "nodes": [
+        { "id": "databases", "icon": "🗃️", "status": "unlocked" },
+        { "id": "pipelines", "icon": "🌬️", "status": "unlocked" },
+        { "id": "bigdata", "icon": "⚡", "status": "unlocked" },
+        { "id": "streaming", "icon": "📡", "status": "progress" },
+        { "id": "modeling", "icon": "🧱", "status": "locked" }
+      ]
+    },
+    {
+      "id": "software",
+      "icon": "💻",
+      "nodes": [
+        { "id": "typescript", "icon": "🔷", "status": "unlocked" },
+        { "id": "frontend", "icon": "⚛️", "status": "unlocked" },
+        { "id": "backend", "icon": "🧩", "status": "unlocked" },
+        { "id": "mobile", "icon": "📱", "status": "progress" },
+        { "id": "testing", "icon": "🧪", "status": "locked" }
+      ]
+    },
+    {
+      "id": "cloud",
+      "icon": "☁️",
+      "nodes": [
+        { "id": "containers", "icon": "🐳", "status": "unlocked" },
+        { "id": "cloud_services", "icon": "📦", "status": "unlocked" },
+        { "id": "cicd", "icon": "🔁", "status": "progress" },
+        { "id": "orchestration", "icon": "☸️", "status": "locked" }
+      ]
+    },
+    {
+      "id": "consulting",
+      "icon": "🧭",
+      "nodes": [
+        { "id": "project", "icon": "🗂️", "status": "unlocked" },
+        { "id": "dataviz", "icon": "📈", "status": "unlocked" },
+        { "id": "english", "icon": "🌍", "status": "unlocked" },
+        { "id": "visual", "icon": "🎬", "status": "unlocked" },
+        { "id": "advisory", "icon": "💼", "status": "progress" }
+      ]
+    }
+  ],
+  "links": [
+    { "from": "python", "to": "pipelines" },
+    { "from": "ml", "to": "dataviz" },
+    { "from": "genai", "to": "advisory" },
+    { "from": "databases", "to": "backend" },
+    { "from": "mlops", "to": "containers" },
+    { "from": "cicd", "to": "testing" },
+    { "from": "visual", "to": "frontend" }
+  ]
+}
