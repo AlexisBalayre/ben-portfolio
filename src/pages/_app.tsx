@@ -35,11 +35,11 @@ const curtainVariants = {
 const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   return (
-    <div className={`flex flex-col min-h-screen overflow-x-hidden ${jakarta.variable} font-sans`}>
+    <div className={`flex flex-col min-h-screen overflow-x-clip ${jakarta.variable} font-sans`}>
       <MetaHeader page={(router.pathname.split("/")[1] || "home") as "home" | "portfolio" | "associativeCareer"} />
       <Header />
       <ErrorBoundary>
-        <main className="relative flex flex-col flex-1 overflow-x-hidden">
+        <main className="relative flex flex-col flex-1 overflow-x-clip">
           <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
             <motion.div
               key={router.route}

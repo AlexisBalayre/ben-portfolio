@@ -24,6 +24,7 @@ export const MetaHeader = ({ page = "home" }: MetaHeaderProps) => {
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Benjamin Balayre" />
@@ -47,7 +48,6 @@ export const MetaHeader = ({ page = "home" }: MetaHeaderProps) => {
       <meta name="twitter:image" content={ogImage} />
 
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     </Head>
   );
 };
