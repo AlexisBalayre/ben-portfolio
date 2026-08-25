@@ -27,6 +27,10 @@
     "download_resume": "Download Resume",
     "quick_portfolio": "View my photo & video portfolio",
     "quick_benevolence": "View my print shop",
+    "education_title": "Education",
+    "education_desc": "Always passionate about innovation and new technologies, I chose to pursue a degree in digital engineering at ISEP.",
+    "experience_title": "Experiences",
+    "experience_desc": "My goal: to consolidate my expertise in the digital field while understanding its challenges to actively contribute to tomorrow's innovations.",
     "skills_title": "Skills",
     "skills_desc": "An overview of the tools and fields I navigate daily, from visual creation to digital product development.",
     "rights_reserved": "All Rights Reserved.",
@@ -46,9 +50,7 @@
     "portfolio_preview_button": "Discover the portfolio",
     "associative_preview_title": "Associative Engagement",
     "associative_preview_desc": "My student life is deeply shaped by associative commitments. From presiding over an FPV drone club to managing the school’s media association (ISEP Live), explore my projects.",
-    "associative_preview_button": "View my journey",
-    "career_title": "Education & experience",
-    "career_desc": "My path in detail, education on one side of the axis and professional experience on the other. Always passionate about innovation, I chose digital engineering at ISEP to understand the field's challenges and contribute to tomorrow's innovations."
+    "associative_preview_button": "View my journey"
   },
   "skills": {
     "video_editing": {
@@ -199,8 +201,7 @@
     "show_less": "Show less",
     "show_all": "Show all",
     "collapse": "Show less",
-    "exchange_label": "Exchange semester within this programme",
-    "integrated": "Within the ISEP programme"
+    "exchange_label": "Exchange semester within this programme"
   },
   "meta": {
     "home": {
