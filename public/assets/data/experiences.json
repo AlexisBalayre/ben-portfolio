@@ -48,6 +48,9 @@
     "id": "microsoft",
     "logo": "MS.png",
     "period": "2017",
-    "nature": "internship"
+    "nature": "internship",
+    "start": "2017-06",
+    "end": "2017-07",
+    "journey": false
   }
 ]
