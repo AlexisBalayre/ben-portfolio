@@ -9,7 +9,7 @@
     "portfolio": "Portfolio",
     "associative_career": "Associative Experience",
     "contact_details": "Contact Details",
-    "role": "Data & AI Consultant",
+    "role": "Strategy & Transformation Consultant",
     "download_resume": "Download Resume",
     "open_menu": "Open menu",
     "close_menu": "Close menu",
@@ -19,7 +19,7 @@
     "phone_aria": "Benjamin Balayre's phone number",
     "email_aria": "Benjamin Balayre's email address",
     "social_aria": "Social media links",
-    "tagline": "Data & AI consultant, freelance developer and photographer. Always up for a project that mixes data, code and image.",
+    "tagline": "Strategy & Transformation Consultant at Capgemini Invent, working on data, business intelligence and AI. Freelance web developer and photographer on the side.",
     "nav_title": "Navigation",
     "contact_title": "Get in touch",
     "elsewhere_title": "Elsewhere",
@@ -28,7 +28,7 @@
   },
   "home": {
     "name": "Benjamin Balayre",
-    "role": "Capgemini Invent Consultant | Freelance Developer & Photographer",
+    "role": "Strategy & Transformation Consultant | Data, Business Intelligence & AI | Freelance Web Developer",
     "welcome": "Welcome to my website, a space dedicated to discovering my background and passions. You will find information about my professional, personal and associative projects.",
     "download_resume": "Download Resume",
     "quick_portfolio": "View my photo & video portfolio",
@@ -169,7 +169,7 @@
   },
   "experiences": {
     "capgemini_cdi": {
-      "title": "Data & AI Transformation Consultant, Capgemini Invent (frog)",
+      "title": "Strategy & Transformation Consultant, Capgemini Invent",
       "description": "Full-time position within frog, the design and innovation arm of Capgemini Invent, following on from my internship. Supporting large accounts through their data and AI transformations: scoping needs, designing use cases, and deploying solutions at scale.",
       "period": "From September 2026",
       "short": "Capgemini Invent"
@@ -266,8 +266,8 @@
   },
   "meta": {
     "home": {
-      "title": "Benjamin Balayre · Data & AI consultant, freelance developer",
-      "description": "Data & AI transformation consultant at Capgemini Invent, freelance web developer and photographer. Discover my background, experience, and projects."
+      "title": "Benjamin Balayre · Strategy & Transformation Consultant",
+      "description": "Strategy & Transformation Consultant at Capgemini Invent, working on data, BI and AI. Freelance web developer and photographer: background, projects and portfolio."
     },
     "portfolio": {
       "title": "Portfolio · Benjamin Balayre",
@@ -277,7 +277,7 @@
       "title": "Associative experience · Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone: discover Benjamin Balayre's student associative involvement at ISEP."
     },
-    "keywords": "Benjamin Balayre, Data & AI consultant, Capgemini Invent, freelance web developer, website development, web application, ISEP engineer, photographer, videographer, Paris, portfolio, FPV drone, ISEP Live"
+    "keywords": "Benjamin Balayre, Strategy & Transformation consultant, Capgemini Invent, data, business intelligence, artificial intelligence, freelance web developer, website creation, web application, ISEP engineer, photographer, videographer, fine art prints, Benevolence, ReLive"
   },
   "journey": {
     "title": "The whole journey at a glance",
