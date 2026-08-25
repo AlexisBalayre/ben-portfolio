@@ -92,13 +92,13 @@
       "iseplife_title": "The ISEP Life App",
       "iseplife_desc": "The association internally develops and maintains the ISEP Life mobile app, a true hub for campus life: agendas, student directories, association news, and media galleries.",
       "path_title": "From Member to President",
-      "path_desc": "I joined ISEP Live in September 2022 to improve my photography and audiovisual skills alongside other enthusiasts. <br /><br /> As Vice-President from my very first year, I coordinated creation departments, significantly strengthening my project management and teamwork skills. <br /><br /> Continuing this commitment, I took on the presidency in 2023. This foundational experience taught me to lead a 25-person team, oversee the art direction of our productions, and structure our overall development.",
+      "path_desc": "I joined ISEP Live in September 2022 to improve my photography and audiovisual skills alongside other enthusiasts. <br /><br /> I became Vice-President the following year, coordinating creation departments and significantly strengthening my project management and teamwork skills. <br /><br /> Continuing this commitment, I took on the presidency in 2024. This foundational experience taught me to lead a 25-person team, oversee the art direction of our productions, and structure our overall development.",
       "eyebrow": "Student media",
-      "role": "Vice-president then president",
+      "role": "Member, vice-president then president",
       "lead": "The school’s media association: twenty-five people covering campus life in photo and video.",
       "short": "ISEP Live",
-      "period": "2022 to 2024",
-      "description": "The media association of ISEP. Vice-president for the 2022 year then president in 2023, leading a team of twenty-five people covering campus life in photo and video."
+      "period": "2022 to 2025",
+      "description": "The media association of ISEP. Member in 2022, vice-president in 2023 then president in 2024, leading a team of twenty-five people covering campus life in photo and video."
     },
     "vizion": {
       "title": "Student Council: Vizion",
@@ -118,18 +118,13 @@
       "presentation_title": "The ISEP Drone Project",
       "presentation_desc": "First Person View (FPV) flying allows the pilot to steer a drone by seeing exactly what the onboard camera films through a video headset. <br /><br /> I helped found the ISEP Drone club in 2021 with a group of enthusiasts. Our mission: to democratize this technical discipline through assembly workshops, simulator coaching, and outdoor flight sessions.",
       "path_title": "My Role in the Club",
-      "path_desc": "As a founding member, I first shaped the visual identity of our new structure and managed digital communication to attract new members. <br /><br /> This dynamic naturally led me to the club presidency in 2023. This exciting term allowed me to organize internal competitions and run our weekly sessions, granting me solid experience in leading small teams and technical teaching.",
-      "timeline": {
-        "president": "Club President",
-        "comm_manager": "Communication Manager",
-        "founder": "Founding Member"
-      },
+      "path_desc": "As a founding member, I first ran the creative and communication team: I shaped the visual identity of our new structure and managed digital communication to attract new members. <br /><br /> This dynamic naturally led me to the club presidency in 2022. This exciting term allowed me to organize internal competitions and run our weekly sessions, granting me solid experience in leading small teams and technical teaching. <br /><br /> I then supported the next generation as Vice-President in 2023.",
       "eyebrow": "FPV drone club",
-      "role": "Founding member, then president",
+      "role": "Creative & comms, president then vice-president",
       "lead": "A club founded in 2021 to open first-person-view flying to students: build workshops, simulator sessions and flight outings.",
       "short": "ISEP Drone",
       "period": "2021 to 2024",
-      "description": "An FPV flying club founded in 2021. Founder, then communication lead in 2022 and president in 2023: build workshops, simulator sessions and flight outings."
+      "description": "An FPV flying club founded in 2021. Creative and communication lead in the first year, president in 2022 then vice-president in 2023: build workshops, simulator sessions and flight outings."
     },
     "eyebrow": "Student life",
     "summary_eyebrow": "Contents",
@@ -138,9 +133,9 @@
     "roles": {
       "president": "President",
       "vice_president": "Vice-president",
-      "founder": "Founder",
-      "comm_manager": "Communication",
-      "creative": "Creative team"
+      "creative": "Creative team",
+      "member": "Member",
+      "creative_comm": "Creative & comms"
     }
   },
   "projects": {

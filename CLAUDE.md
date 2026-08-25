@@ -265,6 +265,8 @@ Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leu
 
 Dans la frise, la voie **Associatif** ne dessine pas une barre continue par association mais **un segment par année scolaire**, coupé à chaque rentrée de septembre, portant le rôle tenu cette année-là. Les segments d'un même engagement restent groupés sur une ligne : c'est le rôle de `packGroupedLanes`, distinct de `packLanes` utilisé par les autres voies.
 
+Les mandats listés sur `/associativeCareer` lisent **le même `associations.json`** via le helper `rolesOf()` de la page. Ne jamais les recopier en dur : c'est ce qui avait fait diverger la frise et la page.
+
 La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (tableau exporté). « Contact » scrolle vers le footer.
 
 ---

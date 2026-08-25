@@ -4,8 +4,19 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import AssoChapter, { AssoChapterProps } from '~~/src/components/AssoChapter';
+import AssoChapter, { AssoChapterProps, AssoRole } from '~~/src/components/AssoChapter';
 import { PageHero, Section, SectionHeading, type Tone } from '~~/src/components/ui';
+import { associations } from '~~/src/data/journey';
+
+/**
+ * Les mandats viennent de `associations.json`, la même source que la frise de
+ * l'accueil : impossible que les deux racontent des rôles différents.
+ * Ordre antichronologique, comme le reste de la page.
+ */
+const rolesOf = (id: string): AssoRole[] =>
+  [...(associations.find((asso) => asso.id === id)?.roles ?? [])]
+    .reverse()
+    .map((role) => ({ year: role.start.slice(0, 4), labelKey: `associative.roles.${role.role}` }));
 
 /**
  * Les trois engagements, décrits par la donnée plutôt que par trois blocs de
@@ -36,6 +47,7 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
       {
         titleKey: 'associative.iseplive.path_title',
         descKey: 'associative.iseplive.path_desc',
+        roles: rolesOf('iseplive'),
         media: [
           { src: '/assets/images/portfolio/IL.jpg', alt: 'ISEP Live en reportage', shape: 'wide' },
           { src: '/assets/images/portfolio/IL2.jpg', alt: 'ISEP Live en reportage', shape: 'wide' },
@@ -65,6 +77,7 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
       {
         titleKey: 'associative.vizion.path_title',
         descKey: 'associative.vizion.path_desc',
+        roles: rolesOf('vizion'),
         media: [
           { src: '/assets/images/Vizion_illustration.jpg', alt: 'Événement Vizion BDE', shape: 'portrait' },
         ],
@@ -90,11 +103,7 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
       {
         titleKey: 'associative.isepdrone.path_title',
         descKey: 'associative.isepdrone.path_desc',
-        roles: [
-          { year: '2023', labelKey: 'associative.isepdrone.timeline.president' },
-          { year: '2022', labelKey: 'associative.isepdrone.timeline.comm_manager' },
-          { year: '2021', labelKey: 'associative.isepdrone.timeline.founder' },
-        ],
+        roles: rolesOf('isepdrone'),
         media: [{ src: '/assets/images/drone_illustration.JPG', alt: 'Vol FPV', shape: 'wide' }],
       },
     ],
