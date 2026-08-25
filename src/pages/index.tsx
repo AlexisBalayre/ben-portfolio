@@ -11,7 +11,7 @@ import {
   ArrowRightIcon,
   ArrowUpRightIcon,
   CalendarDaysIcon,
-  CameraIcon,
+  RocketLaunchIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
 
@@ -19,9 +19,9 @@ import AssociativePreview from '~~/src/components/AssociativePreview';
 import Carousel from '~~/src/components/Carousel';
 import JourneyDetail from '~~/src/components/JourneyDetail';
 import ParallelTimeline from '~~/src/components/ParallelTimeline';
-import PhotoProjects from '~~/src/components/PhotoProjects';
+import ProjectCards from '~~/src/components/ProjectCards';
 import { Container, Section, SectionHeading, actionClasses, fadeUp, stagger } from '~~/src/components/ui';
-import { associations, education, experiences, imageProjects, timelineExperiences } from '~~/src/data/journey';
+import { associations, education, experiences, sideProjects, timelineExperiences } from '~~/src/data/journey';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('common');
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   // Sommaire de la page : le même découpage sert de fil rouge aux sections.
   const chapters = [
     { index: '01', href: '#parcours', label: t('home.chapter.journey'), icon: <CalendarDaysIcon className="h-4 w-4" aria-hidden="true" /> },
-    { index: '02', href: '#image', label: t('home.chapter.image'), icon: <CameraIcon className="h-4 w-4" aria-hidden="true" /> },
+    { index: '02', href: '#projets', label: t('home.chapter.projects'), icon: <RocketLaunchIcon className="h-4 w-4" aria-hidden="true" /> },
     { index: '03', href: '#associatif', label: t('home.chapter.associative'), icon: <UserGroupIcon className="h-4 w-4" aria-hidden="true" /> },
   ];
 
@@ -151,19 +151,19 @@ const Home: NextPage = () => {
         <JourneyDetail education={education} experiences={timelineExperiences} />
       </Section>
 
-      {/* ── 02 · L'image ──────────────────────────────────────── */}
-      <Section id="image" tone="paper" size="lg" contained={false}>
+      {/* ── 02 · Mes projets ──────────────────────────────────── */}
+      <Section id="projets" tone="paper" size="lg" contained={false}>
         <Container>
           <SectionHeading
             index="02"
-            eyebrow={t('home.chapter.image')}
-            icon={<CameraIcon className="h-4 w-4" />}
-            title={t('home.image_title')}
-            lead={t('home.image_lead')}
+            eyebrow={t('home.chapter.projects')}
+            icon={<RocketLaunchIcon className="h-4 w-4" />}
+            title={t('home.projects_title')}
+            lead={t('home.projects_lead')}
           />
 
           <div className="mt-12">
-            <PhotoProjects projects={imageProjects} />
+            <ProjectCards projects={sideProjects} />
           </div>
 
           {/* Les projets racontent le métier ; la bande qui suit montre le résultat. */}

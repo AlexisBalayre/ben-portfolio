@@ -36,6 +36,17 @@
     "ongoing": true
   },
   {
+    "id": "seed4soft",
+    "logo": "freelance-dev.png",
+    "period": "Depuis juin 2026",
+    "nature": "project",
+    "track": "projects",
+    "start": "2026-06",
+    "end": "2027-07",
+    "ongoing": true,
+    "url": "https://seed4soft.com"
+  },
+  {
     "id": "relive",
     "logo": "benevolence.png",
     "period": "Depuis mars 2026",

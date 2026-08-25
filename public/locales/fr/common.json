@@ -59,11 +59,11 @@
     "summary_aria": "Sommaire de la page",
     "chapter": {
       "journey": "Parcours",
-      "image": "L’image",
-      "associative": "Vie associative"
+      "associative": "Vie associative",
+      "projects": "Mes projets"
     },
-    "image_title": "Trois projets autour de l’image",
-    "image_lead": "La photographie n’est pas un à-côté de mon parcours d’ingénieur. C’est la même envie de construire, appliquée à l’image. Elle se décline aujourd’hui en trois activités : des prestations pour des événements, une boutique de tirages, et un produit web né de mes propres besoins de photographe."
+    "projects_title": "Ce que je construis à côté",
+    "projects_lead": "Mon parcours d’ingénieur a un pendant : une activité indépendante que je mène depuis 2024. J’y conçois des sites et des produits web, j’y photographie des événements, et j’en tire une boutique de tirages en édition limitée."
   },
   "skills": {
     "video_editing": {
@@ -118,13 +118,13 @@
       "presentation_title": "Le projet ISEP Drone",
       "presentation_desc": "Le vol en immersion ou FPV (First Person View) permet au pilote de diriger son drone en voyant exactement ce que la caméra embarquée filme grâce à un casque vidéo. <br /><br /> J'ai participé à la fondation du club ISEP Drone en 2021 avec un groupe de passionnés. Notre mission : démocratiser cette discipline technique via des ateliers de montage, de pilotage sur simulateur et des sorties de vol.",
       "path_title": "Mon rôle dans le club",
-      "path_desc": "Membre fondateur, j’ai d’abord tenu le pôle créa et com : j’ai forgé l’identité visuelle de notre nouvelle structure et géré notre communication digitale pour attirer de nouveaux passionnés. <br /><br /> Cette dynamique m’a naturellement conduit à la présidence du club en 2022. Ce mandat passionnant m’a permis d’organiser des compétitions internes et d’animer chaque semaine nos séances, me conférant une solide expérience en leadership de petites équipes et en transmission technique. <br /><br /> J’ai ensuite accompagné la relève comme vice-président en 2023.",
+      "path_desc": "Membre fondateur, j’ai d’abord tenu le pôle créa et com : j’ai forgé l’identité visuelle de notre nouvelle structure et géré notre communication digitale pour attirer de nouveaux passionnés. <br /><br /> Cette dynamique m’a naturellement conduit à la présidence du club en 2022. Ce mandat passionnant m’a permis d’organiser des compétitions internes et d’animer chaque semaine nos séances, me conférant une solide expérience en leadership de petites équipes et en transmission technique. <br /><br /> J’ai ensuite accompagné la relève comme vice-président, en 2023 puis en 2024.",
       "eyebrow": "Club de drone FPV",
       "role": "Créa et com, président puis vice-président",
       "lead": "Un club fondé en 2021 pour ouvrir le vol en immersion aux étudiants : ateliers de montage, simulateur et sorties de vol.",
       "short": "ISEP Drone",
-      "period": "2021 à 2024",
-      "description": "Club de vol en immersion fondé en 2021. Pôle créa et com la première année, président en 2022 puis vice-président en 2023 : ateliers de montage, séances sur simulateur et sorties de vol."
+      "period": "2021 à 2025",
+      "description": "Club de vol en immersion fondé en 2021. Pôle créa et com la première année, président en 2022, puis vice-président en 2023 et 2024 : ateliers de montage, séances sur simulateur et sorties de vol."
     },
     "eyebrow": "Vie étudiante",
     "summary_eyebrow": "Sommaire",
@@ -203,6 +203,14 @@
       "period": "Depuis janvier 2026",
       "card": "Ma boutique de tirages d’art : les images rapportées de mes voyages, éditées en série limitée sur toile, aluminium, acrylique ou papier. De la sélection des images à la boutique en ligne, tout est fait maison.",
       "description": "Boutique en ligne de tirages d’art tirés de mes voyages, en édition limitée sur toile, aluminium, acrylique ou papier. Sélection et préparation des images, identité de la marque, mise en place de la boutique et suivi des commandes."
+    },
+    "seed4soft": {
+      "title": "Seed4Soft, refonte du site d’un collectif de business angels",
+      "short": "Seed4Soft",
+      "kind": "Refonte de site",
+      "period": "Depuis juin 2026",
+      "card": "Refonte complète du site de Seed4Soft, un collectif de business angels : cadrage, design system, développement et mise en production. Next.js, Tailwind CSS, contenu bilingue.",
+      "description": "Refonte complète du site de Seed4Soft, collectif de business angels. Cadrage du besoin avec l’équipe, système de design, développement en Next.js et Tailwind CSS, contenu éditorial bilingue, puis mise en production. Le site est en ligne et je continue de le faire évoluer."
     }
   },
   "formation": {

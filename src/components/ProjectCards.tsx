@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import {
   ArrowUpRightIcon,
   CameraIcon,
+  CodeBracketIcon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
   SparklesIcon,
@@ -13,6 +14,7 @@ import { EASE } from '~~/src/components/ui';
 import type { JourneyItem } from '~~/src/data/journey';
 
 const ICONS: Record<string, typeof CameraIcon> = {
+  seed4soft: CodeBracketIcon,
   relive: MagnifyingGlassIcon,
   benevolence: ShoppingBagIcon,
   freelance: CameraIcon,
@@ -22,15 +24,15 @@ const ICONS: Record<string, typeof CameraIcon> = {
 const hostOf = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
 /**
- * Les trois activités image, présentées côte à côte. Elles lisent la même
- * source que la frise : ajouter un projet dans `experiences.json` avec
- * `track: "projects"` le fait apparaître aux deux endroits.
+ * Les projets menés en indépendant, présentés côte à côte. Ils lisent la même
+ * source que la frise : ajouter une entrée dans `experiences.json` avec
+ * `track: "projects"` la fait apparaître aux deux endroits.
  */
-const PhotoProjects = ({ projects }: { projects: JourneyItem[] }) => {
+const ProjectCards = ({ projects }: { projects: JourneyItem[] }) => {
   const { t } = useTranslation('common');
 
   return (
-    <div className="grid gap-5 md:grid-cols-3">
+    <div className="grid gap-5 sm:grid-cols-2">
       {projects.map((project, i) => {
         const Icon = ICONS[project.id] ?? SparklesIcon;
         return (
@@ -81,4 +83,4 @@ const PhotoProjects = ({ projects }: { projects: JourneyItem[] }) => {
   );
 };
 
-export default PhotoProjects;
+export default ProjectCards;

@@ -59,11 +59,11 @@
     "summary_aria": "Page contents",
     "chapter": {
       "journey": "Background",
-      "image": "Images",
-      "associative": "Student life"
+      "associative": "Student life",
+      "projects": "My projects"
     },
-    "image_title": "Three projects built around images",
-    "image_lead": "Photography is not a sideline to my engineering path. It is the same urge to build, applied to images. It now takes three forms: event work for clients, a fine art print shop, and a web product born out of my own needs as a photographer."
+    "projects_title": "What I build on the side",
+    "projects_lead": "My engineering path has a counterpart: a freelance business I have run since 2024. I design websites and web products, I shoot events, and I turn the results into a limited edition print shop."
   },
   "skills": {
     "video_editing": {
@@ -118,13 +118,13 @@
       "presentation_title": "The ISEP Drone Project",
       "presentation_desc": "First Person View (FPV) flying allows the pilot to steer a drone by seeing exactly what the onboard camera films through a video headset. <br /><br /> I helped found the ISEP Drone club in 2021 with a group of enthusiasts. Our mission: to democratize this technical discipline through assembly workshops, simulator coaching, and outdoor flight sessions.",
       "path_title": "My Role in the Club",
-      "path_desc": "As a founding member, I first ran the creative and communication team: I shaped the visual identity of our new structure and managed digital communication to attract new members. <br /><br /> This dynamic naturally led me to the club presidency in 2022. This exciting term allowed me to organize internal competitions and run our weekly sessions, granting me solid experience in leading small teams and technical teaching. <br /><br /> I then supported the next generation as Vice-President in 2023.",
+      "path_desc": "As a founding member, I first ran the creative and communication team: I shaped the visual identity of our new structure and managed digital communication to attract new members. <br /><br /> This dynamic naturally led me to the club presidency in 2022. This exciting term allowed me to organize internal competitions and run our weekly sessions, granting me solid experience in leading small teams and technical teaching. <br /><br /> I then supported the next generation as Vice-President, in 2023 and again in 2024.",
       "eyebrow": "FPV drone club",
       "role": "Creative & comms, president then vice-president",
       "lead": "A club founded in 2021 to open first-person-view flying to students: build workshops, simulator sessions and flight outings.",
       "short": "ISEP Drone",
-      "period": "2021 to 2024",
-      "description": "An FPV flying club founded in 2021. Creative and communication lead in the first year, president in 2022 then vice-president in 2023: build workshops, simulator sessions and flight outings."
+      "period": "2021 to 2025",
+      "description": "An FPV flying club founded in 2021. Creative and communication lead in the first year, president in 2022, then vice-president in 2023 and 2024: build workshops, simulator sessions and flight outings."
     },
     "eyebrow": "Student life",
     "summary_eyebrow": "Contents",
@@ -221,6 +221,14 @@
       "period": "Since January 2026",
       "card": "My fine art print shop: images brought back from my travels, released in limited editions on canvas, aluminium, acrylic or paper. From selecting the images to running the shop, everything is done in-house.",
       "description": "An online shop for fine art prints from my travels, in limited editions on canvas, aluminium, acrylic or paper. Image selection and preparation, brand identity, shop setup and order fulfilment."
+    },
+    "seed4soft": {
+      "title": "Seed4Soft, website rebuild for a business angel collective",
+      "short": "Seed4Soft",
+      "kind": "Website rebuild",
+      "period": "Since June 2026",
+      "card": "A full rebuild of the Seed4Soft website, a business angel collective: scoping, design system, development and release. Next.js, Tailwind CSS, bilingual content.",
+      "description": "A full rebuild of the website of Seed4Soft, a business angel collective. Scoping with the team, design system, development in Next.js and Tailwind CSS, bilingual editorial content, then release to production. The site is live and I keep improving it."
     }
   },
   "formation": {
