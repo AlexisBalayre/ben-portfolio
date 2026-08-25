@@ -22,6 +22,8 @@ export interface JourneyItem {
   /** Stage mené à l'intérieur d'un cursus : il rejoint la voie Formation. */
   integratedIn?: string;
   url?: string;
+  /** Engagements associatifs : un segment par année scolaire, coupé en septembre. */
+  roles?: { role: string; start: string; end: string }[];
   exchanges?: {
     id: string;
     logo: string;
