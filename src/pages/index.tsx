@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { AcademicCapIcon, BriefcaseIcon, CalendarDaysIcon, CameraIcon, Squares2X2Icon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, BriefcaseIcon, CalendarDaysIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 
 import Timeline from '~~/src/components/Timeline';
 import TimelineDark from '~~/src/components/TimelineDark';
 import Carousel from '~~/src/components/Carousel';
-import SkillTree from '~~/src/components/SkillTree';
 import ParallelTimeline from '~~/src/components/ParallelTimeline';
 import experiences from "~~/public/assets/data/experiences.json";
 import education from "~~/public/assets/data/formation.json";
-import skillTree from "~~/public/assets/data/skillTree.json";
 import { NextPage } from 'next/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
@@ -156,25 +154,6 @@ const Home: NextPage = () => {
                     </div>
                 </div>
             </motion.div>
-
-            {/* ── Skill Tree ───────────────────────────────────────────── */}
-            <motion.section
-                className="w-full bg-gray-100 px-4 sm:px-8 md:px-20 py-8 md:py-12 group"
-                id="competences"
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-            >
-                <div className="max-w-5xl mx-auto">
-                    <span className="flex flex-row items-center justify-center md:justify-start">
-                        <Squares2X2Icon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:-translate-y-1">{t('skill_tree.title')}</h2>
-                    </span>
-                    <p className="max-w-3xl py-6">{t('skill_tree.subtitle')}</p>
-                    <SkillTree branches={skillTree} />
-                </div>
-            </motion.section>
 
             {/* ── Carousel voyages ─────────────────────────────────────── */}
             <Carousel />
