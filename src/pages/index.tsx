@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { AcademicCapIcon, CalendarDaysIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, BriefcaseIcon, CalendarDaysIcon, CameraIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 
-import CareerTimeline from '~~/src/components/CareerTimeline';
+import Timeline from '~~/src/components/Timeline';
+import TimelineDark from '~~/src/components/TimelineDark';
 import Carousel from '~~/src/components/Carousel';
 import ParallelTimeline from '~~/src/components/ParallelTimeline';
 import experiences from "~~/public/assets/data/experiences.json";
@@ -27,7 +28,7 @@ const stagger = {
 const Home: NextPage = () => {
     const { t } = useTranslation('common');
     const { locale } = useRouter();
-    const [careerExpanded, setCareerExpanded] = useState(false);
+    const [experienceExpanded, setExperienceExpanded] = useState(false);
 
     const cvFile = locale === 'en' ? 'CV_Benjamin_Balayre_EN.pdf' : 'CV_Benjamin_Balayre_FR.pdf';
 
@@ -90,40 +91,61 @@ const Home: NextPage = () => {
                 </div>
             </motion.section>
 
-            {/* ── Parcours détaillé : formation et expérience de part et d'autre ── */}
-            <motion.section
-                className="w-full bg-gray-100 px-4 sm:px-8 md:px-20 py-8 md:py-12 group"
-                id="parcours-detail"
+            {/* ── Education Timeline ───────────────────────────────────── */}
+            <motion.div
+                className="py-8 md:py-12 mt-8 md:mt-0 bg-gray-100 w-full px-4 sm:px-8 md:px-20 group"
+                id="education"
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: '-80px' }}
             >
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-4xl mx-auto">
                     <span className="flex flex-row items-center justify-center md:justify-start">
                         <AcademicCapIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:-translate-y-1">{t('home.career_title')}</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.education_title')}</h2>
                     </span>
-                    <p className="max-w-3xl py-6">{t('home.career_desc')}</p>
+                    <p className="py-6">{t('home.education_desc')}</p>
+                    <div className="pb-8">
+                        <Timeline items={education} />
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* ── Experience Timeline ──────────────────────────────────── */}
+            <motion.div
+                className="py-8 md:py-12 mt-8 md:mt-0 w-full px-4 sm:px-8 md:px-20 group"
+                id="experience"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-80px' }}
+            >
+                <div className="max-w-4xl mx-auto">
+                    <span className="flex flex-row items-center justify-center md:justify-start">
+                        <BriefcaseIcon className="h-8 w-8 mr-2 -mt-1.5 transition-all duration-500 group-hover:-translate-y-1" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left text-base-content/80 transition-all duration-500 group-hover:text-base-content group-hover:opacity-100 group-hover:-translate-y-1">{t('home.experience_title')}</h2>
+                    </span>
+                    <p className="py-2">{t('home.experience_desc')}</p>
                     <div className="relative">
                         <div
                             className="overflow-hidden transition-all duration-500"
-                            style={{ maxHeight: careerExpanded ? '6000px' : '760px' }}
+                            style={{ maxHeight: experienceExpanded ? '2000px' : '420px' }}
                         >
-                            <CareerTimeline education={education} experiences={experiences} />
+                            <TimelineDark items={experiences} />
                         </div>
-                        {!careerExpanded && (
-                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-100 to-transparent pointer-events-none" />
+                        {!experienceExpanded && (
+                            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
                         )}
                     </div>
                     <div className="flex justify-center mt-4 pb-8">
                         <button
-                            onClick={() => setCareerExpanded(!careerExpanded)}
+                            onClick={() => setExperienceExpanded(!experienceExpanded)}
                             className="flex items-center gap-2 text-sm font-medium text-primary border border-primary/30 px-6 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
                         >
-                            {careerExpanded ? t('timeline.collapse') : t('timeline.show_all')}
+                            {experienceExpanded ? t('timeline.collapse') : t('timeline.show_all')}
                             <svg
-                                className={`w-4 h-4 transition-transform duration-300 ${careerExpanded ? 'rotate-180' : ''}`}
+                                className={`w-4 h-4 transition-transform duration-300 ${experienceExpanded ? 'rotate-180' : ''}`}
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
                             >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -131,7 +153,7 @@ const Home: NextPage = () => {
                         </button>
                     </div>
                 </div>
-            </motion.section>
+            </motion.div>
 
             {/* ── Carousel voyages ─────────────────────────────────────── */}
             <Carousel />

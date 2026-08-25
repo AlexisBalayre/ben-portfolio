@@ -38,7 +38,8 @@ ben-portfolio/
 │   │   ├── LatestProject.tsx     # Dernier projet vidéo (Norvège)
 │   │   ├── SkillsSection.tsx     # Compétences créatives avec SkillCard
 │   │   ├── SkillCard.tsx         # Carte skill individuelle
-│   │   ├── CareerTimeline.tsx    # Parcours fusionné : formation à gauche de l'axe, expérience à droite
+│   │   ├── Timeline.tsx          # Timeline formations (fond gris) — imbrique les échanges
+│   │   ├── TimelineDark.tsx      # Timeline expériences (fond blanc)
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
 │   │   ├── Carousel.tsx          # Carousel images de voyage
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
@@ -108,8 +109,8 @@ Tous les contenus dynamiques sont dans `public/assets/data/` :
 
 | Fichier | Contenu |
 |---|---|
-| `experiences.json` | Expériences professionnelles (`CareerTimeline`, `ParallelTimeline`) |
-| `formation.json` | Formations (`CareerTimeline`, `ParallelTimeline`) |
+| `experiences.json` | Expériences professionnelles (Timeline) |
+| `formation.json` | Formations (Timeline) |
 | `projects.json` | Projets vidéo/photo (YouTube embeds) |
 | `skills.json` | Compétences créatives (SkillsSection) |
 | `tech.json` | Compétences tech (carousel dans Header ou autre) |
@@ -120,14 +121,13 @@ Modifier ces fichiers suffit pour mettre à jour le contenu — pas besoin de to
 
 | Champ | Utilisé par | Rôle |
 |---|---|---|
-| `id`, `logo` | `CareerTimeline` | clé de traduction + logo rond sur l'axe |
+| `id`, `logo` | `Timeline`, `TimelineDark` | clé de traduction + logo rond |
 | `period` | — | mémo lisible ; l'affichage passe par la locale |
 | `nature` | `ParallelTimeline` | surtitre en petites majuscules sur la barre — clé de `journey.nature.*` (`cursus`, `exchange`, `internship`, `freelance`, `permanent`) |
-| `start`, `end` | `ParallelTimeline`, `CareerTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). `start` sert aussi au tri du parcours fusionné |
-| `journey` | `ParallelTimeline` | `false` exclut l'entrée de la frise Gantt sans lui retirer ses dates (cas de Microsoft 2017, trop ancien pour l'axe) |
+| `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans ces champs, l'entrée n'apparaît pas dans la frise |
 | `ongoing` | `ParallelTimeline` | flèche « → » + dégradé de fuite : l'activité se poursuit au-delà de la frise |
-| `integratedIn` | `ParallelTimeline`, `CareerTimeline` | *(experiences.json)* id du cursus : dans la frise le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus » ; dans le parcours détaillé il porte le badge « Intégré au cursus ISEP » |
-| `exchanges[]` | `CareerTimeline`, `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la carte, segment ambre à l'intérieur de la barre dans la frise |
+| `integratedIn` | `ParallelTimeline` | *(experiences.json)* id du cursus : le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus », au lieu de la voie Expérience |
+| `exchanges[]` | `Timeline` + `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la timeline, segment ambre à l'intérieur de la barre dans la frise |
 
 Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `period`, `short` dans `fr/common.json` **et** `en/common.json`.
 
@@ -191,7 +191,7 @@ Node.js requis : **>=24.0.0**. Package manager : **yarn** (v3.6.4).
 
 | Route | Page | Description |
 |---|---|---|
-| `/` | `src/pages/index.tsx` | CV : frise parcours (`#parcours`), parcours détaillé (`#parcours-detail`), aperçu portfolio & asso |
+| `/` | `src/pages/index.tsx` | CV : frise parcours (`#parcours`), formation (`#education`), expériences (`#experience`), aperçu portfolio & asso |
 | `/portfolio` | `src/pages/portfolio.tsx` | Portfolio photo/vidéo + boutique Benevolence |
 | `/associativeCareer` | `src/pages/associativeCareer.tsx` | ISEP Live, Vizion BDE, ISEP Drone |
 
