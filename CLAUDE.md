@@ -42,7 +42,7 @@ ben-portfolio/
 │   │   ├── JourneyDetail.tsx     # Onglets Formation / Expérience au-dessus de Timeline
 │   │   ├── Timeline.tsx          # Timeline verticale, imbrique les échanges
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
-│   │   ├── PhotoProjects.tsx     # Les trois activités image (ReLive, Benevolence, prestations)
+│   │   ├── ProjectCards.tsx      # Les projets menés en indépendant (chapitre 02)
 │   │   ├── AssociativePreview.tsx# Aperçu du parcours associatif sur l'accueil
 │   │   ├── Carousel.tsx          # Bandeau défilant des photos de voyage (sans titre propre)
 │   │   ├── AssoChapter.tsx       # Un engagement associatif, piloté par la donnée
@@ -138,8 +138,8 @@ Modifier ces fichiers suffit pour mettre à jour le contenu, sans toucher aux co
 | `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans ces champs, l'entrée n'apparaît pas dans la frise |
 | `ongoing` | `ParallelTimeline` | flèche « → » + dégradé de fuite : l'activité se poursuit au-delà de la frise |
 | `integratedIn` | `ParallelTimeline` | *(experiences.json)* id du cursus : le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus », au lieu de la voie Expérience |
-| `track` | `ParallelTimeline`, `src/data/journey.ts` | *(experiences.json)* `"projects"` : l'entrée rejoint la voie **Projets** de la frise et la grille du chapitre « L'image » de l'accueil |
-| `nature: "project"` | `src/data/journey.ts` | l'entrée est un produit, pas un poste : elle sort de la timeline des expériences pour n'être racontée que dans le chapitre « L'image » |
+| `track` | `ParallelTimeline`, `src/data/journey.ts` | *(experiences.json)* `"projects"` : l'entrée rejoint la voie **Projets** de la frise et la grille du chapitre « Mes projets » de l'accueil |
+| `nature: "project"` | `src/data/journey.ts` | l'entrée est un projet, pas un poste : elle sort de la timeline des expériences pour n'être racontée que dans le chapitre « Mes projets ». Une carte de projet a en plus les clés `kind` et `card` |
 | `url` | `PhotoProjects` | lien externe affiché en pied de carte projet |
 | `roles[]` | `ParallelTimeline` | *(associations.json)* un objet `{ role, start, end }` par année scolaire. La frise dessine un segment par mandat, coupé à chaque rentrée de septembre, et affiche le rôle dessus. `role` est une clé de `associative.roles.*` |
 | `exchanges[]` | `Timeline` + `ParallelTimeline` | *(formation.json)* échanges menés **pendant** ce cursus : sous-branche dans la timeline, segment bleu vif à l'intérieur de la barre dans la frise |
@@ -253,13 +253,13 @@ Chaque page suit la même partition : héros → chapitres numérotés → foote
 
 | Route | Chapitres | Ancres |
 |---|---|---|
-| `/` | héros + sommaire → **01** Parcours → **02** L'image → **03** Vie associative | `#parcours`, `#image`, `#associatif` |
+| `/` | héros + sommaire → **01** Parcours → **02** Mes projets → **03** Vie associative | `#parcours`, `#projets`, `#associatif` |
 | `/portfolio` | héros → **01** Dernier film → **02** Savoir-faire → **03** Portfolio complet → **04** Tirages | `#film`, `#savoir-faire`, `#galerie`, `#tirages` |
 | `/associativeCareer` | héros → sommaire → **01** ISEP Live → **02** Vizion BDE → **03** ISEP Drone | `#engagements`, `#iseplive`, `#vizion`, `#isepdrone` |
 
 Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) puis `JourneyDetail`, deux onglets qui posent Formation et Expérience au même endroit. Les ancres historiques `#education` et `#experience` restent valides : elles sélectionnent l'onglet correspondant.
 
-Le chapitre **02 L'image** introduit le versant photographique avant de montrer des images : les trois activités (prestations freelance, boutique **Benevolence**, produit web **ReLive**), le bandeau de clichés de voyage, puis l'accès au portfolio. C'est ce chapitre qui fait la transition entre le CV et le portfolio.
+Le chapitre **02 Mes projets** présente l'activité indépendante avant de montrer des images : les projets menés à côté (refonte **Seed4Soft**, produit web **ReLive**, boutique **Benevolence**, prestations photo et vidéo), le bandeau de clichés de voyage, puis l'accès au portfolio. C'est ce chapitre qui fait la transition entre le CV et le portfolio.
 
 Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leur page. Chaque chapitre de l'accueil se termine ainsi sur une seule porte de sortie.
 

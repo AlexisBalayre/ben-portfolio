@@ -42,13 +42,14 @@ export const experiences = experiencesData as JourneyItem[];
 export const associations = associationsData as JourneyItem[];
 
 /**
- * Les trois activités image : prestations, boutique de tirages, produit web.
- * Elles alimentent le chapitre « L'image » et la voie Projets de la frise.
+ * Les projets menés en indépendant : refonte de site, produit web, boutique de
+ * tirages, prestations photo. Ils alimentent le chapitre « Mes projets » de
+ * l'accueil et la voie Projets de la frise.
  */
-export const imageProjects = experiences.filter((entry) => entry.track === 'projects');
+export const sideProjects = experiences.filter((entry) => entry.track === 'projects');
 
 /**
- * Timeline des expériences : les produits (ReLive, Benevolence) sont racontés
- * dans le chapitre « L'image », ils ne sont pas répétés ici.
+ * Timeline des expériences : les produits et les sites livrés sont racontés
+ * dans le chapitre « Mes projets », ils ne sont pas répétés ici.
  */
 export const timelineExperiences = experiences.filter((entry) => entry.nature !== 'project');
