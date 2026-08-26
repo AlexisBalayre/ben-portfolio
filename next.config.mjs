@@ -45,6 +45,14 @@ const nextConfig = {
             },
         ],
     },
+    // /portfolio a vecu sur ce domaine : les liens entrants et le referencement
+    // acquis partent vers le site de prestations plutot que vers un 404.
+    async redirects() {
+        return [
+            { source: '/portfolio', destination: 'https://prestation.benevolence.fr', permanent: true },
+            { source: '/en/portfolio', destination: 'https://prestation.benevolence.fr', permanent: true },
+        ];
+    },
     i18n: {
         locales: ["en", "fr"],
         defaultLocale: "fr",

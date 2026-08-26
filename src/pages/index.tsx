@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { NextPage } from 'next/types';
@@ -8,14 +7,12 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import {
   ArrowDownTrayIcon,
-  ArrowRightIcon,
   CalendarDaysIcon,
   RocketLaunchIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
 
 import AssociativePreview from '~~/src/components/AssociativePreview';
-import Carousel from '~~/src/components/Carousel';
 import JourneyDetail from '~~/src/components/JourneyDetail';
 import ParallelTimeline from '~~/src/components/ParallelTimeline';
 import ProjectCards from '~~/src/components/ProjectCards';
@@ -160,8 +157,7 @@ const Home: NextPage = () => {
       </Section>
 
       {/* ── 02 · Mes projets ──────────────────────────────────── */}
-      <Section id="projets" tone="paper" size="lg" contained={false}>
-        <Container>
+      <Section id="projets" tone="paper" size="lg">
           <SectionHeading
             index="02"
             eyebrow={t('home.chapter.projects')}
@@ -173,35 +169,6 @@ const Home: NextPage = () => {
           <div className="mt-12">
             <ProjectCards projects={sideProjects} />
           </div>
-
-          {/* Les projets racontent le métier ; la bande qui suit montre le résultat. */}
-          <div className="mt-16 flex items-center gap-4 sm:mt-20">
-            <span aria-hidden="true" className="h-px flex-1 bg-base-300" />
-            <span className="text-[11px] font-bold uppercase tracking-eyebrow text-base-content/45">
-              {t('home.carousel_title')}
-            </span>
-            <span aria-hidden="true" className="h-px flex-1 bg-base-300" />
-          </div>
-        </Container>
-
-        <div className="mt-8">
-          <Carousel />
-        </div>
-
-        <Container>
-          {/* Une seule porte de sortie : le portfolio externe se trouve déjà
-              en chapitre 03 de /portfolio et dans le pied de page, le rappeler
-              ici revenait à poser deux fois le même lien l'un sous l'autre. */}
-          <div className="mt-12 flex justify-center">
-            <Link href="/portfolio" scroll={false} className={actionClasses('solid')}>
-              {t('home.portfolio_preview_button')}
-              <ArrowRightIcon
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                aria-hidden="true"
-              />
-            </Link>
-          </div>
-        </Container>
       </Section>
 
       {/* ── 03 · Vie associative ──────────────────────────────── */}

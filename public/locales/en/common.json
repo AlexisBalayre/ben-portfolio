@@ -1,12 +1,7 @@
 {
-  "hero": {
-    "title": "Portfolio",
-    "subtitle": "Welcome to my portfolio, a space dedicated to presenting my projects and galleries.",
-    "showreel_button": "Watch the showreel"
-  },
   "header": {
     "about_me": "About Me",
-    "portfolio": "Portfolio",
+    "photo_video": "Photo & video",
     "associative_career": "Associative Experience",
     "contact_details": "Contact Details",
     "role": "Strategy & Transformation Consultant",
@@ -37,21 +32,7 @@
     "education_desc": "Always passionate about innovation and new technologies, I chose to pursue a degree in digital engineering at ISEP.",
     "experience_title": "Experiences",
     "experience_desc": "My goal: to consolidate my expertise in the digital field while understanding its challenges to actively contribute to tomorrow's innovations.",
-    "skills_title": "Skills",
-    "skills_desc": "An overview of the tools and fields I navigate daily, from visual creation to digital product development.",
     "rights_reserved": "All Rights Reserved.",
-    "carousel_title": "Some shots from my travels",
-    "latest_project_title": "My latest project",
-    "latest_project_desc": "During my academic exchange in Oslo, I spent <1>4 months in Norway</1>. This video captures the highlights and breathtaking landscapes of this experience.",
-    "countries": {
-      "egypt": "Egypt",
-      "indonesia": "Indonesia",
-      "japan": "Japan",
-      "brazil": "Brazil",
-      "iceland": "Iceland",
-      "norway": "Norway"
-    },
-    "portfolio_preview_button": "Discover the portfolio",
     "associative_preview_title": "Associative Engagement",
     "associative_preview_desc": "My student years were deeply shaped by student associations: the student union, the school media association I ended up chairing, and an FPV drone club I helped found.",
     "associative_preview_button": "View my journey",
@@ -64,23 +45,6 @@
     },
     "projects_title": "What I build on the side",
     "projects_lead": "My engineering path has a counterpart: a freelance business I have run since 2024. I design websites and web products, I shoot events, and I turn the results into a limited edition print shop."
-  },
-  "skills": {
-    "video_editing": {
-      "title": "Video Editing",
-      "description": "I master editing software like Adobe Premiere Pro and Final Cut Pro. I have directed, edited, and color-graded numerous videos for personal and associative projects.",
-      "imageDescription": "Timeline of a video editing project"
-    },
-    "graphic_design": {
-      "title": "Graphic Design",
-      "description": "Proficient in Adobe Illustrator and Photoshop, I regularly create visual identities, logos, posters, and illustrations.",
-      "imageDescription": "Graphic creation in Illustrator"
-    },
-    "photo_editing": {
-      "title": "Photo Editing",
-      "description": "I use Adobe Lightroom Classic and Photoshop for the development and advanced retouching of my photographs, including crafting custom presets.",
-      "imageDescription": "Photo development in Lightroom"
-    }
   },
   "associative": {
     "title": "Associative Experience",
@@ -155,17 +119,6 @@
         "dance": "Dance Music Videos"
       }
     }
-  },
-  "benevolence": {
-    "tagline": "Fine Art Prints",
-    "title": "Benevolence",
-    "desc": "Art prints from my travels, available on canvas, aluminium, acrylic or paper. Each piece is a limited edition designed to elevate your space.",
-    "button": "Visit the shop"
-  },
-  "external_portfolio": {
-    "title": "Photo & Video Portfolio",
-    "description": "Discover all my photo and video projects on my dedicated portfolio website.",
-    "button": "Go to portfolio"
   },
   "experiences": {
     "capgemini_cdi": {
@@ -269,10 +222,6 @@
       "title": "Benjamin Balayre · Strategy & Transformation Consultant",
       "description": "Strategy & Transformation Consultant at Capgemini Invent, working on data, BI and AI. Freelance web developer and photographer: background, projects and portfolio."
     },
-    "portfolio": {
-      "title": "Portfolio · Benjamin Balayre",
-      "description": "Photo and video portfolio by Benjamin Balayre. Travel cinematics and fine art prints available on Benevolence."
-    },
     "associativeCareer": {
       "title": "Associative experience · Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone: discover Benjamin Balayre's student associative involvement at ISEP."
@@ -307,13 +256,5 @@
     "track_associative": "Student life",
     "legend_association": "Student association",
     "year_range": "{{from}} to {{to}}"
-  },
-  "portfolio": {
-    "chapter": {
-      "hero": "Photo & video",
-      "film": "Latest film",
-      "skills": "Craft"
-    },
-    "play_video": "Play the video"
   }
 }
