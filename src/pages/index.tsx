@@ -89,7 +89,7 @@ const Home: NextPage = () => {
               <div className="relative">
                 <div
                   aria-hidden="true"
-                  className="absolute -inset-4 rounded-full bg-gradient-to-br from-accent/15 to-primary/5"
+                  className="absolute -inset-2 rotate-45 rounded-full border border-transparent border-b-accent/40 border-r-accent/40"
                 />
                 <Image
                   src="/assets/images/pp.jpg"

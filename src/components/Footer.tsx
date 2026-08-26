@@ -24,11 +24,12 @@ const socials = [
 
 const pages = [
     { href: '/', label: 'header.about_me' },
+    { href: '/prestation', label: 'header.photo_video' },
     { href: '/associativeCareer', label: 'header.associative_career' },
 ];
 
 const elsewhere = [
-    { href: 'https://prestation.benevolence.fr', label: 'header.photo_video' },
+    { href: 'https://prestation.benevolence.fr', label: 'home.quick_prestation' },
     { href: 'https://portfolio.benevolence.fr', label: 'home.quick_portfolio' },
     { href: 'https://benevolence.fr', label: 'home.quick_benevolence' },
 ];

@@ -4,7 +4,6 @@ import LanguageSwitcher from './LanguageSwitcher';
 import {
   AcademicCapIcon,
   ArrowDownTrayIcon,
-  ArrowUpRightIcon,
   Bars3Icon,
   EnvelopeIcon,
   CameraIcon,
@@ -21,13 +20,11 @@ interface HeaderMenuLink {
   label: string;
   section: string;
   icon?: React.ReactNode;
-  /** Lien sortant : l'entrée quitte le site au lieu d'y naviguer. */
-  external?: string;
 }
 
 export const menuLinks: HeaderMenuLink[] = [
   { label: "header.about_me",          section: "",                icon: <UserIcon className="h-4 w-4" /> },
-  { label: "header.photo_video",        section: "prestation",      icon: <CameraIcon className="h-4 w-4" />, external: "https://prestation.benevolence.fr" },
+  { label: "header.photo_video",        section: "prestation",      icon: <CameraIcon className="h-4 w-4" /> },
   { label: "header.associative_career", section: "associativeCareer", icon: <AcademicCapIcon className="h-4 w-4" /> },
   { label: "header.contact_details",    section: "contact",         icon: <EnvelopeIcon className="h-4 w-4" /> },
 ];
@@ -78,48 +75,28 @@ export const HeaderMenuLinks = ({
 
   return (
     <>
-      {menuLinks.map(({ label, section, icon, external }) => {
+      {menuLinks.map(({ label, section, icon }) => {
         const key = section || 'aboutMe';
-        const isActive = !external && activeSection === key;
+        const isActive = activeSection === key;
         const classes = `relative z-10 flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${
           MENU_SHAPE[variant].button
         } ${
           isActive ? "text-white" : "text-base-content/70 hover:text-base-content"
         }`;
-        const contenu = (
-          <>
-            {isActive && (
-              <motion.span
-                layoutId={`nav-pill-${variant}`}
-                className={`absolute inset-0 bg-primary shadow-sm ${MENU_SHAPE[variant].pill}`}
-                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                style={{ zIndex: -1 }}
-              />
-            )}
-            <span className="hidden sm:block relative z-10" aria-hidden="true">{icon}</span>
-            <span className="relative z-10">{t(label)}</span>
-            {external && (
-              <ArrowUpRightIcon className="relative z-10 h-3 w-3 opacity-50" aria-hidden="true" />
-            )}
-          </>
-        );
         return (
           <li key={section} className="relative">
-            {external ? (
-              <a
-                href={external}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={onSelect}
-                className={classes}
-              >
-                {contenu}
-              </a>
-            ) : (
-              <button onClick={() => handleActive(section)} className={classes}>
-                {contenu}
-              </button>
-            )}
+            <button onClick={() => handleActive(section)} className={classes}>
+              {isActive && (
+                <motion.span
+                  layoutId={`nav-pill-${variant}`}
+                  className={`absolute inset-0 bg-primary shadow-sm ${MENU_SHAPE[variant].pill}`}
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  style={{ zIndex: -1 }}
+                />
+              )}
+              <span className="hidden sm:block relative z-10" aria-hidden="true">{icon}</span>
+              <span className="relative z-10">{t(label)}</span>
+            </button>
           </li>
         );
       })}

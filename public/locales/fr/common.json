@@ -8,7 +8,11 @@
     "download_resume": "Télécharger mon CV",
     "open_menu": "Ouvrir le menu",
     "close_menu": "Fermer le menu",
-    "switch_language": "Passer en anglais"
+    "switch_language": "Langue du site",
+    "language": {
+      "fr": "Français",
+      "en": "English"
+    }
   },
   "footer": {
     "phone_aria": "Téléphone de Benjamin Balayre",
@@ -44,7 +48,8 @@
       "projects": "Mes projets"
     },
     "projects_title": "Ce que je construis à côté",
-    "projects_lead": "Mon parcours d’ingénieur a un pendant : une activité indépendante que je mène depuis 2024. J’y conçois des sites et des produits web, j’y photographie des événements, et j’en tire une boutique de tirages en édition limitée."
+    "projects_lead": "Mon parcours d’ingénieur a un pendant : une activité indépendante que je mène depuis 2024. J’y conçois des sites et des produits web, j’y photographie des événements, et j’en tire une boutique de tirages en édition limitée.",
+    "quick_prestation": "Prestations photo & vidéo"
   },
   "associative": {
     "title": "Parcours Associatif",
@@ -208,7 +213,11 @@
       "title": "Parcours associatif · Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone : découvrez l'engagement associatif de Benjamin Balayre durant ses études à l'ISEP."
     },
-    "keywords": "Benjamin Balayre, consultant Strategy & Transformation, Capgemini Invent, data, business intelligence, intelligence artificielle, développeur web freelance, création de site web, application web, ingénieur ISEP, photographe, vidéaste, tirages fine art, Benevolence, ReLive"
+    "keywords": "Benjamin Balayre, consultant Strategy & Transformation, Capgemini Invent, data, business intelligence, intelligence artificielle, développeur web freelance, création de site web, application web, ingénieur ISEP, photographe, vidéaste, tirages fine art, Benevolence, ReLive",
+    "prestation": {
+      "title": "Photo & vidéo · Benjamin Balayre",
+      "description": "Photographe et vidéaste indépendant : événementiel, film de marque, portrait. Présentation courte et accès au site de prestations."
+    }
   },
   "journey": {
     "title": "Parcours en un coup d’œil",
@@ -238,5 +247,32 @@
     "track_associative": "Associatif",
     "legend_association": "Engagement associatif",
     "year_range": "{{from}} à {{to}}"
+  },
+  "prestation": {
+    "eyebrow": "Photo & vidéo",
+    "title": "Photo & vidéo",
+    "lead": "À côté du conseil, je réalise des contenus photo et vidéo pour des événements, des marques et des projets professionnels.",
+    "scroll": "Défiler",
+    "cta": "Voir mes prestations",
+    "offers_eyebrow": "Ce que je fais",
+    "offers_title": "Trois façons de travailler ensemble",
+    "offers_lead": "Je prends le projet en charge de bout en bout : cadrage du besoin, captation, montage et direction artistique.",
+    "offers": {
+      "event": {
+        "title": "Événementiel",
+        "desc": "Soirées, festivals, conférences : reportage photo et aftermovie qui restituent l'énergie de la journée."
+      },
+      "brand": {
+        "title": "Film de marque",
+        "desc": "Présentation d'une équipe, d'un produit ou d'un lieu, de l'écriture au montage final."
+      },
+      "portrait": {
+        "title": "Portrait & création",
+        "desc": "Portraits professionnels, séries personnelles et tirages fine art."
+      }
+    },
+    "cta_eyebrow": "Aller plus loin",
+    "cta_title": "Le détail vit sur le site de prestations",
+    "cta_lead": "Offres, réalisations et demande de devis sont regroupés sur prestation.benevolence.fr. Ce site-ci reste mon CV."
   }
 }
