@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
-type PageKey = "home" | "portfolio" | "associativeCareer";
+type PageKey = "home" | "associativeCareer";
 
 interface MetaHeaderProps {
   page?: PageKey;
