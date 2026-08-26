@@ -3,8 +3,9 @@
 Site CV personnel bilingue (FR/EN) de Benjamin Balayre, déployé en production sur Vercel.
 
 Le volet créatif ne vit **pas** ici : les prestations photo et vidéo ont leur propre site,
-[prestation.benevolence.fr](https://prestation.benevolence.fr). Ce site-ci reste neutre et y renvoie,
-il ne le répète pas.
+[prestation.benevolence.fr](https://prestation.benevolence.fr). Ce site-ci reste neutre. Il en dit
+le minimum sur une page dédiée, `/prestation`, qui pose le contexte et ouvre la porte : offres,
+réalisations et devis restent sur le site de prestations, jamais recopiés ici.
 
 ---
 
@@ -30,6 +31,7 @@ ben-portfolio/
 │   ├── pages/                    # Routes Next.js (Pages Router)
 │   │   ├── index.tsx             # Accueil : héros + 3 chapitres (parcours, image, associatif)
 │   │   ├── associativeCareer.tsx # Parcours associatif : héros, sommaire, 3 chapitres (données)
+│   │   ├── prestation.tsx        # Photo & vidéo : présentation courte, 3 familles, CTA sortant
 │   │   ├── _app.tsx              # Wrapper global (ErrorBoundary, Header, Footer, fonts)
 │   │   └── _document.tsx         # Document HTML custom (lang, favicon)
 │   ├── components/
@@ -250,11 +252,14 @@ Chaque page suit la même partition : héros → chapitres numérotés → foote
 | Route | Chapitres | Ancres |
 |---|---|---|
 | `/` | héros + sommaire → **01** Parcours → **02** Mes projets → **03** Vie associative | `#parcours`, `#projets`, `#associatif` |
+| `/prestation` | héros → **01** Ce que je fais → **02** Le site de prestations | `#prestations`, `#devis` |
 | `/associativeCareer` | héros → sommaire → **01** ISEP Live → **02** Vizion BDE → **03** ISEP Drone | `#engagements`, `#iseplive`, `#vizion`, `#isepdrone` |
 
 Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) puis `JourneyDetail`, deux onglets qui posent Formation et Expérience au même endroit. Les ancres historiques `#education` et `#experience` restent valides : elles sélectionnent l'onglet correspondant.
 
 Le chapitre **02 Mes projets** présente l'activité indépendante : les projets menés à côté (refonte **Seed4Soft**, produit web **ReLive**, boutique **Benevolence**, prestations photo et vidéo). Chaque carte porte son propre lien sortant, le chapitre n'a donc pas de porte de sortie supplémentaire. C'est par la carte « Photo & vidéo » que les visiteurs intéressés rejoignent le site de prestations.
+
+La page `/prestation` tient le même rôle côté navigation : trois familles de prestations en une ligne chacune (`OFFERS` en tête de fichier), puis un bandeau encre qui renvoie vers prestation.benevolence.fr. Elle ne liste ni tarifs ni réalisations : dès qu'un détail y apparaît, il diverge de sa source.
 
 Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leur page. Chaque chapitre de l'accueil se termine ainsi sur une seule porte de sortie.
 
@@ -302,7 +307,7 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 
 ## Ressources externes
 
-- Prestations photo et vidéo : [prestation.benevolence.fr](https://prestation.benevolence.fr) (dépôt local `~/Benevolence-presta`). `/portfolio` de ce site-ci y redirige en 308
+- Prestations photo et vidéo : [prestation.benevolence.fr](https://prestation.benevolence.fr) (dépôt local `~/Benevolence-presta`). `/portfolio` de ce site-ci y redirige en 308, et la page `/prestation` y renvoie
 - Portfolio photo : [portfolio.benevolence.fr](https://portfolio.benevolence.fr) (l'ancienne adresse `benjaminbalayre.myportfolio.com` y redirige)
 - Boutique fine art : [benevolence.fr](https://benevolence.fr)
 - Site en production : [benjamin.balayre.com](https://benjamin.balayre.com)

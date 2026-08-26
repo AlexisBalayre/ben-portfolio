@@ -8,7 +8,11 @@
     "download_resume": "Download Resume",
     "open_menu": "Open menu",
     "close_menu": "Close menu",
-    "switch_language": "Switch to French"
+    "switch_language": "Site language",
+    "language": {
+      "fr": "Français",
+      "en": "English"
+    }
   },
   "footer": {
     "phone_aria": "Benjamin Balayre's phone number",
@@ -44,7 +48,8 @@
       "projects": "My projects"
     },
     "projects_title": "What I build on the side",
-    "projects_lead": "My engineering path has a counterpart: a freelance business I have run since 2024. I design websites and web products, I shoot events, and I turn the results into a limited edition print shop."
+    "projects_lead": "My engineering path has a counterpart: a freelance business I have run since 2024. I design websites and web products, I shoot events, and I turn the results into a limited edition print shop.",
+    "quick_prestation": "Photo & video services"
   },
   "associative": {
     "title": "Associative Experience",
@@ -226,7 +231,11 @@
       "title": "Associative experience · Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone: discover Benjamin Balayre's student associative involvement at ISEP."
     },
-    "keywords": "Benjamin Balayre, Strategy & Transformation consultant, Capgemini Invent, data, business intelligence, artificial intelligence, freelance web developer, website creation, web application, ISEP engineer, photographer, videographer, fine art prints, Benevolence, ReLive"
+    "keywords": "Benjamin Balayre, Strategy & Transformation consultant, Capgemini Invent, data, business intelligence, artificial intelligence, freelance web developer, website creation, web application, ISEP engineer, photographer, videographer, fine art prints, Benevolence, ReLive",
+    "prestation": {
+      "title": "Photo & video · Benjamin Balayre",
+      "description": "Freelance photographer and videographer: events, brand films, portraits. Short introduction and link to the services site."
+    }
   },
   "journey": {
     "title": "The whole journey at a glance",
@@ -256,5 +265,32 @@
     "track_associative": "Student life",
     "legend_association": "Student association",
     "year_range": "{{from}} to {{to}}"
+  },
+  "prestation": {
+    "eyebrow": "Photo & video",
+    "title": "Photo & video",
+    "lead": "Alongside consulting, I create photo and video content for events, brands and professional projects.",
+    "scroll": "Scroll",
+    "cta": "See my services",
+    "offers_eyebrow": "What I do",
+    "offers_title": "Three ways to work together",
+    "offers_lead": "I handle the project end to end: framing the need, shooting, editing and art direction.",
+    "offers": {
+      "event": {
+        "title": "Events",
+        "desc": "Parties, festivals, conferences: photo coverage and an aftermovie that carry the energy of the day."
+      },
+      "brand": {
+        "title": "Brand film",
+        "desc": "Introducing a team, a product or a place, from the script to the final cut."
+      },
+      "portrait": {
+        "title": "Portrait & creation",
+        "desc": "Professional portraits, personal series and fine art prints."
+      }
+    },
+    "cta_eyebrow": "Going further",
+    "cta_title": "The details live on the services site",
+    "cta_lead": "Offers, work and quote requests are all gathered on prestation.benevolence.fr. This site stays my resume."
   }
 }
