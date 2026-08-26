@@ -73,7 +73,7 @@ const JourneyDetail = ({ education, experiences }: JourneyDetailProps) => {
               aria-selected={isActive}
               aria-controls="journey-panel"
               onClick={() => setTrack(id)}
-              className={`relative inline-flex min-h-[40px] items-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors duration-200 sm:px-5 ${
+              className={`relative inline-flex min-h-[44px] items-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors duration-200 sm:px-5 ${
                 isActive ? 'text-white' : 'text-base-content/60 hover:text-base-content'
               }`}
             >
