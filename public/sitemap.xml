@@ -11,13 +11,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://benjamin.balayre.com/portfolio</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://benjamin.balayre.com/portfolio" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://benjamin.balayre.com/en/portfolio" />
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://benjamin.balayre.com/associativeCareer</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://benjamin.balayre.com/associativeCareer" />
     <xhtml:link rel="alternate" hreflang="en" href="https://benjamin.balayre.com/en/associativeCareer" />

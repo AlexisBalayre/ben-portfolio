@@ -1,12 +1,7 @@
 {
-  "hero": {
-    "title": "Portfolio",
-    "subtitle": "Bienvenue sur mon portfolio, un espace dédié à la présentation de mes projets et galeries.",
-    "showreel_button": "Voir le showreel"
-  },
   "header": {
     "about_me": "À propos",
-    "portfolio": "Portfolio",
+    "photo_video": "Photo & vidéo",
     "associative_career": "Parcours Associatif",
     "contact_details": "Contact",
     "role": "Consultant Strategy & Transformation",
@@ -37,21 +32,7 @@
     "education_desc": "Passionné d'innovation et de nouvelles technologies depuis toujours, j'ai choisi de poursuivre un cursus en ingénierie du numérique à l'ISEP.",
     "experience_title": "Expériences",
     "experience_desc": "Mon objectif : consolider mon expertise dans le domaine du numérique, tout en comprenant ses enjeux afin de contribuer activement aux innovations de demain.",
-    "skills_title": "Compétences",
-    "skills_desc": "Aperçu des outils et domaines dans lesquels j'évolue au quotidien, de la création visuelle au développement de produits numériques.",
     "rights_reserved": "Tous droits réservés.",
-    "carousel_title": "Quelques clichés de mes voyages",
-    "latest_project_title": "Mon dernier projet",
-    "latest_project_desc": "Durant mon échange universitaire à Oslo, j'ai passé <1>4 mois en Norvège</1>. Cette vidéo retrace les moments forts et les paysages marquants de cette expérience inoubliable.",
-    "countries": {
-      "egypt": "Égypte",
-      "indonesia": "Indonésie",
-      "japan": "Japon",
-      "brazil": "Brésil",
-      "iceland": "Islande",
-      "norway": "Norvège"
-    },
-    "portfolio_preview_button": "Découvrir le portfolio",
     "associative_preview_title": "Engagement Associatif",
     "associative_preview_desc": "Mon parcours étudiant est profondément marqué par le milieu associatif : le bureau des élèves, le média de l’école dont j’ai pris la présidence, et un club de drone FPV que j’ai contribué à fonder.",
     "associative_preview_button": "Voir mon parcours",
@@ -64,23 +45,6 @@
     },
     "projects_title": "Ce que je construis à côté",
     "projects_lead": "Mon parcours d’ingénieur a un pendant : une activité indépendante que je mène depuis 2024. J’y conçois des sites et des produits web, j’y photographie des événements, et j’en tire une boutique de tirages en édition limitée."
-  },
-  "skills": {
-    "video_editing": {
-      "title": "Montage Vidéo",
-      "description": "Je maîtrise les logiciels de montage de la suite Adobe (Premiere Pro) et Final Cut Pro. J'ai réalisé, monté et étalonné de nombreuses vidéos pour des projets personnels ou d'association.",
-      "imageDescription": "Timeline d'un projet de montage vidéo"
-    },
-    "graphic_design": {
-      "title": "Design Graphique",
-      "description": "A l'aise sur Adobe Illustrator et Photoshop, je crée régulièrement des identités visuelles, des logos, des affiches et des illustrations.",
-      "imageDescription": "Création graphique sur Illustrator"
-    },
-    "photo_editing": {
-      "title": "Retouche Photo",
-      "description": "J'utilise Adobe Lightroom Classic et Photoshop pour le développement et la retouche avancée de mes photographies, avec la création de mes propres presets.",
-      "imageDescription": "Développement photo sur Lightroom"
-    }
   },
   "associative": {
     "title": "Parcours Associatif",
@@ -137,17 +101,6 @@
       "member": "Membre",
       "creative_comm": "Pôle Créa & Com"
     }
-  },
-  "benevolence": {
-    "tagline": "Tirages Fine Art",
-    "title": "Benevolence",
-    "desc": "Des tirages d'art issus de mes voyages, disponibles sur toile, aluminium, acrylique ou papier. Chaque œuvre est produite en édition limitée pour sublimer vos intérieurs.",
-    "button": "Visiter la boutique"
-  },
-  "external_portfolio": {
-    "title": "Portfolio Photo & Vidéo",
-    "description": "Découvrez l'ensemble de mes projets photo et vidéo sur mon site portfolio dédié.",
-    "button": "Accéder au portfolio"
   },
   "experiences": {
     "capgemini_cdi": {
@@ -251,10 +204,6 @@
       "title": "Benjamin Balayre · Consultant Strategy & Transformation",
       "description": "Consultant Strategy & Transformation chez Capgemini Invent sur les sujets data, BI et IA. Développeur web et photographe freelance : parcours, projets et portfolio."
     },
-    "portfolio": {
-      "title": "Portfolio · Benjamin Balayre",
-      "description": "Portfolio photo et vidéo de Benjamin Balayre. Voyages, cinématique, tirages fine art disponibles sur Benevolence."
-    },
     "associativeCareer": {
       "title": "Parcours associatif · Benjamin Balayre",
       "description": "ISEP Live, Vizion BDE, ISEP Drone : découvrez l'engagement associatif de Benjamin Balayre durant ses études à l'ISEP."
@@ -289,13 +238,5 @@
     "track_associative": "Associatif",
     "legend_association": "Engagement associatif",
     "year_range": "{{from}} à {{to}}"
-  },
-  "portfolio": {
-    "chapter": {
-      "hero": "Photo & vidéo",
-      "film": "Dernier film",
-      "skills": "Savoir-faire"
-    },
-    "play_video": "Lancer la vidéo"
   }
 }
