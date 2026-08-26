@@ -41,9 +41,6 @@
     "period": "Depuis juin 2026",
     "nature": "project",
     "track": "projects",
-    "start": "2026-06",
-    "end": "2027-07",
-    "ongoing": true,
     "url": "https://seed4soft.com"
   },
   {
@@ -76,7 +73,8 @@
     "start": "2024-01",
     "end": "2027-07",
     "ongoing": true,
-    "track": "projects"
+    "track": "projects",
+    "url": "https://prestation.benevolence.fr"
   },
   {
     "id": "microsoft",

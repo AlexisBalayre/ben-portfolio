@@ -9,7 +9,6 @@ import { useTranslation } from 'next-i18next';
 import {
   ArrowDownTrayIcon,
   ArrowRightIcon,
-  ArrowUpRightIcon,
   CalendarDaysIcon,
   RocketLaunchIcon,
   UserGroupIcon,
@@ -190,7 +189,10 @@ const Home: NextPage = () => {
         </div>
 
         <Container>
-          <div className="mt-12 flex flex-col items-center gap-5 text-center">
+          {/* Une seule porte de sortie : le portfolio externe se trouve déjà
+              en chapitre 03 de /portfolio et dans le pied de page, le rappeler
+              ici revenait à poser deux fois le même lien l'un sous l'autre. */}
+          <div className="mt-12 flex justify-center">
             <Link href="/portfolio" scroll={false} className={actionClasses('solid')}>
               {t('home.portfolio_preview_button')}
               <ArrowRightIcon
@@ -198,18 +200,6 @@ const Home: NextPage = () => {
                 aria-hidden="true"
               />
             </Link>
-
-            {/* La boutique a déjà sa carte plus haut : seul le portfolio externe
-                mérite un rappel ici, il n'existe sinon que dans le pied de page. */}
-            <a
-              href="https://portfolio.benevolence.fr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={actionClasses('quiet', 'light', 'sm', '!px-0')}
-            >
-              {t('home.quick_portfolio')}
-              <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
-            </a>
           </div>
         </Container>
       </Section>
