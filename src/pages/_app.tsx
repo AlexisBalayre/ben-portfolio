@@ -37,7 +37,7 @@ const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   return (
     <MotionConfig reducedMotion="user">
       <div className={`flex flex-col min-h-screen overflow-x-clip ${jakarta.variable} font-sans`}>
-        <MetaHeader page={(router.pathname.split("/")[1] || "home") as "home" | "portfolio" | "associativeCareer"} />
+        <MetaHeader page={(router.pathname.split("/")[1] || "home") as "home" | "associativeCareer"} />
         <Header />
         <ErrorBoundary>
           <main className="relative flex flex-col flex-1 overflow-x-clip">

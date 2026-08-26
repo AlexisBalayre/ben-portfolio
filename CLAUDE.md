@@ -1,6 +1,10 @@
 # CLAUDE.md · Portfolio Benjamin Balayre
 
-Site CV/portfolio personnel bilingue (FR/EN) de Benjamin Balayre, déployé en production sur Vercel.
+Site CV personnel bilingue (FR/EN) de Benjamin Balayre, déployé en production sur Vercel.
+
+Le volet créatif ne vit **pas** ici : les prestations photo et vidéo ont leur propre site,
+[prestation.benevolence.fr](https://prestation.benevolence.fr). Ce site-ci reste neutre et y renvoie,
+il ne le répète pas.
 
 ---
 
@@ -25,7 +29,6 @@ ben-portfolio/
 ├── src/
 │   ├── pages/                    # Routes Next.js (Pages Router)
 │   │   ├── index.tsx             # Accueil : héros + 3 chapitres (parcours, image, associatif)
-│   │   ├── portfolio.tsx         # Portfolio créatif : héros + 4 chapitres
 │   │   ├── associativeCareer.tsx # Parcours associatif : héros, sommaire, 3 chapitres (données)
 │   │   ├── _app.tsx              # Wrapper global (ErrorBoundary, Header, Footer, fonts)
 │   │   └── _document.tsx         # Document HTML custom (lang, favicon)
@@ -44,13 +47,7 @@ ben-portfolio/
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
 │   │   ├── ProjectCards.tsx      # Les projets menés en indépendant (chapitre 02)
 │   │   ├── AssociativePreview.tsx# Aperçu du parcours associatif sur l'accueil
-│   │   ├── Carousel.tsx          # Bandeau défilant des photos de voyage (sans titre propre)
 │   │   ├── AssoChapter.tsx       # Un engagement associatif, piloté par la donnée
-│   │   ├── LatestProject.tsx     # Dernier film : façade cliquable, YouTube au clic
-│   │   ├── SkillsSection.tsx     # Savoir-faire créatifs
-│   │   ├── SkillCard.tsx         # Carte savoir-faire
-│   │   ├── Projects.tsx          # Bandeau plein écran vers le portfolio externe
-│   │   ├── BenevolenceSection.tsx# Boutique fine art
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
 │   │   ├── MetaHeader.tsx        # Meta tags SEO par page (dont viewport)
 │   │   └── ErrorBoundary.tsx     # Error boundary global
@@ -104,7 +101,7 @@ Deux alias sont définis dans `tsconfig.json` :
 - Chaque page utilise `getStaticProps` avec `serverSideTranslations(locale, ['common'])`
 - Hook : `const { t } = useTranslation('common')`
 - Locale par défaut : **fr**
-- Les URLs sans préfixe sont en français (`/portfolio`), en anglais : `/en/portfolio`
+- Les URLs sans préfixe sont en français (`/associativeCareer`), en anglais : `/en/associativeCareer`
 
 Pour ajouter une clé :
 1. Ajouter dans `public/locales/fr/common.json`
@@ -123,7 +120,6 @@ Tous les contenus dynamiques sont dans `public/assets/data/` :
 | `formation.json` | Formations (Timeline, frise) |
 | `associations.json` | Engagements associatifs (frise, aperçu de l'accueil). Les dates vivent dans `roles[]`, pas au niveau de l'entrée |
 | `projects.json` | Projets vidéo/photo (YouTube embeds) |
-| `skills.json` | Compétences créatives (SkillsSection) |
 | `tech.json` | Compétences tech (carousel dans Header ou autre) |
 
 Modifier ces fichiers suffit pour mettre à jour le contenu, sans toucher aux composants.
@@ -148,7 +144,7 @@ Ajouter une entrée = 1 bloc dans le JSON + les clés `title`, `description`, `p
 
 Le parcours associatif suit le même principe : la liste `ASSOS` en tête de `src/pages/associativeCareer.tsx` décrit les trois engagements (logo, blocs, rôles, liens) et alimente à la fois le sommaire et les chapitres.
 
-`projects.json` et `tech.json` ne sont importés par aucun composant à ce jour (`skills.json` l'est dans `src/pages/portfolio.tsx`). `tech.json` liste encore des compétences blockchain qui ne correspondent à rien de réel : à nettoyer ou supprimer.
+`projects.json` et `tech.json` ne sont importés par aucun composant à ce jour. `tech.json` liste encore des compétences blockchain qui ne correspondent à rien de réel : à nettoyer ou supprimer.
 
 ---
 
@@ -254,12 +250,11 @@ Chaque page suit la même partition : héros → chapitres numérotés → foote
 | Route | Chapitres | Ancres |
 |---|---|---|
 | `/` | héros + sommaire → **01** Parcours → **02** Mes projets → **03** Vie associative | `#parcours`, `#projets`, `#associatif` |
-| `/portfolio` | héros → **01** Dernier film → **02** Savoir-faire → **03** Portfolio complet → **04** Tirages | `#film`, `#savoir-faire`, `#galerie`, `#tirages` |
 | `/associativeCareer` | héros → sommaire → **01** ISEP Live → **02** Vizion BDE → **03** ISEP Drone | `#engagements`, `#iseplive`, `#vizion`, `#isepdrone` |
 
 Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) puis `JourneyDetail`, deux onglets qui posent Formation et Expérience au même endroit. Les ancres historiques `#education` et `#experience` restent valides : elles sélectionnent l'onglet correspondant.
 
-Le chapitre **02 Mes projets** présente l'activité indépendante avant de montrer des images : les projets menés à côté (refonte **Seed4Soft**, produit web **ReLive**, boutique **Benevolence**, prestations photo et vidéo), le bandeau de clichés de voyage, puis l'accès au portfolio. C'est ce chapitre qui fait la transition entre le CV et le portfolio.
+Le chapitre **02 Mes projets** présente l'activité indépendante : les projets menés à côté (refonte **Seed4Soft**, produit web **ReLive**, boutique **Benevolence**, prestations photo et vidéo). Chaque carte porte son propre lien sortant, le chapitre n'a donc pas de porte de sortie supplémentaire. C'est par la carte « Photo & vidéo » que les visiteurs intéressés rejoignent le site de prestations.
 
 Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leur page. Chaque chapitre de l'accueil se termine ainsi sur une seule porte de sortie.
 
@@ -307,6 +302,7 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 
 ## Ressources externes
 
+- Prestations photo et vidéo : [prestation.benevolence.fr](https://prestation.benevolence.fr) (dépôt local `~/Benevolence-presta`). `/portfolio` de ce site-ci y redirige en 308
 - Portfolio photo : [portfolio.benevolence.fr](https://portfolio.benevolence.fr) (l'ancienne adresse `benjaminbalayre.myportfolio.com` y redirige)
 - Boutique fine art : [benevolence.fr](https://benevolence.fr)
 - Site en production : [benjamin.balayre.com](https://benjamin.balayre.com)
