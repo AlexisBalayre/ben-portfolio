@@ -13,7 +13,7 @@ import { LinkedinLogo } from '~~/public/assets/svg/LinkedinLogo';
 import { GithubLogo } from '~~/public/assets/svg/GithubLogo';
 import { InstagramLogo } from '~~/public/assets/svg/InstagramLogo';
 import { YouTubeLogo } from '~~/public/assets/svg/YouTubeLogo';
-import { actionClasses } from '~~/src/components/ui';
+import { Container, actionClasses } from '~~/src/components/ui';
 
 const socials = [
     { href: 'https://www.linkedin.com/in/Benjamin-balayre', label: 'LinkedIn', icon: LinkedinLogo },
@@ -40,7 +40,7 @@ const ColumnTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 const linkClass =
-    'inline-flex min-h-[36px] items-center text-sm text-white/60 transition-colors duration-200 hover:text-white';
+    'inline-flex min-h-[44px] items-center text-sm text-white/60 transition-colors duration-200 hover:text-white';
 
 export const Footer = () => {
     const { t } = useTranslation('common');
@@ -57,7 +57,8 @@ export const Footer = () => {
         <footer className="bg-secondary text-white/60" id="contact">
             <div aria-hidden="true" className="h-px w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
 
-            <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+            <div className="py-12 sm:py-16">
+              <Container>
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
                     {/* Identité */}
                     <div className="lg:col-span-2 lg:pr-8">
@@ -125,7 +126,7 @@ export const Footer = () => {
                                 <PhoneIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
                                 07 82 34 76 44
                             </a>
-                            <p className="inline-flex min-h-[36px] items-center gap-2 text-sm text-white/50">
+                            <p className="inline-flex min-h-[44px] items-center gap-2 text-sm text-white/50">
                                 <MapPinIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
                                 {t('footer.location')}
                             </p>
@@ -160,12 +161,13 @@ export const Footer = () => {
                     <button
                         type="button"
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        className="inline-flex min-h-[36px] items-center gap-1.5 text-xs font-semibold text-white/40 transition-colors duration-200 hover:text-white"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-semibold text-white/40 transition-colors duration-200 hover:text-white"
                     >
                         <ArrowUpIcon className="h-3.5 w-3.5" aria-hidden="true" />
                         {t('footer.back_to_top')}
                     </button>
                 </div>
+              </Container>
             </div>
         </footer>
     );

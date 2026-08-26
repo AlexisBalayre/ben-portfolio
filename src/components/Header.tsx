@@ -29,7 +29,25 @@ export const menuLinks: HeaderMenuLink[] = [
   { label: "header.contact_details",    section: "contact",         icon: <EnvelopeIcon className="h-4 w-4" /> },
 ];
 
-export const HeaderMenuLinks = ({ onSelect }: { onSelect?: () => void }) => {
+/**
+ * `bar` : la nav horizontale du desktop, entrées en pastilles.
+ * `drawer` : le tiroir mobile, où chaque entrée prend toute la ligne pour
+ * offrir une cible atteignable au doigt.
+ */
+type MenuVariant = 'bar' | 'drawer';
+
+const MENU_SHAPE: Record<MenuVariant, { button: string; pill: string }> = {
+  bar: { button: 'min-h-[44px] rounded-full px-3', pill: 'rounded-full' },
+  drawer: { button: 'w-full min-h-[44px] rounded-xl px-3', pill: 'rounded-xl' },
+};
+
+export const HeaderMenuLinks = ({
+  onSelect,
+  variant = 'bar',
+}: {
+  onSelect?: () => void;
+  variant?: MenuVariant;
+}) => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const [activeSection, setActiveSection] = useState('aboutMe');
@@ -64,7 +82,9 @@ export const HeaderMenuLinks = ({ onSelect }: { onSelect?: () => void }) => {
           <li key={section} className="relative">
             <button
               onClick={() => handleActive(section)}
-              className={`relative flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full transition-colors duration-200 z-10 ${
+              className={`relative z-10 flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${
+                MENU_SHAPE[variant].button
+              } ${
                 isActive
                   ? "text-white"
                   : "text-base-content/70 hover:text-base-content"
@@ -72,8 +92,8 @@ export const HeaderMenuLinks = ({ onSelect }: { onSelect?: () => void }) => {
             >
               {isActive && (
                 <motion.span
-                  layoutId="nav-pill"
-                  className="absolute inset-0 bg-primary rounded-full shadow-sm"
+                  layoutId={`nav-pill-${variant}`}
+                  className={`absolute inset-0 bg-primary shadow-sm ${MENU_SHAPE[variant].pill}`}
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   style={{ zIndex: -1 }}
                 />
@@ -99,17 +119,21 @@ export const Header = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-30 border-b border-base-300/70 bg-base-100/85 backdrop-blur-md">
-      <div className="mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6">
 
-        {/* Gauche : logo et navigation */}
-        <div className="flex items-center gap-4">
+        {/* Gauche : logo et navigation. `min-w-0` rend le groupe compressible :
+            c'est lui qui cède si la place manque, jamais le bouton CV. */}
+        <div className="flex min-w-0 items-center gap-2 sm:gap-4">
           {/* Mobile burger */}
-          <div className="lg:hidden relative" ref={burgerMenuRef}>
+          {/* La marge négative laisse la cible de 44 px mordre sur la gouttière :
+              l'icône reste alignée sur la colonne de texte et la place
+              économisée revient au nom, qui n'a plus à être tronqué. */}
+          <div className="relative -ml-2 shrink-0 lg:hidden" ref={burgerMenuRef}>
             <button
               aria-label={isDrawerOpen ? t('header.close_menu') : t('header.open_menu')}
               aria-expanded={isDrawerOpen}
               onClick={() => setIsDrawerOpen(v => !v)}
-              className="p-2 rounded-lg text-base-content/70 hover:text-base-content hover:bg-base-200 transition-colors"
+              className="grid h-11 w-11 place-items-center rounded-xl text-base-content/70 transition-colors hover:bg-base-200 hover:text-base-content"
             >
               {isDrawerOpen
                 ? <XMarkIcon className="h-5 w-5" aria-hidden="true" />
@@ -126,7 +150,7 @@ export const Header = () => {
                   transition={{ duration: 0.18, ease: 'easeOut' }}
                   className="absolute left-0 top-full mt-2 flex w-56 max-w-[calc(100vw-2rem)] flex-col gap-1 rounded-2xl border border-base-300 bg-base-100 p-2 shadow-xl"
                 >
-                  <HeaderMenuLinks onSelect={() => setIsDrawerOpen(false)} />
+                  <HeaderMenuLinks variant="drawer" onSelect={() => setIsDrawerOpen(false)} />
                 </motion.ul>
               )}
             </AnimatePresence>
@@ -136,16 +160,16 @@ export const Header = () => {
           <Link
             href="/"
             scroll={false}
-            className="flex flex-col leading-none hover:opacity-80 transition-opacity"
+            className="flex min-h-[44px] min-w-0 flex-col justify-center leading-none transition-opacity hover:opacity-80"
           >
-            <span className="whitespace-nowrap text-xs font-bold tracking-tight sm:text-sm">Benjamin Balayre</span>
-            <span className="hidden whitespace-nowrap text-[11px] font-normal text-base-content/50 sm:block">
+            <span className="truncate text-xs font-bold tracking-tight sm:text-sm">Benjamin Balayre</span>
+            <span className="hidden truncate text-[11px] font-normal text-base-content/50 sm:block">
               {t('header.role')}
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:block">
+          <nav className="hidden shrink-0 lg:block">
             <ul className="flex items-center gap-1">
               <HeaderMenuLinks />
             </ul>
@@ -153,7 +177,7 @@ export const Header = () => {
         </div>
 
         {/* Droite : langue et CV */}
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           <a
             href={`/assets/documents/${cvFile}`}

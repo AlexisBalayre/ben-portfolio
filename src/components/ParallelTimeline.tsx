@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -110,9 +110,25 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
     // Calculé après le montage : le rendu statique ne doit pas dépendre de la date.
     const [todayMonth, setTodayMonth] = useState<number | null>(null);
 
+    const scrollerRef = useRef<HTMLDivElement>(null);
+    // Le débordement est mesuré, pas déduit d'un point de rupture : la frise est
+    // plus large que la colonne de texte et défile encore sur bien des écrans.
+    const [overflows, setOverflows] = useState(false);
+    const openedOnToday = useRef(false);
+
     useEffect(() => {
         const now = new Date();
         setTodayMonth(now.getFullYear() * 12 + now.getMonth());
+    }, []);
+
+    useEffect(() => {
+        const scroller = scrollerRef.current;
+        if (!scroller) return;
+        const measure = () => setOverflows(scroller.scrollWidth > scroller.clientWidth + 1);
+        measure();
+        const observer = new ResizeObserver(measure);
+        observer.observe(scroller);
+        return () => observer.disconnect();
     }, []);
 
     const { tracks, ticks, axisStart, span } = useMemo(() => {
@@ -239,6 +255,17 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
     const todayLeft = todayMonth !== null ? left(todayMonth) : null;
     const showToday = todayLeft !== null && todayLeft >= 0 && todayLeft <= 100;
 
+    // La frise s'ouvre sur la période courante. Sur un écran étroit la fenêtre
+    // visible ne couvre qu'une fraction de l'axe : démarrer à gauche laisserait
+    // les voies Expérience, Projets et Stages vides, sans rien à lire.
+    useEffect(() => {
+        const scroller = scrollerRef.current;
+        if (!scroller || !overflows || todayLeft === null || openedOnToday.current) return;
+        openedOnToday.current = true;
+        const target = (todayLeft / 100) * scroller.scrollWidth - scroller.clientWidth * 0.72;
+        scroller.scrollLeft = Math.max(0, Math.min(target, scroller.scrollWidth - scroller.clientWidth));
+    }, [overflows, todayLeft]);
+
     const renderBar = (bar: Bar) => {
         const isSelected = selected?.key === bar.key;
         return (
@@ -305,9 +332,11 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
                 </span>
             </div>
 
-            <p className="mb-3 text-xs text-base-content/50 xl:hidden">{t('journey.scroll_hint')}</p>
+            {overflows && (
+                <p className="mb-3 text-xs text-base-content/50">{t('journey.scroll_hint')}</p>
+            )}
 
-            <div className="overflow-x-auto overflow-y-hidden overscroll-x-contain pb-3">
+            <div ref={scrollerRef} className="overflow-x-auto overflow-y-hidden overscroll-x-contain pb-3">
                 <div className="relative min-w-[1024px]">
                     {/* Repères des années */}
                     <div aria-hidden="true" className="pointer-events-none absolute inset-0 top-6">

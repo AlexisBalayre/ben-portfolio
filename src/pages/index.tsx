@@ -135,20 +135,29 @@ const Home: NextPage = () => {
       </section>
 
       {/* ── 01 · Parcours ─────────────────────────────────────── */}
-      <Section id="parcours" tone="mist" size="lg">
-        <SectionHeading
-          index="01"
-          eyebrow={t('home.chapter.journey')}
-          icon={<CalendarDaysIcon className="h-4 w-4" />}
-          title={t('journey.title')}
-          lead={t('journey.subtitle')}
-        />
+      <Section id="parcours" tone="mist" size="lg" contained={false}>
+        <Container>
+          <SectionHeading
+            index="01"
+            eyebrow={t('home.chapter.journey')}
+            icon={<CalendarDaysIcon className="h-4 w-4" />}
+            title={t('journey.title')}
+            lead={t('journey.subtitle')}
+          />
+        </Container>
 
-        <div className="mt-12 rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm sm:p-6">
-          <ParallelTimeline education={education} experiences={experiences} associations={associations} />
+        {/* La frise porte cinq années sur quatre voies : elle demande plus de
+            large que la colonne de texte. Même gouttière, colonne plus large,
+            pour qu'elle tienne entière au lieu d'être rognée sur tout desktop. */}
+        <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+          <div className="mt-12 rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm sm:p-6">
+            <ParallelTimeline education={education} experiences={experiences} associations={associations} />
+          </div>
         </div>
 
-        <JourneyDetail education={education} experiences={timelineExperiences} />
+        <Container>
+          <JourneyDetail education={education} experiences={timelineExperiences} />
+        </Container>
       </Section>
 
       {/* ── 02 · Mes projets ──────────────────────────────────── */}

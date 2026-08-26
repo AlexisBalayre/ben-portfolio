@@ -55,35 +55,40 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
     const exchanges = item.exchanges ?? [];
 
     return (
-        <motion.li
-            custom={index}
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="mb-10 ml-4 sm:ml-6 relative"
-        >
-            {/* Dot on the line */}
-            <motion.span
-                className="absolute flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full -left-10 sm:-left-12 z-10"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 + 0.15, ease: [0.34, 1.56, 0.64, 1] }}
-                viewport={{ once: true }}
-            >
-                <Image
-                    className="rounded-full shadow-lg object-cover"
-                    src={`/assets/images/${item.logo}`}
-                    alt={t(`${translationPrefix}.${item.id}.title`)}
-                    width={48}
-                    height={48}
-                />
-            </motion.span>
+        <li className="relative mb-10">
+            {/* Pastille posée sur le rail : `left-0` vise le rail et la translation
+                de moitié l'y centre. Le placement vit sur l'enveloppe, l'animation
+                sur l'élément intérieur : sinon le `scale` de Framer écraserait
+                cette translation et la pastille repartirait de travers. */}
+            <span className="absolute left-0 z-10 -translate-x-1/2">
+                <motion.span
+                    className="flex h-10 w-10 items-center justify-center rounded-full sm:h-12 sm:w-12"
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + 0.15, ease: [0.34, 1.56, 0.64, 1] }}
+                    viewport={{ once: true }}
+                >
+                    <Image
+                        className="h-full w-full rounded-full object-cover shadow-lg"
+                        src={`/assets/images/${item.logo}`}
+                        alt={t(`${translationPrefix}.${item.id}.title`)}
+                        width={48}
+                        height={48}
+                    />
+                </motion.span>
+            </span>
 
+            {/* Seule la carte glisse à l'entrée. Quand toute l'entrée glissait, la
+                pastille sortait de l'écran le temps de l'animation sur mobile. */}
             <motion.div
+                custom={index}
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="ml-6 sm:ml-8 max-w-3xl rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm transition-shadow duration-300 hover:shadow-xl sm:p-6"
+                className="ml-7 max-w-3xl rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm transition-shadow duration-300 hover:shadow-xl sm:ml-9 sm:p-6"
             >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
                     <h3 className="text-base sm:text-xl font-bold text-base-content">
@@ -126,7 +131,7 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                                                     )}
                                                     {t(`${translationPrefix}.${exchange.id}.title`)}
                                                 </p>
-                                                <span className="whitespace-nowrap text-[11px] font-semibold text-primary">
+                                                <span className="text-[11px] font-semibold text-primary sm:whitespace-nowrap">
                                                     {t(`${translationPrefix}.${exchange.id}.period`)}
                                                 </span>
                                             </div>
@@ -172,7 +177,7 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                     onClick={() => setExpanded(!expanded)}
                     aria-expanded={expanded}
                     aria-label={expanded ? t('timeline.show_less') : t('timeline.read_more')}
-                    className="inline-flex min-h-[36px] items-center text-sm font-semibold text-primary transition-colors hover:text-accent"
+                    className="inline-flex min-h-[44px] items-center text-sm font-semibold text-primary transition-colors hover:text-accent"
                 >
                     {expanded ? t('timeline.show_less') : t('timeline.read_more')}
                     <svg
@@ -186,7 +191,7 @@ const TimelineItem = ({ item, index, translationPrefix }: TimelineItemProps) => 
                     </svg>
                 </button>
             </motion.div>
-        </motion.li>
+        </li>
     );
 };
 
@@ -197,7 +202,7 @@ interface TimelineProps {
 
 const Timeline = ({ items, translationPrefix = 'formation' }: TimelineProps) => {
     return (
-        <ol className="relative mt-10 ml-4 sm:ml-6 space-y-10">
+        <ol className="relative mt-10 ml-5 space-y-10 sm:ml-6">
             {/* Animated vertical line */}
             <motion.div
                 className="absolute bottom-0 left-0 top-0 w-0.5 origin-top bg-primary/15"

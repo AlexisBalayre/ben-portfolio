@@ -62,7 +62,7 @@ const AssociativePreview = ({ associations }: { associations: JourneyItem[] }) =
           </Link>
         </div>
 
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg sm:aspect-[16/10] lg:aspect-[4/5]">
           <Image
             src="/assets/images/portfolio/asso2.jpg"
             alt=""

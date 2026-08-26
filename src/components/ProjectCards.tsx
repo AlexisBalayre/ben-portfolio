@@ -67,7 +67,7 @@ const ProjectCards = ({ projects }: { projects: JourneyItem[] }) => {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mt-5 inline-flex items-center gap-1.5 self-start border-t border-base-200 pt-4 text-sm font-semibold text-primary transition-colors duration-200 hover:text-accent"
+                className="group mt-5 inline-flex min-h-[44px] items-center gap-1.5 self-start border-t border-base-200 pt-4 text-sm font-semibold text-primary transition-colors duration-200 hover:text-accent"
               >
                 {hostOf(project.url)}
                 <ArrowUpRightIcon
