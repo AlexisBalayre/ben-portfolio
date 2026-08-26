@@ -11,25 +11,28 @@ const LanguageSwitcher = () => {
     router.push(router.pathname, router.asPath, { locale: newLocale });
   };
 
+  // La cible fait 44 px de haut, la pastille en garde 36 : le doigt vise large
+  // sans que le commutateur grossisse dans un header de 56 px.
   return (
     <button
       onClick={changeLanguage}
       aria-label={t('header.switch_language')}
-      className={`
-        relative w-16 h-9 rounded-full p-1 cursor-pointer transition-colors duration-300 min-h-[36px]
-        ${isEnglish ? 'bg-primary' : 'bg-neutral'}
-      `}
+      className="grid h-11 cursor-pointer place-items-center rounded-full"
     >
-      <div
-        className={`
-          w-7 h-7 bg-base-100 rounded-full shadow-md flex items-center justify-center text-sm
-          transform transition-transform duration-300
-          ${isEnglish ? 'translate-x-[30px]' : 'translate-x-0'}
-        `}
-        aria-hidden="true"
+      <span
+        className={`relative block h-9 w-14 rounded-full p-1 transition-colors duration-300 sm:w-16 ${
+          isEnglish ? 'bg-primary' : 'bg-neutral'
+        }`}
       >
-        {isEnglish ? '🇬🇧' : '🇫🇷'}
-      </div>
+        <span
+          className={`flex h-7 w-7 items-center justify-center rounded-full bg-base-100 text-sm shadow-md transition-transform duration-300 ${
+            isEnglish ? 'translate-x-5 sm:translate-x-7' : 'translate-x-0'
+          }`}
+          aria-hidden="true"
+        >
+          {isEnglish ? '🇬🇧' : '🇫🇷'}
+        </span>
+      </span>
     </button>
   );
 };

@@ -15,7 +15,7 @@ const BASE =
 
 const SIZE: Record<ActionSize, string> = {
   md: 'min-h-[44px] px-6 text-sm',
-  sm: 'min-h-[38px] px-4 text-xs',
+  sm: 'min-h-[44px] px-4 text-xs',
 };
 
 const STYLE: Record<ActionTone, Record<ActionVariant, string>> = {
