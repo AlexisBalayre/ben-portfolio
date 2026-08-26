@@ -5,7 +5,7 @@ import { MetaHeader } from "~~/src/components/MetaHeader";
 import { Footer } from "~~/src/components/Footer";
 import ErrorBoundary from "~~/src/components/ErrorBoundary";
 import localFont from 'next/font/local';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import { appWithTranslation } from 'next-i18next';
@@ -35,34 +35,36 @@ const curtainVariants = {
 const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   return (
-    <div className={`flex flex-col min-h-screen overflow-x-clip ${jakarta.variable} font-sans`}>
-      <MetaHeader page={(router.pathname.split("/")[1] || "home") as "home" | "portfolio" | "associativeCareer"} />
-      <Header />
-      <ErrorBoundary>
-        <main className="relative flex flex-col flex-1 overflow-x-clip">
-          <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
-            <motion.div
-              key={router.route}
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="flex-1 flex flex-col"
-            >
-              {/* Rideau de transition */}
+    <MotionConfig reducedMotion="user">
+      <div className={`flex flex-col min-h-screen overflow-x-clip ${jakarta.variable} font-sans`}>
+        <MetaHeader page={(router.pathname.split("/")[1] || "home") as "home" | "portfolio" | "associativeCareer"} />
+        <Header />
+        <ErrorBoundary>
+          <main className="relative flex flex-col flex-1 overflow-x-clip">
+            <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
               <motion.div
-                className="fixed inset-0 z-[100] bg-primary pointer-events-none"
-                variants={curtainVariants}
+                key={router.route}
+                variants={pageVariants}
                 initial="initial"
-                animate="exit"
-              />
-              <Component {...pageProps} />
-            </motion.div>
-          </AnimatePresence>
-        </main>
-      </ErrorBoundary>
-      <Footer />
-    </div>
+                animate="animate"
+                exit="exit"
+                className="flex-1 flex flex-col"
+              >
+                {/* Rideau de transition */}
+                <motion.div
+                  className="fixed inset-0 z-[100] bg-primary pointer-events-none"
+                  variants={curtainVariants}
+                  initial="initial"
+                  animate="exit"
+                />
+                <Component {...pageProps} />
+              </motion.div>
+            </AnimatePresence>
+          </main>
+        </ErrorBoundary>
+        <Footer />
+      </div>
+    </MotionConfig>
   );
 };
 
