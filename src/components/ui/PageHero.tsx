@@ -4,26 +4,35 @@ import { motion } from 'framer-motion';
 import { EASE } from './motion';
 
 /**
- * Titre animé mot à mot. Les mots sont séparés par des marges, pas par des
- * espaces : on double le rendu d'une version lisible pour les lecteurs d'écran
- * et les moteurs de recherche, sans quoi le titre se lit « ParcoursAssociatif ».
+ * Titre animé mot à mot. Les mots sont séparés par de **vrais espaces**, pas
+ * par des marges : le titre s'extrait correctement du HTML, sans quoi il se
+ * lit « ParcoursAssociatif ». C'est ce qui permet de n'écrire le titre qu'une
+ * fois. Il était auparavant rendu deux fois, une version lisible doublée d'une
+ * version animée masquée, et les moteurs qui n'exécutent pas de JavaScript,
+ * dont la plupart des robots d'IA, lisaient le tout collé et en double.
  */
-const SplitText = ({ text }: { text: string }) => (
-  <span aria-hidden="true">
-    {text.split(' ').map((word, i) => (
-      <span key={i} className="mr-[0.25em] inline-block overflow-hidden last:mr-0">
-        <motion.span
-          className="inline-block"
-          initial={{ y: '110%', opacity: 0 }}
-          animate={{ y: '0%', opacity: 1 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.1 + i * 0.08 }}
-        >
-          {word}
-        </motion.span>
-      </span>
-    ))}
-  </span>
-);
+const SplitText = ({ text }: { text: string }) => {
+  const words = text.split(' ');
+  return (
+    <>
+      {words.map((word, i) => (
+        <React.Fragment key={i}>
+          <span className="inline-block overflow-hidden">
+            <motion.span
+              className="inline-block"
+              initial={{ y: '110%', opacity: 0 }}
+              animate={{ y: '0%', opacity: 1 }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.1 + i * 0.08 }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {i < words.length - 1 ? ' ' : null}
+        </React.Fragment>
+      ))}
+    </>
+  );
+};
 
 interface PageHeroProps {
   image: string;
@@ -64,7 +73,6 @@ export const PageHero = ({ image, eyebrow, title, lead, scrollLabel, children }:
       </motion.p>
 
       <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-        <span className="sr-only">{title}</span>
         <SplitText text={title} />
       </h1>
 
