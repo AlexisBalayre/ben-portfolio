@@ -30,15 +30,33 @@ export const menuLinks: HeaderMenuLink[] = [
 ];
 
 /**
- * `bar` : la nav horizontale du desktop, entrées en pastilles.
+ * `bar` : la nav horizontale du desktop. L'entrée courante est signalée par un
+ * filet accent sous le mot, pas par une pastille pleine : le header reste une
+ * ligne de texte, comme le reste de la page.
  * `drawer` : le tiroir mobile, où chaque entrée prend toute la ligne pour
- * offrir une cible atteignable au doigt.
+ * offrir une cible atteignable au doigt. Là, la pastille pleine se justifie :
+ * c'est une liste, pas une ligne.
  */
 type MenuVariant = 'bar' | 'drawer';
 
-const MENU_SHAPE: Record<MenuVariant, { button: string; pill: string }> = {
-  bar: { button: 'min-h-[44px] rounded-full px-3', pill: 'rounded-full' },
-  drawer: { button: 'w-full min-h-[44px] rounded-xl px-3', pill: 'rounded-xl' },
+const MENU_SHAPE: Record<
+  MenuVariant,
+  { button: string; indicator: string; active: string; idle: string; showIcon: boolean }
+> = {
+  bar: {
+    button: 'h-9 px-3',
+    indicator: 'absolute inset-x-3 bottom-0 h-[2px] rounded-full bg-accent',
+    active: 'font-semibold text-base-content',
+    idle: 'text-base-content/55 hover:text-base-content',
+    showIcon: false,
+  },
+  drawer: {
+    button: 'w-full min-h-[44px] rounded-xl px-3',
+    indicator: 'absolute inset-0 rounded-xl bg-primary shadow-sm',
+    active: 'font-semibold text-white',
+    idle: 'text-base-content/70 hover:bg-base-200 hover:text-base-content',
+    showIcon: true,
+  },
 };
 
 export const HeaderMenuLinks = ({
@@ -78,23 +96,26 @@ export const HeaderMenuLinks = ({
       {menuLinks.map(({ label, section, icon }) => {
         const key = section || 'aboutMe';
         const isActive = activeSection === key;
-        const classes = `relative z-10 flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${
-          MENU_SHAPE[variant].button
-        } ${
-          isActive ? "text-white" : "text-base-content/70 hover:text-base-content"
-        }`;
+        const shape = MENU_SHAPE[variant];
+        const classes = `relative z-10 flex items-center gap-2 text-sm transition-colors duration-200 ${
+          shape.button
+        } ${isActive ? shape.active : shape.idle}`;
         return (
           <li key={section} className="relative">
             <button onClick={() => handleActive(section)} className={classes}>
               {isActive && (
                 <motion.span
-                  layoutId={`nav-pill-${variant}`}
-                  className={`absolute inset-0 bg-primary shadow-sm ${MENU_SHAPE[variant].pill}`}
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  layoutId={`nav-indicator-${variant}`}
+                  className={shape.indicator}
+                  transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                   style={{ zIndex: -1 }}
                 />
               )}
-              <span className="hidden sm:block relative z-10" aria-hidden="true">{icon}</span>
+              {shape.showIcon && (
+                <span className="relative z-10" aria-hidden="true">
+                  {icon}
+                </span>
+              )}
               <span className="relative z-10">{t(label)}</span>
             </button>
           </li>
@@ -113,13 +134,32 @@ export const Header = () => {
   const burgerMenuRef = useRef<HTMLDivElement>(null!);
   useOutsideClick(burgerMenuRef, useCallback(() => setIsDrawerOpen(false), []));
 
-  return (
-    <header className="fixed inset-x-0 top-0 z-30 border-b border-base-300/70 bg-base-100/85 backdrop-blur-md">
-      <div className="mx-auto flex h-[var(--header-h)] max-w-7xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6">
+  // Tant que la page est en haut, le header ne pose aucun filet : il se
+  // confond avec le héros. Le filet et l'ombre n'apparaissent qu'au décollage,
+  // quand il faut séparer la barre du contenu qui passe dessous.
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-        {/* Gauche : logo et navigation. `min-w-0` rend le groupe compressible :
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-30 border-b bg-base-100/85 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ${
+        isScrolled ? 'border-base-300/70 shadow-sm' : 'border-transparent'
+      }`}
+    >
+      {/* Le header occupe toute la largeur de l'écran, sans colonne centrale :
+          l'identité se cale à gauche, la nav au centre, langue et CV à droite.
+          Les deux groupes latéraux partagent `flex-1`, ce qui centre la nav sur
+          l'écran et non sur la place qui reste. */}
+      <div className="flex h-[var(--header-h)] w-full items-center gap-4 px-4 sm:px-6 lg:gap-8 lg:px-10">
+
+        {/* Gauche : burger et identité. `min-w-0` rend le groupe compressible :
             c'est lui qui cède si la place manque, jamais le bouton CV. */}
-        <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-4">
           {/* Mobile burger */}
           {/* La marge négative laisse la cible de 44 px mordre sur la gouttière :
               l'icône reste alignée sur la colonne de texte et la place
@@ -159,21 +199,29 @@ export const Header = () => {
             className="flex min-h-[44px] min-w-0 flex-col justify-center leading-none transition-opacity hover:opacity-80"
           >
             <span className="truncate text-xs font-bold tracking-tight sm:text-sm">Benjamin Balayre</span>
-            <span className="hidden truncate text-[11px] font-normal text-base-content/50 sm:block">
+            {/* Le métier ne s'affiche qu'à partir de `xl`, la seule largeur où
+                il tient en entier : mieux vaut pas de surtitre qu'un surtitre
+                coupé au milieu d'un mot. `truncate` reste le garde-fou si le
+                libellé s'allonge un jour. */}
+            <span className="mt-1 hidden truncate text-[10px] font-bold uppercase tracking-eyebrow text-base-content/40 xl:block">
               {t('header.role')}
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden shrink-0 lg:block">
-            <ul className="flex items-center gap-1">
-              <HeaderMenuLinks />
-            </ul>
-          </nav>
         </div>
 
+        {/* Centre : navigation */}
+        <nav className="hidden shrink-0 lg:block">
+          <ul className="flex items-center gap-2">
+            <HeaderMenuLinks />
+          </ul>
+        </nav>
+
         {/* Droite : langue et CV */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        {/* `flex-1` seulement à partir de `lg` : c'est là qu'il y a une nav à
+            centrer. En dessous, le groupe ne prend que sa place et laisse tout
+            le reste à l'identité, qui n'a donc pas à se tronquer. */}
+        <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3 lg:flex-1">
           <LanguageSwitcher />
           <a
             href={`/assets/documents/${cvFile}`}
