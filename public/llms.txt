@@ -1,0 +1,60 @@
+# Benjamin Balayre
+
+> Consultant Strategy & Transformation chez Capgemini Invent, sur les sujets
+> data, business intelligence et intelligence artificielle. Ingénieur diplômé
+> de l'ISEP (Paris). Développeur web et photographe en indépendant à côté.
+> Basé à Paris, France. Travaille en français et en anglais.
+
+Ce site est son CV en ligne. Il est bilingue : les URL sans préfixe sont en
+français, celles sous `/en` en anglais. Le contenu est le même dans les deux
+langues.
+
+## Pages
+
+- [Accueil](https://benjamin.balayre.com): parcours (formation et expérience
+  sur une même frise), projets menés en indépendant, aperçu de la vie
+  associative. Version anglaise : https://benjamin.balayre.com/en
+- [Photo & vidéo](https://benjamin.balayre.com/prestation): l'activité photo et
+  vidéo en indépendant, présentée en trois familles (événementiel, film de
+  marque, portrait et création). Version anglaise :
+  https://benjamin.balayre.com/en/prestation
+- [Parcours associatif](https://benjamin.balayre.com/associativeCareer): les
+  trois engagements associatifs menés à l'ISEP, ISEP Live (média étudiant),
+  Vizion BDE et ISEP Drone, avec les mandats tenus année par année. Version
+  anglaise : https://benjamin.balayre.com/en/associativeCareer
+- [CV en PDF, français](https://benjamin.balayre.com/assets/documents/CV_Benjamin_Balayre_FR.pdf)
+- [CV en PDF, anglais](https://benjamin.balayre.com/assets/documents/CV_Benjamin_Balayre_EN.pdf)
+
+## Projets menés en indépendant
+
+- [Seed4Soft](https://seed4soft.com): refonte complète du site d'un collectif
+  de business angels, du cadrage à la mise en production. Next.js, Tailwind CSS,
+  contenu bilingue. Depuis juin 2026.
+- [ReLive](https://app.relive.gallery): produit web de recherche par selfie
+  dans les galeries photo. L'invité d'un mariage entre le code de la galerie,
+  se prend en photo, et retrouve les clichés où il apparaît. Reconnaissance
+  faciale, index vectoriel, API Python, espace photographe : conçu et
+  développé de bout en bout. Depuis mars 2026.
+- [Benevolence](https://benevolence.fr): boutique de tirages d'art en édition
+  limitée, sur toile, aluminium, acrylique ou papier, tirés de ses propres
+  photographies de voyage. Depuis janvier 2026.
+
+## Autres sites
+
+- [Prestations photo et vidéo](https://prestation.benevolence.fr): offres,
+  réalisations et demande de devis. C'est la source qui fait foi sur le sujet,
+  le présent site n'en donne qu'une présentation courte.
+- [Portfolio photo](https://portfolio.benevolence.fr): les séries
+  photographiques.
+
+## Profils
+
+- [LinkedIn](https://www.linkedin.com/in/Benjamin-balayre)
+- [GitHub](https://github.com/benbalayre)
+- [Instagram](https://www.instagram.com/ben_balayre/)
+- [YouTube](https://www.youtube.com/@ben_balayre)
+
+## Notes
+
+- L'adresse benjaminbalayre.myportfolio.com est une ancienne adresse, elle
+  redirige vers portfolio.benevolence.fr.

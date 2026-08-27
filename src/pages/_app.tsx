@@ -1,7 +1,7 @@
 import "~~/src/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Header } from "~~/src/components/Header";
-import { MetaHeader } from "~~/src/components/MetaHeader";
+import { MetaHeader, type PageKey } from "~~/src/components/MetaHeader";
 import { Footer } from "~~/src/components/Footer";
 import ErrorBoundary from "~~/src/components/ErrorBoundary";
 import localFont from 'next/font/local';
@@ -37,7 +37,7 @@ const PortfolioWebApp = ({ Component, pageProps }: AppProps) => {
   return (
     <MotionConfig reducedMotion="user">
       <div className={`flex flex-col min-h-screen overflow-x-clip ${jakarta.variable} font-sans`}>
-        <MetaHeader page={(router.pathname.split("/")[1] || "home") as "home" | "associativeCareer"} />
+        <MetaHeader page={(router.pathname.split("/")[1] || "home") as PageKey} />
         <Header />
         <ErrorBoundary>
           <main className="relative flex flex-col flex-1 overflow-x-clip">

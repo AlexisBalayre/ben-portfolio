@@ -3,8 +3,9 @@
 Site CV personnel bilingue (FR/EN) de Benjamin Balayre, déployé en production sur Vercel.
 
 Le volet créatif ne vit **pas** ici : les prestations photo et vidéo ont leur propre site,
-[prestation.benevolence.fr](https://prestation.benevolence.fr). Ce site-ci reste neutre et y renvoie,
-il ne le répète pas.
+[prestation.benevolence.fr](https://prestation.benevolence.fr). Ce site-ci reste neutre. Il en dit
+le minimum sur une page dédiée, `/prestation`, qui pose le contexte et ouvre la porte : offres,
+réalisations et devis restent sur le site de prestations, jamais recopiés ici.
 
 ---
 
@@ -30,6 +31,7 @@ ben-portfolio/
 │   ├── pages/                    # Routes Next.js (Pages Router)
 │   │   ├── index.tsx             # Accueil : héros + 3 chapitres (parcours, image, associatif)
 │   │   ├── associativeCareer.tsx # Parcours associatif : héros, sommaire, 3 chapitres (données)
+│   │   ├── prestation.tsx        # Photo & vidéo : présentation courte, 3 familles, CTA sortant
 │   │   ├── _app.tsx              # Wrapper global (ErrorBoundary, Header, Footer, fonts)
 │   │   └── _document.tsx         # Document HTML custom (lang, favicon)
 │   ├── components/
@@ -45,7 +47,7 @@ ben-portfolio/
 │   │   ├── JourneyDetail.tsx     # Onglets Formation / Expérience au-dessus de Timeline
 │   │   ├── Timeline.tsx          # Timeline verticale, imbrique les échanges
 │   │   ├── ParallelTimeline.tsx  # Frise Gantt formation / expérience + repère « aujourd'hui »
-│   │   ├── ProjectCards.tsx      # Les projets menés en indépendant (chapitre 02)
+│   │   ├── ProjectCards.tsx      # Les projets menés en indépendant, avec illustration (chapitre 02)
 │   │   ├── AssociativePreview.tsx# Aperçu du parcours associatif sur l'accueil
 │   │   ├── AssoChapter.tsx       # Un engagement associatif, piloté par la donnée
 │   │   ├── LanguageSwitcher.tsx  # Switcher FR/EN
@@ -116,7 +118,7 @@ Tous les contenus dynamiques sont dans `public/assets/data/` :
 
 | Fichier | Contenu |
 |---|---|
-| `experiences.json` | Expériences professionnelles et projets image (Timeline, frise, chapitre 02) |
+| `experiences.json` | Expériences professionnelles et projets menés à côté (Timeline, frise, chapitre 02) |
 | `formation.json` | Formations (Timeline, frise) |
 | `associations.json` | Engagements associatifs (frise, aperçu de l'accueil). Les dates vivent dans `roles[]`, pas au niveau de l'entrée |
 | `projects.json` | Projets vidéo/photo (YouTube embeds) |
@@ -215,6 +217,10 @@ import { Section, SectionHeading, PageHero, actionClasses, fadeUp, stagger, EASE
 
 Sa hauteur est la variable CSS `--header-h` (`3.5rem`), lue par `scroll-padding-top` sur `html` et par le `scroll-mt` des sections. Changer la hauteur du header = changer cette seule variable.
 
+**Il occupe toute la largeur de l'écran**, sans colonne centrale : l'identité se cale à gauche, la nav au centre, langue et CV à droite, avec une gouttière qui s'ouvre à `lg`. Les deux groupes latéraux partagent `flex-1`, ce qui centre la nav sur l'écran et non sur la place qui reste. Le métier sous le nom ne s'affiche qu'à partir de `xl`, la seule largeur où il tient en entier : mieux vaut pas de surtitre qu'un surtitre coupé au milieu d'un mot. Le groupe de droite ne prend `flex-1` qu'à `lg`, là où il y a une nav à centrer ; en dessous il ne prend que sa place et laisse tout le reste à l'identité. C'est le seul élément du site en pleine largeur, le corps des pages garde sa colonne `max-w-5xl`.
+
+Deux autres règles portent son allure. **La page courante se signale par un filet accent sous le mot**, pas par une pastille pleine : la barre reste une ligne de texte. La pastille pleine ne survit que dans le tiroir mobile, où les entrées forment une liste. Les deux formes vivent dans `MENU_SHAPE`, une entrée par variante (`bar`, `drawer`), qui porte aussi les couleurs actives et au repos et décide si l'icône s'affiche : elle est réservée au tiroir, la barre s'en passe. **Le filet du bas n'apparaît qu'au décollage** : tant que la page est en haut, le header n'a pas de bordure et se confond avec le héros ; passé 8 px de défilement, la bordure et une ombre légère le détachent du contenu qui passe dessous.
+
 ---
 
 ## Commandes
@@ -250,11 +256,16 @@ Chaque page suit la même partition : héros → chapitres numérotés → foote
 | Route | Chapitres | Ancres |
 |---|---|---|
 | `/` | héros + sommaire → **01** Parcours → **02** Mes projets → **03** Vie associative | `#parcours`, `#projets`, `#associatif` |
+| `/prestation` | héros → **01** Ce que je fais → **02** Le site de prestations | `#prestations`, `#devis` |
 | `/associativeCareer` | héros → sommaire → **01** ISEP Live → **02** Vizion BDE → **03** ISEP Drone | `#engagements`, `#iseplive`, `#vizion`, `#isepdrone` |
 
 Le chapitre **01 Parcours** de l'accueil enchaîne la frise (vue d'ensemble) puis `JourneyDetail`, deux onglets qui posent Formation et Expérience au même endroit. Les ancres historiques `#education` et `#experience` restent valides : elles sélectionnent l'onglet correspondant.
 
-Le chapitre **02 Mes projets** présente l'activité indépendante : les projets menés à côté (refonte **Seed4Soft**, produit web **ReLive**, boutique **Benevolence**, prestations photo et vidéo). Chaque carte porte son propre lien sortant, le chapitre n'a donc pas de porte de sortie supplémentaire. C'est par la carte « Photo & vidéo » que les visiteurs intéressés rejoignent le site de prestations.
+Le chapitre **02 Mes projets** présente l'activité indépendante : les projets menés à côté (refonte **Seed4Soft**, produit web **ReLive**, boutique **Benevolence**). Chaque carte porte son illustration et son propre lien sortant, le chapitre n'a donc pas de porte de sortie supplémentaire. La photo et la vidéo n'y figurent pas : c'est un métier exercé, pas un projet en construction, il vit dans la voie **Expérience** de la frise et sur la page `/prestation`.
+
+Chaque carte porte le logo du projet en tête, sur la même ligne que la période, à 28 px de haut. Les fichiers vivent dans `public/assets/images/projects/<id>.png`, détourés au plus près et exportés à 96 px de haut (trois fois la hauteur d'affichage). La table `LOGOS` en tête de `ProjectCards.tsx` porte le chemin **et** les dimensions, qui varient d'un logo à l'autre : la carte cale la hauteur, la largeur suit, aucune marque n'est déformée. Les logos sont décoratifs (`alt=""`), la carte nomme déjà le projet deux lignes plus bas. Une carte sans entrée dans `LOGOS` garde sa période et sa mise en page.
+
+La page `/prestation` tient le même rôle côté navigation : trois familles de prestations en une ligne chacune (`OFFERS` en tête de fichier), puis un bandeau encre qui renvoie vers prestation.benevolence.fr. Elle ne liste ni tarifs ni réalisations : dès qu'un détail y apparaît, il diverge de sa source.
 
 Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leur page. Chaque chapitre de l'accueil se termine ainsi sur une seule porte de sortie.
 
@@ -268,9 +279,25 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 
 ## SEO
 
-- `src/components/MetaHeader.tsx` : meta title, description, og:image par page
+- `src/components/MetaHeader.tsx` : titre, description, canonical, hreflang, Open Graph et JSON-LD de chaque page
 - `public/sitemap.xml` : sitemap statique (à mettre à jour manuellement si nouvelle page)
 - `public/robots.txt` : autorisation crawl complet
+
+**Toutes les URL passent par `urlOf(page, locale)`**, une seule fonction en tête de `MetaHeader`. Le français vit à la racine, l'anglais sous `/en`. Canonical, alternates et `og:url` en sortent tous : c'est ce qui empêche qu'ils se contredisent, comme c'était le cas quand le canonical ignorait la locale et déclarait chaque page anglaise duplicata de sa version française. Chaque page cite **toutes** les locales, la sienne comprise, plus un `x-default` sur le français : sans réciprocité, Google ignore l'annotation. Les URL du sitemap doivent rester identiques au caractère près à celles-ci.
+
+**Le JSON-LD est un `@graph` unique** : une fiche `Person` (`#person`), un `WebSite` (`#website`), puis la page courante en `ProfilePage` sur l'accueil ou `WebPage` ailleurs, avec un `BreadcrumbList`. Les nœuds se référencent par `@id` plutôt que de se recopier. `sameAs` liste toutes les présences en ligne (réseaux, prestation, portfolio, boutique) : c'est ce qui rattache le tout à une seule identité, pour les moteurs classiques comme génératifs.
+
+**L'image de partage** est `public/assets/images/og.jpg`, en 1200 x 630, le format qu'attend `summary_large_image`. Ne pas y remettre une photo carrée : elle serait recadrée n'importe comment.
+
+`public/sitemap.xml` porte un `lastmod` par page, à remettre à jour quand le contenu change. Ses URL doivent rester identiques au caractère près à celles que `urlOf` produit, trailing slash compris.
+
+### Moteurs génératifs
+
+`public/llms.txt` résume en une page qui je suis, ce que fait chaque page du site, les projets et les autres domaines. C'est le format que lisent les moteurs génératifs. Il double le site, il faut donc le mettre à jour en même temps que le contenu, sans quoi il finit par mentir.
+
+`public/robots.txt` autorise nommément les robots d'IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.) en plus du `User-agent: *`. C'est redondant aujourd'hui mais l'intention reste lisible, et un `Disallow` générique ajouté un jour plus haut ne les coupera pas par accident.
+
+**Le titre des pages intérieures ne doit être écrit qu'une fois.** `PageHero` l'anime mot à mot, avec de **vrais espaces** entre les mots. Ne pas revenir à des marges CSS et à une doublure `sr-only` : les moteurs qui n'exécutent pas de JavaScript, dont la plupart des robots d'IA, lisaient alors le titre en double et collé (« ParcoursAssociatif »).
 
 ---
 
@@ -302,7 +329,7 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 
 ## Ressources externes
 
-- Prestations photo et vidéo : [prestation.benevolence.fr](https://prestation.benevolence.fr) (dépôt local `~/Benevolence-presta`). `/portfolio` de ce site-ci y redirige en 308
+- Prestations photo et vidéo : [prestation.benevolence.fr](https://prestation.benevolence.fr) (dépôt local `~/Benevolence-presta`). `/portfolio` de ce site-ci y redirige en 308, et la page `/prestation` y renvoie
 - Portfolio photo : [portfolio.benevolence.fr](https://portfolio.benevolence.fr) (l'ancienne adresse `benjaminbalayre.myportfolio.com` y redirige)
 - Boutique fine art : [benevolence.fr](https://benevolence.fr)
 - Site en production : [benjamin.balayre.com](https://benjamin.balayre.com)
