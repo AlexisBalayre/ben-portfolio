@@ -66,7 +66,19 @@ export const MetaHeader = ({ page = "home" }: MetaHeaderProps) => {
     jobTitle: t("header.role"),
     description: t("footer.tagline"),
     address: { "@type": "PostalAddress", addressLocality: "Paris", addressCountry: "FR" },
-    worksFor: { "@type": "Organization", name: "Capgemini Invent" },
+    // Deux employeurs, et c'est exact : le salariat d'un côté, la micro-entreprise
+    // de photographie de l'autre. Le second est désigné par le `@id` que le site
+    // de prestations déclare lui-même, ce qui soude les deux graphes. Un `sameAs`
+    // ne fait que citer une URL, il n'affirme aucune relation.
+    worksFor: [
+      { "@type": "Organization", name: "Capgemini Invent" },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://prestation.benevolence.fr/#business",
+        name: "Benjamin Balayre · Photographe & Vidéaste",
+        url: "https://prestation.benevolence.fr",
+      },
+    ],
     alumniOf: { "@type": "CollegeOrUniversity", name: "ISEP, Institut supérieur d'électronique de Paris" },
     knowsLanguage: ["fr", "en"],
     sameAs: SAME_AS,
