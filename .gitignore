@@ -49,3 +49,7 @@ next-env.d.ts
 # Yarn PnP
 .pnp.*
 .pnp
+# Manifeste interne du Hub — lu sur le disque, pas versionné ici : ce dépôt
+# est public, et le manifeste décrit des équipes et des choix qui ne le sont
+# pas. Une copie de secours vit dans le dépôt privé Hub-App.
+/hub.yaml
