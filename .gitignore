@@ -38,6 +38,11 @@ next-env.d.ts
 # Claude Code
 .claude/
 
+# Le projet est en yarn (packageManager le declare) : un package-lock.json
+# decrit un arbre de dependances qui n'est pas celui qui part en production,
+# et fait mentir tout audit lance dessus.
+package-lock.json
+
 # Yarn Berry (v3+)
 .yarn/*
 !.yarn/patches
