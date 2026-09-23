@@ -379,7 +379,7 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
                 <p className="mb-3 text-xs text-base-content/50">{t('journey.scroll_hint')}</p>
             )}
 
-            <div ref={scrollerRef} className="overflow-x-auto overflow-y-hidden overscroll-x-contain pb-3">
+            <div ref={scrollerRef} className="overflow-x-auto overflow-y-hidden overscroll-x-contain pb-3 pt-1">
                 <div className="relative min-w-[1024px]">
                     {/* Repères des années */}
                     <div aria-hidden="true" className="pointer-events-none absolute inset-0 top-6">

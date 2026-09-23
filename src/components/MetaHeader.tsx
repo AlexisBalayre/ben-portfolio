@@ -40,7 +40,6 @@ const SAME_AS = [
   "https://www.instagram.com/ben_balayre/",
   "https://www.youtube.com/@ben_balayre",
   "https://prestation.benevolence.fr",
-  "https://portfolio.benevolence.fr",
   "https://benevolence.fr",
 ];
 
@@ -56,7 +55,7 @@ export const MetaHeader = ({ page = "home" }: MetaHeaderProps) => {
 
   // Une seule fiche Person pour tout le site, complétée par la page courante.
   // `sameAs` est ce qui permet aux moteurs, classiques comme génératifs, de
-  // rattacher le CV, le portfolio, la boutique et les réseaux à une personne.
+  // rattacher le CV, les prestations, la boutique et les réseaux à une personne.
   const person = {
     "@type": "Person",
     "@id": `${SITE_URL}/#person`,

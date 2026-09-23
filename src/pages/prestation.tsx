@@ -108,15 +108,6 @@ const Prestation: NextPage = () => {
             {t('prestation.cta')}
             <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
           </a>
-          <a
-            href="https://portfolio.benevolence.fr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={actionClasses('outline', 'dark')}
-          >
-            {t('home.quick_portfolio')}
-            <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
-          </a>
         </div>
       </Section>
     </div>
