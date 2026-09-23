@@ -287,7 +287,7 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 
 **Toutes les URL passent par `urlOf(page, locale)`**, une seule fonction en tête de `MetaHeader`. Le français vit à la racine, l'anglais sous `/en`. Canonical, alternates et `og:url` en sortent tous : c'est ce qui empêche qu'ils se contredisent, comme c'était le cas quand le canonical ignorait la locale et déclarait chaque page anglaise duplicata de sa version française. Chaque page cite **toutes** les locales, la sienne comprise, plus un `x-default` sur le français : sans réciprocité, Google ignore l'annotation. Les URL du sitemap doivent rester identiques au caractère près à celles-ci.
 
-**Le JSON-LD est un `@graph` unique** : une fiche `Person` (`#person`), un `WebSite` (`#website`), puis la page courante en `ProfilePage` sur l'accueil ou `WebPage` ailleurs, avec un `BreadcrumbList`. Les nœuds se référencent par `@id` plutôt que de se recopier. `sameAs` liste toutes les présences en ligne (réseaux, prestation, portfolio, boutique) : c'est ce qui rattache le tout à une seule identité, pour les moteurs classiques comme génératifs.
+**Le JSON-LD est un `@graph` unique** : une fiche `Person` (`#person`), un `WebSite` (`#website`), puis la page courante en `ProfilePage` sur l'accueil ou `WebPage` ailleurs, avec un `BreadcrumbList`. Les nœuds se référencent par `@id` plutôt que de se recopier. `sameAs` liste toutes les présences en ligne (réseaux, prestation, boutique) : c'est ce qui rattache le tout à une seule identité, pour les moteurs classiques comme génératifs.
 
 **L'image de partage** est `public/assets/images/og.jpg`, en 1200 x 630, le format qu'attend `summary_large_image`. Ne pas y remettre une photo carrée : elle serait recadrée n'importe comment.
 
