@@ -12,6 +12,7 @@ import {
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
 
+import portrait from '~~/public/assets/images/pp.jpg';
 import AssociativePreview from '~~/src/components/AssociativePreview';
 import JourneyDetail from '~~/src/components/JourneyDetail';
 import ParallelTimeline from '~~/src/components/ParallelTimeline';
@@ -92,11 +93,12 @@ const Home: NextPage = () => {
                   className="absolute -inset-2 rotate-45 rounded-full border border-transparent border-b-accent/40 border-r-accent/40"
                 />
                 <Image
-                  src="/assets/images/pp.jpg"
+                  src={portrait}
                   alt={t('home.name')}
                   width={320}
                   height={320}
                   priority
+                  placeholder="blur"
                   className="relative w-44 rounded-full object-cover shadow-xl ring-1 ring-base-300 sm:w-56 lg:w-72"
                 />
               </div>

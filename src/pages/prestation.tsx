@@ -10,6 +10,7 @@ import {
   SparklesIcon,
 } from '@heroicons/react/24/outline';
 
+import heroImage from '~~/public/assets/images/portfolio/IL.jpg';
 import {
   PageHero,
   Section,
@@ -37,7 +38,7 @@ const Prestation: NextPage = () => {
   return (
     <div className="w-full overflow-x-clip">
       <PageHero
-        image="/assets/images/portfolio/IL.jpg"
+        image={heroImage}
         eyebrow={t('prestation.eyebrow')}
         title={t('prestation.title')}
         lead={t('prestation.lead')}

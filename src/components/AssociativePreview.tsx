@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
+import associativePhoto from '~~/public/assets/images/portfolio/asso2.jpg';
 import { EASE, Section, SectionHeading, VIEWPORT, actionClasses } from '~~/src/components/ui';
 import type { JourneyItem } from '~~/src/data/journey';
 
@@ -64,10 +65,11 @@ const AssociativePreview = ({ associations }: { associations: JourneyItem[] }) =
 
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg sm:aspect-[16/10] lg:aspect-[4/5]">
           <Image
-            src="/assets/images/portfolio/asso2.jpg"
+            src={associativePhoto}
             alt=""
             fill
             sizes="(max-width: 1024px) 100vw, 42vw"
+            placeholder="blur"
             className="object-cover"
           />
           <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-secondary/35 to-transparent" />

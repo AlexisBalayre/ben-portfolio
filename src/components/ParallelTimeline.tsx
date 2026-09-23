@@ -16,6 +16,7 @@ interface RawExchange {
 export interface JourneyEntry {
     id: string;
     start?: string;
+    /** Ignorée quand `ongoing` : la barre suit alors la date du jour. */
     end?: string;
     ongoing?: boolean;
     /** Nature affichée en surtitre de la barre, clé de `journey.nature.*`. */
@@ -51,6 +52,18 @@ const toMonths = (value: string) => {
     const [year, month] = value.split('-').map(Number);
     return year * 12 + (month - 1);
 };
+
+/** Une date → mois absolus, fraction du mois comprise : le repère tombe sur le jour. */
+const dateToMonths = (date: Date) => {
+    const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    return date.getFullYear() * 12 + date.getMonth() + (date.getDate() - 1) / daysInMonth;
+};
+
+/** Mois de frise laissés après aujourd'hui : les barres en cours y fuient vers la droite. */
+const RUNWAY = 6;
+
+/** Le repère « aujourd'hui » se recale toutes les heures sur un onglet resté ouvert. */
+const TODAY_REFRESH_MS = 60 * 60 * 1000;
 
 const BAR_STYLES: Record<Bar['kind'], string> = {
     cursus: 'border-primary/30 bg-primary/[0.08] text-primary hover:bg-primary/[0.15]',
@@ -96,7 +109,22 @@ const packGroupedLanes = (groups: Bar[][]): Bar[][] => {
     return lanes.map((lane) => lane.bars);
 };
 
-const isDated = (entry: JourneyEntry) => Boolean(entry.start && entry.end);
+/** Une entrée en cours n'a pas besoin de fin : la frise la prolonge jusqu'à aujourd'hui. */
+const isDated = (entry: JourneyEntry) => Boolean(entry.start && (entry.end || entry.ongoing));
+
+/**
+ * Le mois le plus récent que la donnée atteste. Il remplace la date du jour
+ * tant que celle-ci n'est pas connue (rendu statique), sans dépendre de
+ * l'heure du build : serveur et client dessinent alors la même frise.
+ */
+const latestKnownMonth = (entries: JourneyEntry[]) =>
+    Math.max(
+        ...entries.flatMap((entry) => [
+            ...(entry.start ? [toMonths(entry.start)] : []),
+            ...(entry.end && !entry.ongoing ? [toMonths(entry.end)] : []),
+            ...(entry.roles ?? []).map((role) => toMonths(role.end)),
+        ]),
+    );
 
 interface ParallelTimelineProps {
     education: JourneyEntry[];
@@ -105,10 +133,11 @@ interface ParallelTimelineProps {
 }
 
 const ParallelTimeline = ({ education, experiences, associations }: ParallelTimelineProps) => {
-    const { t } = useTranslation('common');
+    const { t, i18n } = useTranslation('common');
     const [selected, setSelected] = useState<Bar | null>(null);
     // Calculé après le montage : le rendu statique ne doit pas dépendre de la date.
-    const [todayMonth, setTodayMonth] = useState<number | null>(null);
+    const [now, setNow] = useState<Date | null>(null);
+    const todayMonth = now ? dateToMonths(now) : null;
 
     const scrollerRef = useRef<HTMLDivElement>(null);
     // Le débordement est mesuré, pas déduit d'un point de rupture : la frise est
@@ -117,8 +146,9 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
     const openedOnToday = useRef(false);
 
     useEffect(() => {
-        const now = new Date();
-        setTodayMonth(now.getFullYear() * 12 + now.getMonth());
+        setNow(new Date());
+        const timer = window.setInterval(() => setNow(new Date()), TODAY_REFRESH_MS);
+        return () => window.clearInterval(timer);
     }, []);
 
     useEffect(() => {
@@ -132,18 +162,24 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
     }, []);
 
     const { tracks, ticks, axisStart, span } = useMemo(() => {
+        // Les barres en cours s'arrêtent un peu après aujourd'hui, et la frise avec elles.
+        const horizon = todayMonth ?? latestKnownMonth([...education, ...experiences, ...associations]);
+        const endOf = (entry: JourneyEntry, start: number) =>
+            entry.ongoing ? Math.max(start + 1, horizon + RUNWAY) : toMonths(entry.end as string);
+
         const cursus: Bar[] = [];
         const exchanges: Bar[] = [];
 
         education.filter(isDated).forEach((entry) => {
+            const start = toMonths(entry.start as string);
             cursus.push({
                 key: entry.id,
                 id: entry.id,
                 prefix: 'formation',
                 kind: 'cursus',
                 nature: entry.nature ?? 'cursus',
-                start: toMonths(entry.start as string),
-                end: toMonths(entry.end as string),
+                start,
+                end: endOf(entry, start),
                 ongoing: Boolean(entry.ongoing),
             });
             entry.exchanges?.forEach((exchange) => {
@@ -163,16 +199,19 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
             });
         });
 
-        const toBar = (kind: Bar['kind']) => (entry: JourneyEntry): Bar => ({
-            key: entry.id,
-            id: entry.id,
-            prefix: 'experiences',
-            kind,
-            nature: entry.nature ?? (entry.integratedIn ? 'internship' : 'job'),
-            start: toMonths(entry.start as string),
-            end: toMonths(entry.end as string),
-            ongoing: Boolean(entry.ongoing),
-        });
+        const toBar = (kind: Bar['kind']) => (entry: JourneyEntry): Bar => {
+            const start = toMonths(entry.start as string);
+            return {
+                key: entry.id,
+                id: entry.id,
+                prefix: 'experiences',
+                kind,
+                nature: entry.nature ?? (entry.integratedIn ? 'internship' : 'job'),
+                start,
+                end: endOf(entry, start),
+                ongoing: Boolean(entry.ongoing),
+            };
+        };
 
         const dated = experiences.filter(isDated);
         const internships = dated.filter((entry) => entry.integratedIn).map(toBar('job'));
@@ -201,7 +240,8 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
 
         const all = [...cursus, ...exchanges, ...internships, ...jobs, ...projects, ...associative];
         const start = Math.min(...all.map((bar) => bar.start)) - 1;
-        const end = Math.max(...all.map((bar) => bar.end)) + 1;
+        // Sans activité en cours, la frise doit quand même aller jusqu'à aujourd'hui.
+        const end = Math.max(...all.map((bar) => bar.end), horizon + 1) + 1;
 
         const years: number[] = [];
         for (let year = Math.ceil(start / 12); year * 12 <= end; year += 1) {
@@ -249,11 +289,14 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
                 },
             ],
         };
-    }, [education, experiences, associations]);
+    }, [education, experiences, associations, todayMonth]);
 
     const left = (month: number) => ((month - axisStart) / span) * 100;
     const todayLeft = todayMonth !== null ? left(todayMonth) : null;
     const showToday = todayLeft !== null && todayLeft >= 0 && todayLeft <= 100;
+    const todayLabel = now
+        ? new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short', year: 'numeric' }).format(now)
+        : null;
 
     // La frise s'ouvre sur la période courante. Sur un écran étroit la fenêtre
     // visible ne couvre qu'une fraction de l'axe : démarrer à gauche laisserait
@@ -376,6 +419,7 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
                                 style={{ left: `${todayLeft}%` }}
                             >
                                 {t('journey.today')}
+                                {todayLabel && <span className="font-medium opacity-70"> · {todayLabel}</span>}
                             </span>
                         )}
                     </div>
@@ -384,7 +428,9 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
                     <div className="relative space-y-5">
                         {tracks.map((track) => (
                             <div key={track.key}>
-                                <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-base-content/50">
+                                {/* Collé au bord gauche : sur mobile, la voie reste nommée
+                                    quand on fait glisser la frise vers la droite. */}
+                                <p className="sticky left-0 z-30 mb-1.5 w-fit rounded-r-full bg-base-100/90 py-0.5 pr-2 text-[11px] font-bold uppercase tracking-wider text-base-content/50 backdrop-blur-sm">
                                     {t(track.label)}
                                 </p>
                                 {track.groups
@@ -392,7 +438,7 @@ const ParallelTimeline = ({ education, experiences, associations }: ParallelTime
                                     .map((group) => (
                                         <div key={group.key}>
                                             {group.label && (
-                                                <p className="mb-1.5 mt-3 text-[10px] font-semibold uppercase tracking-wider text-amber-800/70">
+                                                <p className="sticky left-0 z-30 mb-1.5 mt-3 w-fit rounded-r-full bg-base-100/90 py-0.5 pr-2 text-[10px] font-semibold uppercase tracking-wider text-amber-800/70 backdrop-blur-sm">
                                                     ↳ {t(group.label)}
                                                 </p>
                                             )}

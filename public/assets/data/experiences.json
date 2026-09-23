@@ -5,7 +5,6 @@
     "period": "À partir de septembre 2026",
     "nature": "permanent",
     "start": "2026-09",
-    "end": "2027-07",
     "ongoing": true
   },
   {
@@ -32,7 +31,6 @@
     "period": "Depuis janvier 2026",
     "nature": "freelance",
     "start": "2026-01",
-    "end": "2027-07",
     "ongoing": true
   },
   {
@@ -50,7 +48,6 @@
     "nature": "project",
     "track": "projects",
     "start": "2026-03",
-    "end": "2027-07",
     "ongoing": true,
     "url": "https://app.relive.gallery/"
   },
@@ -61,7 +58,6 @@
     "nature": "project",
     "track": "projects",
     "start": "2026-01",
-    "end": "2027-07",
     "ongoing": true,
     "url": "https://benevolence.fr"
   },
@@ -71,7 +67,6 @@
     "period": "Depuis 2024",
     "nature": "freelance",
     "start": "2024-01",
-    "end": "2027-07",
     "ongoing": true,
     "url": "https://prestation.benevolence.fr"
   },
