@@ -1,9 +1,18 @@
 import type { NextPage } from 'next';
 import React from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import droneIllustration from '~~/public/assets/images/drone_illustration.jpg';
+import isepdroneLogo from '~~/public/assets/images/isepdrone.png';
+import iseplifeLogo from '~~/public/assets/images/portfolio/logos/Iseplife.png';
+import iseplivePhoto from '~~/public/assets/images/portfolio/IL.jpg';
+import iseplivePhoto2 from '~~/public/assets/images/portfolio/IL2.jpg';
+import heroImage from '~~/public/assets/images/portfolio/asso2.jpg';
+import isepliveLogo from '~~/public/assets/images/iseplive.png';
+import vizionIllustration from '~~/public/assets/images/Vizion_illustration.jpg';
+import vizionLogo from '~~/public/assets/images/Vizion.png';
 import AssoChapter, { AssoChapterProps, AssoRole } from '~~/src/components/AssoChapter';
 import { PageHero, Section, SectionHeading, type Tone } from '~~/src/components/ui';
 import { associations } from '~~/src/data/journey';
@@ -23,12 +32,12 @@ const rolesOf = (id: string): AssoRole[] =>
  * balisage recopiés. Le sommaire en tête de page et les chapitres lisent la
  * même liste, ils ne peuvent donc pas diverger.
  */
-const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
+const ASSOS: (AssoChapterProps & { logo: StaticImageData; roleKey: string })[] = [
   {
     id: 'iseplive',
     index: '01',
     tone: 'paper' as Tone,
-    logo: '/assets/images/iseplive.png',
+    logo: isepliveLogo,
     titleKey: 'associative.iseplive.title',
     eyebrowKey: 'associative.iseplive.eyebrow',
     leadKey: 'associative.iseplive.lead',
@@ -37,20 +46,20 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
       {
         titleKey: 'associative.iseplive.presentation_title',
         descKey: 'associative.iseplive.presentation_desc',
-        media: [{ src: '/assets/images/iseplive.png', alt: 'ISEP Live', shape: 'logo' }],
+        media: [{ src: isepliveLogo, alt: 'ISEP Live', shape: 'logo' }],
       },
       {
         titleKey: 'associative.iseplive.iseplife_title',
         descKey: 'associative.iseplive.iseplife_desc',
-        media: [{ src: '/assets/images/portfolio/logos/Iseplife.png', alt: 'ISEP Life', shape: 'logo' }],
+        media: [{ src: iseplifeLogo, alt: 'ISEP Life', shape: 'logo' }],
       },
       {
         titleKey: 'associative.iseplive.path_title',
         descKey: 'associative.iseplive.path_desc',
         roles: rolesOf('iseplive'),
         media: [
-          { src: '/assets/images/portfolio/IL.jpg', alt: 'ISEP Live en reportage', shape: 'wide' },
-          { src: '/assets/images/portfolio/IL2.jpg', alt: 'ISEP Live en reportage', shape: 'wide' },
+          { src: iseplivePhoto, alt: 'ISEP Live en reportage', shape: 'wide' },
+          { src: iseplivePhoto2, alt: 'ISEP Live en reportage', shape: 'wide' },
         ],
       },
     ],
@@ -63,7 +72,7 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
     id: 'vizion',
     index: '02',
     tone: 'mist' as Tone,
-    logo: '/assets/images/Vizion.png',
+    logo: vizionLogo,
     titleKey: 'associative.vizion.title',
     eyebrowKey: 'associative.vizion.eyebrow',
     leadKey: 'associative.vizion.lead',
@@ -72,14 +81,14 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
       {
         titleKey: 'associative.vizion.presentation_title',
         descKey: 'associative.vizion.presentation_desc',
-        media: [{ src: '/assets/images/Vizion.png', alt: 'Vizion BDE', shape: 'logo' }],
+        media: [{ src: vizionLogo, alt: 'Vizion BDE', shape: 'logo' }],
       },
       {
         titleKey: 'associative.vizion.path_title',
         descKey: 'associative.vizion.path_desc',
         roles: rolesOf('vizion'),
         media: [
-          { src: '/assets/images/Vizion_illustration.jpg', alt: 'Événement Vizion BDE', shape: 'portrait' },
+          { src: vizionIllustration, alt: 'Événement Vizion BDE', shape: 'portrait' },
         ],
       },
     ],
@@ -89,7 +98,7 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
     id: 'isepdrone',
     index: '03',
     tone: 'paper' as Tone,
-    logo: '/assets/images/isepdrone.png',
+    logo: isepdroneLogo,
     titleKey: 'associative.isepdrone.title',
     eyebrowKey: 'associative.isepdrone.eyebrow',
     leadKey: 'associative.isepdrone.lead',
@@ -98,13 +107,13 @@ const ASSOS: (AssoChapterProps & { logo: string; roleKey: string })[] = [
       {
         titleKey: 'associative.isepdrone.presentation_title',
         descKey: 'associative.isepdrone.presentation_desc',
-        media: [{ src: '/assets/images/isepdrone.png', alt: 'ISEP Drone', shape: 'logo' }],
+        media: [{ src: isepdroneLogo, alt: 'ISEP Drone', shape: 'logo' }],
       },
       {
         titleKey: 'associative.isepdrone.path_title',
         descKey: 'associative.isepdrone.path_desc',
         roles: rolesOf('isepdrone'),
-        media: [{ src: '/assets/images/drone_illustration.JPG', alt: 'Vol FPV', shape: 'wide' }],
+        media: [{ src: droneIllustration, alt: 'Vol FPV', shape: 'wide' }],
       },
     ],
     links: [{ href: 'https://www.instagram.com/isep_drone', kind: 'instagram' }],
@@ -117,7 +126,7 @@ const AssociativeCareer: NextPage = () => {
   return (
     <div className="w-full overflow-x-clip">
       <PageHero
-        image="/assets/images/portfolio/asso2.jpg"
+        image={heroImage}
         eyebrow={t('associative.eyebrow')}
         title={t('associative.title')}
         lead={t('associative.hero_desc')}

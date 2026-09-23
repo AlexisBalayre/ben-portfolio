@@ -133,8 +133,8 @@ Modifier ces fichiers suffit pour mettre à jour le contenu, sans toucher aux co
 | `id`, `logo` | `Timeline` | clé de traduction et logo rond |
 | `period` | (aucun) | mémo lisible ; l'affichage passe par la locale |
 | `nature` | `ParallelTimeline` | surtitre en petites majuscules sur la barre, clé de `journey.nature.*` (`cursus`, `exchange`, `internship`, `freelance`, `permanent`) |
-| `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans ces champs, l'entrée n'apparaît pas dans la frise |
-| `ongoing` | `ParallelTimeline` | flèche « → » + dégradé de fuite : l'activité se poursuit au-delà de la frise |
+| `start`, `end` | `ParallelTimeline` | `"AAAA-MM"`, **borne de fin exclusive** (le mois qui suit le dernier mois actif). Sans `start`, ou sans `end` pour une entrée terminée, l'entrée n'apparaît pas dans la frise |
+| `ongoing` | `ParallelTimeline` | l'activité se poursuit : **pas de `end`**, la barre s'arrête d'elle-même quelques mois après le jour J (`RUNWAY`), avec flèche « → » et dégradé de fuite. La frise se recale ainsi seule sur la date du jour, sans retoucher le JSON |
 | `integratedIn` | `ParallelTimeline` | *(experiences.json)* id du cursus : le stage passe dans la voie **Formation**, sous-groupe « Stages intégrés au cursus », au lieu de la voie Expérience |
 | `track` | `ParallelTimeline`, `src/data/journey.ts` | *(experiences.json)* `"projects"` : l'entrée rejoint la voie **Projets** de la frise et la grille du chapitre « Mes projets » de l'accueil |
 | `nature: "project"` | `src/data/journey.ts` | l'entrée est un projet, pas un poste : elle sort de la timeline des expériences pour n'être racontée que dans le chapitre « Mes projets ». Une carte de projet a en plus les clés `kind` et `card` |
@@ -268,6 +268,8 @@ Chaque carte porte le logo du projet en tête, sur la même ligne que la périod
 La page `/prestation` tient le même rôle côté navigation : trois familles de prestations en une ligne chacune (`OFFERS` en tête de fichier), puis un bandeau encre qui renvoie vers prestation.benevolence.fr. Elle ne liste ni tarifs ni réalisations : dès qu'un détail y apparaît, il diverge de sa source.
 
 Le chapitre **03 Vie associative** nomme les trois engagements et renvoie à leur page. Chaque chapitre de l'accueil se termine ainsi sur une seule porte de sortie.
+
+La frise est **dynamique** : l'axe va toujours jusqu'à aujourd'hui, le repère « Aujourd'hui » tombe sur le jour (pas seulement le mois) et affiche la date, et il se recale toutes les heures sur un onglet resté ouvert. Avant l'hydratation, la date du jour est remplacée par le mois le plus récent attesté par la donnée (`latestKnownMonth`), pour que serveur et client dessinent la même frise. Sur mobile, les noms de voies (Formation, Expérience pro, Projets, Associatif) sont collés au bord gauche (`sticky left-0`) et restent lisibles quand on fait glisser la frise.
 
 Dans la frise, la voie **Associatif** ne dessine pas une barre continue par association mais **un segment par année scolaire**, coupé à chaque rentrée de septembre, portant le rôle tenu cette année-là. Les segments d'un même engagement restent groupés sur une ligne : c'est le rôle de `packGroupedLanes`, distinct de `packLanes` utilisé par les autres voies.
 

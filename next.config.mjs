@@ -47,6 +47,11 @@ const nextConfig = {
     images: {
         formats: ['image/avif', 'image/webp'],
         qualities: [75, 80, 85, 90],
+        // Les images de /public ne sont pas versionnees : sans ce plancher, Next
+        // ne garde leur version optimisee que 60 s et la recalcule a chaque
+        // visite espacee, d'ou le temps d'apparition. Un mois suffit : une image
+        // remplacee change de nom, ou passe par un import statique (URL hachee).
+        minimumCacheTTL: 2678400,
         // Pas de `remotePatterns` : toutes les images du site vivent dans
         // /public/assets/images. En autoriser un hote distant, meme le sien,
         // ouvre /_next/image comme proxy : n'importe qui peut alors faire

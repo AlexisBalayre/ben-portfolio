@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 
@@ -27,7 +27,8 @@ const SHAPE: Record<MediaShape, string> = {
 };
 
 export interface AssoMedia {
-  src: string;
+  /** Import statique : dimensions, URL hachée et flou de chargement viennent du build. */
+  src: StaticImageData;
   alt: string;
   shape: MediaShape;
 }
@@ -60,12 +61,14 @@ const LOGOS = { instagram: InstagramLogo, youtube: YouTubeLogo };
 const Media = ({ media }: { media: AssoMedia[] }) => (
   <div className={media.length > 1 ? 'grid gap-4 sm:grid-cols-2 md:grid-cols-1' : ''}>
     {media.map((m) => (
-      <div key={m.src} className={`relative overflow-hidden ${SHAPE[m.shape]}`}>
+      <div key={m.src.src} className={`relative overflow-hidden ${SHAPE[m.shape]}`}>
         <Image
           src={m.src}
           alt={m.alt}
           fill
           sizes="(max-width: 768px) 80vw, 40vw"
+          // Le flou n'a de sens que sur une photo : sur un logo détouré, il salit le fond.
+          placeholder={m.shape === 'logo' ? 'empty' : 'blur'}
           className="object-cover"
         />
       </div>

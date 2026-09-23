@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
 import { EASE } from './motion';
 
@@ -35,7 +35,8 @@ const SplitText = ({ text }: { text: string }) => {
 };
 
 interface PageHeroProps {
-  image: string;
+  /** Import statique : URL hachée, cache long et flou de chargement générés au build. */
+  image: StaticImageData;
   eyebrow: string;
   title: string;
   lead: string;
@@ -57,6 +58,7 @@ export const PageHero = ({ image, eyebrow, title, lead, scrollLabel, children }:
       sizes="100vw"
       quality={85}
       priority
+      placeholder="blur"
       style={{ objectFit: 'cover' }}
     />
     <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-secondary/70 via-secondary/50 to-secondary/90" />
