@@ -330,6 +330,6 @@ La nav du header est gérée dans `src/components/Header.tsx` via `menuLinks` (t
 ## Ressources externes
 
 - Prestations photo et vidéo : [prestation.benevolence.fr](https://prestation.benevolence.fr) (dépôt local `~/Benevolence-presta`). `/portfolio` de ce site-ci y redirige en 308, et la page `/prestation` y renvoie
-- Portfolio photo : [portfolio.benevolence.fr](https://portfolio.benevolence.fr) (l'ancienne adresse `benjaminbalayre.myportfolio.com` y redirige)
+- Portfolio photo : **plus référencé**. `portfolio.benevolence.fr` et `benjaminbalayre.myportfolio.com` ne doivent plus apparaître nulle part sur ce site (liens, `sameAs`, `llms.txt`) : tout passe par prestation.benevolence.fr, qui porte les réalisations
 - Boutique fine art : [benevolence.fr](https://benevolence.fr)
 - Site en production : [benjamin.balayre.com](https://benjamin.balayre.com)

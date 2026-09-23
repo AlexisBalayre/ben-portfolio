@@ -30,7 +30,6 @@ const pages = [
 
 const elsewhere = [
     { href: 'https://prestation.benevolence.fr', label: 'home.quick_prestation' },
-    { href: 'https://portfolio.benevolence.fr', label: 'home.quick_portfolio' },
     { href: 'https://benevolence.fr', label: 'home.quick_benevolence' },
 ];
 

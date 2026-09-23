@@ -42,10 +42,8 @@ langues.
 ## Autres sites
 
 - [Prestations photo et vidéo](https://prestation.benevolence.fr): offres,
-  réalisations et demande de devis. C'est la source qui fait foi sur le sujet,
-  le présent site n'en donne qu'une présentation courte.
-- [Portfolio photo](https://portfolio.benevolence.fr): les séries
-  photographiques.
+  réalisations, séries photo et demande de devis. C'est la source qui fait foi
+  sur le sujet, le présent site n'en donne qu'une présentation courte.
 
 ## Profils
 
@@ -53,8 +51,3 @@ langues.
 - [GitHub](https://github.com/benbalayre)
 - [Instagram](https://www.instagram.com/ben_balayre/)
 - [YouTube](https://www.youtube.com/@ben_balayre)
-
-## Notes
-
-- L'adresse benjaminbalayre.myportfolio.com est une ancienne adresse, elle
-  redirige vers portfolio.benevolence.fr.
