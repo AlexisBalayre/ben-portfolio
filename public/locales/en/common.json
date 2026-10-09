@@ -18,7 +18,7 @@
     "phone_aria": "Benjamin Balayre's phone number",
     "email_aria": "Benjamin Balayre's email address",
     "social_aria": "Social media links",
-    "tagline": "Strategy & Transformation Consultant at Capgemini Invent, working on data, business intelligence and AI. Freelance web developer and photographer on the side.",
+    "tagline": "Strategy & Transformation Consultant at Capgemini Invent, working on data, business intelligence and AI. Freelance photographer and videographer on the side.",
     "nav_title": "Navigation",
     "contact_title": "Get in touch",
     "elsewhere_title": "Elsewhere",
@@ -27,7 +27,7 @@
   },
   "home": {
     "name": "Benjamin Balayre",
-    "role": "Strategy & Transformation Consultant | Data, Business Intelligence & AI | Freelance Web Developer",
+    "role": "Strategy & Transformation Consultant | Data, Business Intelligence & AI",
     "welcome": "Welcome to my website, a space dedicated to discovering my background and passions. You will find information about my professional, personal and associative projects.",
     "download_resume": "Download Resume",
     "quick_benevolence": "View my print shop",
@@ -47,7 +47,7 @@
       "projects": "My projects"
     },
     "projects_title": "What I build on the side",
-    "projects_lead": "My engineering path has a counterpart: a freelance business I have run since 2024. I design websites and web products, and I turn the results into a limited edition print shop. Photo and video have a page of their own.",
+    "projects_lead": "My engineering path has a counterpart: a freelance business I have run since 2024. I designed websites and web products, and I turn the results into a limited edition print shop. Photo and video have a page of their own.",
     "quick_prestation": "Photo & video services"
   },
   "associative": {
@@ -146,7 +146,7 @@
     "freelance_dev": {
       "title": "Freelancer, web & application developer",
       "description": "Design and development of websites and online applications for independent professionals and small organisations. End-to-end ownership of each project: scoping, mockups, development, deployment, and maintenance.",
-      "period": "Since January 2026",
+      "period": "January 2026 to August 2026",
       "short": "Web dev & apps"
     },
     "freelance": {
@@ -183,9 +183,9 @@
       "title": "Seed4Soft, website rebuild for a business angel collective",
       "short": "Seed4Soft",
       "kind": "Website rebuild",
-      "period": "Since June 2026",
-      "card": "A full rebuild of the Seed4Soft website, a business angel collective: scoping, design system, development and release. Next.js, Tailwind CSS, bilingual content.",
-      "description": "A full rebuild of the website of Seed4Soft, a business angel collective. Scoping with the team, design system, development in Next.js and Tailwind CSS, bilingual editorial content, then release to production. The site is live and I keep improving it."
+      "period": "June 2026 to August 2026",
+      "card": "I led a full rebuild of the Seed4Soft website, a business angel collective: scoping, design system, development and release. Next.js, Tailwind CSS, bilingual content.",
+      "description": "I led a full rebuild of the website of Seed4Soft, a business angel collective. I scoped the needs with the team, set up the design system, built the site in Next.js and Tailwind CSS, wrote the bilingual editorial content, then released it to production. The site has been live since."
     }
   },
   "formation": {
@@ -224,7 +224,7 @@
   "meta": {
     "home": {
       "title": "Benjamin Balayre · Strategy & Transformation Consultant",
-      "description": "Strategy & Transformation Consultant at Capgemini Invent, working on data, BI and AI. Freelance web developer and photographer: background, projects and portfolio."
+      "description": "Strategy & Transformation Consultant at Capgemini Invent, working on data, BI and AI. Freelance photographer and videographer: background, projects and portfolio."
     },
     "associativeCareer": {
       "title": "Associative experience · Benjamin Balayre",

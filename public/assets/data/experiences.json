@@ -28,15 +28,15 @@
   {
     "id": "freelance_dev",
     "logo": "freelance-dev.png",
-    "period": "Depuis janvier 2026",
+    "period": "Janvier 2026 à août 2026",
     "nature": "freelance",
     "start": "2026-01",
-    "ongoing": true
+    "end": "2026-09"
   },
   {
     "id": "seed4soft",
     "logo": "freelance-dev.png",
-    "period": "Depuis juin 2026",
+    "period": "Juin 2026 à août 2026",
     "nature": "project",
     "track": "projects",
     "url": "https://seed4soft.com"
