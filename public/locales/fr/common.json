@@ -18,7 +18,7 @@
     "phone_aria": "Téléphone de Benjamin Balayre",
     "email_aria": "Email de Benjamin Balayre",
     "social_aria": "Réseaux sociaux",
-    "tagline": "Consultant Strategy & Transformation chez Capgemini Invent, sur les sujets data, business intelligence et IA. Développeur web et photographe freelance à côté.",
+    "tagline": "Consultant Strategy & Transformation chez Capgemini Invent, sur les sujets data, business intelligence et IA. Photographe et vidéaste freelance à côté.",
     "nav_title": "Navigation",
     "contact_title": "Me contacter",
     "elsewhere_title": "Ailleurs",
@@ -27,7 +27,7 @@
   },
   "home": {
     "name": "Benjamin Balayre",
-    "role": "Consultant Strategy & Transformation | Data, Business Intelligence & IA | Développeur web freelance",
+    "role": "Consultant Strategy & Transformation | Data, Business Intelligence & IA",
     "welcome": "Bienvenue sur mon site ! Découvrez-y mon parcours, mes passions, ainsi que mes projets professionnels, personnels et associatifs.",
     "download_resume": "Télécharger mon CV",
     "quick_benevolence": "Voir ma boutique de tirage",
@@ -47,7 +47,7 @@
       "projects": "Mes projets"
     },
     "projects_title": "Ce que je construis à côté",
-    "projects_lead": "Mon parcours d’ingénieur a un pendant : une activité indépendante que je mène depuis 2024. J’y conçois des sites et des produits web, et j’en tire une boutique de tirages en édition limitée. La photo et la vidéo ont leur propre page.",
+    "projects_lead": "Mon parcours d’ingénieur a un pendant : une activité indépendante que je mène depuis 2024. J’y ai conçu des sites et des produits web, et j’en tire une boutique de tirages en édition limitée. La photo et la vidéo ont leur propre page.",
     "quick_prestation": "Prestations photo & vidéo"
   },
   "associative": {
@@ -128,7 +128,7 @@
     "freelance_dev": {
       "title": "Auto-entrepreneur, développeur web & applications",
       "description": "Conception et développement de sites web et d'applications en ligne pour des indépendants et des petites structures. Prise en charge complète du projet : cadrage du besoin, maquettes, développement, mise en production et maintenance.",
-      "period": "Depuis janvier 2026",
+      "period": "Janvier 2026 à août 2026",
       "short": "Dev web & apps"
     },
     "freelance": {
@@ -165,9 +165,9 @@
       "title": "Seed4Soft, refonte du site d’un collectif de business angels",
       "short": "Seed4Soft",
       "kind": "Refonte de site",
-      "period": "Depuis juin 2026",
-      "card": "Refonte complète du site de Seed4Soft, un collectif de business angels : cadrage, design system, développement et mise en production. Next.js, Tailwind CSS, contenu bilingue.",
-      "description": "Refonte complète du site de Seed4Soft, collectif de business angels. Cadrage du besoin avec l’équipe, système de design, développement en Next.js et Tailwind CSS, contenu éditorial bilingue, puis mise en production. Le site est en ligne et je continue de le faire évoluer."
+      "period": "Juin 2026 à août 2026",
+      "card": "J’ai mené la refonte complète du site de Seed4Soft, un collectif de business angels : cadrage, design system, développement et mise en production. Next.js, Tailwind CSS, contenu bilingue.",
+      "description": "J’ai mené la refonte complète du site de Seed4Soft, collectif de business angels. J’ai cadré le besoin avec l’équipe, posé le système de design, développé le site en Next.js et Tailwind CSS, rédigé le contenu éditorial bilingue, puis assuré la mise en production. Le site est en ligne depuis."
     }
   },
   "formation": {
@@ -206,7 +206,7 @@
   "meta": {
     "home": {
       "title": "Benjamin Balayre · Consultant Strategy & Transformation",
-      "description": "Consultant Strategy & Transformation chez Capgemini Invent sur les sujets data, BI et IA. Développeur web et photographe freelance : parcours, projets et portfolio."
+      "description": "Consultant Strategy & Transformation chez Capgemini Invent sur les sujets data, BI et IA. Photographe et vidéaste freelance : parcours, projets et portfolio."
     },
     "associativeCareer": {
       "title": "Parcours associatif · Benjamin Balayre",

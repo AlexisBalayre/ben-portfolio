@@ -2,7 +2,7 @@
 
 > Consultant Strategy & Transformation chez Capgemini Invent, sur les sujets
 > data, business intelligence et intelligence artificielle. Ingénieur diplômé
-> de l'ISEP (Paris). Développeur web et photographe en indépendant à côté.
+> de l'ISEP (Paris). Photographe et vidéaste en indépendant à côté.
 > Basé à Paris, France. Travaille en français et en anglais.
 
 Ce site est son CV en ligne. Il est bilingue : les URL sans préfixe sont en
@@ -29,7 +29,7 @@ langues.
 
 - [Seed4Soft](https://seed4soft.com): refonte complète du site d'un collectif
   de business angels, du cadrage à la mise en production. Next.js, Tailwind CSS,
-  contenu bilingue. Depuis juin 2026.
+  contenu bilingue. Projet mené de juin à août 2026.
 - [ReLive](https://app.relive.gallery): produit web de recherche par selfie
   dans les galeries photo. L'invité d'un mariage entre le code de la galerie,
   se prend en photo, et retrouve les clichés où il apparaît. Reconnaissance
